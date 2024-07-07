@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="30px" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+    <title>2. Global/Icon/Colored/32px/Property for Sale</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Mobile-Web" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-308.000000, -24.000000)" stroke="#E00000">
+            <g id="2.-Global/Icon/Colored/32px/Property-for-Sale" transform="translate(307.000000, 23.000000)">
+                <g id="Shape" transform="translate(1.000000, 2.000000)">
+                    <path d="M25,13.75 L25,25 C25,26.3807119 23.8807119,27.5 22.5,27.5 L10,27.5" stroke-width="2" stroke-linecap="round"></path>
+                    <path d="M23.75,20 L25,20" id="Line-8" stroke-width="2" stroke-linecap="round"></path>
+                    <path d="M22.5,23.75 L25,23.75" id="Line-8-Copy" stroke-width="2" stroke-linecap="round"></path>
+                    <path d="M22.5,16.25 L25,16.25" id="Line-8-Copy-2" stroke-width="2" stroke-linecap="round"></path>
+                    <path d="M17.5,26.25 L17.5,22.0833333 C17.5,20.9375 16.375,20 15,20 L15,20 C13.625,20 12.5,20.9375 12.5,22.0833333 L12.5,26.25" stroke-width="2" fill="#F7BABA" stroke-linecap="square"></path>
+                    <path d="M17.5,16.25 L17.5,13.3333333 C17.5,12.1875 16.375,11.25 15,11.25 C13.625,11.25 12.5,12.1875 12.5,13.3333333 L12.5,16.25 L17.5,16.25 Z" id="Shape-Copy-8" stroke-width="2" fill="#F7BABA" stroke-linecap="square"></path>
+                    <path d="M5,22.5 L5,27.5" id="Shape-Copy-4" stroke-width="2" stroke-linecap="round"></path>
+                    <rect id="Rectangle-2" stroke-width="2" fill="#F7BABA" x="1" y="18.5" width="8" height="5.5" rx="2"></rect>
+                    <path d="M15,0 L27.8781345,10.7317787 C28.3024114,11.0853428 28.3597354,11.7159075 28.0061713,12.1401844 C27.8161775,12.368177 27.5347299,12.5 27.2379501,12.5 L24,12.5 L15,5 L6,12.5 L2.76204994,12.5 C2.20976519,12.5 1.76204994,12.0522847 1.76204994,11.5 C1.76204994,11.2032202 1.89387295,10.9217725 2.12186554,10.7317787 L15,0 Z" id="Combined-Shape" stroke-width="2" fill="#F7BABA" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M11.25,16.25 L18.75,16.25" id="Line-7" stroke-width="2" stroke-linecap="round"></path>
+                    <path d="M5,13.125 L5,15" id="Line" stroke-width="2" stroke-linecap="round"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
