@@ -1,5 +1,4 @@
 import logo from "../assets/logo.svg";
-import ThemeSwitcher from "../components/ThemeSwitcher/ThemeSwitcher";
 import { Link } from "react-router-dom";
 
 export default function Navbar() {
