@@ -12,7 +12,16 @@ export default function PlaceAnAdPage() {
     propertyType: '',
     beds: 0,
     extension: '',
-    images: [] // Store images as an array
+    images: [], // Store images as an array,
+    broker: '',
+    email: '',
+    phone: '',
+    whatsapp: '',
+    agentName: '',      // New fields for Agent details
+    agentCallNumber: '',
+    agentEmail: '',
+    agentWhatsapp: '',
+    landlord: false, // to distinguish between landlord and agent
   });
   const [step, setStep] = useState(1);
   const [submitted, setSubmitted] = useState(false); // State variable for submission success
@@ -56,8 +65,16 @@ export default function PlaceAnAdPage() {
       }
     }
 
+    // Add default or user-input agent details if the user is an agent
+    if (!formData.landlord) {
+      submissionData.set('broker', formData.agentName);  // Example: Using agentName as broker
+      submissionData.set('email', formData.agentEmail);
+      submissionData.set('phone', formData.agentCallNumber);
+      submissionData.set('whatsapp', formData.agentWhatsapp);
+    }
+
     try {
-      const response = await fetch('http://localhost:5000/api/listings', {
+      const response = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/listings', {
         method: 'POST',
         body: submissionData
       });
@@ -229,10 +246,10 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
   const [details, setDetails] = useState({
     description: "",
     images: [],
-    phoneNumber: "",
-    price: "",
-    detailedDescription: "",
-    beds: formData.beds || 0,
+    price: '',
+    city: '',
+    location: '',
+    beds: 0,
     bathrooms: "",
     propertyReferenceId: "",
     amenities: [],
@@ -241,14 +258,17 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
     reraPreRegistrationNumber: "",
     building: "",
     neighborhood: "",
-    city: formData.city || '',
-    location: formData.location || '',
     propertyType: formData.propertyType || '',
+    agentName: formData.agentName,
+    agentCallNumber: formData.agentCallNumber,
+    agentEmail: formData.agentEmail,
+    agentWhatsapp: formData.agentWhatsapp,
+    landlord: formData.landlord,
+    ...formData,
   });
-
   const handleDetailsChange = (e) => {
     const { name, value } = e.target;
-    const newValue = name === 'beds' ? parseInt(value, 10) || 0 : value;
+    const newValue = name === 'beds' && value === '' ? '' : (name === 'beds' ? parseInt(value, 10) || 0 : value);
     setDetails(prev => ({ ...prev, [name]: newValue }));
   };
 
@@ -293,16 +313,26 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
     }
   };
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setDetails((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleNext = () => {
+    const extension = `${details.city}, ${details.location}`;
+    onNext({ ...details, extension });
+  };
+
   return (
     <div className="flex flex-col items-center space-y-4 w-full max-w-lg mx-auto">
       <h2 className="text-2xl font-semibold text-center">You’re almost there!</h2>
       <h3 className="text-center">Include as much details and pictures as possible, and set the right price!</h3>
       <h4 className="text-center">{formData.title} {">"} {formData.category}</h4>
       <input
-        name="city"
         type="text"
+        name="city"
         value={details.city}
-        onChange={handleDetailsChange}
+        onChange={handleChange}
         placeholder="City"
         className="border border-gray-300 p-2 rounded w-full"
       />
@@ -323,13 +353,13 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
         className="border border-gray-300 p-2 rounded w-full"
       />
       <input
-        name="beds"
-        type="number"
-        value={details.beds}
-        onChange={handleDetailsChange}
-        placeholder="Beds"
-        className="border border-gray-300 p-2 rounded w-full"
-      />
+  name="beds"
+  type="number"
+  value={details.beds || ""}
+  onChange={handleDetailsChange}
+  placeholder="Beds"
+  className="border border-gray-300 p-2 rounded w-full"
+/>
       <input
         type="file"
         multiple
@@ -344,27 +374,14 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
         className="border border-gray-300 p-2 rounded w-full h-24"
       />
       <input
-        name="phoneNumber"
         type="text"
-        value={details.phoneNumber}
-        onChange={handleDetailsChange}
-        placeholder="Phone Number"
-        className="border border-gray-300 p-2 rounded w-full"
-      />
-      <input
         name="price"
-        type="text"
         value={details.price}
-        onChange={handleDetailsChange}
+        onChange={handleChange}
         placeholder="Price"
         className="border border-gray-300 p-2 rounded w-full"
       />
-      <textarea
-        value={details.detailedDescription}
-        onChange={(e) => setDetails({ ...details, detailedDescription: e.target.value })}
-        placeholder="Detailed Description"
-        className="border border-gray-300 p-2 rounded w-full h-24"
-      />
+      
       <input
         name="bathrooms"
         type="text"
@@ -395,7 +412,7 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
         </div>
       )}
       <h2 className="text-lg font-semibold text-center">Are you a Landlord or an Agent?</h2>
-            <div className="flex space-x-4">
+      <div className="flex space-x-4">
                 <button onClick={() => setDetails({ ...details, landlord: true })} className="px-4 py-2 bg-blue-500 text-white rounded">Landlord</button>
                 <button onClick={() => setDetails({ ...details, landlord: false })} className="px-4 py-2 bg-blue-500 text-white rounded">Agent</button>
             </div>
@@ -446,21 +463,50 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
                 </>
             ) : (
                 <>
-                    <input
-                        type="text"
-                        value={details.agentName}
-                        onChange={(e) => setDetails({ ...details, agentName: e.target.value })}
-                        placeholder="Agent Name"
-                        className="border border-gray-300 p-2 rounded w-full"
-                    />
-                    {/* Add more fields for the agent as required */}
+  
                 </>
             )}
-      <button onClick={handleSubmit} className="px-6 py-3 bg-red-600 text-white rounded w-3/4">Next</button>
-      <button onClick={onBack} className="px-6 py-3 bg-gray-500 text-white rounded w-3/4">Back</button>
+        <>
+        <input
+            type="text"
+            name="agentName"
+            value={details.agentName}
+            onChange={handleChange}
+            placeholder="Agent Name"
+            className="border border-gray-300 p-2 rounded w-full"
+          />
+          <input
+            type="text"
+            name="agentCallNumber"
+            value={details.agentCallNumber}
+            onChange={handleChange}
+            placeholder="Agent Call Number"
+            className="border border-gray-300 p-2 rounded w-full"
+          />
+          <input
+            type="email"
+            name="agentEmail"
+            value={details.agentEmail}
+            onChange={handleChange}
+            placeholder="Agent Email"
+            className="border border-gray-300 p-2 rounded w-full"
+          />
+          <input
+            type="text"
+            name="agentWhatsapp"
+            value={details.agentWhatsapp}
+            onChange={handleChange}
+            placeholder="Agent WhatsApp"
+            className="border border-gray-300 p-2 rounded w-full"
+          />
+        </>
+     
+      <button onClick={handleNext} className="px-4 py-2 bg-red-600 text-white rounded w-full">Next</button>
+      <button onClick={onBack} className="px-4 py-2 bg-gray-500 text-white rounded w-full">Back</button>
     </div>
   );
 }
+
 
 function Step4Review({ onSubmit, onBack, formData }) {
   return (
@@ -579,14 +625,29 @@ function Step4Review({ onSubmit, onBack, formData }) {
           </>
         ) : (
           <div className="flex flex-col space-y-2">
-            <label className="font-semibold">Agent Name:</label>
-            <div className="p-2 border border-gray-300 rounded bg-gray-100">{formData.agentName}</div>
+            <div className="border border-gray-300 p-2 rounded w-full">
+              <h3 className="font-semibold">Agent Name</h3>
+              <p>{formData.agentName}</p>
+            </div>
+            <div className="border border-gray-300 p-2 rounded w-full">
+              <h3 className="font-semibold">Agent Call Number</h3>
+              <p>{formData.agentCallNumber}</p>
+            </div>
+            <div className="border border-gray-300 p-2 rounded w-full">
+              <h3 className="font-semibold">Agent Email</h3>
+              <p>{formData.agentEmail}</p>
+            </div>
+            <div className="border border-gray-300 p-2 rounded w-full">
+              <h3 className="font-semibold">Agent WhatsApp</h3>
+              <p>{formData.agentWhatsapp}</p>
+            </div>
           </div>
         )}
       </div>
 
-      <button onClick={onSubmit} className="px-6 py-3 bg-red-600 text-white rounded w-full mt-4">Submit</button>
-      <button onClick={onBack} className="px-6 py-3 bg-gray-500 text-white rounded w-full">Back</button>
+      <button onClick={onSubmit} className="px-4 py-2 bg-red-600 text-white rounded w-full">Submit</button>
+      <button onClick={onBack} className="px-4 py-2 bg-gray-500 text-white rounded w-full">Back</button>
     </div>
   );
 }
+

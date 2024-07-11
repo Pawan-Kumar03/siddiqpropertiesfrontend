@@ -9,7 +9,8 @@ export default function Banner({ onSearch, onDisplayAllListings, onPlaceAnAd }) 
     const [city, setCity] = useState("");
     const [location, setLocation] = useState("");
     const [propertyType, setPropertyType] = useState("");
-    const [priceRange, setPriceRange] = useState("");
+    const [priceMin, setPriceMin] = useState("");
+    const [priceMax, setPriceMax] = useState("");
     const [beds, setBeds] = useState("");
 
     const handleSearch = (event) => {
@@ -18,10 +19,10 @@ export default function Banner({ onSearch, onDisplayAllListings, onPlaceAnAd }) 
             city: city || "",
             location: location || "",
             propertyType: propertyType || "",
-            priceRange: priceRange || "",
+            priceRange: `${priceMin}-${priceMax}` || "",
             beds: beds || ""
         };
-        console.log(searchParams)
+        console.log(searchParams);
         onSearch(searchParams); // Pass the search params to the parent component
     };
 
@@ -72,6 +73,9 @@ export default function Banner({ onSearch, onDisplayAllListings, onPlaceAnAd }) 
                                     <option value="Abu Dhabi">Abu Dhabi</option>
                                     <option value="Sharjah">Sharjah</option>
                                     <option value="Ajman">Ajman</option>
+                                    <option value="Fujairah">Fujairah</option>
+                                    <option value="Ras Al Khaimah">Ras Al Khaimah</option>
+                                    <option value="Umm Al Quwain">Umm Al Quwain</option>
                                     {/* Add more cities as needed */}
                                 </select>
                             </div>
@@ -105,39 +109,35 @@ export default function Banner({ onSearch, onDisplayAllListings, onPlaceAnAd }) 
                             </div>
                             <div className="flex flex-col w-full mb-3">
                                 <label className="mb-1 text-gray-600 dark:text-gray-300">Price Range</label>
-                                <select
-                                    className="w-full p-4 lg:rounded-md rounded-full border border-gray-300/50 dark:border-gray-400/20 dark:bg-slate-800/40 dark:text-gray-300"
-                                    name="priceRange"
-                                    value={priceRange}
-                                    onChange={(e) => setPriceRange(e.target.value)}
-                                >
-                                    <option value="">Select Price Range</option>
-                                    <option value="0-500000">0-500,000 AED</option>
-                                    <option value="500000-1000000">500,000-1,000,000 AED</option>
-                                    <option value="1000000-2000000">1,000,000-2,000,000 AED</option>
-                                    <option value="2000000-5000000">2,000,000-5,000,000 AED</option>
-                                    <option value="2000000-5000000">5,000,000-8,000,000 AED</option>
-                                    <option value="2000000-5000000">8,000,000-12,000,000 AED</option>
-                                    <option value="2000000-5000000">12,000,000-25,000,000 AED</option>
-                                    {/* Add more price ranges as needed */}
-                                </select>
+                                <div className="flex space-x-3">
+                                    <input
+                                        className="w-full p-4 lg:rounded-md rounded-full border border-gray-300/50 dark:border-gray-400/20 dark:bg-slate-800/40 dark:text-gray-300"
+                                        placeholder="Min Price"
+                                        type="number"
+                                        name="priceMin"
+                                        value={priceMin}
+                                        onChange={(e) => setPriceMin(e.target.value)}
+                                    />
+                                    <input
+                                        className="w-full p-4 lg:rounded-md rounded-full border border-gray-300/50 dark:border-gray-400/20 dark:bg-slate-800/40 dark:text-gray-300"
+                                        placeholder="Max Price"
+                                        type="number"
+                                        name="priceMax"
+                                        value={priceMax}
+                                        onChange={(e) => setPriceMax(e.target.value)}
+                                    />
+                                </div>
                             </div>
                             <div className="flex flex-col w-full mb-3">
                                 <label className="mb-1 text-gray-600 dark:text-gray-300">Beds</label>
-                                <select
+                                <input
                                     className="w-full p-4 lg:rounded-md rounded-full border border-gray-300/50 dark:border-gray-400/20 dark:bg-slate-800/40 dark:text-gray-300"
+                                    placeholder="Number of Beds"
+                                    type="number"
                                     name="beds"
                                     value={beds}
                                     onChange={(e) => setBeds(e.target.value)}
-                                >
-                                    <option value="">Select Beds</option>
-                                    <option value="1">1 Bed</option>
-                                    <option value="2">2 Beds</option>
-                                    <option value="3">3 Beds</option>
-                                    <option value="4">4 Beds</option>
-                                    <option value="5">5 Beds</option>
-                                    <option value="6">6 Beds</option>
-                                </select>
+                                />
                             </div>
                         </div>
                         <button type="submit" className="btn w-full py-4">
