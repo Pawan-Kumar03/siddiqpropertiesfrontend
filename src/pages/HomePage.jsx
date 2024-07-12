@@ -56,7 +56,7 @@ export default function HomePage() {
             }
 
             const result = await response.json();
-            console.log("Listing deleted:", result);
+            // console.log("Listing deleted:", result);
 
             // Set the submitted state to true and set the delete message
             setSubmitted(true);

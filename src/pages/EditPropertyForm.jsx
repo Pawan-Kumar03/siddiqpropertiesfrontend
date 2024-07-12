@@ -17,7 +17,7 @@ export default function EditPropertyForm() {
                     throw new Error('Failed to fetch property data');
                 }
                 const data = await response.json();
-                console.log('Property data fetched:', data);
+                // console.log('Property data fetched:', data);
                 setFormData(data);
             } catch (error) {
                 console.error("Failed to fetch property data:", error);
@@ -70,7 +70,7 @@ export default function EditPropertyForm() {
             }
 
             const result = await response.json();
-            console.log("Updated:", result);
+            // console.log("Updated:", result);
             setSubmitted(true); // Set submitted to true on successful update
         } catch (error) {
             alert("Failed to update listing: " + error.message);

@@ -33,7 +33,7 @@ export const ListingsProvider = ({ children }) => {
       }
       const addedListing = await response.json();
       setListings(prevListings => [...prevListings, addedListing]);
-      alert('Listing added successfully!');
+      // alert('Listing added successfully!');
     } catch (error) {
       console.error('Failed to add listing:', error);
       alert('Failed to add listing: ' + error.message);
@@ -54,15 +54,35 @@ export const ListingsProvider = ({ children }) => {
       }
       const updatedListingData = await response.json();
       setListings(prevListings => prevListings.map(listing => listing._id === id ? updatedListingData : listing));
-      alert('Listing updated successfully!');
+      // alert('Listing updated successfully!');
     } catch (error) {
       console.error('Failed to update listing:', error);
       alert('Failed to update listing: ' + error.message);
     }
   };
 
+  const deleteListing = async (id) => {
+    try {
+      const response = await fetch(`https://backend-git-main-pawan-togas-projects.vercel.app/api/listings/${id}`, {
+        method: 'DELETE',
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to delete listing');
+      }
+
+      // Remove the deleted listing from the state
+      setListings(prevListings => prevListings.filter(listing => listing._id !== id));
+
+      // alert('Listing deleted successfully!');
+    } catch (error) {
+      console.error('Failed to delete listing:', error);
+      alert('Failed to delete listing: ' + error.message);
+    }
+  };
+
   return (
-    <ListingsContext.Provider value={{ listings, addListing, updateListing }}>
+    <ListingsContext.Provider value={{ listings, setListings, addListing, updateListing, deleteListing }}>
       {children}
     </ListingsContext.Provider>
   );
