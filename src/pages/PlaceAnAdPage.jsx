@@ -130,7 +130,7 @@ export default function PlaceAnAdPage() {
       console.log('Failed to submit listing: ' + error.message);
     }
   };
-  
+
   const handleCategorySelect = (category) => {
     if (category === "Land" || category === "Multiple Units") {
       setFormData({ ...formData, category, subcategory: category });
