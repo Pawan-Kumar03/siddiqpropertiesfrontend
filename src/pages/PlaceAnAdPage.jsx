@@ -87,7 +87,7 @@ export default function PlaceAnAdPage() {
       let listingsResponse;
       const startTime = Date.now();
       while (true) {
-        const response = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/listings');
+        const response = await fetch('http://localhost:5000/api/listings');
         if (response.ok) {
           listingsResponse = await response.json();
           break;
@@ -100,12 +100,17 @@ export default function PlaceAnAdPage() {
         }
       }
   
+      // Print submissionData for debugging
+      console.log('Submission Data: ')
+  submissionData.forEach((value, key) => {
+    console.log(key, value);
+  });
       // After listings are fetched, proceed to submit data
       let postResponse;
       const postStartTime = Date.now();
       // console.log(typeof submissionData,"in Posts")
       while (true) {
-        postResponse = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/listings', {
+        postResponse = await fetch('http://localhost:5000/api/listings', {
           method: 'POST',
           body: submissionData,
         });
@@ -130,7 +135,7 @@ export default function PlaceAnAdPage() {
       console.log('Failed to submit listing: ' + error.message);
     }
   };
-
+  
   const handleCategorySelect = (category) => {
     if (category === "Land" || category === "Multiple Units") {
       setFormData({ ...formData, category, subcategory: category });

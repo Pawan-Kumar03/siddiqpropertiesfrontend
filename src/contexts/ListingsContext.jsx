@@ -11,7 +11,7 @@ export const ListingsProvider = ({ children }) => {
 
   const fetchListings = async () => {
     try {
-      const response = await fetch(`https://backend-git-main-pawan-togas-projects.vercel.app/api/listings`);
+      const response = await fetch(`http://localhost:5000/api/listings`);
       const data = await response.json();
       setListings(data);
     } catch (error) {
@@ -21,7 +21,7 @@ export const ListingsProvider = ({ children }) => {
 
   const addListing = async (newListing) => {
     try {
-      const response = await fetch(`https://backend-git-main-pawan-togas-projects.vercel.app/api/listings`, {
+      const response = await fetch(`http://localhost:5000/api/listings`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -42,7 +42,7 @@ export const ListingsProvider = ({ children }) => {
 
   const updateListing = async (id, updatedListing) => {
     try {
-      const response = await fetch(`https://backend-git-main-pawan-togas-projects.vercel.app/api/listings/${id}`, {
+      const response = await fetch(`http://localhost:5000/api/listings/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -63,7 +63,7 @@ export const ListingsProvider = ({ children }) => {
 
   const deleteListing = async (id) => {
     try {
-      const response = await fetch(`https://backend-git-main-pawan-togas-projects.vercel.app/api/listings/${id}`, {
+      const response = await fetch(`http://localhost:5000/api/listings/${id}`, {
         method: 'DELETE',
       });
 

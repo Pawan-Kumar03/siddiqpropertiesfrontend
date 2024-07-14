@@ -24,7 +24,7 @@ export default function PropertyDetails() {
     const handleDeleteProperty = async () => {
         if (window.confirm("Are you sure you want to delete this property?")) {
             try {
-                const response = await fetch(`https://backend-git-main-pawan-togas-projects.vercel.app/api/listings/${property._id}`, {
+                const response = await fetch(`http://localhost:5000/api/listings${property._id}`, {
                     method: "DELETE",
                 });
 
