@@ -24,7 +24,7 @@ export default function PropertyDetails() {
     const handleDeleteProperty = async () => {
         if (window.confirm("Are you sure you want to delete this property?")) {
             try {
-                const response = await fetch(`http://localhost:5000/api/listings${property._id}`, {
+                const response = await fetch(`https://backend-git-main-pawan-togas-projects.vercel.app/api/listings${property._id}`, {
                     method: "DELETE",
                 });
 
@@ -92,7 +92,7 @@ export default function PropertyDetails() {
                     <h2 className="text-xl font-semibold mb-3 dark:text-gray-100">Property Details</h2>
                     <div className="flex flex-col lg:flex-row">
                         <div className="lg:w-1/2 lg:pr-4">
-                            <img className="rounded-lg mb-4 object-cover h-80 w-full" src={`http://localhost:5000${property.image}`} alt={property.title} />
+                            <img className="rounded-lg mb-4 object-cover h-80 w-full" src={`https://backend-git-main-pawan-togas-projects.vercel.app${property.image}`} alt={property.title} />
                         </div>
                         <div className="lg:w-1/2 lg:pl-4">
                             <h3 className="text-lg font-semibold mb-2 text-primary-500">{property.title}</h3>
