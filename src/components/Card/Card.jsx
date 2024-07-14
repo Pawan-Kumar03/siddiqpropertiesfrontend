@@ -12,7 +12,7 @@ export default function Card({ item }) {
     };
 
     const imageUrl =image.startsWith('/uploads')
-        ? `https://backend-git-main-pawan-togas-projects.vercel.app${image}`
+        ? `https://ior6dw8epyae9tkd.public.blob.vercel-storage.com${image}`
         : image;
     return (
         <div className="hover:shadow-md p-2 rounded-md duration-200 cursor-pointer" onClick={handleClick}>

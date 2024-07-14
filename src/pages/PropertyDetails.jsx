@@ -92,7 +92,7 @@ export default function PropertyDetails() {
                     <h2 className="text-xl font-semibold mb-3 dark:text-gray-100">Property Details</h2>
                     <div className="flex flex-col lg:flex-row">
                         <div className="lg:w-1/2 lg:pr-4">
-                            <img className="rounded-lg mb-4 object-cover h-80 w-full" src={`https://backend-git-main-pawan-togas-projects.vercel.app${property.image}`} alt={property.title} />
+                            <img className="rounded-lg mb-4 object-cover h-80 w-full" src={`https://ior6dw8epyae9tkd.public.blob.vercel-storage.com${property.image}`} alt={property.title} />
                         </div>
                         <div className="lg:w-1/2 lg:pl-4">
                             <h3 className="text-lg font-semibold mb-2 text-primary-500">{property.title}</h3>
