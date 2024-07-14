@@ -66,8 +66,7 @@ export default function PlaceAnAdPage() {
       if (key === 'images') {
         // Handle images separately if formData has an 'images' key
         formData.images.forEach(image => {
-            // console.log('Image: ',image.name)
-            submissionData.append('images', image);
+          submissionData.append('images', image);
         });
       } else {
         submissionData.append(key, formData[key]);
@@ -85,56 +84,71 @@ export default function PlaceAnAdPage() {
     try {
       // Fetch listings first
       let listingsResponse;
-      const startTime = Date.now();
-      while (true) {
-        const response = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/listings');
-        if (response.ok) {
-          listingsResponse = await response.json();
-          break;
-        } else {
-          // console.log('Waiting for listings...');
-          await new Promise(resolve => setTimeout(resolve, 1000)); // Wait for 1 second before retrying
-          if (Date.now() - startTime > 10000) { // Timeout after 10 seconds
-            throw new Error('Timeout waiting for listings');
+      const startTime = Date.now(); // Start timer before the fetch call
+  
+      const fetchTimeout = 10000; // Set the timeout value (e.g., 10000ms = 10 seconds)
+      const fetchListings = async () => {
+        try {
+          listingsResponse = await fetch(`https://backend-git-main-pawan-togas-projects.vercel.app/api/listings`);
+          if (!listingsResponse.ok) {
+            throw new Error('Network response was not ok');
+          }
+        } catch (error) {
+          if (Date.now() - startTime < fetchTimeout) {
+            throw error; // Rethrow error if within timeout duration
+          } else {
+            throw new Error('Fetch timeout exceeded');
           }
         }
+      };
+  
+      const fetchListingsPromise = fetchListings();
+  
+      // Wait for the fetchListingsPromise to resolve
+      await Promise.race([
+        fetchListingsPromise,
+        new Promise((_, reject) => setTimeout(() => reject(new Error('Fetch timeout')), fetchTimeout)),
+      ]);
+  
+      const listingsData = await listingsResponse.json();
+      console.log('Existing listings:', listingsData);
+  
+      // Adding a delay after fetching listings
+      await new Promise(resolve => setTimeout(resolve, 2000));
+  
+      const requestOptions = {
+        method: 'POST',
+        body: submissionData,
+      };
+  
+      const response = await fetch(`https://backend-git-main-pawan-togas-projects.vercel.app/api/listings`, requestOptions);
+      const data = await response.json();
+      console.log('New listing added:', data);
+  
+      if (!response.ok) {
+        throw new Error('Error in response from server');
       }
   
-      // Print submissionData for debugging
-      console.log('Submission Data: ')
-  submissionData.forEach((value, key) => {
-    console.log(key, value);
-  });
-      // After listings are fetched, proceed to submit data
-      let postResponse;
-      const postStartTime = Date.now();
-      // console.log(typeof submissionData,"in Posts")
-      while (true) {
-        postResponse = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/listings', {
-          method: 'POST',
-          body: submissionData,
-        });
-        if (postResponse.ok) {
-          // console.log("post Submission: ",submissionData)
-          break;
-        } else {
-          // console.log('Waiting for post response...');
-          await new Promise(resolve => setTimeout(resolve, 1000)); // Wait for 1 second before retrying
-          if (Date.now() - postStartTime > 10000) { // Timeout after 30 seconds
-            // throw new Error('Timeout waiting for post response');
-          }
-        }
-      }
-  
-      const result = await postResponse.json();
-      // console.log('Submitted:', result);
-  
-      setSubmitted(true);
-      // navigate("/"); // Comment this line if you want to show the success message before redirecting
+      // Handle success
+      setFormData({
+        title: '',
+        price: '',
+        city: '',
+        location: '',
+        propertyType: '',
+        beds: '',
+        extension: '',
+        images: [], // Reset images to an empty array
+        broker: '',
+        email: '',
+        phone: '',
+        whatsapp: '',
+      });
     } catch (error) {
-      console.log('Failed to submit listing: ' + error.message);
+      console.error('Error submitting form:', error);
     }
   };
+  
   
   const handleCategorySelect = (category) => {
     if (category === "Land" || category === "Multiple Units") {
