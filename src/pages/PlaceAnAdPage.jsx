@@ -128,7 +128,10 @@ export default function PlaceAnAdPage() {
       if (!response.ok) {
         throw new Error('Error in response from server');
       }
-  
+      else{
+        setSubmitted(true)
+      }
+      
       // Handle success
       setFormData({
         title: '',
