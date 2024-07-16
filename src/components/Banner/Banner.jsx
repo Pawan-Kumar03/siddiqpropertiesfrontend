@@ -17,7 +17,8 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
             city: city || "",
             location: locations.join(",") || "", // Join locations into a comma-separated string
             propertyType: propertyType || "",
-            priceRange: priceMin && priceMax ? `${priceMin}-${priceMax}` : "",
+            priceMin: priceMin || "",
+            priceMax: priceMax || "",
             beds: beds || ""
         };
         onSearch(searchParams); // Pass the search params to the parent component
@@ -96,22 +97,20 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                                         <div key={index} className="flex items-center space-x-1 mb-1 mr-1 bg-gray-200 dark:bg-gray-800 px-2 py-1 rounded-full">
                                             <span className="text-sm">{loc}</span>
                                             <button type="button" onClick={() => handleRemoveLocation(index)} className="ml-1">
-                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-red-600 dark:text-red-400 hover:text-red-800 dark:hover:text-red-600 cursor-pointer" viewBox="0 0 20 20" fill="currentColor">
-                                                    <path fillRule="evenodd" d="M10 2a8 8 0 100 16 8 8 0 000-16zM6 8a.75.75 0 011.5 0v4.5a.75.75 0 01-1.5 0V8zm3.75-2.25a.75.75 0 00-1.5 0v4.5a.75.75 0 001.5 0V5.75zm.75 9.5a.75.75 0 111.5 0 .75.75 0 01-1.5 0z" clipRule="evenodd" />
+                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                                                 </svg>
                                             </button>
                                         </div>
                                     ))}
                                     <input
-                                        className="w-full p-2 lg:rounded-md rounded-full border border-gray-300/50 dark:border-gray-400/20 dark:bg-slate-800/40 dark:text-gray-300"
-                                        placeholder="Type Location and press Enter"
                                         type="text"
-                                        onKeyDown={handleAddLocation}
+                                        placeholder="Add location and press Enter"
+                                        onKeyPress={handleAddLocation}
+                                        className="flex-1 p-2 lg:rounded-md rounded-full border border-gray-300/50 dark:border-gray-400/20 dark:bg-slate-800/40 dark:text-gray-300"
                                     />
                                 </div>
                             </div>
-                        </div>
-                        <div className="lg:flex lg:space-x-3">
                             <div className="flex flex-col w-full mb-3">
                                 <label className="mb-1 text-gray-600 dark:text-gray-300">Property Type</label>
                                 <select
@@ -121,74 +120,66 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                                     onChange={(e) => setPropertyType(e.target.value)}
                                 >
                                     <option value="">Select Property Type</option>
-                                    <option value="House">TownHouse</option>
                                     <option value="Apartment">Apartment</option>
                                     <option value="Villa">Villa</option>
+                                    <option value="Townhouse">Townhouse</option>
+                                    <option value="Penthouse">Penthouse</option>
                                     {/* Add more property types as needed */}
                                 </select>
                             </div>
+                        </div>
+                        <div className="lg:flex lg:space-x-3">
                             <div className="flex flex-col w-full mb-3">
-                                <label className="mb-1 text-gray-600 dark:text-gray-300">Price Range</label>
-                                <div className="flex space-x-3">
-                                    <input
-                                        className="w-full p-4 lg:rounded-md rounded-full border border-gray-300/50 dark:border-gray-400/20 dark:bg-slate-800/40 dark:text-gray-300"
-                                        placeholder="Min Price"
-                                        type="number"
-                                        name="priceMin"
-                                        value={priceMin}
-                                        onChange={(e) => setPriceMin(e.target.value)}
-                                    />
-                                    <input
-                                        className="w-full p-4 lg:rounded-md rounded-full border border-gray-300/50 dark:border-gray-400/20 dark:bg-slate-800/40 dark:text-gray-300"
-                                        placeholder="Max Price"
-                                        type="number"
-                                        name="priceMax"
-                                        value={priceMax}
-                                        onChange={(e) => setPriceMax(e.target.value)}
-                                    />
-                                </div>
+                                <label className="mb-1 text-gray-600 dark:text-gray-300">Min Price</label>
+                                <input
+                                    type="number"
+                                    name="priceMin"
+                                    placeholder="Min Price"
+                                    value={priceMin}
+                                    onChange={(e) => setPriceMin(e.target.value)}
+                                    className="w-full p-4 lg:rounded-md rounded-full border border-gray-300/50 dark:border-gray-400/20 dark:bg-slate-800/40 dark:text-gray-300"
+                                />
                             </div>
                             <div className="flex flex-col w-full mb-3">
-                                <label className="mb-1 text-gray-600 dark:text-gray-300">Beds</label>
+                                <label className="mb-1 text-gray-600 dark:text-gray-300">Max Price</label>
                                 <input
-                                    className="w-full p-4 lg:rounded-md rounded-full border border-gray-300/50 dark:border-gray-400/20 dark:bg-slate-800/40 dark:text-gray-300"
-                                    placeholder="Number of Beds"
                                     type="number"
-                                    name="beds"
-                                    value={beds}
-                                    onChange={(e) => setBeds(e.target.value)}
+                                    name="priceMax"
+                                    placeholder="Max Price"
+                                    value={priceMax}
+                                    onChange={(e) => setPriceMax(e.target.value)}
+                                    className="w-full p-4 lg:rounded-md rounded-full border border-gray-300/50 dark:border-gray-400/20 dark:bg-slate-800/40 dark:text-gray-300"
                                 />
                             </div>
                         </div>
-                        <button type="submit" className="btn w-full py-4">
-                            <img
-                                src={inputSearch}
-                                alt="input-search"
-                                className="w-5 opacity-60 inline mr-2"
-                            />
-                            Search
+                        <div className="lg:flex lg:space-x-3">
+                            <div className="flex flex-col w-full mb-3">
+                                <label className="mb-1 text-gray-600 dark:text-gray-300">Beds</label>
+                                <select
+                                    className="w-full p-4 lg:rounded-md rounded-full border border-gray-300/50 dark:border-gray-400/20 dark:bg-slate-800/40 dark:text-gray-300"
+                                    name="beds"
+                                    value={beds}
+                                    onChange={(e) => setBeds(e.target.value)}
+                                >
+                                    <option value="">Select Beds</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5+</option>
+                                    {/* Add more bed options as needed */}
+                                </select>
+                            </div>
+                        </div>
+                        <button
+                            type="submit"
+                            className="w-full bg-primary-500 hover:bg-primary-600 text-white py-4 lg:rounded-md rounded-full mt-4 flex items-center justify-center"
+                        >
+                            <img src={inputSearch} alt="Search" className="mr-2" />
+                            <span>Search</span>
                         </button>
                     </form>
                 </div>
-            </div>
-
-            <div className="container lg:hidden grid grid-cols-3 gap-2 px-2 py-3 text-center text-xs">
-                <a
-                    className="flex flex-col space-y-1 items-center px-3 py-6 hover:underline rounded decoration-primary-500 border border-gray-300/40 dark:border-gray-400/30 shadow-sm"
-                    onClick={handleDisplayAllListings}
-                    href="#"
-                >
-                    <img className="w-5" src={saleProperty} alt="property-sale-icon" />
-                    <span className="dark:text-gray-100">Property for Sale</span>
-                </a>
-                <a
-                    className="flex flex-col space-y-1 items-center px-3 py-6 hover:underline rounded decoration-primary-500 border border-gray-300/40 dark:border-gray-400/30 shadow-sm"
-                    onClick={onPlaceAnAd}
-                    href="#"
-                >
-                    <img className="w-5" src={saleProperty} alt="place-ad-icon" />
-                    <span className="dark:text-gray-100">Place an Ad</span>
-                </a>
             </div>
         </section>
     );

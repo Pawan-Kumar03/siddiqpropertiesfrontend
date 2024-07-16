@@ -10,11 +10,15 @@ export default function ResidentialForSale({ searchParams = {}, showAll, listing
         const isEmptySearch = Object.values(searchParams).every(param => param === "");
 
         const filtered = listings.filter((listing) => {
+            const listingPrice = parseInt(listing.price.replace(/[^0-9]/g, ""));
+            const minPrice = searchParams.priceMin ? parseInt(searchParams.priceMin) : 0;
+            const maxPrice = searchParams.priceMax ? parseInt(searchParams.priceMax) : Infinity;
+
             return (
                 (searchParams.city ? listing.city === searchParams.city : true) &&
                 (searchParams.location ? searchParams.location.split(",").some(loc => listing.location.toLowerCase().includes(loc.trim().toLowerCase())) : true) &&
                 (searchParams.propertyType ? listing.propertyType === searchParams.propertyType : true) &&
-                (searchParams.priceRange ? parseInt(listing.price.replace(/[^0-9]/g, "")) <= parseInt(searchParams.priceRange.replace(/[^0-9]/g, "")) : true) &&
+                (listingPrice >= minPrice && listingPrice <= maxPrice) &&
                 (searchParams.beds ? listing.beds === parseInt(searchParams.beds) : true)
             );
         });
