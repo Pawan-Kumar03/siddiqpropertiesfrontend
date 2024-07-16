@@ -1,13 +1,11 @@
-// Banner.jsx
-
 import React, { useState } from "react";
 import saleProperty from "../../assets/icons/sale-property.svg";
 import inputSearch from "../../assets/icons/input-search.svg";
 import { Link } from "react-router-dom";
 
-export default function Banner({ onSearch, onDisplayAllListings, onPlaceAnAd }) {
+export default function Banner({ onSearch, onPlaceAnAd }) {
     const [city, setCity] = useState("");
-    const [location, setLocation] = useState("");
+    const [locations, setLocations] = useState([]);
     const [propertyType, setPropertyType] = useState("");
     const [priceMin, setPriceMin] = useState("");
     const [priceMax, setPriceMax] = useState("");
@@ -17,18 +15,30 @@ export default function Banner({ onSearch, onDisplayAllListings, onPlaceAnAd }) 
         event.preventDefault();
         const searchParams = {
             city: city || "",
-            location: location || "",
+            location: locations.join(",") || "", // Join locations into a comma-separated string
             propertyType: propertyType || "",
-            priceRange: `${priceMin}-${priceMax}` || "",
+            priceRange: priceMin && priceMax ? `${priceMin}-${priceMax}` : "",
             beds: beds || ""
         };
-        console.log(searchParams);
         onSearch(searchParams); // Pass the search params to the parent component
+    };
+
+    const handleAddLocation = (e) => {
+        if (e.key === "Enter" && e.target.value.trim() !== "") {
+            setLocations([...locations, e.target.value.trim()]);
+            e.target.value = ""; // Clear input field after adding location
+        }
+    };
+
+    const handleRemoveLocation = (index) => {
+        const updatedLocations = [...locations];
+        updatedLocations.splice(index, 1);
+        setLocations(updatedLocations);
     };
 
     const handleDisplayAllListings = (event) => {
         event.preventDefault();
-        onDisplayAllListings(); // Trigger function to display all listings
+        onSearch({}); // Trigger function to display all listings by passing an empty object
     };
 
     return (
@@ -81,14 +91,24 @@ export default function Banner({ onSearch, onDisplayAllListings, onPlaceAnAd }) 
                             </div>
                             <div className="flex flex-col w-full mb-3">
                                 <label className="mb-1 text-gray-600 dark:text-gray-300">Location</label>
-                                <input
-                                    className="w-full p-4 lg:rounded-md rounded-full border border-gray-300/50 dark:border-gray-400/20 dark:bg-slate-800/40 dark:text-gray-300"
-                                    placeholder="Type Location"
-                                    type="text"
-                                    name="location"
-                                    value={location}
-                                    onChange={(e) => setLocation(e.target.value)}
-                                />
+                                <div className="flex flex-wrap items-center">
+                                    {locations.map((loc, index) => (
+                                        <div key={index} className="flex items-center space-x-1 mb-1 mr-1 bg-gray-200 dark:bg-gray-800 px-2 py-1 rounded-full">
+                                            <span className="text-sm">{loc}</span>
+                                            <button type="button" onClick={() => handleRemoveLocation(index)} className="ml-1">
+                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-red-600 dark:text-red-400 hover:text-red-800 dark:hover:text-red-600 cursor-pointer" viewBox="0 0 20 20" fill="currentColor">
+                                                    <path fillRule="evenodd" d="M10 2a8 8 0 100 16 8 8 0 000-16zM6 8a.75.75 0 011.5 0v4.5a.75.75 0 01-1.5 0V8zm3.75-2.25a.75.75 0 00-1.5 0v4.5a.75.75 0 001.5 0V5.75zm.75 9.5a.75.75 0 111.5 0 .75.75 0 01-1.5 0z" clipRule="evenodd" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    ))}
+                                    <input
+                                        className="w-full p-2 lg:rounded-md rounded-full border border-gray-300/50 dark:border-gray-400/20 dark:bg-slate-800/40 dark:text-gray-300"
+                                        placeholder="Type Location and press Enter"
+                                        type="text"
+                                        onKeyDown={handleAddLocation}
+                                    />
+                                </div>
                             </div>
                         </div>
                         <div className="lg:flex lg:space-x-3">

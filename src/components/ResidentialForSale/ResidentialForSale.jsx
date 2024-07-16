@@ -1,4 +1,3 @@
-// ResidentialForSale.jsx
 import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Card from "../Card/Card";
@@ -8,19 +7,21 @@ export default function ResidentialForSale({ searchParams = {}, showAll, listing
     const [relatedResults, setRelatedResults] = useState([]);
 
     useEffect(() => {
+        const isEmptySearch = Object.values(searchParams).every(param => param === "");
+
         const filtered = listings.filter((listing) => {
             return (
                 (searchParams.city ? listing.city === searchParams.city : true) &&
-                (searchParams.location ? listing.location.toLowerCase().includes(searchParams.location.toLowerCase()) : true) &&
+                (searchParams.location ? searchParams.location.split(",").some(loc => listing.location.toLowerCase().includes(loc.trim().toLowerCase())) : true) &&
                 (searchParams.propertyType ? listing.propertyType === searchParams.propertyType : true) &&
                 (searchParams.priceRange ? parseInt(listing.price.replace(/[^0-9]/g, "")) <= parseInt(searchParams.priceRange.replace(/[^0-9]/g, "")) : true) &&
                 (searchParams.beds ? listing.beds === parseInt(searchParams.beds) : true)
             );
         });
-        
-        setFilteredResults(filtered);
 
-        if (filtered.length === 0) {
+        setFilteredResults(isEmptySearch ? listings : filtered);
+
+        if (filtered.length === 0 && !isEmptySearch) {
             const related = listings.filter((listing) => {
                 return (
                     (searchParams.city ? listing.city === searchParams.city : false) &&
