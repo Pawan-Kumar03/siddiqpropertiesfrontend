@@ -104,7 +104,7 @@ export default function PropertyDetails() {
                             {
                                 <>
                                     <p className="mb-4 dark:text-gray-400 text-sm">Landlord: {property.landlordName}</p>
-                                    <p className="mb-4 dark:text-gray-400 text-sm">{property.propertyComplete ? 'Property Complete' : 'Property Incomplete'}</p>
+                                    <p className="mb-4 dark:text-gray-400 text-sm">{property.status ? 'Property Complete' : 'Property Incomplete'}</p>
                                     
                                 </>
                              }
