@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Card from "../Card/Card";
 
-export default function ResidentialForSale({ searchParams = {}, showAll, listings }) {
+export default function ResidentialForSale({ searchParams = {}, listings }) {
     const [filteredResults, setFilteredResults] = useState([]);
     const [relatedResults, setRelatedResults] = useState([]);
 
@@ -13,22 +13,28 @@ export default function ResidentialForSale({ searchParams = {}, showAll, listing
             const listingPrice = parseInt(listing.price.replace(/[^0-9]/g, ""));
             const minPrice = searchParams.priceMin ? parseInt(searchParams.priceMin) : 0;
             const maxPrice = searchParams.priceMax ? parseInt(searchParams.priceMax) : Infinity;
-
+        
             return (
                 (searchParams.city ? listing.city === searchParams.city : true) &&
                 (searchParams.location ? searchParams.location.split(",").some(loc => listing.location.toLowerCase().includes(loc.trim().toLowerCase())) : true) &&
                 (searchParams.propertyType ? listing.propertyType === searchParams.propertyType : true) &&
                 (listingPrice >= minPrice && listingPrice <= maxPrice) &&
-                (searchParams.beds ? listing.beds === parseInt(searchParams.beds) : true)
+                (searchParams.beds ? (searchParams.beds === "5" ? listing.beds >= 5 : listing.beds === parseInt(searchParams.beds)) : true) &&
+                (searchParams.baths ? (searchParams.baths === "5" ? listing.baths >= 5 : listing.baths === parseInt(searchParams.baths)) : true) &&
+                (searchParams.status ? (searchParams.status === "Complete" ? listing.status === "Complete" : listing.status !== "Complete") : true) &&
+                (searchParams.purpose ? listing.purpose === searchParams.purpose : true) &&
+                (searchParams.agentType ? 
+                    (searchParams.agentType === "Owner" ? listing.landlordName : listing.agentName) 
+                    : true)
             );
         });
-
+        
         setFilteredResults(isEmptySearch ? listings : filtered);
 
         if (filtered.length === 0 && !isEmptySearch) {
             const related = listings.filter((listing) => {
                 return (
-                    (searchParams.city ? listing.city === searchParams.city : false) &&
+                    (searchParams.city ? listing.city === searchParams.city : false) ||
                     (searchParams.propertyType ? listing.propertyType === searchParams.propertyType : false)
                 );
             });

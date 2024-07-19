@@ -29,7 +29,7 @@ export default function PlaceAnAdPage() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    const newValue = name === 'beds' ? parseInt(value, 10) || 0 : value;
+    const newValue = (name === 'beds' || name === 'baths') ? parseInt(value, 10) || 0 : value;
     setFormData(prev => {
       const updatedData = { ...prev, [name]: newValue };
       if (name === 'city' || name === 'location') {
@@ -38,6 +38,7 @@ export default function PlaceAnAdPage() {
       return updatedData;
     });
   };
+  
 
   const handleImageChange = (e) => {
     setFormData(prev => ({ ...prev, images: Array.from(e.target.files) }));
@@ -66,13 +67,15 @@ export default function PlaceAnAdPage() {
       if (key === 'images') {
         // Handle images separately if formData has an 'images' key
         formData.images.forEach(image => {
-          submissionData.append('images', image);
+            // console.log('Image: ',image.name)
+            submissionData.append('images', image);
         });
       } else {
         submissionData.append(key, formData[key]);
       }
     }
-  
+    console.log('Form Data:', formData);
+
     // Add default or user-input agent details if the user is an agent
     if (!formData.landlord) {
       submissionData.set('broker', formData.agentName);
@@ -84,74 +87,56 @@ export default function PlaceAnAdPage() {
     try {
       // Fetch listings first
       let listingsResponse;
-      const startTime = Date.now(); // Start timer before the fetch call
-  
-      const fetchTimeout = 10000; // Set the timeout value (e.g., 10000ms = 10 seconds)
-      const fetchListings = async () => {
-        try {
-          listingsResponse = await fetch(`https://backend-git-main-pawan-togas-projects.vercel.app/api/listings`);
-          if (!listingsResponse.ok) {
-            throw new Error('Network response was not ok');
-          }
-        } catch (error) {
-          if (Date.now() - startTime < fetchTimeout) {
-            throw error; // Rethrow error if within timeout duration
-          } else {
-            throw new Error('Fetch timeout exceeded');
+      const startTime = Date.now();
+      while (true) {
+        const response = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/listings');
+        if (response.ok) {
+          listingsResponse = await response.json();
+          break;
+        } else {
+          // console.log('Waiting for listings...');
+          await new Promise(resolve => setTimeout(resolve, 1000)); // Wait for 1 second before retrying
+          if (Date.now() - startTime > 10000) { // Timeout after 10 seconds
+            throw new Error('Timeout waiting for listings');
           }
         }
-      };
-  
-      const fetchListingsPromise = fetchListings();
-  
-      // Wait for the fetchListingsPromise to resolve
-      await Promise.race([
-        fetchListingsPromise,
-        new Promise((_, reject) => setTimeout(() => reject(new Error('Fetch timeout')), fetchTimeout)),
-      ]);
-  
-      const listingsData = await listingsResponse.json();
-      console.log('Existing listings:', listingsData);
-  
-      // Adding a delay after fetching listings
-      await new Promise(resolve => setTimeout(resolve, 2000));
-  
-      const requestOptions = {
-        method: 'POST',
-        body: submissionData,
-      };
-  
-      const response = await fetch(`https://backend-git-main-pawan-togas-projects.vercel.app/api/listings`, requestOptions);
-      const data = await response.json();
-      console.log('New listing added:', data);
-  
-      if (!response.ok) {
-        throw new Error('Error in response from server');
       }
-      else{
-        setSubmitted(true)
+  
+      // Print submissionData for debugging
+      console.log('Submission Data: ')
+  submissionData.forEach((value, key) => {
+    console.log(key, value);
+  });
+      // After listings are fetched, proceed to submit data
+      let postResponse;
+      const postStartTime = Date.now();
+      // console.log(typeof submissionData,"in Posts")
+      while (true) {
+        postResponse = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/listings', {
+          method: 'POST',
+          body: submissionData,
+        });
+        if (postResponse.ok) {
+          // console.log("post Submission: ",submissionData)
+          break;
+        } else {
+          // console.log('Waiting for post response...');
+          await new Promise(resolve => setTimeout(resolve, 1000)); // Wait for 1 second before retrying
+          if (Date.now() - postStartTime > 10000) { // Timeout after 30 seconds
+            // throw new Error('Timeout waiting for post response');
+          }
+        }
       }
-      
-      // Handle success
-      setFormData({
-        title: '',
-        price: '',
-        city: '',
-        location: '',
-        propertyType: '',
-        beds: '',
-        extension: '',
-        images: [], // Reset images to an empty array
-        broker: '',
-        email: '',
-        phone: '',
-        whatsapp: '',
-      });
+  
+      const result = await postResponse.json();
+      // console.log('Submitted:', result);
+  
+      setSubmitted(true);
+      // navigate("/"); // Comment this line if you want to show the success message before redirecting
     } catch (error) {
-      console.error('Error submitting form:', error);
+      console.log('Failed to submit listing: ' + error.message);
     }
   };
-  
   
   const handleCategorySelect = (category) => {
     if (category === "Land" || category === "Multiple Units") {
@@ -309,7 +294,7 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
     city: '',
     location: '',
     beds: 0,
-    bathrooms: "",
+    baths: "",
     propertyReferenceId: "",
     amenities: [],
     landlordName: "",
@@ -375,9 +360,10 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setDetails((prev) => ({ ...prev, [name]: value }));
+    const newValue = name === 'baths' && value === '' ? '' : (name === 'baths' ? parseInt(value, 10) || 0 : value);
+    setDetails(prev => ({ ...prev, [name]: newValue }));
   };
-
+  
   const handleNext = () => {
     const extension = `${details.city}, ${details.location}`;
     onNext({ ...details, extension });
@@ -441,15 +427,26 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
         placeholder="Price"
         className="border border-gray-300 p-2 rounded w-full"
       />
-      
-      <input
-        name="bathrooms"
-        type="text"
-        value={details.bathrooms}
-        onChange={handleDetailsChange}
-        placeholder="Bathrooms"
-        className="border border-gray-300 p-2 rounded w-full"
-      />
+  
+<input
+  name="baths"
+  type="number"
+  value={details.baths || ""}
+  onChange={handleChange}
+  placeholder="Baths"
+  className="border border-gray-300 p-2 rounded w-full"
+/>
+<select
+  name="purpose"
+  value={formData.purpose}
+  onChange={handleChange}
+  className="border border-gray-300 p-2 rounded w-full"
+>
+  <option value="">Select Purpose</option>
+  <option value="sell">Sell</option>
+  <option value="buy">Buy</option>
+</select>
+
       <input
         name="propertyReferenceId"
         type="text"
@@ -486,10 +483,10 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
                         className="border border-gray-300 p-2 rounded w-full"
                     />
                     <div className="flex space-x-4">
-                        <button onClick={() => setDetails({ ...details, propertyComplete: true })} className="px-4 py-2 bg-green-500 text-white rounded">Property Complete</button>
-                        <button onClick={() => setDetails({ ...details, propertyComplete: false })} className="px-4 py-2 bg-yellow-500 text-white rounded">Property Incomplete</button>
+                        <button onClick={() => setDetails({ ...details, status: true })} className="px-4 py-2 bg-green-500 text-white rounded">Property Complete</button>
+                        <button onClick={() => setDetails({ ...details, status: false })} className="px-4 py-2 bg-yellow-500 text-white rounded">Property Incomplete</button>
                     </div>
-                    {details.propertyComplete ? (
+                    {details.status ? (
                         <input
                             type="text"
                             value={details.reraTitleNumber}
@@ -622,10 +619,10 @@ function Step4Review({ onSubmit, onBack, formData }) {
           </div>
         )}
 
-        {formData.bathrooms && (
+        {formData.baths && (
           <div className="flex flex-col space-y-2">
             <label className="font-semibold">Bathrooms:</label>
-            <div className="p-2 border border-gray-300 rounded bg-gray-100">{formData.bathrooms}</div>
+            <div className="p-2 border border-gray-300 rounded bg-gray-100">{formData.baths}</div>
           </div>
         )}
 
@@ -656,9 +653,9 @@ function Step4Review({ onSubmit, onBack, formData }) {
             </div>
             <div className="flex flex-col space-y-2">
               <label className="font-semibold">Property Status:</label>
-              <div className="p-2 border border-gray-300 rounded bg-gray-100">{formData.propertyComplete ? "Complete" : "Incomplete"}</div>
+              <div className="p-2 border border-gray-300 rounded bg-gray-100">{formData.status ? "Complete" : "Incomplete"}</div>
             </div>
-            {formData.propertyComplete ? (
+            {formData.status ? (
               <div className="flex flex-col space-y-2">
                 <label className="font-semibold">RERA Title Number:</label>
                 <div className="p-2 border border-gray-300 rounded bg-gray-100">{formData.reraTitleNumber}</div>

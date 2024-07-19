@@ -6,6 +6,7 @@ const EditPropertyPage = () => {
     const { listings } = useContext(ListingsContext);
     const [selectedProperty, setSelectedProperty] = useState(null);
 
+    // Function to handle property selection from dropdown
     const handlePropertySelect = (event) => {
         const propertyId = event.target.value;
         const property = listings.find(listing => listing._id === propertyId);
@@ -23,8 +24,10 @@ const EditPropertyPage = () => {
                     </option>
                 ))}
             </select>
-            {selectedProperty && (
+            {selectedProperty ? (
                 <EditPropertyForm property={selectedProperty} />
+            ) : (
+                <p>Please select a property to edit.</p>
             )}
         </div>
     );

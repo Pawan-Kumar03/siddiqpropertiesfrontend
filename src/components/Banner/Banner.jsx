@@ -10,24 +10,32 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     const [priceMin, setPriceMin] = useState("");
     const [priceMax, setPriceMax] = useState("");
     const [beds, setBeds] = useState("");
+    const [baths, setBaths] = useState("");
+    const [agentType, setAgentType] = useState("");
+    const [status, setStatus] = useState("");
+    const [purpose, setPurpose] = useState("");
 
     const handleSearch = (event) => {
         event.preventDefault();
         const searchParams = {
             city: city || "",
-            location: locations.join(",") || "", // Join locations into a comma-separated string
+            location: locations.join(",") || "",
             propertyType: propertyType || "",
             priceMin: priceMin || "",
             priceMax: priceMax || "",
-            beds: beds || ""
+            beds: beds || "",
+            baths: baths || "",
+            agentType: agentType || "",
+            status: status || "",
+            purpose: purpose || ""
         };
-        onSearch(searchParams); // Pass the search params to the parent component
+        onSearch(searchParams); // Pass searchParams to onSearch function
     };
-
+    
     const handleAddLocation = (e) => {
         if (e.key === "Enter" && e.target.value.trim() !== "") {
             setLocations([...locations, e.target.value.trim()]);
-            e.target.value = ""; // Clear input field after adding location
+            e.target.value = "";
         }
     };
 
@@ -37,9 +45,22 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         setLocations(updatedLocations);
     };
 
+    const handleClearFilters = () => {
+        setCity("");
+        setLocations([]);
+        setPropertyType("");
+        setPriceMin("");
+        setPriceMax("");
+        setBeds("");
+        setBaths("");
+        setAgentType("");
+        setStatus("");
+        setPurpose("");
+    };
+
     const handleDisplayAllListings = (event) => {
         event.preventDefault();
-        onSearch({}); // Trigger function to display all listings by passing an empty object
+        onSearch({});
     };
 
     return (
@@ -57,7 +78,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                             <li>
                                 <button
                                     className="hover:bg-primary-500 duration-200 text-white px-5 py-2 font-semibold rounded-full"
-                                    onClick={handleDisplayAllListings} // Update onClick handler
+                                    onClick={handleDisplayAllListings}
                                 >
                                     Property for Sale
                                 </button>
@@ -70,11 +91,11 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                         </ul>
                     </div>
                     <form className="lg:flex lg:flex-col lg:space-y-3 px-2 lg:px-0 py-4 lg:py-0 relative" onSubmit={handleSearch}>
-                        <div className="lg:flex lg:space-x-3">
-                            <div className="flex flex-col w-full mb-3">
-                                <label className="mb-1 text-gray-600 dark:text-gray-300">City</label>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+                            <div className="flex flex-col mb-3">
+                                <label className="mb-1 text-gray-600 text-white">City</label>
                                 <select
-                                    className="w-full p-4 lg:rounded-md rounded-full border border-gray-300/50 dark:border-gray-400/20 dark:bg-slate-800/40 dark:text-gray-300"
+                                    className="w-full p-2 lg:rounded-md rounded-full border border-gray-300/50 dark:border-gray-400/20 dark:bg-slate-800/40 dark:text-gray-300"
                                     name="city"
                                     value={city}
                                     onChange={(e) => setCity(e.target.value)}
@@ -90,8 +111,8 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                                     {/* Add more cities as needed */}
                                 </select>
                             </div>
-                            <div className="flex flex-col w-full mb-3">
-                                <label className="mb-1 text-gray-600 dark:text-gray-300">Location</label>
+                            <div className="flex flex-col mb-3">
+                                <label className="mb-1 text-gray-600 text-white">Location</label>
                                 <div className="flex flex-wrap items-center">
                                     {locations.map((loc, index) => (
                                         <div key={index} className="flex items-center space-x-1 mb-1 mr-1 bg-gray-200 dark:bg-gray-800 px-2 py-1 rounded-full">
@@ -111,10 +132,10 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                                     />
                                 </div>
                             </div>
-                            <div className="flex flex-col w-full mb-3">
-                                <label className="mb-1 text-gray-600 dark:text-gray-300">Property Type</label>
+                            <div className="flex flex-col mb-3">
+                                <label className="mb-1 text-gray-600 text-white">Property Type</label>
                                 <select
-                                    className="w-full p-4 lg:rounded-md rounded-full border border-gray-300/50 dark:border-gray-400/20 dark:bg-slate-800/40 dark:text-gray-300"
+                                    className="w-full p-2 lg:rounded-md rounded-full border border-gray-300/50 dark:border-gray-400/20 dark:bg-slate-800/40 dark:text-gray-300"
                                     name="propertyType"
                                     value={propertyType}
                                     onChange={(e) => setPropertyType(e.target.value)}
@@ -127,36 +148,32 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                                     {/* Add more property types as needed */}
                                 </select>
                             </div>
-                        </div>
-                        <div className="lg:flex lg:space-x-3">
-                            <div className="flex flex-col w-full mb-3">
-                                <label className="mb-1 text-gray-600 dark:text-gray-300">Min Price</label>
+                            <div className="flex flex-col mb-3">
+                                <label className="mb-1 text-gray-600 text-white">Min Price</label>
                                 <input
                                     type="number"
                                     name="priceMin"
                                     placeholder="Min Price"
                                     value={priceMin}
                                     onChange={(e) => setPriceMin(e.target.value)}
-                                    className="w-full p-4 lg:rounded-md rounded-full border border-gray-300/50 dark:border-gray-400/20 dark:bg-slate-800/40 dark:text-gray-300"
+                                    className="w-full p-2 lg:rounded-md rounded-full border border-gray-300/50 dark:border-gray-400/20 dark:bg-slate-800/40 dark:text-gray-300"
                                 />
                             </div>
-                            <div className="flex flex-col w-full mb-3">
-                                <label className="mb-1 text-gray-600 dark:text-gray-300">Max Price</label>
+                            <div className="flex flex-col mb-3">
+                                <label className="mb-1 text-gray-600 text-white">Max Price</label>
                                 <input
                                     type="number"
                                     name="priceMax"
                                     placeholder="Max Price"
                                     value={priceMax}
                                     onChange={(e) => setPriceMax(e.target.value)}
-                                    className="w-full p-4 lg:rounded-md rounded-full border border-gray-300/50 dark:border-gray-400/20 dark:bg-slate-800/40 dark:text-gray-300"
+                                    className="w-full p-2 lg:rounded-md rounded-full border border-gray-300/50 dark:border-gray-400/20 dark:bg-slate-800/40 dark:text-gray-300"
                                 />
                             </div>
-                        </div>
-                        <div className="lg:flex lg:space-x-3">
-                            <div className="flex flex-col w-full mb-3">
-                                <label className="mb-1 text-gray-600 dark:text-gray-300">Beds</label>
+                            <div className="flex flex-col mb-3">
+                                <label className="mb-1 text-gray-600 text-white">Beds</label>
                                 <select
-                                    className="w-full p-4 lg:rounded-md rounded-full border border-gray-300/50 dark:border-gray-400/20 dark:bg-slate-800/40 dark:text-gray-300"
+                                    className="w-full p-2 lg:rounded-md rounded-full border border-gray-300/50 dark:border-gray-400/20 dark:bg-slate-800/40 dark:text-gray-300"
                                     name="beds"
                                     value={beds}
                                     onChange={(e) => setBeds(e.target.value)}
@@ -170,14 +187,80 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                                     {/* Add more bed options as needed */}
                                 </select>
                             </div>
+                            <div className="flex flex-col mb-3">
+                                <label className="mb-1 text-gray-600 text-white">Baths</label>
+                                <select
+                                    className="w-full p-2 lg:rounded-md rounded-full border border-gray-300/50 dark:border-gray-400/20 dark:bg-slate-800/40 dark:text-gray-300"
+                                    name="baths"
+                                    value={baths}
+                                    onChange={(e) => setBaths(e.target.value)}
+                                >
+                                    <option value="">Select Baths</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5+</option>
+                                    {/* Add more bath options as needed */}
+                                </select>
+                            </div>
+                            <div className="flex flex-col mb-3">
+                                <label className="mb-1 text-gray-600 text-white">Owner Type</label>
+                                <select
+                                    className="w-full p-2 lg:rounded-md rounded-full border border-gray-300/50 dark:border-gray-400/20 dark:bg-slate-800/40 dark:text-gray-300"
+                                    name="agentType"
+                                    value={agentType}
+                                    onChange={(e) => setAgentType(e.target.value)}
+                                >
+                                    <option value="">Select Owner Type</option>
+                                    <option value="Owner">Landlord</option>
+                                    <option value="Agent">Agent</option>
+                                    {/* Add more agent types as needed */}
+                                </select>
+                            </div>
+                            <div className="flex flex-col mb-3">
+                                <label className="mb-1 text-gray-600 text-white">Status</label>
+                                <select
+    className="w-full p-2 lg:rounded-md rounded-full border border-gray-300/50 dark:border-gray-400/20 dark:bg-slate-800/40 dark:text-gray-300"
+    name="status"
+    value={status}
+    onChange={(e) => setStatus(e.target.value)}
+>
+    <option value="">Select Status</option>
+    <option value="Complete">Ready to Move</option>
+    <option value="Incomplete">Under Construction</option>
+</select>
+                            </div>
+                            <div className="flex flex-col mb-3">
+                                <label className="mb-1 text-gray-600 text-white">Purpose</label>
+                                <select
+    className="w-full p-2 lg:rounded-md rounded-full border border-gray-300/50 dark:border-gray-400/20 dark:bg-slate-800/40 dark:text-gray-300"
+    name="purpose"
+    value={purpose}
+    onChange={(e) => setPurpose(e.target.value)}
+>
+    <option value="">Select Purpose</option>
+    <option value="sell">Sell</option>
+    <option value="buy">Buy</option>
+</select>
+                            </div>
                         </div>
-                        <button
-                            type="submit"
-                            className="w-full bg-primary-500 hover:bg-primary-600 text-white py-4 lg:rounded-md rounded-full mt-4 flex items-center justify-center"
-                        >
-                            <img src={inputSearch} alt="Search" className="mr-2" />
-                            <span>Search</span>
-                        </button>
+                        <div className="flex items-center justify-between mt-4 w-full">
+    <button type="submit" className="flex items-center justify-center bg-primary-500 text-white w-1/2 px-6 py-2 rounded-full font-semibold mr-2">
+        <img src={inputSearch} alt="Search" className="w-5 h-5 mr-2" />
+        Search
+    </button>
+    <button
+        type="button"
+        onClick={handleClearFilters}
+        className="flex items-center justify-center bg-black text-white w-1/2 px-6 py-2 rounded-full font-semibold ml-2"
+    >
+        Clear Filters
+    </button>
+</div>
+
+                                
+
                     </form>
                 </div>
             </div>

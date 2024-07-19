@@ -15,6 +15,7 @@ export default function PropertyDetails() {
     useEffect(() => {
         const selectedProperty = listings.find((listing) => listing._id === id);
         setProperty(selectedProperty);
+        console.log(selectedProperty);
     }, [id, listings]);
 
     const handleEditProperty = () => {
@@ -39,7 +40,6 @@ export default function PropertyDetails() {
                 // Remove the deleted listing from the state
                 setListings(prevListings => prevListings.filter(listing => listing._id !== property._id));
 
-
                 // Redirect to homepage after showing the message
                 setTimeout(() => {
                     navigate("/");
@@ -59,17 +59,17 @@ export default function PropertyDetails() {
         switch (contactMethod) {
             case 'Email':
                 const emailSubject = `Interested in ${property.title}`;
-                const mailtoLink = `mailto:${property.email}?subject=${encodeURIComponent(
+                const mailtoLink = `mailto:${property.agentEmail}?subject=${encodeURIComponent(
                     emailSubject
                 )}&body=${encodeURIComponent(message)}`;
                 window.open(mailtoLink);
                 break;
             case 'Call':
-                const telLink = `tel:${property.broker.phone}`;
+                const telLink = `tel:${property.agentCallNumber}`;
                 window.open(telLink);
                 break;
             case 'WhatsApp':
-                const whatsappMessage = `https://wa.me/${property.whatsapp}?text=${encodeURIComponent(
+                const whatsappMessage = `https://wa.me/${property.agentWhatsapp}?text=${encodeURIComponent(
                     message
                 )}`;
                 window.open(whatsappMessage);
@@ -92,7 +92,7 @@ export default function PropertyDetails() {
                     <h2 className="text-xl font-semibold mb-3 dark:text-gray-100">Property Details</h2>
                     <div className="flex flex-col lg:flex-row">
                         <div className="lg:w-1/2 lg:pr-4">
-                            <img className="rounded-lg mb-4 object-cover h-80 w-full" src={`${property.image}`} alt={property.title} />
+                            <img className="rounded-lg mb-4 object-cover h-80 w-full" src={`backend-git-main-pawan-togas-projects.vercel.app/${property.image}`} alt={property.title} />
                         </div>
                         <div className="lg:w-1/2 lg:pl-4">
                             <h3 className="text-lg font-semibold mb-2 text-primary-500">{property.title}</h3>
@@ -100,18 +100,21 @@ export default function PropertyDetails() {
                             <p className="mb-4 dark:text-gray-400 text-sm">{property.city}, {property.location}</p>
                             <p className="mb-4 dark:text-gray-400 text-sm">{property.propertyType}</p>
                             <p className="mb-4 dark:text-gray-400 text-sm">{property.beds} Beds</p>
-                            <p>Broker: {property.broker}</p>
-                            <div className="mb-4 dark:text-gray-400 text-sm flex">
-                                <p>
-                                    <EmailIcon style={{ cursor: 'pointer', marginRight: '10px' }} onClick={() => handleContactBroker('Email')} />
-                                </p>
-                                <p>
-                                    <PhoneIcon style={{ cursor: 'pointer', marginRight: '10px' }} onClick={() => handleContactBroker('Call')} />
-                                </p>
-                                <p>
-                                    <WhatsAppIcon style={{ cursor: 'pointer', marginRight: '10px' }} onClick={() => handleContactBroker('WhatsApp')} />
-                                </p>
+                            <p className="mb-4 dark:text-gray-400 text-sm">{property.baths} Baths</p>
+                            {
+                                <>
+                                    <p className="mb-4 dark:text-gray-400 text-sm">Landlord: {property.landlordName}</p>
+                                    <p className="mb-4 dark:text-gray-400 text-sm">{property.propertyComplete ? 'Property Complete' : 'Property Incomplete'}</p>
+                                    
+                                </>
+                             }
+                            <p className="mb-4 text-sm">Broker: {property.broker}</p>
+                            <div className="mb-4 text-sm flex items-center">
+                                <EmailIcon style={{ cursor: 'pointer' }} onClick={() => handleContactBroker('Email')} />
+                                <PhoneIcon style={{ cursor: 'pointer', marginLeft: '10px' }} onClick={() => handleContactBroker('Call')} />
+                                <WhatsAppIcon style={{ cursor: 'pointer', marginLeft: '10px' }} onClick={() => handleContactBroker('WhatsApp')} />
                             </div>
+
                             <button
                                 onClick={handleEditProperty}
                                 className="px-6 py-3 bg-blue-600 text-white rounded mr-2"

@@ -17,7 +17,6 @@ export default function EditPropertyForm() {
                     throw new Error('Failed to fetch property data');
                 }
                 const data = await response.json();
-                // console.log('Property data fetched:', data);
                 setFormData(data);
             } catch (error) {
                 console.error("Failed to fetch property data:", error);
@@ -70,7 +69,6 @@ export default function EditPropertyForm() {
             }
 
             const result = await response.json();
-            // console.log("Updated:", result);
             setSubmitted(true); // Set submitted to true on successful update
         } catch (error) {
             alert("Failed to update listing: " + error.message);
@@ -153,10 +151,98 @@ export default function EditPropertyForm() {
                     className="border border-gray-300 p-2 rounded w-full"
                 />
                 <input
-                    type="file"
-                    multiple
-                    name="images"
-                    onChange={handleImageChange}
+                    name="bathrooms"
+                    type="number"
+                    value={formData.bathrooms}
+                    onChange={handleChange}
+                    placeholder="Bathrooms"
+                    className="border border-gray-300 p-2 rounded w-full"
+                />
+                <textarea
+                    name="description"
+                    value={formData.description}
+                    onChange={handleChange}
+                    placeholder="Description"
+                    className="border border-gray-300 p-2 rounded w-full h-24"
+                />
+                <input
+                    name="propertyReferenceId"
+                    type="text"
+                    value={formData.propertyReferenceId}
+                    onChange={handleChange}
+                    placeholder="Property Reference ID"
+                    className="border border-gray-300 p-2 rounded w-full"
+                />
+                <input
+                    name="building"
+                    type="text"
+                    value={formData.building}
+                    onChange={handleChange}
+                    placeholder="Building"
+                    className="border border-gray-300 p-2 rounded w-full"
+                />
+                <input
+                    name="neighborhood"
+                    type="text"
+                    value={formData.neighborhood}
+                    onChange={handleChange}
+                    placeholder="Neighborhood"
+                    className="border border-gray-300 p-2 rounded w-full"
+                />
+                <input
+                    name="landlordName"
+                    type="text"
+                    value={formData.landlordName}
+                    onChange={handleChange}
+                    placeholder="Landlord Name"
+                    className="border border-gray-300 p-2 rounded w-full"
+                />
+                <input
+                    name="reraTitleNumber"
+                    type="text"
+                    value={formData.reraTitleNumber}
+                    onChange={handleChange}
+                    placeholder="RERA Title Number"
+                    className="border border-gray-300 p-2 rounded w-full"
+                />
+                <input
+                    name="reraPreRegistrationNumber"
+                    type="text"
+                    value={formData.reraPreRegistrationNumber}
+                    onChange={handleChange}
+                    placeholder="RERA Pre Registration Number"
+                    className="border border-gray-300 p-2 rounded w-full"
+                />
+                <input
+                    name="agentName"
+                    type="text"
+                    value={formData.agentName}
+                    onChange={handleChange}
+                    placeholder="Agent Name"
+                    className="border border-gray-300 p-2 rounded w-full"
+                />
+                <input
+                    name="agentCallNumber"
+                    type="text"
+                    value={formData.agentCallNumber}
+                    onChange={handleChange}
+                    placeholder="Agent Call Number"
+                    className="border border-gray-300 p-2 rounded w-full"
+                />
+                <input
+                    name="agentEmail"
+                    type="email"
+                    value={formData.agentEmail}
+                    onChange={handleChange}
+                    placeholder="Agent Email"
+                    className="border border-gray-300 p-2 rounded w-full"
+                />
+                <input
+                    name="agentWhatsapp"
+                    type="text"
+                    value={formData.agentWhatsapp}
+                    onChange={handleChange}
+                    placeholder="Agent WhatsApp"
                     className="border border-gray-300 p-2 rounded w-full"
                 />
                 <button type="submit" className="px-6 py-3 bg-red-600 text-white rounded w-full">
