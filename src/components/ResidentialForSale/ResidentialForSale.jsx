@@ -34,7 +34,7 @@ export default function ResidentialForSale({ searchParams = {}, listings }) {
         if (filtered.length === 0 && !isEmptySearch) {
             const related = listings.filter((listing) => {
                 return (
-                    (searchParams.city ? listing.city === searchParams.city : false) ||
+                    (searchParams.city ? listing.city === searchParams.city : false) &&
                     (searchParams.propertyType ? listing.propertyType === searchParams.propertyType : false)
                 );
             });
