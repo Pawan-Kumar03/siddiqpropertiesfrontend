@@ -221,15 +221,15 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                             <div className="flex flex-col mb-3">
                                 <label className="mb-1 text-gray-600 text-white">Status</label>
                                 <select
-    className="w-full p-2 lg:rounded-md rounded-full border border-gray-300/50 dark:border-gray-400/20 dark:bg-slate-800/40 dark:text-gray-300"
-    name="status"
-    value={status}
-    onChange={(e) => setStatus(e.target.value)}
->
-    <option value="">Select Status</option>
-    <option value="Complete">Ready to Move</option>
-    <option value="Incomplete">Under Construction</option>
-</select>
+                                    className="w-full p-2 lg:rounded-md rounded-full border border-gray-300/50 dark:border-gray-400/20 dark:bg-slate-800/40 dark:text-gray-300"
+                                    name="status"
+                                    value={status}
+                                    onChange={(e) => setStatus(e.target.value)}
+                                >
+                                    <option value="">Select Status</option>
+                                    <option value="Complete">Complete</option>
+                                    <option value="Incomplete">Incomplete</option>
+                                </select>
                             </div>
                             <div className="flex flex-col mb-3">
                                 <label className="mb-1 text-gray-600 text-white">Purpose</label>

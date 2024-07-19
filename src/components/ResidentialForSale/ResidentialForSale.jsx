@@ -13,7 +13,7 @@ export default function ResidentialForSale({ searchParams = {}, listings }) {
             const listingPrice = parseInt(listing.price.replace(/[^0-9]/g, ""));
             const minPrice = searchParams.priceMin ? parseInt(searchParams.priceMin) : 0;
             const maxPrice = searchParams.priceMax ? parseInt(searchParams.priceMax) : Infinity;
-        
+
             return (
                 (searchParams.city ? listing.city === searchParams.city : true) &&
                 (searchParams.location ? searchParams.location.split(",").some(loc => listing.location.toLowerCase().includes(loc.trim().toLowerCase())) : true) &&
@@ -21,7 +21,7 @@ export default function ResidentialForSale({ searchParams = {}, listings }) {
                 (listingPrice >= minPrice && listingPrice <= maxPrice) &&
                 (searchParams.beds ? (searchParams.beds === "5" ? listing.beds >= 5 : listing.beds === parseInt(searchParams.beds)) : true) &&
                 (searchParams.baths ? (searchParams.baths === "5" ? listing.baths >= 5 : listing.baths === parseInt(searchParams.baths)) : true) &&
-                (searchParams.status ? (searchParams.status === "Complete" ? listing.status == true : listing.status == false) : true) &&
+                (searchParams.status ? (searchParams.status === "Complete" ? listing.status === "true" : listing.status === "false") : true) &&
                 (searchParams.purpose ? listing.purpose === searchParams.purpose : true) &&
                 (searchParams.agentType ? 
                     (searchParams.agentType === "Owner" ? listing.landlordName : listing.agentName) 
