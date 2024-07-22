@@ -14,12 +14,17 @@ const EditPropertyPage = () => {
     };
 
     return (
-        <div className="container mx-auto p-4">
+        <div className="container mx-auto p-4 bg-gray-800 text-gray-100">
             <h1 className="text-2xl font-bold mb-4">Edit Property</h1>
-            <select onChange={handlePropertySelect} className="mb-4 p-2 border border-gray-300 rounded">
-                <option value="">Select a property to edit</option>
+            <select
+                onChange={handlePropertySelect}
+                className="mb-4 p-2 border border-gray-600 rounded bg-gray-700 text-gray-100"
+            >
+                <option value="" className="bg-gray-800 text-gray-100">
+                    Select a property to edit
+                </option>
                 {listings.map(listing => (
-                    <option key={listing._id} value={listing._id}>
+                    <option key={listing._id} value={listing._id} className="bg-gray-800 text-gray-100">
                         {listing.title} - {listing.city}, {listing.location}
                     </option>
                 ))}
@@ -27,7 +32,7 @@ const EditPropertyPage = () => {
             {selectedProperty ? (
                 <EditPropertyForm property={selectedProperty} />
             ) : (
-                <p>Please select a property to edit.</p>
+                <p className="text-gray-400">Please select a property to edit.</p>
             )}
         </div>
     );

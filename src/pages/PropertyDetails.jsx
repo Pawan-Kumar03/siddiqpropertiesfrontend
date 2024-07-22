@@ -14,8 +14,24 @@ export default function PropertyDetails() {
 
     useEffect(() => {
         const selectedProperty = listings.find((listing) => listing._id === id);
-        setProperty(selectedProperty);
-        console.log(selectedProperty);
+        if (selectedProperty) {
+            setProperty(selectedProperty);
+        } else {
+            // Fetch from backend if not found in context
+            const fetchProperty = async () => {
+                try {
+                    const response = await fetch(`https://backend-git-main-pawan-togas-projects.vercel.app/api/listings/${id}`);
+                    if (!response.ok) {
+                        throw new Error('Property not found');
+                    }
+                    const data = await response.json();
+                    setProperty(data);
+                } catch (error) {
+                    console.error("Failed to fetch property:", error);
+                }
+            };
+            fetchProperty();
+        }
     }, [id, listings]);
 
     const handleEditProperty = () => {
@@ -81,7 +97,7 @@ export default function PropertyDetails() {
 
     // Render property details only if not deleted
     return (
-        <div className="container mt-8">
+        <div className="container mt-8 bg-gray-800 text-gray-100 p-4 rounded-lg">
             {isDeleted && (
                 <div className="text-center bg-green-200 text-green-700 p-4 rounded mb-4">
                     Your ad has been deleted successfully!
@@ -89,43 +105,39 @@ export default function PropertyDetails() {
             )}
             {!isDeleted && property && (
                 <>
-                    <h2 className="text-xl font-semibold mb-3 dark:text-gray-100">Property Details</h2>
+                    <h2 className=" text-custom text-xl font-semibold mb-3">Property Details</h2>
                     <div className="flex flex-col lg:flex-row">
                         <div className="lg:w-1/2 lg:pr-4">
-                            <img className="rounded-lg mb-4 object-cover h-80 w-full" src={`${property.image}`} alt={property.title} />
+                            <img className="rounded-lg mb-4 object-cover h-80 w-full" src={`https://backend-git-main-pawan-togas-projects.vercel.app${property.image}`} alt={property.title} />
                         </div>
                         <div className="lg:w-1/2 lg:pl-4">
-                            <h3 className="text-lg font-semibold mb-2 text-primary-500">{property.title}</h3>
-                            <p className="text-sm mb-2 dark:text-gray-300">{property.price}</p>
-                            <p className="mb-4 dark:text-gray-400 text-sm">{property.city}, {property.location}</p>
-                            <p className="mb-4 dark:text-gray-400 text-sm">{property.propertyType}</p>
-                            <p className="mb-4 dark:text-gray-400 text-sm">{property.beds} Beds</p>
-                            <p className="mb-4 dark:text-gray-400 text-sm">{property.baths} Baths</p>
-                            {
-                                <>
-                                    <p className="mb-4 dark:text-gray-400 text-sm">Landlord: {property.landlordName}</p>
-                                  <p className="mb-4 dark:text-gray-400 text-sm">
-  {property.status === "true" ? 'Property Complete' : 'Property Incomplete'}
-</p>
-  
-                                </>
-                             }
+                        <h3 className="text-lg font-semibold mb-2" style={{ color: '#c5a47e' }}>
+    {property.title}
+</h3>
+
+                            <p className="text-sm mb-2">{property.price}</p>
+                            <p className="mb-4 text-sm">{property.city}, {property.location}</p>
+                            <p className="mb-4 text-sm">{property.propertyType}</p>
+                            <p className="mb-4 text-sm">{property.beds} Beds</p>
+                            <p className="mb-4 text-sm">{property.baths} Baths</p>
+                            <p className="mb-4 text-sm">Landlord: {property.landlordName}</p>
+                            <p className="mb-4 text-sm">{property.propertyComplete ? 'Property Complete' : 'Property Incomplete'}</p>
                             <p className="mb-4 text-sm">Broker: {property.broker}</p>
-                            <div className="mb-4 text-sm flex items-center">
+                            <div className="mb-4 flex items-center space-x-4 text-gray-100">
                                 <EmailIcon style={{ cursor: 'pointer' }} onClick={() => handleContactBroker('Email')} />
-                                <PhoneIcon style={{ cursor: 'pointer', marginLeft: '10px' }} onClick={() => handleContactBroker('Call')} />
-                                <WhatsAppIcon style={{ cursor: 'pointer', marginLeft: '10px' }} onClick={() => handleContactBroker('WhatsApp')} />
+                                <PhoneIcon style={{ cursor: 'pointer' }} onClick={() => handleContactBroker('Call')} />
+                                <WhatsAppIcon style={{ cursor: 'pointer' }} onClick={() => handleContactBroker('WhatsApp')} />
                             </div>
 
                             <button
                                 onClick={handleEditProperty}
-                                className="px-6 py-3 bg-blue-600 text-white rounded mr-2"
+                                className="px-6 py-3 bg-blue-600 bg-custom text-white rounded mr-2"
                             >
                                 Edit Property
                             </button>
                             <button
                                 onClick={handleDeleteProperty}
-                                className="px-6 py-3 bg-red-600 text-white rounded"
+                                className="px-6 py-3 bg-red-600 bg-custom text-white rounded"
                             >
                                 Delete Property
                             </button>

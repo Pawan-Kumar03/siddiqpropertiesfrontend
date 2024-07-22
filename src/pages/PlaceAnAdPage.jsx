@@ -155,7 +155,7 @@ export default function PlaceAnAdPage() {
           Your ad has been published successfully!
         </div>
         <div className="flex justify-center mt-4">
-          <button onClick={() => navigate("/")} className="px-6 py-3 bg-green-600 text-white rounded">
+          <button onClick={() => navigate("/")} className="px-6 py-3 bg-custom text-white rounded">
             Go to Home
           </button>
         </div>
@@ -195,16 +195,16 @@ function Step1({ onNext }) {
 
   return (
     <div className="flex flex-col items-center space-y-4 w-full max-w-md mx-auto">
-      <h2 className="text-2xl font-semibold text-center">Enter a short title to describe your listing</h2>
-      <h3 className="text-center">Make your title informative and attractive.</h3>
+      <h2 className="text-2xl font-semibold text-center text-custom">Enter a short title to describe your listing</h2>
+      <h3 className="text-center text-custom">Make your title informative and attractive.</h3>
       <input
         type="text"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         placeholder="e.g. 1 Bedroom available in Al-Barsha"
-        className="border border-gray-300 p-2 rounded w-full focus:outline-none focus:border-red-500"
+        className="border border-gray-300 p-2 rounded w-full focus:outline-none focus:border-custom"
       />
-      <button onClick={handleSubmit} className="px-4 py-2 bg-red-600 text-white rounded w-full">Let's Go</button>
+      <button onClick={handleSubmit} className="px-4 py-2 bg-custom text-white rounded w-full">Let's Go</button>
     </div>
   );
 }
@@ -219,12 +219,12 @@ function StepChooseCategory({ onNext, onBack, title }) {
 
   return (
     <div className="flex flex-col items-center space-y-4 w-full max-w-md mx-auto">
-      <h2 className="text-2xl font-semibold text-center">Now choose the right category for your ad: {title}</h2>
+      <h2 className="text-2xl font-semibold text-center text-custom">Now choose the right category for your ad: {title}</h2>
       <div className="space-y-2 w-3/4">
-        <button onClick={() => handleCategorySelect("Residential")} className={`block w-full px-6 py-3 rounded ${category === "Residential" ? 'bg-red-500 text-white' : 'bg-gray-200'}`}>Residential</button>
-        <button onClick={() => handleCategorySelect("Commercial")} className={`block w-full px-6 py-3 rounded ${category === "Commercial" ? 'bg-red-500 text-white' : 'bg-gray-200'}`}>Commercial</button>
-        <button onClick={() => handleCategorySelect("Land")} className={`block w-full px-6 py-3 rounded ${category === "Land" ? 'bg-red-500 text-white' : 'bg-gray-200'}`}>Land</button>
-        <button onClick={() => handleCategorySelect("Multiple Units")} className={`block w-full px-6 py-3 rounded ${category === "Multiple Units" ? 'bg-red-500 text-white' : 'bg-gray-200'}`}>Multiple Units</button>
+        <button onClick={() => handleCategorySelect("Residential")} className={`block w-full px-6 py-3 rounded ${category === "Residential" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Residential</button>
+        <button onClick={() => handleCategorySelect("Commercial")} className={`block w-full px-6 py-3 rounded ${category === "Commercial" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Commercial</button>
+        <button onClick={() => handleCategorySelect("Land")} className={`block w-full px-6 py-3 rounded ${category === "Land" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Land</button>
+        <button onClick={() => handleCategorySelect("Multiple Units")} className={`block w-full px-6 py-3 rounded ${category === "Multiple Units" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Multiple Units</button>
       </div>
       <button onClick={onBack} className="px-4 py-2 bg-gray-500 text-white rounded w-full">Back</button>
     </div>
@@ -240,17 +240,17 @@ function Step2Residential({ onNext, onBack, category, title }) {
 
   return (
     <div className="flex flex-col items-center space-y-4 w-full max-w-md mx-auto">
-      <h2 className="text-2xl font-semibold text-center">Now choose the right category for your ad: {title} {">"} {category}</h2>
+      <h2 className="text-2xl font-semibold text-center text-custom">Now choose the right category for your ad: {title} {">"} {category}</h2>
       <div className="space-y-2 w-3/4">
-        <button onClick={() => setSubcategory("Apartment")} className={`block w-full px-6 py-3 rounded ${subcategory === "Apartment" ? 'bg-red-500 text-white' : 'bg-gray-200'}`}>Apartment</button>
-        <button onClick={() => setSubcategory("Villa")} className={`block w-full px-6 py-3 rounded ${subcategory === "Villa" ? 'bg-red-500 text-white' : 'bg-gray-200'}`}>Villa</button>
-        <button onClick={() => setSubcategory("Townhouse")} className={`block w-full px-6 py-3 rounded ${subcategory === "Townhouse" ? 'bg-red-500 text-white' : 'bg-gray-200'}`}>Townhouse</button>
-        <button onClick={() => setSubcategory("Penthouse")} className={`block w-full px-6 py-3 rounded ${subcategory === "Penthouse" ? 'bg-red-500 text-white' : 'bg-gray-200'}`}>Penthouse</button>
-        <button onClick={() => setSubcategory("Residential Building")} className={`block w-full px-6 py-3 rounded ${subcategory === "Residential Building" ? 'bg-red-500 text-white' : 'bg-gray-200'}`}>Residential Building</button>
-        <button onClick={() => setSubcategory("Residential Floor")} className={`block w-full px-6 py-3 rounded ${subcategory === "Residential Floor" ? 'bg-red-500 text-white' : 'bg-gray-200'}`}>Residential Floor</button>
-        <button onClick={() => setSubcategory("Villa Compound")} className={`block w-full px-6 py-3 rounded ${subcategory === "Villa Compound" ? 'bg-red-500 text-white' : 'bg-gray-200'}`}>Villa Compound</button>
+        <button onClick={() => setSubcategory("Apartment")} className={`block w-full px-6 py-3 rounded ${subcategory === "Apartment" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Apartment</button>
+        <button onClick={() => setSubcategory("Villa")} className={`block w-full px-6 py-3 rounded ${subcategory === "Villa" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Villa</button>
+        <button onClick={() => setSubcategory("Townhouse")} className={`block w-full px-6 py-3 rounded ${subcategory === "Townhouse" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Townhouse</button>
+        <button onClick={() => setSubcategory("Penthouse")} className={`block w-full px-6 py-3 rounded ${subcategory === "Penthouse" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Penthouse</button>
+        <button onClick={() => setSubcategory("Residential Building")} className={`block w-full px-6 py-3 rounded ${subcategory === "Residential Building" ? 'bg-rcustom text-white' : 'bg-gray-200'}`}>Residential Building</button>
+        <button onClick={() => setSubcategory("Residential Floor")} className={`block w-full px-6 py-3 rounded ${subcategory === "Residential Floor" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Residential Floor</button>
+        <button onClick={() => setSubcategory("Villa Compound")} className={`block w-full px-6 py-3 rounded ${subcategory === "Villa Compound" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Villa Compound</button>
       </div>
-      <button onClick={handleSubmit} className="px-6 py-3 bg-red-600 text-white rounded w-3/4">Continue</button>
+      <button onClick={handleSubmit} className="px-6 py-3 bg-custom text-white rounded w-3/4">Continue</button>
       <button onClick={onBack} className="px-6 py-3 bg-gray-500 text-white rounded w-3/4">Back</button>
     </div>
   );
@@ -265,22 +265,22 @@ function Step2Commercial({ onNext, onBack, category, title }) {
 
   return (
     <div className="flex flex-col items-center space-y-4 w-full max-w-md mx-auto">
-      <h2 className="text-2xl font-semibold text-center">Now choose the right category for your ad: {title} {">"} {category}</h2>
+      <h2 className="text-2xl font-semibold text-center text-custom">Now choose the right category for your ad: {title} {">"} {category}</h2>
       <div className="space-y-2 w-3/4">
-        <button onClick={() => setSubcategory("Office")} className={`block w-full px-6 py-3 rounded ${subcategory === "Office" ? 'bg-red-500 text-white' : 'bg-gray-200'}`}>Office</button>
-        <button onClick={() => setSubcategory("Retail")} className={`block w-full px-6 py-3 rounded ${subcategory === "Retail" ? 'bg-red-500 text-white' : 'bg-gray-200'}`}>Retail</button>
-        <button onClick={() => setSubcategory("Industrial")} className={`block w-full px-6 py-3 rounded ${subcategory === "Industrial" ? 'bg-red-500 text-white' : 'bg-gray-200'}`}>Industrial</button>
-        <button onClick={() => setSubcategory("Staff Accommodation")} className={`block w-full px-6 py-3 rounded ${subcategory === "Staff Accommodation" ? 'bg-red-500 text-white' : 'bg-gray-200'}`}>Staff Accommodation</button>
-        <button onClick={() => setSubcategory("Shop")} className={`block w-full px-6 py-3 rounded ${subcategory === "Shop" ? 'bg-red-500 text-white' : 'bg-gray-200'}`}>Shop</button>
-        <button onClick={() => setSubcategory("Warehouse")} className={`block w-full px-6 py-3 rounded ${subcategory === "Warehouse" ? 'bg-red-500 text-white' : 'bg-gray-200'}`}>Warehouse</button>
-        <button onClick={() => setSubcategory("Commercial Floor")} className={`block w-full px-6 py-3 rounded ${subcategory === "Commercial Floor" ? 'bg-red-500 text-white' : 'bg-gray-200'}`}>Commercial Floor</button>
-        <button onClick={() => setSubcategory("Commercial Building")} className={`block w-full px-6 py-3 rounded ${subcategory === "Commercial Building" ? 'bg-red-500 text-white' : 'bg-gray-200'}`}>Commercial Building</button>
-        <button onClick={() => setSubcategory("Commercial Villa")} className={`block w-full px-6 py-3 rounded ${subcategory === "Commercial Villa" ? 'bg-red-500 text-white' : 'bg-gray-200'}`}>Commercial Villa</button>
-        <button onClick={() => setSubcategory("Factory")} className={`block w-full px-6 py-3 rounded ${subcategory === "Factory" ? 'bg-red-500 text-white' : 'bg-gray-200'}`}>Factory</button>
-        <button onClick={() => setSubcategory("Other")} className={`block w-full px-6 py-3 rounded ${subcategory === "Other" ? 'bg-red-500 text-white' : 'bg-gray-200'}`}>Other</button>
-        <button onClick={() => setSubcategory("Showroom")} className={`block w-full px-6 py-3 rounded ${subcategory === "Showroom" ? 'bg-red-500 text-white' : 'bg-gray-200'}`}>Showroom</button>
+        <button onClick={() => setSubcategory("Office")} className={`block w-full px-6 py-3 rounded ${subcategory === "Office" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Office</button>
+        <button onClick={() => setSubcategory("Retail")} className={`block w-full px-6 py-3 rounded ${subcategory === "Retail" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Retail</button>
+        <button onClick={() => setSubcategory("Industrial")} className={`block w-full px-6 py-3 rounded ${subcategory === "Industrial" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Industrial</button>
+        <button onClick={() => setSubcategory("Staff Accommodation")} className={`block w-full px-6 py-3 rounded ${subcategory === "Staff Accommodation" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Staff Accommodation</button>
+        <button onClick={() => setSubcategory("Shop")} className={`block w-full px-6 py-3 rounded ${subcategory === "Shop" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Shop</button>
+        <button onClick={() => setSubcategory("Warehouse")} className={`block w-full px-6 py-3 rounded ${subcategory === "Warehouse" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Warehouse</button>
+        <button onClick={() => setSubcategory("Commercial Floor")} className={`block w-full px-6 py-3 rounded ${subcategory === "Commercial Floor" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Commercial Floor</button>
+        <button onClick={() => setSubcategory("Commercial Building")} className={`block w-full px-6 py-3 rounded ${subcategory === "Commercial Building" ? 'bg-rcustom text-white' : 'bg-gray-200'}`}>Commercial Building</button>
+        <button onClick={() => setSubcategory("Commercial Villa")} className={`block w-full px-6 py-3 rounded ${subcategory === "Commercial Villa" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Commercial Villa</button>
+        <button onClick={() => setSubcategory("Factory")} className={`block w-full px-6 py-3 rounded ${subcategory === "Factory" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Factory</button>
+        <button onClick={() => setSubcategory("Other")} className={`block w-full px-6 py-3 rounded ${subcategory === "Other" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Other</button>
+        <button onClick={() => setSubcategory("Showroom")} className={`block w-full px-6 py-3 rounded ${subcategory === "Showroom" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Showroom</button>
       </div>
-      <button onClick={handleSubmit} className="px-6 py-3 bg-red-600 text-white rounded w-3/4">Continue</button>
+      <button onClick={handleSubmit} className="px-6 py-3 bg-custom text-white rounded w-3/4">Continue</button>
       <button onClick={onBack} className="px-6 py-3 bg-gray-500 text-white rounded w-3/4">Back</button>
     </div>
   );
@@ -371,9 +371,9 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
 
   return (
     <div className="flex flex-col items-center space-y-4 w-full max-w-lg mx-auto">
-      <h2 className="text-2xl font-semibold text-center">You’re almost there!</h2>
-      <h3 className="text-center">Include as much details and pictures as possible, and set the right price!</h3>
-      <h4 className="text-center">{formData.title} {">"} {formData.category}</h4>
+      <h2 className="text-2xl font-semibold text-center text-custom">You’re almost there!</h2>
+      <h3 className="text-center text-custom">Include as much details and pictures as possible, and set the right price!</h3>
+      <h4 className="text-center text-custom">{formData.title} {">"} {formData.category}</h4>
       <input
         type="text"
         name="city"
@@ -456,7 +456,7 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
         className="border border-gray-300 p-2 rounded w-full"
       />
       {!noAmenities && (
-        <div className="grid grid-cols-2 gap-4 w-full">
+        <div className="grid grid-cols-2 gap-4 w-full text-custom">
           {getAmenitiesOptions().map((amenity) => (
             <label key={amenity}>
               <input
@@ -468,10 +468,10 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
           ))}
         </div>
       )}
-      <h2 className="text-lg font-semibold text-center">Are you a Landlord or an Agent?</h2>
+      <h2 className="text-lg font-semibold text-center text-custom">Are you a Landlord or an Agent?</h2>
       <div className="flex space-x-4">
-                <button onClick={() => setDetails({ ...details, landlord: true })} className="px-4 py-2 bg-blue-500 text-white rounded">Landlord</button>
-                <button onClick={() => setDetails({ ...details, landlord: false })} className="px-4 py-2 bg-blue-500 text-white rounded">Agent</button>
+                <button onClick={() => setDetails({ ...details, landlord: true })} className="px-4 py-2 bg-custom text-white rounded">Landlord</button>
+                <button onClick={() => setDetails({ ...details, landlord: false })} className="px-4 py-2 bg-custom text-white rounded">Agent</button>
             </div>
             {details.landlord ? (
                 <>
@@ -483,8 +483,8 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
                         className="border border-gray-300 p-2 rounded w-full"
                     />
                     <div className="flex space-x-4">
-                        <button onClick={() => setDetails({ ...details, status: true })} className="px-4 py-2 bg-green-500 text-white rounded">Property Complete</button>
-                        <button onClick={() => setDetails({ ...details, status: false })} className="px-4 py-2 bg-yellow-500 text-white rounded">Property Incomplete</button>
+                        <button onClick={() => setDetails({ ...details, status: true })} className="px-4 py-2 bg-custom text-white rounded">Property Complete</button>
+                        <button onClick={() => setDetails({ ...details, status: false })} className="px-4 py-2 bg-custom text-white rounded">Property Incomplete</button>
                     </div>
                     {details.status ? (
                         <input
@@ -558,7 +558,7 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
           />
         </>
      
-      <button onClick={handleNext} className="px-4 py-2 bg-red-600 text-white rounded w-full">Next</button>
+      <button onClick={handleNext} className="px-4 py-2 bg-custom text-white rounded w-full">Next</button>
       <button onClick={onBack} className="px-4 py-2 bg-gray-500 text-white rounded w-full">Back</button>
     </div>
   );
@@ -697,7 +697,7 @@ function Step4Review({ onSubmit, onBack, formData }) {
         )}
       </div>
 
-      <button onClick={onSubmit} className="px-4 py-2 bg-red-600 text-white rounded w-full">Submit</button>
+      <button onClick={onSubmit} className="px-4 py-2 bg-custom text-white rounded w-full">Submit</button>
       <button onClick={onBack} className="px-4 py-2 bg-gray-500 text-white rounded w-full">Back</button>
     </div>
   );

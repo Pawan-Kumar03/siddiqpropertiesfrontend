@@ -2,10 +2,66 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Include your theme variables */
+:root {
+    --grey-light: #f7f7f7;
+    --grey-lighter: #e1e1e1;
+    --grey: #bdbdbd;
+    --grey-dark: #757575;
+    --grey-darker: #424242;
+    --grey-darkest: #212121;
+}
 
+.bg-grey-light {
+    background-color: var(--grey-light);
+}
+
+.bg-grey-lighter {
+    background-color: var(--grey-lighter);
+}
+
+.bg-grey {
+    background-color: var(--grey);
+}
+
+.bg-grey-dark {
+    background-color: var(--grey-dark);
+}
+
+.bg-grey-darker {
+    background-color: var(--grey-darker);
+}
+
+.bg-grey-darkest {
+    background-color: var(--grey-darkest);
+}
+
+.text-grey-light {
+    color: var(--grey-light);
+}
+
+.text-grey-lighter {
+    color: var(--grey-lighter);
+}
+
+.text-grey {
+    color: var(--grey);
+}
+
+.text-grey-dark {
+    color: var(--grey-dark);
+}
+
+.text-grey-darker {
+    color: var(--grey-darker);
+}
+
+.text-grey-darkest {
+    color: var(--grey-darkest);
+}
 
 @layer components {
-    .btn{
-        @apply ease-in-out active:scale-95 transform  rounded-md font-semibold duration-200 bg-primary-500 hover:bg-primary-400 text-white py-2 px-5 inline-block;
+    .btn {
+        @apply ease-in-out active:scale-95 transform rounded-md font-semibold duration-200 bg-primary-500 hover:bg-primary-400 text-white py-2 px-5 inline-block;
     }
 }

@@ -13,7 +13,7 @@ export default function ResidentialForSale({ searchParams = {}, listings }) {
             const listingPrice = parseInt(listing.price.replace(/[^0-9]/g, ""));
             const minPrice = searchParams.priceMin ? parseInt(searchParams.priceMin) : 0;
             const maxPrice = searchParams.priceMax ? parseInt(searchParams.priceMax) : Infinity;
-
+        
             return (
                 (searchParams.city ? listing.city === searchParams.city : true) &&
                 (searchParams.location ? searchParams.location.split(",").some(loc => listing.location.toLowerCase().includes(loc.trim().toLowerCase())) : true) &&
@@ -21,7 +21,7 @@ export default function ResidentialForSale({ searchParams = {}, listings }) {
                 (listingPrice >= minPrice && listingPrice <= maxPrice) &&
                 (searchParams.beds ? (searchParams.beds === "5" ? listing.beds >= 5 : listing.beds === parseInt(searchParams.beds)) : true) &&
                 (searchParams.baths ? (searchParams.baths === "5" ? listing.baths >= 5 : listing.baths === parseInt(searchParams.baths)) : true) &&
-                (searchParams.status ? (searchParams.status === "Complete" ? listing.status === "true" : listing.status === "false") : true) &&
+                (searchParams.status ? (searchParams.status === "Complete" ? listing.status === "Complete" : listing.status !== "Complete") : true) &&
                 (searchParams.purpose ? listing.purpose === searchParams.purpose : true) &&
                 (searchParams.agentType ? 
                     (searchParams.agentType === "Owner" ? listing.landlordName : listing.agentName) 
@@ -34,7 +34,7 @@ export default function ResidentialForSale({ searchParams = {}, listings }) {
         if (filtered.length === 0 && !isEmptySearch) {
             const related = listings.filter((listing) => {
                 return (
-                    (searchParams.city ? listing.city === searchParams.city : false) &&
+                    (searchParams.city ? listing.city === searchParams.city : false) ||
                     (searchParams.propertyType ? listing.propertyType === searchParams.propertyType : false)
                 );
             });
@@ -45,9 +45,9 @@ export default function ResidentialForSale({ searchParams = {}, listings }) {
     }, [searchParams, listings]);
 
     return (
-        <section className="py-2 px-2 lg:px-0">
+        <section className="py-4 px-4 lg:px-0 bg-gray-800 text-gray-100">
             <div className="container">
-                <h1 className="text-2xl font-semibold mb-5 dark:text-gray-100">
+                <h1 className="text-2xl font-semibold mb-5 text-custom">
                     {searchParams.city ? `Properties in ${searchParams.city}` : "Popular Properties for Sale in UAE"}
                 </h1>
                 {filteredResults.length > 0 ? (
@@ -69,10 +69,10 @@ export default function ResidentialForSale({ searchParams = {}, listings }) {
                     </Swiper>
                 ) : (
                     <>
-                        <p className="text-center dark:text-gray-400">No properties match your search criteria.</p>
+                        <p className="text-center text-gray-300">No properties match your search criteria.</p>
                         {relatedResults.length > 0 && (
                             <>
-                                <h2 className="text-xl font-semibold mt-8 dark:text-gray-100">
+                                <h2 className="text-xl font-semibold mt-8">
                                     Related Properties in {searchParams.city} - {searchParams.propertyType}
                                 </h2>
                                 <Swiper

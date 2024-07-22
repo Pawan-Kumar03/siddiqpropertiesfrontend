@@ -71,7 +71,7 @@ export default function HomePage() {
 
     if (submitted) {
         return (
-            <div className="container mx-auto p-4">
+            <div className="container mx-auto p-4 bg-grey-dark text-grey-light">
                 <div className="text-center bg-green-200 text-green-700 p-4 rounded">
                     {deleteMessage}
                 </div>
@@ -85,14 +85,14 @@ export default function HomePage() {
     }
 
     return (
-        <>
+        <div className="bg-gray-800 min-h-screen">
             <Banner
                 onSearch={handleSearch}
                 onDisplayAllListings={handleDisplayAllListings}
                 onPlaceAnAd={handlePlaceAnAd}
             />
             {loading ? (
-                <div>Loading...</div>
+                <div className="text-center text-grey-light">Loading...</div>
             ) : (
                 <ResidentialForSale
                     searchParams={searchParams}
@@ -102,6 +102,6 @@ export default function HomePage() {
                     onDeleteProperty={handleDeleteProperty}
                 />
             )}
-        </>
+        </div>
     );
 }

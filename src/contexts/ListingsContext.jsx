@@ -12,16 +12,12 @@ export const ListingsProvider = ({ children }) => {
   const fetchListings = async () => {
     try {
       const response = await fetch(`https://backend-git-main-pawan-togas-projects.vercel.app/api/listings`);
-      if (!response.ok) {
-        throw new Error('Failed to fetch listings');
-      }
       const data = await response.json();
-      setListings(data || []); // Ensure data is an array or default to empty array
+      setListings(data);
     } catch (error) {
       console.error('Failed to fetch listings:', error);
     }
   };
-  
 
   const addListing = async (newListing) => {
     try {

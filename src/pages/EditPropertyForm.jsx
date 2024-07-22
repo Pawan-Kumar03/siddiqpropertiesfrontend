@@ -6,7 +6,7 @@ export default function EditPropertyForm() {
     const navigate = useNavigate();
     const [formData, setFormData] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [submitted, setSubmitted] = useState(false); // New state for submission
+    const [submitted, setSubmitted] = useState(false);
 
     useEffect(() => {
         const fetchPropertyData = async () => {
@@ -69,24 +69,24 @@ export default function EditPropertyForm() {
             }
 
             const result = await response.json();
-            setSubmitted(true); // Set submitted to true on successful update
+            setSubmitted(true);
         } catch (error) {
             alert("Failed to update listing: " + error.message);
         }
     };
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <div className="text-center text-custom">Loading...</div>;
     }
 
     if (!formData) {
-        return <div>No property data found</div>;
+        return <div className="text-center text-custom">No property data found</div>;
     }
 
     if (submitted) {
         return (
-            <div className="container mx-auto p-4">
-                <div className="text-center bg-green-200 text-green-700 p-4 rounded">
+            <div className="container mx-auto p-4 bg-gray-800 text-gray-100">
+                <div className="text-center text-custom p-4 rounded">
                     Your ad has been modified successfully!
                 </div>
                 <div className="flex justify-center mt-4">
@@ -99,16 +99,16 @@ export default function EditPropertyForm() {
     }
 
     return (
-        <div className="container mx-auto p-4">
-            <h2 className="text-2xl font-semibold text-center">Edit Property</h2>
-            <form onSubmit={handleSubmit} className="flex flex-col space-y-4 w-full max-w-md mx-auto">
+        <div className="container mx-auto p-4 bg-gray-800 text-gray-100">
+            <h2 className="text-2xl font-semibold text-center text-custom">Edit Property</h2>
+            <form onSubmit={handleSubmit} className="flex flex-col space-y-4 w-full max-w-md mx-auto bg-gray-900 p-6 rounded">
                 <input
                     name="title"
                     type="text"
                     value={formData.title}
                     onChange={handleChange}
                     placeholder="Title"
-                    className="border border-gray-300 p-2 rounded w-full"
+                    className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
                 />
                 <input
                     name="price"
@@ -116,7 +116,7 @@ export default function EditPropertyForm() {
                     value={formData.price}
                     onChange={handleChange}
                     placeholder="Price"
-                    className="border border-gray-300 p-2 rounded w-full"
+                    className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
                 />
                 <input
                     name="city"
@@ -124,7 +124,7 @@ export default function EditPropertyForm() {
                     value={formData.city}
                     onChange={handleChange}
                     placeholder="City"
-                    className="border border-gray-300 p-2 rounded w-full"
+                    className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
                 />
                 <input
                     name="location"
@@ -132,7 +132,7 @@ export default function EditPropertyForm() {
                     value={formData.location}
                     onChange={handleChange}
                     placeholder="Location"
-                    className="border border-gray-300 p-2 rounded w-full"
+                    className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
                 />
                 <input
                     name="propertyType"
@@ -140,7 +140,7 @@ export default function EditPropertyForm() {
                     value={formData.propertyType}
                     onChange={handleChange}
                     placeholder="Property Type"
-                    className="border border-gray-300 p-2 rounded w-full"
+                    className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
                 />
                 <input
                     name="beds"
@@ -148,7 +148,7 @@ export default function EditPropertyForm() {
                     value={formData.beds}
                     onChange={handleChange}
                     placeholder="Beds"
-                    className="border border-gray-300 p-2 rounded w-full"
+                    className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
                 />
                 <input
                     name="bathrooms"
@@ -156,14 +156,14 @@ export default function EditPropertyForm() {
                     value={formData.bathrooms}
                     onChange={handleChange}
                     placeholder="Bathrooms"
-                    className="border border-gray-300 p-2 rounded w-full"
+                    className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
                 />
                 <textarea
                     name="description"
                     value={formData.description}
                     onChange={handleChange}
                     placeholder="Description"
-                    className="border border-gray-300 p-2 rounded w-full h-24"
+                    className="border border-gray-600 p-2 rounded w-full h-24 bg-gray-700 text-gray-100"
                 />
                 <input
                     name="propertyReferenceId"
@@ -171,7 +171,7 @@ export default function EditPropertyForm() {
                     value={formData.propertyReferenceId}
                     onChange={handleChange}
                     placeholder="Property Reference ID"
-                    className="border border-gray-300 p-2 rounded w-full"
+                    className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
                 />
                 <input
                     name="building"
@@ -179,7 +179,7 @@ export default function EditPropertyForm() {
                     value={formData.building}
                     onChange={handleChange}
                     placeholder="Building"
-                    className="border border-gray-300 p-2 rounded w-full"
+                    className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
                 />
                 <input
                     name="neighborhood"
@@ -187,7 +187,7 @@ export default function EditPropertyForm() {
                     value={formData.neighborhood}
                     onChange={handleChange}
                     placeholder="Neighborhood"
-                    className="border border-gray-300 p-2 rounded w-full"
+                    className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
                 />
                 <input
                     name="landlordName"
@@ -195,7 +195,7 @@ export default function EditPropertyForm() {
                     value={formData.landlordName}
                     onChange={handleChange}
                     placeholder="Landlord Name"
-                    className="border border-gray-300 p-2 rounded w-full"
+                    className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
                 />
                 <input
                     name="reraTitleNumber"
@@ -203,7 +203,7 @@ export default function EditPropertyForm() {
                     value={formData.reraTitleNumber}
                     onChange={handleChange}
                     placeholder="RERA Title Number"
-                    className="border border-gray-300 p-2 rounded w-full"
+                    className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
                 />
                 <input
                     name="reraPreRegistrationNumber"
@@ -211,7 +211,7 @@ export default function EditPropertyForm() {
                     value={formData.reraPreRegistrationNumber}
                     onChange={handleChange}
                     placeholder="RERA Pre Registration Number"
-                    className="border border-gray-300 p-2 rounded w-full"
+                    className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
                 />
                 <input
                     name="agentName"
@@ -219,7 +219,7 @@ export default function EditPropertyForm() {
                     value={formData.agentName}
                     onChange={handleChange}
                     placeholder="Agent Name"
-                    className="border border-gray-300 p-2 rounded w-full"
+                    className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
                 />
                 <input
                     name="agentCallNumber"
@@ -227,7 +227,7 @@ export default function EditPropertyForm() {
                     value={formData.agentCallNumber}
                     onChange={handleChange}
                     placeholder="Agent Call Number"
-                    className="border border-gray-300 p-2 rounded w-full"
+                    className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
                 />
                 <input
                     name="agentEmail"
@@ -235,7 +235,7 @@ export default function EditPropertyForm() {
                     value={formData.agentEmail}
                     onChange={handleChange}
                     placeholder="Agent Email"
-                    className="border border-gray-300 p-2 rounded w-full"
+                    className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
                 />
                 <input
                     name="agentWhatsapp"
@@ -243,9 +243,9 @@ export default function EditPropertyForm() {
                     value={formData.agentWhatsapp}
                     onChange={handleChange}
                     placeholder="Agent WhatsApp"
-                    className="border border-gray-300 p-2 rounded w-full"
+                    className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
                 />
-                <button type="submit" className="px-6 py-3 bg-red-600 text-white rounded w-full">
+                <button type="submit" className="px-6 py-3 bg-red-600 bg-custom text-white rounded w-full">
                     Update Property
                 </button>
             </form>
