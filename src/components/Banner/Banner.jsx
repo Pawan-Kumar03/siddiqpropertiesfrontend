@@ -69,26 +69,26 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                     Properties for Sale in UAE
                 </h1>
                 <div className="lg:bg-gray-800 lg:bg-opacity-50 rounded-md lg:p-4 lg:w-[88%] mx-auto">
-                    <div className="hidden lg:flex items-center space-x-14 mb-4">
-                        <span className="text-base font-semibold lg:text-white hidden lg:block">
-                            Searching in
-                        </span>
-                        <ul className="hidden lg:flex items-center space-x-2 text-sm">
-                            <li>
-                                <button
-                                    className="hover:bg-custom text-white duration-200 text-white px-5 py-2 font-semibold rounded-full"
-                                    onClick={handleDisplayAllListings}
-                                >
-                                    Property for Sale
-                                </button>
-                            </li>
-                            <li>
-                                <Link className="hover:bg-custom text-white duration-200 text-white px-5 py-2 font-semibold rounded-full" to="/place-an-ad">
-                                    <span>Place an Ad</span>
-                                </Link>
-                            </li>
-                        </ul>
-                    </div>
+                <div className="flex items-center space-x-2 lg:space-x-14 mb-4">
+    <span className="hidden lg:inline-block text-base font-semibold lg:text-white">
+        Searching in
+    </span>
+    <ul className="flex items-center space-x-20 lg:space-x-8 text-sm"> {/* Increased space here */}
+        <li>
+            <button
+                className="bg-custom text-white hover:bg-custom duration-200 px-5 py-2 font-semibold rounded-full"
+                onClick={handleDisplayAllListings}
+            >
+                Property for Sale
+            </button>
+        </li>
+        <li>
+            <Link className="bg-custom text-white hover:bg-custom duration-200 px-5 py-2 font-semibold rounded-full" to="/place-an-ad">
+                <span>Place an Ad</span>
+            </Link>
+        </li>
+    </ul>
+</div>
                     <form className="lg:flex lg:flex-col lg:space-y-3 px-2 lg:px-0 py-4 lg:py-0 relative" onSubmit={handleSearch}>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
                             <div className="flex flex-col mb-3">
