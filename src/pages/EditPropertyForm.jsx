@@ -245,10 +245,11 @@ export default function EditPropertyForm() {
                     placeholder="Agent WhatsApp"
                     className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
                 />
-                <button type="submit" className="px-6 py-3 bg-custom-600 bg-custom text-white rounded w-full">
+                <button type="submit" className="px-6 py-3 bg-red-600 bg-custom text-white rounded w-full">
                     Update Property
                 </button>
             </form>
         </div>
     );
 }
+
