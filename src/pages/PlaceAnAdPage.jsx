@@ -332,7 +332,7 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
 
   const validateForm = () => {
     const errors = {};
-    const requiredFields = ['title', 'price', 'city','images', 'location', 'propertyType','images', 'beds', 'baths', 'landlordName','agentName', 'agentCallNumber', 'agentEmail', 'agentWhatsapp', 'purpose', 'status'];
+    const requiredFields = ['title', 'price', 'city','images', 'location', 'propertyType', 'landlordName','images', 'beds', 'baths', 'landlordName','agentName', 'agentCallNumber', 'agentEmail', 'agentWhatsapp', 'purpose', 'status'];
 
     requiredFields.forEach(field => {
       if (!details[field] || details[field] === '') {
@@ -518,8 +518,9 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
             placeholder="Landlord Name"
             className="border border-gray-300 p-2 rounded w-full"
           />
-             {/* {details.errors.landlordName && <p className="text-red-500 text-sm">{details.errors.landlordName}</p>}
-    */}
+              {details.errors.landlordName && <p className="text-red-500 text-sm">{details.errors.landlordName}</p>}
+              { <p className="text-red-500 text-sm">Please Property Complete/Incomplete</p>}
+      
              <div className="flex space-x-4">
                         <button onClick={() => setDetails({ ...details, status: true })} className="px-4 py-2 bg-custom text-white rounded">Property Complete</button>
                         <button onClick={() => setDetails({ ...details, status: false })} className="px-4 py-2 bg-custom text-white rounded">Property Incomplete</button>
