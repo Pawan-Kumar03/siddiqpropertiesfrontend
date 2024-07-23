@@ -57,7 +57,7 @@ export default function PlaceAnAdPage() {
     e.preventDefault();
   
     // Adding a 2-second delay at the start
-    // await new Promise(resolve => setTimeout(resolve, 2000));
+    await new Promise(resolve => setTimeout(resolve, 2000));
   
     // Create a new FormData object
     const submissionData = new FormData();
