@@ -57,7 +57,7 @@ export default function PlaceAnAdPage() {
     e.preventDefault();
   
     // Adding a 2-second delay at the start
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    // await new Promise(resolve => setTimeout(resolve, 2000));
   
     // Create a new FormData object
     const submissionData = new FormData();
@@ -77,12 +77,12 @@ export default function PlaceAnAdPage() {
     console.log('Form Data:', formData);
 
     // Add default or user-input agent details if the user is an agent
-    if (!formData.landlord) {
+    // if (!formData.landlord) {
       submissionData.set('broker', formData.agentName);
       submissionData.set('email', formData.agentEmail);
       submissionData.set('phone', formData.agentCallNumber);
       submissionData.set('whatsapp', formData.agentWhatsapp);
-    }
+    // }
   
     try {
       // Fetch listings first
