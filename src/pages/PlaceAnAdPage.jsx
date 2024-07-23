@@ -341,7 +341,7 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
       // if(field === 'status' && details.status === null) {
       //   errors[field] = 'You must select if the property is complete or incomplete' ;
       // }
-      if(field=='images'){
+      if(field=='images' && details[field]==null ){
         errors[field] = `${field} field is required`;
       }
 
