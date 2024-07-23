@@ -57,7 +57,7 @@ export default function PlaceAnAdPage() {
     e.preventDefault();
   
     // Adding a 2-second delay at the start
-    // await new Promise(resolve => setTimeout(resolve, 2000));
+    await new Promise(resolve => setTimeout(resolve, 2000));
   
     // Create a new FormData object
     const submissionData = new FormData();
@@ -88,11 +88,11 @@ export default function PlaceAnAdPage() {
       // Fetch listings first
       let listingsResponse;
       const startTime = Date.now();
-      // while (true) {
+      while (true) {
         const response = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/listings');
         if (response.ok) {
           listingsResponse = await response.json();
-          // break;
+          break;
         } else {
           // console.log('Waiting for listings...');
           await new Promise(resolve => setTimeout(resolve, 1000)); // Wait for 1 second before retrying
@@ -100,35 +100,35 @@ export default function PlaceAnAdPage() {
             throw new Error('Timeout waiting for listings');
           }
         }
-      // }
+      }
   
       // Print submissionData for debugging
-  //     console.log('Submission Data: ')
-  // submissionData.forEach((value, key) => {
-  //   console.log(key, value);
-  // });
+      console.log('Submission Data: ')
+  submissionData.forEach((value, key) => {
+    console.log(key, value);
+  });
       // After listings are fetched, proceed to submit data
       let postResponse;
       const postStartTime = Date.now();
       // console.log(typeof submissionData,"in Posts")
-      // while (true) {
+      while (true) {
         postResponse = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/listings', {
           method: 'POST',
           body: submissionData,
         });
         if (postResponse.ok) {
           // console.log("post Submission: ",submissionData)
-          // break;
+          break;
         } else {
           // console.log('Waiting for post response...');
           await new Promise(resolve => setTimeout(resolve, 1000)); // Wait for 1 second before retrying
           if (Date.now() - postStartTime > 10000) { // Timeout after 30 seconds
             // throw new Error('Timeout waiting for post response');
           }
-        // }
+        }
       }
   
-      // const result = await postResponse.json();
+      const result = await postResponse.json();
       // console.log('Submitted:', result);
   
       setSubmitted(true);
