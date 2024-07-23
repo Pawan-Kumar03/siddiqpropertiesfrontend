@@ -332,11 +332,18 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
 
   const validateForm = () => {
     const errors = {};
-    const requiredFields = ['title', 'price', 'city', 'location', 'propertyType','images', 'beds', 'baths', 'landlordName','agentName', 'agentCallNumber', 'agentEmail', 'agentWhatsapp', 'purpose', 'status'];
+    const requiredFields = ['title', 'price', 'city','images', 'location', 'propertyType','images', 'beds', 'baths', 'landlordName','agentName', 'agentCallNumber', 'agentEmail', 'agentWhatsapp', 'purpose'];
 
     requiredFields.forEach(field => {
       if (!details[field] || details[field] === '') {
-        errors[field] = 'This field is required';
+        errors[field] = `${field} field is required`;
+      }
+      // if(field === 'status' && details.status === null) {
+      //   errors[field] = 'You must select if the property is complete or incomplete' ;
+      // }
+      if(field=='images'){
+        errors[field] = `${field} field is required`;
+
       }
     });
 
@@ -429,7 +436,7 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
         className="border border-gray-300 p-2 rounded w-full"
       />
         {details.errors.images && <p className="text-red-500 text-sm">{details.errors.images}</p>}
-    
+      
       
       <textarea
         name="description"
@@ -511,11 +518,12 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
             placeholder="Landlord Name"
             className="border border-gray-300 p-2 rounded w-full"
           />
-             {details.errors.landlordName && <p className="text-red-500 text-sm">{details.errors.landlordName}</p>}
-   
+             {/* {details.errors.landlordName && <p className="text-red-500 text-sm">{details.errors.landlordName}</p>}
+    */}
              <div className="flex space-x-4">
                         <button onClick={() => setDetails({ ...details, status: true })} className="px-4 py-2 bg-custom text-white rounded">Property Complete</button>
                         <button onClick={() => setDetails({ ...details, status: false })} className="px-4 py-2 bg-custom text-white rounded">Property Incomplete</button>
+                      
                     </div>
                     {details.status ? (
                         <input
@@ -597,7 +605,11 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
     
         </>
     
+        {/* {details.errors.status && <p className="text-red-500 text-sm mt-2">Please Select Property Complete/Incomplete Under Landlord</p>} */}
+        {details.errors.landlordName && <p className="text-red-500 text-sm">Please Click Landlord</p>}
+        {/* {details.errors.images && <p className="text-red-500 text-sm">{details.errors.images}</p>} */}
       
+   
       <div className="flex space-x-4 w-full">
         <button onClick={onBack} className="px-4 py-2 bg-gray-400 text-white rounded w-full">Back</button>
         <button onClick={handleNext} className="px-4 py-2  bg-custom text-white rounded w-full">Next</button>
