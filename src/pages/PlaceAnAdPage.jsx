@@ -519,7 +519,7 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
             className="border border-gray-300 p-2 rounded w-full"
           />
               {details.errors.landlordName && <p className="text-red-500 text-sm">{details.errors.landlordName}</p>}
-              { <p className="text-red-500 text-sm">Please Property Complete/Incomplete</p>}
+              {/* { <p className="text-red-500 text-sm">Please Property Complete/Incomplete</p>} */}
       
              <div className="flex space-x-4">
                         <button onClick={() => setDetails({ ...details, status: true })} className="px-4 py-2 bg-custom text-white rounded">Property Complete</button>
