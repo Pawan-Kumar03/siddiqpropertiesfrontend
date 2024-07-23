@@ -37,7 +37,7 @@ export default {
                 roboto: ["Roboto", "sans-serif"],
             },
             backgroundImage: {
-                banner: "url('/homepage-banner.png')"
+                banner: "url('/homepage-banner.jpeg')"
             }
         },
     },
