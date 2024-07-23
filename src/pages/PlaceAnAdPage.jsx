@@ -332,7 +332,7 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
 
   const validateForm = () => {
     const errors = {};
-    const requiredFields = ['title', 'price', 'city','images', 'location', 'propertyType', 'landlordName','images', 'beds', 'baths', 'landlordName','agentName', 'agentCallNumber', 'agentEmail', 'agentWhatsapp', 'purpose', 'status'];
+    const requiredFields = ['title', 'price', 'city','images', 'location', 'propertyType', 'landlordName','images', 'beds', 'baths', 'landlordName','agentName', 'agentCallNumber', 'agentEmail', 'agentWhatsapp', 'purpose'];
 
     requiredFields.forEach(field => {
       if (!details[field] || details[field] === '') {
