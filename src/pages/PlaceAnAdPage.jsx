@@ -56,6 +56,9 @@ export default function PlaceAnAdPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
   
+    // Adding a 2-second delay at the start
+    // await new Promise(resolve => setTimeout(resolve, 2000));
+  
     // Create a new FormData object
     const submissionData = new FormData();
   
@@ -64,13 +67,15 @@ export default function PlaceAnAdPage() {
       if (key === 'images') {
         // Handle images separately if formData has an 'images' key
         formData.images.forEach(image => {
-          submissionData.append('images', image);
+            // console.log('Image: ',image.name)
+            submissionData.append('images', image);
         });
       } else {
         submissionData.append(key, formData[key]);
       }
     }
-  
+    console.log('Form Data:', formData);
+
     // Add default or user-input agent details if the user is an agent
     if (!formData.landlord) {
       submissionData.set('broker', formData.agentName);
@@ -80,70 +85,58 @@ export default function PlaceAnAdPage() {
     }
   
     try {
-      // Fetch listings and submit the new listing concurrently
-      const [listingsResponse, postResponse] = await Promise.all([
-        fetchListingsWithRetry(),
-        postListingWithRetry(submissionData)
-      ]);
+      // Fetch listings first
+      let listingsResponse;
+      const startTime = Date.now();
+      // while (true) {
+        const response = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/listings');
+        if (response.ok) {
+          listingsResponse = await response.json();
+          // break;
+        } else {
+          // console.log('Waiting for listings...');
+          await new Promise(resolve => setTimeout(resolve, 1000)); // Wait for 1 second before retrying
+          if (Date.now() - startTime > 10000) { // Timeout after 10 seconds
+            throw new Error('Timeout waiting for listings');
+          }
+        }
+      // }
   
-      const result = await postResponse.json();
+      // Print submissionData for debugging
+  //     console.log('Submission Data: ')
+  // submissionData.forEach((value, key) => {
+  //   console.log(key, value);
+  // });
+      // After listings are fetched, proceed to submit data
+      let postResponse;
+      const postStartTime = Date.now();
+      // console.log(typeof submissionData,"in Posts")
+      // while (true) {
+        postResponse = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/listings', {
+          method: 'POST',
+          body: submissionData,
+        });
+        if (postResponse.ok) {
+          // console.log("post Submission: ",submissionData)
+          // break;
+        } else {
+          // console.log('Waiting for post response...');
+          await new Promise(resolve => setTimeout(resolve, 1000)); // Wait for 1 second before retrying
+          if (Date.now() - postStartTime > 10000) { // Timeout after 30 seconds
+            // throw new Error('Timeout waiting for post response');
+          }
+        // }
+      }
+  
+      // const result = await postResponse.json();
+      // console.log('Submitted:', result);
+  
       setSubmitted(true);
+      // navigate("/"); // Comment this line if you want to show the success message before redirecting
     } catch (error) {
       console.log('Failed to submit listing: ' + error.message);
     }
   };
-  
-  const fetchListingsWithRetry = async () => {
-    const maxRetries = 3;
-    const delay = 1000;
-    let attempt = 0;
-  
-    while (attempt < maxRetries) {
-      try {
-        const response = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/listings');
-        if (response.ok) {
-          return await response.json();
-        } else {
-          throw new Error('Failed to fetch listings');
-        }
-      } catch (error) {
-        attempt++;
-        if (attempt < maxRetries) {
-          await new Promise(resolve => setTimeout(resolve, delay * attempt));
-        } else {
-          throw error;
-        }
-      }
-    }
-  };
-  
-  const postListingWithRetry = async (submissionData) => {
-    const maxRetries = 3;
-    const delay = 1000;
-    let attempt = 0;
-  
-    while (attempt < maxRetries) {
-      try {
-        const response = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/listings', {
-          method: 'POST',
-          body: submissionData,
-        });
-        if (response.ok) {
-          return response;
-        } else {
-          throw new Error('Failed to post listing');
-        }
-      } catch (error) {
-        attempt++;
-        if (attempt < maxRetries) {
-          await new Promise(resolve => setTimeout(resolve, delay * attempt));
-        } else {
-          throw error;
-        }
-      }
-    }
-  };
-  
   
   const handleCategorySelect = (category) => {
     if (category === "Land" || category === "Multiple Units") {
