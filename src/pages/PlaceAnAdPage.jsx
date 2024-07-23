@@ -67,22 +67,24 @@ export default function PlaceAnAdPage() {
       if (key === 'images') {
         // Handle images separately if formData has an 'images' key
         formData.images.forEach(image => {
-            // console.log('Image: ',image.name)
-            submissionData.append('images', image);
+          submissionData.append('images', image);
         });
       } else {
         submissionData.append(key, formData[key]);
       }
     }
-    console.log('Form Data:', formData);
-
-    // Add default or user-input agent details if the user is an agent
+  
+    // Add agent details to the submission if the user is an agent
     // if (!formData.landlord) {
+      console.log('inside')
       submissionData.set('broker', formData.agentName);
       submissionData.set('email', formData.agentEmail);
       submissionData.set('phone', formData.agentCallNumber);
       submissionData.set('whatsapp', formData.agentWhatsapp);
-    // }
+    // } 
+    console.log('Broker',submissionData['broker'])
+    console.log('Broker',formData.agentName)
+
   
     try {
       // Fetch listings first
@@ -94,45 +96,40 @@ export default function PlaceAnAdPage() {
           listingsResponse = await response.json();
           break;
         } else {
-          // console.log('Waiting for listings...');
-          await new Promise(resolve => setTimeout(resolve, 1000)); // Wait for 1 second before retrying
-          if (Date.now() - startTime > 10000) { // Timeout after 10 seconds
+          await new Promise(resolve => setTimeout(resolve, 1000));
+          if (Date.now() - startTime > 10000) {
             throw new Error('Timeout waiting for listings');
           }
         }
       }
   
       // Print submissionData for debugging
-      console.log('Submission Data: ')
-  submissionData.forEach((value, key) => {
-    console.log(key, value);
-  });
+      console.log('Submission Data: ');
+      submissionData.forEach((value, key) => {
+        console.log(key, value);
+      });
+  
       // After listings are fetched, proceed to submit data
       let postResponse;
       const postStartTime = Date.now();
-      // console.log(typeof submissionData,"in Posts")
       while (true) {
         postResponse = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/listings', {
           method: 'POST',
           body: submissionData,
         });
         if (postResponse.ok) {
-          // console.log("post Submission: ",submissionData)
           break;
         } else {
-          // console.log('Waiting for post response...');
-          await new Promise(resolve => setTimeout(resolve, 1000)); // Wait for 1 second before retrying
-          if (Date.now() - postStartTime > 10000) { // Timeout after 30 seconds
-            // throw new Error('Timeout waiting for post response');
+          await new Promise(resolve => setTimeout(resolve, 1000));
+          if (Date.now() - postStartTime > 10000) {
+            throw new Error('Timeout waiting for post response');
           }
         }
       }
   
       const result = await postResponse.json();
-      // console.log('Submitted:', result);
   
       setSubmitted(true);
-      // navigate("/"); // Comment this line if you want to show the success message before redirecting
     } catch (error) {
       console.log('Failed to submit listing: ' + error.message);
     }
@@ -308,8 +305,10 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
     agentEmail: formData.agentEmail,
     agentWhatsapp: formData.agentWhatsapp,
     landlord: formData.landlord,
+    errors: {}, // Error messages state
     ...formData,
   });
+
   const handleDetailsChange = (e) => {
     const { name, value } = e.target;
     const newValue = name === 'beds' && value === '' ? '' : (name === 'beds' ? parseInt(value, 10) || 0 : value);
@@ -330,11 +329,26 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
   const handleImageChange = (e) => {
     setDetails(prev => ({ ...prev, images: Array.from(e.target.files) }));
   };
-  
 
-  const handleSubmit = () => {
-    const extension = `${details.city}, ${details.location}`;
-    onNext({ ...details, extension });
+  const validateForm = () => {
+    const errors = {};
+    const requiredFields = ['title', 'price', 'city', 'location', 'propertyType','images', 'beds', 'baths', 'landlordName','agentName', 'agentCallNumber', 'agentEmail', 'agentWhatsapp', 'purpose', 'status'];
+
+    requiredFields.forEach(field => {
+      if (!details[field] || details[field] === '') {
+        errors[field] = 'This field is required';
+      }
+    });
+
+    setDetails(prev => ({ ...prev, errors }));
+    return Object.keys(errors).length === 0;
+  };
+
+  const handleNext = () => {
+    if (validateForm()) {
+      const extension = `${details.city}, ${details.location}`;
+      onNext({ ...details, extension });
+    }
   };
 
   const getAmenitiesOptions = () => {
@@ -357,18 +371,11 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
         return [];
     }
   };
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     const newValue = name === 'baths' && value === '' ? '' : (name === 'baths' ? parseInt(value, 10) || 0 : value);
     setDetails(prev => ({ ...prev, [name]: newValue }));
   };
-  
-  const handleNext = () => {
-    const extension = `${details.city}, ${details.location}`;
-    onNext({ ...details, extension });
-  };
-
   return (
     <div className="flex flex-col items-center space-y-4 w-full max-w-lg mx-auto">
       <h2 className="text-2xl font-semibold text-center text-custom">You’re almost there!</h2>
@@ -378,10 +385,12 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
         type="text"
         name="city"
         value={details.city}
-        onChange={handleChange}
+        onChange={handleDetailsChange}
         placeholder="City"
         className="border border-gray-300 p-2 rounded w-full"
       />
+      {details.errors.city && <p className="text-red-500 text-sm">{details.errors.city}</p>}
+      
       <input
         name="location"
         type="text"
@@ -390,6 +399,8 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
         placeholder="Location"
         className="border border-gray-300 p-2 rounded w-full"
       />
+      {details.errors.location && <p className="text-red-500 text-sm">{details.errors.location}</p>}
+      
       <input
         name="propertyType"
         type="text"
@@ -398,14 +409,18 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
         placeholder="Property Type"
         className="border border-gray-300 p-2 rounded w-full"
       />
+      {details.errors.propertyType && <p className="text-red-500 text-sm">{details.errors.propertyType}</p>}
+      
       <input
-  name="beds"
-  type="number"
-  value={details.beds || ""}
-  onChange={handleDetailsChange}
-  placeholder="Beds"
-  className="border border-gray-300 p-2 rounded w-full"
-/>
+        name="beds"
+        type="number"
+        value={details.beds || ""}
+        onChange={handleDetailsChange}
+        placeholder="Beds"
+        className="border border-gray-300 p-2 rounded w-full"
+      />
+      {details.errors.beds && <p className="text-red-500 text-sm">{details.errors.beds}</p>}
+      
       <input
         type="file"
         multiple
@@ -413,40 +428,49 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
         onChange={handleImageChange}
         className="border border-gray-300 p-2 rounded w-full"
       />
+        {details.errors.images && <p className="text-red-500 text-sm">{details.errors.images}</p>}
+    
+      
       <textarea
+        name="description"
         value={details.description}
         onChange={(e) => setDetails({ ...details, description: e.target.value })}
         placeholder="Description"
         className="border border-gray-300 p-2 rounded w-full h-24"
       />
+      
       <input
-        type="text"
         name="price"
+        type="text"
         value={details.price}
-        onChange={handleChange}
+        onChange={handleDetailsChange}
         placeholder="Price"
         className="border border-gray-300 p-2 rounded w-full"
       />
-  
-<input
-  name="baths"
-  type="number"
-  value={details.baths || ""}
-  onChange={handleChange}
-  placeholder="Baths"
-  className="border border-gray-300 p-2 rounded w-full"
-/>
-<select
-  name="purpose"
-  value={formData.purpose}
-  onChange={handleChange}
-  className="border border-gray-300 p-2 rounded w-full"
->
-  <option value="">Select Purpose</option>
-  <option value="sell">Sell</option>
-  <option value="buy">Buy</option>
-</select>
-
+      {details.errors.price && <p className="text-red-500 text-sm">{details.errors.price}</p>}
+      
+      <input
+        name="baths"
+        type="number"
+        value={details.baths || ""}
+        onChange={handleDetailsChange}
+        placeholder="Baths"
+        className="border border-gray-300 p-2 rounded w-full"
+      />
+      {details.errors.baths && <p className="text-red-500 text-sm">{details.errors.baths}</p>}
+      
+      <select
+        name="purpose"
+        value={details.purpose}
+        onChange={handleDetailsChange}
+        className="border border-gray-300 p-2 rounded w-full"
+      >
+        <option value="">Select Purpose</option>
+        <option value="sell">Sell</option>
+        <option value="buy">Buy</option>
+      </select>
+      {details.errors.purpose && <p className="text-red-500 text-sm">{details.errors.purpose}</p>}
+      
       <input
         name="propertyReferenceId"
         type="text"
@@ -455,6 +479,7 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
         placeholder="Property Reference ID"
         className="border border-gray-300 p-2 rounded w-full"
       />
+      
       {!noAmenities && (
         <div className="grid grid-cols-2 gap-4 w-full text-custom">
           {getAmenitiesOptions().map((amenity) => (
@@ -468,21 +493,27 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
           ))}
         </div>
       )}
+      
       <h2 className="text-lg font-semibold text-center text-custom">Are you a Landlord or an Agent?</h2>
       <div className="flex space-x-4">
-                <button onClick={() => setDetails({ ...details, landlord: true })} className="px-4 py-2 bg-custom text-white rounded">Landlord</button>
-                <button onClick={() => setDetails({ ...details, landlord: false })} className="px-4 py-2 bg-custom text-white rounded">Agent</button>
-            </div>
-            {details.landlord ? (
-                <>
-                    <input
-                        type="text"
-                        value={details.landlordName}
-                        onChange={(e) => setDetails({ ...details, landlordName: e.target.value })}
-                        placeholder="Landlord Name"
-                        className="border border-gray-300 p-2 rounded w-full"
-                    />
-                    <div className="flex space-x-4">
+        <button onClick={() => setDetails({ ...details, landlord: true })} className="px-4 py-2 bg-custom text-white rounded">Landlord</button>
+        <button onClick={() => setDetails({ ...details, landlord: false })} className="px-4 py-2 bg-custom text-white rounded">Agent</button>
+        
+      </div>
+      
+      {details.landlord ? (
+        <>
+          <input
+            type="text"
+            name="landlordName"
+            value={details.landlordName}
+            onChange={handleDetailsChange}
+            placeholder="Landlord Name"
+            className="border border-gray-300 p-2 rounded w-full"
+          />
+             {details.errors.landlordName && <p className="text-red-500 text-sm">{details.errors.landlordName}</p>}
+   
+             <div className="flex space-x-4">
                         <button onClick={() => setDetails({ ...details, status: true })} className="px-4 py-2 bg-custom text-white rounded">Property Complete</button>
                         <button onClick={() => setDetails({ ...details, status: false })} className="px-4 py-2 bg-custom text-white rounded">Property Incomplete</button>
                     </div>
@@ -532,6 +563,8 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
             placeholder="Agent Name"
             className="border border-gray-300 p-2 rounded w-full"
           />
+            {details.errors.agentName && <p className="text-red-500 text-sm">{details.errors.agentName}</p>}
+    
           <input
             type="text"
             name="agentCallNumber"
@@ -540,6 +573,8 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
             placeholder="Agent Call Number"
             className="border border-gray-300 p-2 rounded w-full"
           />
+            {details.errors.agentCallNumber && <p className="text-red-500 text-sm">{details.errors.agentCallNumber}</p>}
+    
           <input
             type="email"
             name="agentEmail"
@@ -548,6 +583,8 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
             placeholder="Agent Email"
             className="border border-gray-300 p-2 rounded w-full"
           />
+            {details.errors.agentEmail && <p className="text-red-500 text-sm">{details.errors.agentEmail}</p>}
+    
           <input
             type="text"
             name="agentWhatsapp"
@@ -556,13 +593,19 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
             placeholder="Agent WhatsApp"
             className="border border-gray-300 p-2 rounded w-full"
           />
+            {details.errors.agentWhatsapp && <p className="text-red-500 text-sm">{details.errors.agentWhatsapp}</p>}
+    
         </>
-     
-      <button onClick={handleNext} className="px-4 py-2 bg-custom text-white rounded w-full">Next</button>
-      <button onClick={onBack} className="px-4 py-2 bg-gray-500 text-white rounded w-full">Back</button>
+    
+      
+      <div className="flex space-x-4 w-full">
+        <button onClick={onBack} className="px-4 py-2 bg-gray-400 text-white rounded w-full">Back</button>
+        <button onClick={handleNext} className="px-4 py-2  bg-custom text-white rounded w-full">Next</button>
+      </div>
     </div>
   );
 }
+
 
 
 function Step4Review({ onSubmit, onBack, formData }) {
@@ -606,12 +649,6 @@ function Step4Review({ onSubmit, onBack, formData }) {
           <label className="font-semibold">Price:</label>
           <div className="p-2 border border-gray-300 rounded bg-gray-100">{formData.price}</div>
         </div>
-
-        <div className="flex flex-col space-y-2">
-          <label className="font-semibold">Detailed Description:</label>
-          <div className="p-2 border border-gray-300 rounded bg-gray-100">{formData.detailedDescription}</div>
-        </div>
-
         {formData.bedrooms && (
           <div className="flex flex-col space-y-2">
             <label className="font-semibold">Bedrooms:</label>
