@@ -91,7 +91,7 @@ export default function PlaceAnAdPage() {
       let listingsResponse;
       const startTime = Date.now();
       while (true) {
-        const response = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/listings');
+        const response = await fetch('http://localhost:5000/api/listings');
         if (response.ok) {
           listingsResponse = await response.json();
           break;
@@ -113,7 +113,7 @@ export default function PlaceAnAdPage() {
       let postResponse;
       const postStartTime = Date.now();
       while (true) {
-        postResponse = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/listings', {
+        postResponse = await fetch('http://localhost:5000/api/listings', {
           method: 'POST',
           body: submissionData,
         });
@@ -332,7 +332,7 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
 
   const validateForm = () => {
     const errors = {};
-    const requiredFields = ['title', 'price', 'city','images', 'location', 'propertyType', 'landlordName','images', 'beds', 'baths','agentName', 'agentCallNumber', 'agentEmail', 'agentWhatsapp', 'purpose'];
+    const requiredFields = ['title', 'price', 'city','images', 'location', 'propertyType','images', 'beds', 'baths', 'landlordName','agentName', 'agentCallNumber', 'agentEmail', 'agentWhatsapp', 'purpose'];
 
     requiredFields.forEach(field => {
       if (!details[field] || details[field] === '') {
@@ -341,10 +341,10 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
       // if(field === 'status' && details.status === null) {
       //   errors[field] = 'You must select if the property is complete or incomplete' ;
       // }
-      if(field==='images' && !(details['images'])){
-        errors[field] = `${field} field is required`;
-      }
+      // if(field=='images'){
+      //   errors[field] = `${field} field is required`;
 
+      // }
     });
 
     setDetails(prev => ({ ...prev, errors }));
@@ -518,9 +518,8 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
             placeholder="Landlord Name"
             className="border border-gray-300 p-2 rounded w-full"
           />
-              {details.errors.landlordName && <p className="text-red-500 text-sm">{details.errors.landlordName}</p>}
-              {/* { <p className="text-red-500 text-sm">Please Click Property Complete/Incomplete</p>} */}
-      
+             {/* {details.errors.landlordName && <p className="text-red-500 text-sm">{details.errors.landlordName}</p>}
+    */}
              <div className="flex space-x-4">
                         <button onClick={() => setDetails({ ...details, status: true })} className="px-4 py-2 bg-custom text-white rounded">Property Complete</button>
                         <button onClick={() => setDetails({ ...details, status: false })} className="px-4 py-2 bg-custom text-white rounded">Property Incomplete</button>

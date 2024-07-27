@@ -12,7 +12,7 @@ export default function EditPropertyForm() {
         const fetchPropertyData = async () => {
             try {
                 console.log(`Fetching property data for id: ${id}`);
-                const response = await fetch(`https://backend-git-main-pawan-togas-projects.vercel.app/api/listings/${id}`);
+                const response = await fetch(`http://localhost:5000/api/listings/${id}`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch property data');
                 }
@@ -58,7 +58,7 @@ export default function EditPropertyForm() {
         }
 
         try {
-            const response = await fetch(`https://backend-git-main-pawan-togas-projects.vercel.app/api/listings/${id}`, {
+            const response = await fetch(`http://localhost:5000/api/listings/${id}`, {
                 method: "PUT",
                 body: submissionData,
             });
@@ -252,4 +252,3 @@ export default function EditPropertyForm() {
         </div>
     );
 }
-
