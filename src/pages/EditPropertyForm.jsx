@@ -85,16 +85,16 @@ export default function EditPropertyForm() {
 
     if (submitted) {
         return (
-            <div className="container mx-auto p-4 bg-gray-800 text-gray-100">
-                <div className="text-center text-custom p-4 rounded">
-                    Your ad has been modified successfully!
-                </div>
-                <div className="flex justify-center mt-4">
-                    <button onClick={() => navigate("/")} className="px-6 py-3 bg-green-600 text-white rounded">
-                        Go to Home
-                    </button>
-                </div>
-            </div>
+            <div className="container mx-auto p-4">
+        <div className="text-center bg-green-200 text-green-700 p-4 rounded">
+          Your ad has been Modified successfully!
+        </div>
+        <div className="flex justify-center mt-4">
+          <button onClick={() => navigate("/")} className="px-6 py-3 bg-custom text-white rounded">
+            Go to Home
+          </button>
+        </div>
+      </div>
         );
     }
 
@@ -245,7 +245,7 @@ export default function EditPropertyForm() {
                     placeholder="Agent WhatsApp"
                     className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
                 />
-                <button type="submit" className="px-6 py-3 bg-red-600 bg-custom text-white rounded w-full">
+                <button type="submit" className="px-6 py-3 bg-blue-600 bg-custom text-white rounded mr-2">
                     Update Property
                 </button>
             </form>
