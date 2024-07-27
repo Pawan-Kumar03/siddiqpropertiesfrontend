@@ -91,7 +91,7 @@ export default function PlaceAnAdPage() {
       let listingsResponse;
       const startTime = Date.now();
       while (true) {
-        const response = await fetch('http://localhost:5000/api/listings');
+        const response = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/listings');
         if (response.ok) {
           listingsResponse = await response.json();
           break;
@@ -113,7 +113,7 @@ export default function PlaceAnAdPage() {
       let postResponse;
       const postStartTime = Date.now();
       while (true) {
-        postResponse = await fetch('http://localhost:5000/api/listings', {
+        postResponse = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/listings', {
           method: 'POST',
           body: submissionData,
         });
