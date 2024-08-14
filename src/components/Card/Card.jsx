@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 export default function Card({ item }) {
     const {
         image,
+        images,
         title,
         price,
         extension,
@@ -35,11 +36,10 @@ export default function Card({ item }) {
         navigate(`/property/${_id}`);
     };
 
-    // const imageUrl =
-    //     image.startsWith("/uploads")
-    //         ? `http://localhost:5000${image}`
-    //         : image;
-
+    // Determine the image to display
+    const imageUrl = images && images.length > 0 
+    ? `${images[0]}` 
+    : `${image}`;
     return (
         <div
             className="hover:shadow-lg p-4 rounded-lg bg-gray-800 dark:bg-gray-900 cursor-pointer transition duration-200"
@@ -47,7 +47,7 @@ export default function Card({ item }) {
         >
             <img
                 className="rounded-lg mb-3 object-cover h-56 lg:h-32 w-full"
-                src={image}
+                src={imageUrl}
                 alt={`${title} image`}
             />
             <h3 className="text-lg font-semibold" style={{ color: '#c5a47e' }}>

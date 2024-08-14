@@ -1,5 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
@@ -94,7 +96,13 @@ export default function PropertyDetails() {
                 break;
         }
     };
-
+  // Function to process images
+  const processImages = (images) => {
+    if (typeof images === "string") {
+        return images.split('/uploads/').filter(image => image).map(image => `/uploads/${image}`);
+    }
+    return images;
+};
     // Render property details only if not deleted
     return (
         <div className="container mt-8 bg-gray-800 text-gray-100 p-4 rounded-lg">
@@ -108,7 +116,26 @@ export default function PropertyDetails() {
                     <h2 className=" text-custom text-xl font-semibold mb-3">Property Details</h2>
                     <div className="flex flex-col lg:flex-row">
                         <div className="lg:w-1/2 lg:pr-4">
-                            <img className="rounded-lg mb-4 object-cover h-80 w-full" src={`${property.image}`} alt={property.title} />
+                        {property.images && processImages(property.images).length > 1 ? (
+                                <Carousel 
+                                    showThumbs={false} 
+                                    infiniteLoop 
+                                    useKeyboardArrows 
+                                    autoPlay 
+                                    className="h-80"
+                                >
+                                    {processImages(property.images).map((image, index) => (
+                                        <div key={index} className="h-100 flex justify-center items-center">
+                                            <img 
+                                                className="rounded-lg object-cover h-full w-full" 
+                                                src={`http://localhost:5000${image}`} 
+                                                alt={property.title} 
+                                            />
+                                        </div>
+                                    ))}
+                                </Carousel>
+                            ) : ( <img className="rounded-lg mb-4 object-cover h-80 w-full" src={`${property.image}`} alt={property.title} />
+                        )}
                         </div>
                         <div className="lg:w-1/2 lg:pl-4">
                         <h3 className="text-lg font-semibold mb-2" style={{ color: '#c5a47e' }}>
