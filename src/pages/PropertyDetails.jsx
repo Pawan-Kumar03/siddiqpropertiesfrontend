@@ -128,7 +128,7 @@ export default function PropertyDetails() {
                                         <div key={index} className="h-100 flex justify-center items-center">
                                             <img 
                                                 className="rounded-lg object-cover h-full w-full" 
-                                                src={`http://localhost:5000${image}`} 
+                                                src={`${image}`} 
                                                 alt={property.title} 
                                             />
                                         </div>
