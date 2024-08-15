@@ -47,12 +47,15 @@ export default function EditPropertyForm() {
         e.preventDefault();
 
         const submissionData = new FormData();
+
+        // Add form data fields to the submission data
         for (const key in formData) {
-            if (key === "images") {
+            if (key === "images" && formData.images) {
+                // Only append images if they exist in the formData
                 formData.images.forEach((image) => {
                     submissionData.append("images", image);
                 });
-            } else {
+            } else if (key !== "images") {
                 submissionData.append(key, formData[key]);
             }
         }
@@ -86,15 +89,15 @@ export default function EditPropertyForm() {
     if (submitted) {
         return (
             <div className="container mx-auto p-4">
-        <div className="text-center bg-green-200 text-green-700 p-4 rounded">
-          Your ad has been Modified successfully!
-        </div>
-        <div className="flex justify-center mt-4">
-          <button onClick={() => navigate("/")} className="px-6 py-3 bg-custom text-white rounded">
-            Go to Home
-          </button>
-        </div>
-      </div>
+                <div className="text-center bg-green-200 text-green-700 p-4 rounded">
+                    Your ad has been Modified successfully!
+                </div>
+                <div className="flex justify-center mt-4">
+                    <button onClick={() => navigate("/")} className="px-6 py-3 bg-custom text-white rounded">
+                        Go to Home
+                    </button>
+                </div>
+            </div>
         );
     }
 
@@ -245,8 +248,19 @@ export default function EditPropertyForm() {
                     placeholder="Agent WhatsApp"
                     className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
                 />
-                <button type="submit" className="px-6 py-3 bg-blue-600 bg-custom text-white rounded mr-2">
-                    Update Property
+                <input
+                    name="images"
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    onChange={handleImageChange}
+                    className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
+                />
+                <button
+                    type="submit"
+                    className="px-4 py-2 bg-custom text-white rounded hover:bg-gray-600 transition duration-300"
+                >
+                    Submit
                 </button>
             </form>
         </div>
