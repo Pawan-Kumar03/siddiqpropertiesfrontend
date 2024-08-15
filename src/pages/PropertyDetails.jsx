@@ -127,7 +127,7 @@ export default function PropertyDetails() {
                                     {processImages(property.images).map((image, index) => (
                                         <div key={index} className="h-100 flex justify-center items-center">
                                             <img 
-                                                className="rounded-lg object-cover h-full w-full" 
+                                                className="rounded-lg object-cover h-80 w-full" 
                                                 src={`${image}`} 
                                                 alt={property.title} 
                                             />
