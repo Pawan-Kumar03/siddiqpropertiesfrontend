@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState,useEffect } from "react";
 import saleProperty from "../../assets/icons/sale-property.svg";
 import inputSearch from "../../assets/icons/input-search.svg";
 import { Link } from "react-router-dom";
@@ -26,9 +26,8 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
             setLocationCounts([]);
         }
     }, [city]);
-
-    // Ensure locationCounts is an array before using reduce
-    const totalProperties = Array.isArray(locationCounts) ? locationCounts.reduce((total, loc) => total + loc.count, 0) : 0;
+     // Ensure locationCounts is an array before using reduce
+     const totalProperties = Array.isArray(locationCounts) ? locationCounts.reduce((total, loc) => total + loc.count, 0) : 0;
 
     const handleSearch = (event) => {
         event.preventDefault();
@@ -89,30 +88,30 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     return (
         <section>
             <div className="container bg-grey-light lg:bg-banner bg-cover bg-center bg-no-repeat lg:my-2 lg:pb-10 lg:pt-5 rounded-md">
-                <h1 className="text-2xl text-center font-semibold lg:text-white lg:mb-8">
+            <h1 className="text-2xl text-center font-semibold lg:text-white lg:mb-8 ">
                     Properties for Sale in UAE
                 </h1>
                 <div className="lg:bg-gray-800 lg:bg-opacity-50 rounded-md lg:p-4 lg:w-[88%] mx-auto">
-                    <div className="flex items-center space-x-2 lg:space-x-14 mb-4">
-                        <span className="hidden lg:inline-block text-base font-semibold lg:text-white">
-                            Searching in
-                        </span>
-                        <ul className="flex items-center space-x-20 lg:space-x-8 text-sm">
-                            <li>
-                                <button
-                                    className="bg-custom text-white hover:bg-custom duration-200 px-5 py-2 font-semibold rounded-full"
-                                    onClick={handleDisplayAllListings}
-                                >
-                                    Property for Sale
-                                </button>
-                            </li>
-                            <li>
-                                <Link className="bg-custom text-white hover:bg-custom duration-200 px-5 py-2 font-semibold rounded-full" to="/place-an-ad">
-                                    <span>Place an Ad</span>
-                                </Link>
-                            </li>
-                        </ul>
-                    </div>
+                <div className="flex items-center space-x-2 lg:space-x-14 mb-4">
+    <span className="hidden lg:inline-block text-base font-semibold lg:text-white">
+        Searching in
+    </span>
+    <ul className="flex items-center space-x-20 lg:space-x-8 text-sm"> {/* Increased space here */}
+        <li>
+            <button
+                className="bg-custom text-white hover:bg-custom duration-200 px-5 py-2 font-semibold rounded-full"
+                onClick={handleDisplayAllListings}
+            >
+                Property for Sale
+            </button>
+        </li>
+        <li>
+            <Link className="bg-custom text-white hover:bg-custom duration-200 px-5 py-2 font-semibold rounded-full" to="/place-an-ad">
+                <span>Place an Ad</span>
+            </Link>
+        </li>
+    </ul>
+</div>
 
                     <form className="lg:flex lg:flex-col lg:space-y-3 px-2 lg:px-0 py-4 lg:py-0 relative" onSubmit={handleSearch}>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
@@ -192,41 +191,49 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                                     className="w-full p-2 lg:rounded-md rounded-full border border-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
                                 />
                             </div>
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                             <div className="flex flex-col mb-3">
                                 <label className="mb-1 text-gray-300">Beds</label>
-                                <input
-                                    type="number"
+                                <select
+                                    className="w-full p-2 lg:rounded-md rounded-full border border-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
                                     name="beds"
-                                    placeholder="Number of Beds"
                                     value={beds}
                                     onChange={(e) => setBeds(e.target.value)}
-                                    className="w-full p-2 lg:rounded-md rounded-full border border-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
-                                />
+                                >
+                                    <option value="">Select Beds</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5+</option>
+                                </select>
                             </div>
                             <div className="flex flex-col mb-3">
                                 <label className="mb-1 text-gray-300">Baths</label>
-                                <input
-                                    type="number"
+                                <select
+                                    className="w-full p-2 lg:rounded-md rounded-full border border-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
                                     name="baths"
-                                    placeholder="Number of Baths"
                                     value={baths}
                                     onChange={(e) => setBaths(e.target.value)}
-                                    className="w-full p-2 lg:rounded-md rounded-full border border-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
-                                />
+                                >
+                                    <option value="">Select Baths</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5+</option>
+                                </select>
                             </div>
                             <div className="flex flex-col mb-3">
-                                <label className="mb-1 text-gray-300">Agent Type</label>
+                                <label className="mb-1 text-gray-300">Owner Type</label>
                                 <select
                                     className="w-full p-2 lg:rounded-md rounded-full border border-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
                                     name="agentType"
                                     value={agentType}
                                     onChange={(e) => setAgentType(e.target.value)}
                                 >
-                                    <option value="">Select Agent Type</option>
+                                    <option value="">Select Owner Type</option>
+                                    <option value="Owner">Landlord</option>
                                     <option value="Agent">Agent</option>
-                                    <option value="Agency">Agency</option>
                                 </select>
                             </div>
                             <div className="flex flex-col mb-3">
@@ -238,8 +245,8 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                                     onChange={(e) => setStatus(e.target.value)}
                                 >
                                     <option value="">Select Status</option>
-                                    <option value="For Sale">For Sale</option>
-                                    <option value="For Rent">For Rent</option>
+                                    <option value="Complete">Ready to Move</option>
+                                    <option value="Incomplete">Under Construction</option>
                                 </select>
                             </div>
                             <div className="flex flex-col mb-3">
@@ -251,54 +258,47 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                                     onChange={(e) => setPurpose(e.target.value)}
                                 >
                                     <option value="">Select Purpose</option>
-                                    <option value="Residential">Residential</option>
-                                    <option value="Commercial">Commercial</option>
+                                    <option value="sell">Sell</option>
+                                    <option value="buy">Buy</option>
                                 </select>
                             </div>
                         </div>
-                        <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center lg:mt-4">
-                            <button
-                                type="submit"
-                                className="bg-custom text-white hover:bg-custom duration-200 px-5 py-2 font-semibold rounded-full lg:mb-0 mb-3"
-                            >
+                        <div className="flex items-center justify-between mt-4 w-full ">
+                            <button type="submit" className="bg-custom text-white flex items-center justify-center  w-1/2 px-6 py-2 rounded-full font-semibold mr-2 ">
+                                <img src={inputSearch} alt="Search" className="w-5 h-5 mr-2" />
                                 Search
                             </button>
                             <button
                                 type="button"
                                 onClick={handleClearFilters}
-                                className="bg-gray-500 text-white hover:bg-gray-700 duration-200 px-5 py-2 font-semibold rounded-full"
+                                className="flex items-center justify-center bg-gray-700 text-white w-1/2 px-6 py-2 rounded-full font-semibold ml-2 bg-custom text-white"
                             >
                                 Clear Filters
                             </button>
                         </div>
                     </form>
-                </div>
-            </div>
-
-            <div className="py-10 bg-gray-100">
-                <div className="container mx-auto">
-                    <h2 className="text-xl font-semibold text-center mb-4">Location Statistics</h2>
-                    {totalProperties > 0 ? (
-                        <div className="flex flex-col items-center">
-                            <p className="text-lg font-medium">Total Properties: {totalProperties}</p>
-                            {Array.isArray(locationCounts) && locationCounts.length > 0 ? (
-                                <ul className="mt-4 space-y-2">
-                                    {locationCounts.map((loc, index) => (
-                                        <li key={index} className="flex justify-between border-b border-gray-300 pb-2">
-                                            <span className="text-gray-700">{loc.location}</span>
-                                            <span className="font-medium text-gray-900">{loc.count}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            ) : (
-                                <p className="text-gray-500">No location data available.</p>
-                            )}
-                        </div>
-                    ) : (
-                        <p className="text-center text-gray-500">No properties found.</p>
-                    )}
+                    {city && locationCounts.length > 0 && (
+        <div className="mt-4">
+            <h2 className="text-xl font-semibold text-white">
+                Properties by Location in {city} . {totalProperties} Ads
+            </h2>
+            <ul className="mt-2 flex flex-wrap gap-2 text-black">
+                {locationCounts.map((loc, index) => (
+                    <li
+                        key={index}
+                        className="flex items-center bg-custom text-white px-4 rounded shadow-md cursor-pointer"
+                        onClick={() => handleLocationClick(loc.location)}
+                    >
+                        <span className="mr-2">{loc.location}</span>
+                        <span className="text-black">{loc.count} properties</span>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    )}
                 </div>
             </div>
         </section>
     );
 }
+
