@@ -5,7 +5,7 @@ import Main from "../layouts/Main";
 import PlaceAnAdPage from "../pages/PlaceAnAdPage";
 import EditPropertyForm from "../pages/EditPropertyForm";
 import PropertyDetails from "../pages/PropertyDetails";
-
+import PropertiesPage from "../pages/PropertiesPage";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -26,6 +26,10 @@ const router = createBrowserRouter([
             {
                 path: "/property/:id",
                 element: <PropertyDetails />,
+            },
+            {
+                path: "/properties",
+                element: <PropertiesPage />, // Add this route
             },
         ],
     },
