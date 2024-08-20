@@ -26,8 +26,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
             setLocationCounts([]);
         }
     }, [city]);
-     // Ensure locationCounts is an array before using reduce
-     const totalProperties = Array.isArray(locationCounts) ? locationCounts.reduce((total, loc) => total + loc.count, 0) : 0;
+    const totalProperties = locationCounts.reduce((total, loc) => total + loc.count, 0);
 
     const handleSearch = (event) => {
         event.preventDefault();
