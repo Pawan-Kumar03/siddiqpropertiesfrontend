@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
+import saleProperty from "../../assets/icons/sale-property.svg";
 import inputSearch from "../../assets/icons/input-search.svg";
 import { Link } from "react-router-dom";
 
@@ -13,6 +14,19 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     const [agentType, setAgentType] = useState("");
     const [status, setStatus] = useState("");
     const [purpose, setPurpose] = useState("");
+    const [locationCounts, setLocationCounts] = useState([]);
+
+    useEffect(() => {
+        if (city) {
+            fetch(`https://backend-git-main-pawan-togas-projects.vercel.app/api/listings/${city}`)
+                .then(response => response.json())
+                .then(data => setLocationCounts(data))
+                .catch(error => console.error('Error fetching location counts:', error));
+        } else {
+            setLocationCounts([]);
+        }
+    }, [city]);
+    const totalProperties = locationCounts.reduce((total, loc) => total + loc.count, 0);
 
     const handleSearch = (event) => {
         event.preventDefault();
@@ -62,10 +76,18 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         onSearch({});
     };
 
+    const handleLocationClick = (location) => {
+        const query = new URLSearchParams({
+            city,
+            location,
+        }).toString();
+        window.location.href = `/properties?${query}`;
+    };
+
     return (
         <section>
             <div className="container bg-grey-light lg:bg-banner bg-cover bg-center bg-no-repeat lg:my-2 lg:pb-10 lg:pt-5 rounded-md">
-            <h1 className="text-2xl text-center font-semibold lg:text-white lg:mb-8 hidden lg:block">
+            <h1 className="text-2xl text-center font-semibold lg:text-white lg:mb-8 ">
                     Properties for Sale in UAE
                 </h1>
                 <div className="lg:bg-gray-800 lg:bg-opacity-50 rounded-md lg:p-4 lg:w-[88%] mx-auto">
@@ -89,6 +111,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         </li>
     </ul>
 </div>
+
                     <form className="lg:flex lg:flex-col lg:space-y-3 px-2 lg:px-0 py-4 lg:py-0 relative" onSubmit={handleSearch}>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
                             <div className="flex flex-col mb-3">
@@ -253,8 +276,28 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                             </button>
                         </div>
                     </form>
+                    {city && locationCounts.length > 0 && (
+        <div className="mt-4">
+            <h2 className="text-xl font-semibold text-white">
+                Properties by Location in {city} . {totalProperties} Ads
+            </h2>
+            <ul className="mt-2 flex flex-wrap gap-2 text-black">
+                {locationCounts.map((loc, index) => (
+                    <li
+                        key={index}
+                        className="flex items-center bg-custom text-white px-4 rounded shadow-md cursor-pointer"
+                        onClick={() => handleLocationClick(loc.location)}
+                    >
+                        <span className="mr-2">{loc.location}</span>
+                        <span className="text-black">{loc.count} properties</span>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    )}
                 </div>
             </div>
         </section>
     );
 }
+
