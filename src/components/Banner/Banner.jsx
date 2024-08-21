@@ -20,7 +20,18 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         if (city) {
             fetch(`https://backend-git-main-pawan-togas-projects.vercel.app/api/listings/${city}`)
                 .then(response => response.json())
-                .then(data => setLocationCounts(data))
+                .then(data => {
+                    // Log data to verify the structure
+                    console.log('API response:', data);
+                    
+                    // Ensure data is an array
+                    if (Array.isArray(data)) {
+                        setLocationCounts(data);
+                    } else {
+                        setLocationCounts([]); // or handle as needed
+                        console.error('Expected array but received:', data);
+                    }
+                })
                 .catch(error => console.error('Error fetching location counts:', error));
         } else {
             setLocationCounts([]);
