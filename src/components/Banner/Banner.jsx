@@ -288,7 +288,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                     </form>
                     {city && locationCounts.length > 0 && (
         <div className="mt-4">
-            <h2 className="text-xl font-semibold text-white">
+            <h2 className="text-xl font-semibold text-custom">
                 Properties by Location in {city} . {totalProperties} Ads
             </h2>
             <ul className="mt-2 flex flex-wrap gap-2 text-black">
