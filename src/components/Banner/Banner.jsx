@@ -21,12 +21,12 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
             fetch(`https://backend-git-main-pawan-togas-projects.vercel.app/api/listings/${city}`)
                 .then(response => response.json())
                 .then(data => {
-                    // Ensure data is an array of objects with location and count properties
-                    if (Array.isArray(data) && data.every(item => item.location && typeof item.count === 'number')) {
+                    // Ensure data is an array
+                    if (Array.isArray(data)) {
                         setLocationCounts(data);
                     } else {
-                        setLocationCounts([]);
-                        console.error('Expected array of objects with location and count properties:', data);
+                        setLocationCounts([]); // or handle as needed
+                        console.error('Expected array but received:', data);
                     }
                 })
                 .catch(error => console.error('Error fetching location counts:', error));
@@ -34,11 +34,10 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
             setLocationCounts([]);
         }
     }, [city]);
-
     const totalProperties = locationCounts.reduce((total, loc) => {
         return total + (typeof loc.count === 'number' ? loc.count : 0);
     }, 0);
-
+    
     const handleSearch = (event) => {
         event.preventDefault();
         const searchParams = {
