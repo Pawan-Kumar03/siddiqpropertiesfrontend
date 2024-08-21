@@ -288,24 +288,24 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                         </div>
                     </form>
                     {city && locationCounts.length > 0 && (
-                        <div className="mt-4">
-                            <h2 className="text-xl font-semibold text-white">
-                                Properties by Location in {city}. {totalProperties} Ads
-                            </h2>
-                            <ul className="mt-2 flex flex-wrap gap-2 text-black">
-                                {locationCounts.map((loc, index) => (
-                                    <li
-                                        key={index}
-                                        className="flex items-center bg-custom text-white px-4 rounded shadow-md cursor-pointer"
-                                        onClick={() => handleLocationClick(loc.location)}
-                                    >
-                                        <span className="mr-2">{loc.location}</span>
-                                        <span className="text-black">{loc.count} properties</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    )}
+        <div className="mt-4">
+            <h2 className="text-xl font-semibold text-white">
+                Properties by Location in {city} . {totalProperties} Ads
+            </h2>
+            <ul className="mt-2 flex flex-wrap gap-2 text-black">
+                {locationCounts.map((loc, index) => (
+                    <li
+                        key={index}
+                        className="flex items-center bg-custom text-white px-4 rounded shadow-md cursor-pointer"
+                        onClick={() => handleLocationClick(loc.location)}
+                    >
+                        <span className="mr-2">{loc.location}</span>
+                        <span className="text-black">{loc.count} properties</span>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    )}
                 </div>
             </div>
         </section>
