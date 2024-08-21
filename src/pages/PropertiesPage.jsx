@@ -20,13 +20,29 @@ function PropertiesPage() {
     useEffect(() => {
         if (city && location) {
             fetch(`https://backend-git-main-pawan-togas-projects.vercel.app/api/listings?city=${city}&location=${encodeURIComponent(location)}`)
-                .then(response => response.json())
-                .then(data => {
-                    const filtered = data.filter(property => property.location.toLowerCase() === location.toLowerCase());
-                    setProperties(filtered);
-                    setFilteredProperties(filtered);
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
                 })
-                .catch(error => console.error('Error fetching properties:', error));
+                .then(data => {
+                    // Check if data is an array and filter it correctly
+                    if (Array.isArray(data)) {
+                        const filtered = data.filter(property => property.location && property.location.toLowerCase() === location.toLowerCase());
+                        setProperties(filtered);
+                        setFilteredProperties(filtered);
+                    } else {
+                        console.error('Data format is not as expected:', data);
+                        setProperties([]);
+                        setFilteredProperties([]);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching properties:', error);
+                    setProperties([]);
+                    setFilteredProperties([]);
+                });
         }
     }, [city, location]);
 
@@ -57,11 +73,11 @@ function PropertiesPage() {
         }
 
         if (beds !== "Any") {
-            filtered = filtered.filter(property => property.beds === parseInt(beds, 10));
+            filtered = filtered.filter(property => property.beds === parseInt(beds));
         }
 
         if (baths !== "Any") {
-            filtered = filtered.filter(property => property.baths === parseInt(baths, 10));
+            filtered = filtered.filter(property => property.baths === parseInt(baths));
         }
 
         setFilteredProperties(filtered);
@@ -164,11 +180,21 @@ function PropertiesPage() {
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {filteredProperties.map((property) => (
                     <Card key={property._id} item={property} />
                 ))}
-            </div>
+            </div> */}
+            <div className="properties-page">
+            {/* Add search filters and display filteredProperties */}
+            {filteredProperties.length > 0 ? (
+                filteredProperties.map(property => (
+                    <Card key={property.id} property={property} />
+                ))
+            ) : (
+                <p>No properties found for the selected criteria.</p>
+            )}
+        </div>
         </div>
     );
 }
