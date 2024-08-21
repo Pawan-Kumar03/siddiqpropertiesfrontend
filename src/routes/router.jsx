@@ -29,7 +29,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/properties",
-                element: <PropertiesPage />, // Add this route
+                element: <PropertiesPage />, 
             },
         ],
     },

@@ -21,12 +21,12 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
             fetch(`https://backend-git-main-pawan-togas-projects.vercel.app/api/listings/${city}`)
                 .then(response => response.json())
                 .then(data => {
-                    // Ensure data is an array
-                    if (Array.isArray(data)) {
+                    // Ensure data is an array of objects with location and count properties
+                    if (Array.isArray(data) && data.every(item => item.location && typeof item.count === 'number')) {
                         setLocationCounts(data);
                     } else {
-                        setLocationCounts([]); // or handle as needed
-                        console.error('Expected array but received:', data);
+                        setLocationCounts([]);
+                        console.error('Expected array of objects with location and count properties:', data);
                     }
                 })
                 .catch(error => console.error('Error fetching location counts:', error));
@@ -34,10 +34,11 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
             setLocationCounts([]);
         }
     }, [city]);
+
     const totalProperties = locationCounts.reduce((total, loc) => {
         return total + (typeof loc.count === 'number' ? loc.count : 0);
     }, 0);
-    
+
     const handleSearch = (event) => {
         event.preventDefault();
         const searchParams = {
@@ -287,24 +288,24 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                         </div>
                     </form>
                     {city && locationCounts.length > 0 && (
-        <div className="mt-4">
-            <h2 className="text-xl font-semibold text-white">
-                Properties by Location in {city} . {totalProperties} Ads
-            </h2>
-            <ul className="mt-2 flex flex-wrap gap-2 text-black">
-                {locationCounts.map((loc, index) => (
-                    <li
-                        key={index}
-                        className="flex items-center bg-custom text-white px-4 rounded shadow-md cursor-pointer"
-                        onClick={() => handleLocationClick(loc.location)}
-                    >
-                        <span className="mr-2">{loc.location}</span>
-                        <span className="text-black">{loc.count} properties</span>
-                    </li>
-                ))}
-            </ul>
-        </div>
-    )}
+                        <div className="mt-4">
+                            <h2 className="text-xl font-semibold text-white">
+                                Properties by Location in {city}. {totalProperties} Ads
+                            </h2>
+                            <ul className="mt-2 flex flex-wrap gap-2 text-black">
+                                {locationCounts.map((loc, index) => (
+                                    <li
+                                        key={index}
+                                        className="flex items-center bg-custom text-white px-4 rounded shadow-md cursor-pointer"
+                                        onClick={() => handleLocationClick(loc.location)}
+                                    >
+                                        <span className="mr-2">{loc.location}</span>
+                                        <span className="text-black">{loc.count} properties</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
                 </div>
             </div>
         </section>
