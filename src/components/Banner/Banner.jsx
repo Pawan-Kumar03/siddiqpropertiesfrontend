@@ -21,9 +21,6 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
             fetch(`https://backend-git-main-pawan-togas-projects.vercel.app/api/listings/${city}`)
                 .then(response => response.json())
                 .then(data => {
-                    // Log data to verify the structure
-                    console.log('API response:', data);
-                    
                     // Ensure data is an array
                     if (Array.isArray(data)) {
                         setLocationCounts(data);
@@ -37,8 +34,10 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
             setLocationCounts([]);
         }
     }, [city]);
-    const totalProperties = locationCounts.reduce((total, loc) => total + loc.count, 0);
-
+    const totalProperties = locationCounts.reduce((total, loc) => {
+        return total + (typeof loc.count === 'number' ? loc.count : 0);
+    }, 0);
+    
     const handleSearch = (event) => {
         event.preventDefault();
         const searchParams = {
