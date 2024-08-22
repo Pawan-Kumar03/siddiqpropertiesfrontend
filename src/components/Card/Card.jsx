@@ -3,57 +3,50 @@ import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 
 export default function Card({ item }) {
+    // Ensure item is defined
+    if (!item) {
+        return null; // Or return a placeholder UI for missing data
+    }
+
     const {
-        image,
-        images,
-        title,
-        price,
-        extension,
+        image = '', // Default to an empty string if image is undefined
+        images = [], // Default to an empty array if images are undefined
+        title = 'No title available', // Default title
+        price = 'N/A', // Default price
+        extension = '', // Default to an empty string if extension is undefined
         _id,
-        city,
-        location,
-        propertyType,
-        beds,
-        bathrooms,
-        propertyReferenceId,
-        description,
-        landlord,
-        landlordName,
-        propertyComplete,
-        reraTitleNumber,
-        reraPreRegistrationNumber,
-        building,
-        neighborhood,
-        agentName,
-        agentCallNumber,
-        agentEmail,
-        agentWhatsapp,
     } = item;
 
     const navigate = useNavigate();
 
     const handleClick = () => {
-        navigate(`/property/${_id}`);
+        if (_id) {
+            navigate(`/property/${_id}`);
+        }
     };
 
     // Determine the image to display
-    const imageUrl = images && images.length > 0 
-    ? `${images[0]}` 
-    : `${image}`;
+    const imageUrl = images.length > 0 ? images[0] : image;
+
     return (
         <div
             className="hover:shadow-lg p-4 rounded-lg bg-gray-800 dark:bg-gray-900 cursor-pointer transition duration-200"
             onClick={handleClick}
         >
-            <img
-                className="rounded-lg mb-3 object-cover h-56 lg:h-32 w-full"
-                src={imageUrl}
-                alt={`${title} image`}
-            />
+            {imageUrl ? (
+                <img
+                    className="rounded-lg mb-3 object-cover h-56 lg:h-32 w-full"
+                    src={imageUrl}
+                    alt={`${title} image`}
+                />
+            ) : (
+                <div className="rounded-lg mb-3 object-cover h-56 lg:h-32 w-full bg-gray-700 flex items-center justify-center">
+                    <span className="text-gray-400">No Image Available</span>
+                </div>
+            )}
             <h3 className="text-lg font-semibold" style={{ color: '#c5a47e' }}>
-    {price}
-</h3>
-
+                {price}
+            </h3>
             <p className="text-gray-100 font-semibold">{title}</p>
             <p className="text-gray-300 text-sm">{extension}</p>
         </div>
@@ -62,28 +55,11 @@ export default function Card({ item }) {
 
 Card.propTypes = {
     item: PropTypes.shape({
-        image: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-        price: PropTypes.string.isRequired,
-        extension: PropTypes.string.isRequired,
+        image: PropTypes.string,
+        images: PropTypes.arrayOf(PropTypes.string),
+        title: PropTypes.string,
+        price: PropTypes.string,
+        extension: PropTypes.string,
         _id: PropTypes.string.isRequired,
-        city: PropTypes.string.isRequired,
-        location: PropTypes.string.isRequired,
-        propertyType: PropTypes.string.isRequired,
-        beds: PropTypes.string.isRequired,
-        bathrooms: PropTypes.string.isRequired,
-        propertyReferenceId: PropTypes.string.isRequired,
-        description: PropTypes.string.isRequired,
-        landlord: PropTypes.bool.isRequired,
-        landlordName: PropTypes.string,
-        propertyComplete: PropTypes.bool,
-        reraTitleNumber: PropTypes.string,
-        reraPreRegistrationNumber: PropTypes.string,
-        building: PropTypes.string,
-        neighborhood: PropTypes.string,
-        agentName: PropTypes.string.isRequired,
-        agentCallNumber: PropTypes.string.isRequired,
-        agentEmail: PropTypes.string.isRequired,
-        agentWhatsapp: PropTypes.string.isRequired,
     }).isRequired,
 };

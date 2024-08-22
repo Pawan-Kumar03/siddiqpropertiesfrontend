@@ -27,11 +27,9 @@ function PropertiesPage() {
                     return response.json();
                 })
                 .then(data => {
-                    // Check if data is an array and filter it correctly
                     if (Array.isArray(data)) {
-                        const filtered = data.filter(property => property.location && property.location.toLowerCase() === location.toLowerCase());
-                        setProperties(filtered);
-                        setFilteredProperties(filtered);
+                        setProperties(data);
+                        setFilteredProperties(data);
                     } else {
                         console.error('Data format is not as expected:', data);
                         setProperties([]);
@@ -84,6 +82,7 @@ function PropertiesPage() {
     };
 
     return (
+        
         <div className="container mx-auto p-4">
             <div className="text-center mb-8">
                 <h1 className="text-2xl sm:text-3xl font-bold text-custom">Properties in {location} ({city})</h1>
@@ -180,21 +179,23 @@ function PropertiesPage() {
                 </div>
             </div>
 
-            {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {filteredProperties.map((property) => (
-                    <Card key={property._id} item={property} />
-                ))}
-            </div> */}
-            <div className="properties-page">
-            {/* Add search filters and display filteredProperties */}
-            {filteredProperties.length > 0 ? (
-                filteredProperties.map(property => (
-                    <Card key={property.id} property={property} />
-                ))
-            ) : (
-                <p>No properties found for the selected criteria.</p>
-            )}
-        </div>
+            <div className="text-center mb-8">
+                <h1 className="text-2xl sm:text-3xl font-bold text-custom">Properties in {location} ({city})</h1>
+            </div>
+            
+            <div className="mb-8 flex flex-col sm:flex-wrap sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 text-custom">
+                {/* Your existing filter controls */}
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {filteredProperties.length > 0 ? (
+                    filteredProperties.map(property => (
+                        <Card key={property._id} item={property} />
+                    ))
+                ) : (
+                    <p>No properties found for the selected criteria.</p>
+                )}
+            </div>
         </div>
     );
 }
