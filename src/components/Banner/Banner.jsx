@@ -108,7 +108,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
 
     return (
         <section>
-            <div className="container bg-grey-light lg:bg-banner bg-cover bg-center bg-no-repeat lg:my-2 lg:pb-10 lg:pt-5 rounded-md">
+            <div className="container bg-grey-light lg:bg-banner bg-cover bg-center bg-no-repeat lg:my-2 lg:pb-10 lg:pt-5 rounded-m bg-gray-800">
             <h1 className="text-2xl text-center font-semibold lg:text-white lg:mb-8 ">
                     Properties for Sale in UAE
                 </h1>
@@ -134,7 +134,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     </ul>
 </div>
 
-                    <form className="lg:flex lg:flex-col lg:space-y-3 px-2 lg:px-0 py-4 lg:py-0 relative" onSubmit={handleSearch}>
+                    <form className="lg:flex lg:flex-col lg:space-y-3 px-2 lg:px-0 py-4 lg:py-0 relative bg-gray-800 lg:bg-transparent" onSubmit={handleSearch}>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
                             <div className="flex flex-col mb-3">
                                 <label className="mb-1 text-gray-300">City</label>
@@ -300,7 +300,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                     </form>
 
                     {city && locationCounts.length > 0 && (
-    <div className="mt-4">
+    <div className=" bg-gray-800">
         <h2 className="text-xl font-semibold text-custom">
             Properties by Location in {city} . {totalProperties} Ads
         </h2>
