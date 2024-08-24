@@ -11,12 +11,19 @@ export default function Navbar() {
     return (
         <header className="bg-gray-800">
             <div className="lg:border-b lg:border-b-gray-600">
-                <nav className="flex justify-center lg:justify-between lg:items-center container mx-auto p-4 text-gray-100">
-                    <div className="inline-flex lg:flex items-center space-x-3 py-3 md:py-0">
-                        <Link to="/">
-                            <img style={logoStyle} className="dark:hidden" src={logo} alt="logo" />
+                <nav className="relative container mx-auto p-4 text-gray-100">
+                    {/* Login Button - Positioned at the top left */}
+                    <div className="absolute right-4 top-4">
+                        <Link to="/login" className="bg-custom hover:bg-custom text-black py-2 px-4 rounded">
+                            Login
                         </Link>
-                        <span className="mt-5 text-sm hidden lg:inline-block dark:text-gray-200 text-custom">Dubai</span>
+                    </div>
+
+                    {/* Centered Logo */}
+                    <div className="flex justify-center">
+                        <Link to="/">
+                            <img style={logoStyle} src={logo} alt="logo" />
+                        </Link>
                     </div>
                 </nav>
             </div>
