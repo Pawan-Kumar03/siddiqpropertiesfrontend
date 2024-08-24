@@ -17,11 +17,28 @@ export default function Login() {
         }
 
         try {
-            // Replace with actual login logic
-            console.log("Login data:", { email, password, acceptedTerms });
-            navigate("/");
+            const response = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, password })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                // Store token in localStorage
+                localStorage.setItem('token', data.token);
+
+                // Navigate to the home page
+                navigate("/");
+            } else {
+                setErrorMessage(data.message || 'Login failed');
+            }
         } catch (error) {
             console.error("Login failed:", error);
+            setErrorMessage("An error occurred. Please try again.");
         }
     };
 

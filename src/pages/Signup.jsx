@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
     const [username, setUsername] = useState("");
@@ -7,8 +8,9 @@ const Signup = () => {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
+    const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         // Check if passwords match
@@ -17,13 +19,26 @@ const Signup = () => {
             return;
         }
 
-        // Further signup logic here (e.g., send data to server)
+        try {
+            const response = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/signup', {                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, email, password })
+            });
 
-        console.log("Signup data:");
-        console.log("Username:", username);
-        console.log("Email:", email);
-        console.log("Password:", password);
-        console.log("Confirm Password:", confirmPassword);
+            const data = await response.json();
+
+            if (response.ok) {
+                // Navigate to the login page after successful signup
+                navigate("/login");
+            } else {
+                setErrorMessage(data.message || 'Signup failed');
+            }
+        } catch (error) {
+            console.error("Signup failed:", error);
+            setErrorMessage("An error occurred. Please try again.");
+        }
     };
 
     return (
