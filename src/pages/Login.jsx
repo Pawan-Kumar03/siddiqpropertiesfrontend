@@ -29,7 +29,7 @@ export default function Login() {
 
             if (response.ok) {
                 // Store token and username in localStorage
-                console.log(data)
+                console.log('Backend response:', data);
                 localStorage.setItem('token', data.token);
                 localStorage.setItem('username', data.name); // Store username
 
