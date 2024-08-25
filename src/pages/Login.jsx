@@ -32,7 +32,7 @@ export default function Login() {
                 localStorage.setItem('token', data.token);
                 localStorage.setItem('username', data.username); // Store username
 
-
+                console.log('login successfull: ', data.username)
                 // Navigate to the home page
                 navigate("/");
             } else {
