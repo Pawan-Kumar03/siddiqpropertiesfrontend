@@ -1,15 +1,15 @@
-import React from 'react';
-import { RouterProvider } from 'react-router-dom';
-import router from './routes/router';
-import { AuthProvider } from './contexts/AuthContext'; // Import the AuthProvider
+import React from "react";
+import { RouterProvider } from "react-router-dom";
+import router from "./routes/router";
+import { ListingsProvider } from "./contexts/ListingsContext";
 import './App.css';
 
 export default function App() {
     return (
-        <AuthProvider>
-            <div className="bg-grey-light text-grey-darkest min-h-screen">
-                <RouterProvider router={router} />
-            </div>
-        </AuthProvider>
+            <ListingsProvider>
+                <div className="bg-grey-light text-grey-darkest min-h-screen">
+                    <RouterProvider router={router} />
+                </div>
+            </ListingsProvider>
     );
 }

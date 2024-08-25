@@ -1,14 +1,28 @@
-import React, { useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { AuthContext } from '../contexts/AuthContext';
-import logo from '../assets/logo.png';
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import logo from "../assets/logo.png";
 
 export default function Navbar() {
-    const { username, logout } = useContext(AuthContext);
-    const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [username, setUsername] = useState(null);
+    const [dropdownOpen, setDropdownOpen] = useState(false); // State to manage dropdown visibility
+    const navigate = useNavigate();
     const logoStyle = {
         width: '80px',
         height: 'auto'
+    };
+
+    useEffect(() => {
+        // Retrieve the username from localStorage
+        const storedUsername = localStorage.getItem('username');
+        setUsername(storedUsername);
+    }, []);
+
+    const handleLogout = () => {
+        // Clear localStorage on logout and reset username state
+        localStorage.removeItem('token');
+        localStorage.removeItem('username');
+        setUsername(null);
+        navigate("/login"); // Redirect to login page after logout
     };
 
     const toggleDropdown = () => {
@@ -25,7 +39,7 @@ export default function Navbar() {
                             <div className="relative">
                                 <span
                                     className="bg-custom text-black py-2 px-4 rounded cursor-pointer"
-                                    onClick={toggleDropdown}
+                                    onClick={toggleDropdown} // Toggle dropdown on click
                                 >
                                     {username}
                                 </span>
@@ -53,7 +67,7 @@ export default function Navbar() {
                                             My Ads
                                         </Link>
                                         <button
-                                            onClick={logout}
+                                            onClick={handleLogout}
                                             className="w-full text-left px-4 py-2 hover:bg-gray-200"
                                         >
                                             Sign Out
