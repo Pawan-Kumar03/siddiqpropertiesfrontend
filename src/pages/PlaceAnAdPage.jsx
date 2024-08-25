@@ -112,9 +112,14 @@ export default function PlaceAnAdPage() {
       // After listings are fetched, proceed to submit data
       let postResponse;
       const postStartTime = Date.now();
+      const token = localStorage.getItem('token');
       while (true) {
         postResponse = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/listings', {
           method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${token}`, // Include the Authorization header
+            'Accept': 'application/json'
+          },
           body: submissionData,
         });
         if (postResponse.ok) {
