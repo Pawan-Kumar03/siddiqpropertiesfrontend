@@ -29,11 +29,10 @@ export default function Login() {
 
             if (response.ok) {
                 // Store token and username in localStorage
-                console.log('Backend response:', data);
                 localStorage.setItem('token', data.token);
-                localStorage.setItem('username', data.name); // Store username
+                localStorage.setItem('username', data.username); // Store username
 
-                console.log('login successfull: ', data.username)
+                console.log('login successful: ', data.username); // Verify username
                 // Navigate to the home page
                 navigate("/");
             } else {
