@@ -8,13 +8,19 @@ export default function Navbar() {
         width: '80px',
         height: 'auto'
     };
+
     useEffect(() => {
-        // Retrieve the username from localStorage if available
+        // Retrieve the username from localStorage
         const storedUsername = localStorage.getItem('username');
-        if (storedUsername) {
-            setUsername(storedUsername);
-        }
+        setUsername(storedUsername);
     }, []);
+
+    const handleLogout = () => {
+        // Clear localStorage on logout and reset username state
+        localStorage.removeItem('token');
+        localStorage.removeItem('username');
+        setUsername(null);
+    };
 
     return (
         <header className="bg-gray-800">
@@ -23,7 +29,10 @@ export default function Navbar() {
                     {/* Login Button - Positioned at the top left */}
                     <div className="absolute right-4 top-4">
                         {username ? (
-                            <span className="bg-custom text-black py-2 px-4 rounded">
+                            <span
+                                className="bg-custom text-black py-2 px-4 rounded cursor-pointer"
+                                onClick={handleLogout} // Optionally handle logout
+                            >
                                 {username}
                             </span>
                         ) : (
@@ -32,7 +41,6 @@ export default function Navbar() {
                             </Link>
                         )}
                     </div>
-
 
                     {/* Centered Logo */}
                     <div className="flex justify-center">
