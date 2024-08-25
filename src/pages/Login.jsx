@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import UserContext from "../contexts/UserContext"; // Import UserContext
 
 export default function Login() {
     const [email, setEmail] = useState("");
@@ -7,6 +8,7 @@ export default function Login() {
     const [acceptedTerms, setAcceptedTerms] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
     const navigate = useNavigate();
+    const { login } = useContext(UserContext); // Use UserContext
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -28,12 +30,9 @@ export default function Login() {
             const data = await response.json();
 
             if (response.ok) {
-                // Store token and username in localStorage
+                // Use UserContext to handle login
+                login(data.username);
                 localStorage.setItem('token', data.token);
-                localStorage.setItem('username', data.username); // Store username
-
-                console.log('login successful: ', data.username); // Verify username
-                // Navigate to the home page
                 navigate("/");
             } else {
                 setErrorMessage(data.message || 'Login failed');

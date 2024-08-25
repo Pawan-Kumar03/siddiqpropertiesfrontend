@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
+import UserContext from "../contexts/UserContext"; // Import UserContext
 
 export default function Navbar() {
-    const [username, setUsername] = useState(null);
-    const [dropdownOpen, setDropdownOpen] = useState(false); // State to manage dropdown visibility
+    const { username, logout } = useContext(UserContext); // Use UserContext
+    const [dropdownOpen, setDropdownOpen] = useState(false);
     const navigate = useNavigate();
     const logoStyle = {
         width: '80px',
@@ -12,17 +13,21 @@ export default function Navbar() {
     };
 
     useEffect(() => {
-        // Retrieve the username from localStorage
-        const storedUsername = localStorage.getItem('username');
-        setUsername(storedUsername);
+        // Close dropdown if user clicks outside of it
+        const handleClickOutside = (event) => {
+            const dropdownElement = document.getElementById('dropdown');
+            if (dropdownElement && !dropdownElement.contains(event.target) && !event.target.classList.contains('dropdown-toggle')) {
+                setDropdownOpen(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
     const handleLogout = () => {
-        // Clear localStorage on logout and reset username state
-        localStorage.removeItem('token');
-        localStorage.removeItem('username');
-        setUsername(null);
-        navigate("/login"); // Redirect to login page after logout
+        logout();
+        navigate("/login");
     };
 
     const toggleDropdown = () => {
@@ -34,17 +39,17 @@ export default function Navbar() {
             <div className="lg:border-b lg:border-b-gray-600">
                 <nav className="relative container mx-auto p-4 text-gray-100">
                     {/* Login Button with Dropdown Menu */}
-                    <div className="absolute right-4 top-4">
+                    <div className="relative flex items-center justify-end">
                         {username ? (
                             <div className="relative">
                                 <span
-                                    className="bg-custom text-black py-2 px-4 rounded cursor-pointer"
-                                    onClick={toggleDropdown} // Toggle dropdown on click
+                                    className="bg-custom text-black py-2 px-4 rounded cursor-pointer dropdown-toggle"
+                                    onClick={toggleDropdown}
                                 >
                                     {username}
                                 </span>
                                 {dropdownOpen && (
-                                    <div className="absolute right-0 mt-2 bg-white text-black rounded shadow-lg">
+                                    <div id="dropdown" className="absolute right-0 mt-2 bg-white text-black rounded shadow-lg w-48 z-50">
                                         <Link
                                             to="/profile"
                                             className="block px-4 py-2 hover:bg-gray-200"
