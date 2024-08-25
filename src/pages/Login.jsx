@@ -28,8 +28,10 @@ export default function Login() {
             const data = await response.json();
 
             if (response.ok) {
-                // Store token in localStorage
+                // Store token and username in localStorage
                 localStorage.setItem('token', data.token);
+                localStorage.setItem('username', data.username); // Store username
+
 
                 // Navigate to the home page
                 navigate("/");
