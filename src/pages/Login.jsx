@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../contexts/AuthContext";
 
 export default function Login() {
     const [email, setEmail] = useState("");
@@ -7,6 +8,7 @@ export default function Login() {
     const [acceptedTerms, setAcceptedTerms] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
     const navigate = useNavigate();
+    const { login } = useContext(AuthContext);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -28,9 +30,8 @@ export default function Login() {
             const data = await response.json();
 
             if (response.ok) {
-                // Store token and username in localStorage
-                localStorage.setItem('token', data.token);
-                localStorage.setItem('username', data.username); // Store username
+                // Use context to set the username and token
+                login(data.username, data.token);
 
                 console.log('login successful: ', data.username); // Verify username
                 // Navigate to the home page
