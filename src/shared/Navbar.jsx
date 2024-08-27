@@ -4,7 +4,7 @@ import logo from "../assets/logo.png";
 import UserContext from "../contexts/UserContext"; // Import UserContext
 
 export default function Navbar() {
-    const { username, logout } = useContext(UserContext); // Use UserContext
+    const { user, logout } = useContext(UserContext); // Use UserContext
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const navigate = useNavigate();
     const logoStyle = {
@@ -34,19 +34,20 @@ export default function Navbar() {
         setDropdownOpen(!dropdownOpen);
     };
 
+
     return (
         <header className="bg-gray-800">
             <div className="lg:border-b lg:border-b-gray-600">
                 <nav className="relative container mx-auto p-4 text-gray-100">
                     {/* Login Button with Dropdown Menu */}
                     <div className="relative flex items-center justify-end">
-                        {username ? (
+                        {user ? (
                             <div className="relative">
                                 <span
                                     className="bg-custom text-black py-2 px-4 rounded cursor-pointer dropdown-toggle"
                                     onClick={toggleDropdown}
                                 >
-                                    {username}
+                                    {user.name} {/* Display username */}
                                 </span>
                                 {dropdownOpen && (
                                     <div id="dropdown" className="absolute right-0 mt-2 bg-white text-black rounded shadow-lg w-48 z-50">

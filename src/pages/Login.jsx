@@ -12,12 +12,12 @@ export default function Login() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+    
         if (!acceptedTerms) {
             setErrorMessage("You must agree to the Terms and Conditions to proceed.");
             return;
         }
-
+    
         try {
             const response = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/login', {
                 method: 'POST',
@@ -26,12 +26,14 @@ export default function Login() {
                 },
                 body: JSON.stringify({ email, password })
             });
-
+    
             const data = await response.json();
-
+    
             if (response.ok) {
-                // Use UserContext to handle login
-                login(data.username);
+                // Ensure both _id and name are set
+                const userData = { _id: data.userId, name: data.username };
+                login(userData);  // Update user state with correct data
+                localStorage.setItem('user', JSON.stringify(userData));  // Store full user data in local storage
                 localStorage.setItem('token', data.token);
                 navigate("/");
             } else {
@@ -42,6 +44,8 @@ export default function Login() {
             setErrorMessage("An error occurred. Please try again.");
         }
     };
+    
+    
 
     const handleSignupRedirect = () => {
         navigate("/signup");

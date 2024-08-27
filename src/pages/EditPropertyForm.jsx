@@ -105,14 +105,23 @@ export default function EditPropertyForm() {
         <div className="container mx-auto p-4 bg-gray-800 text-gray-100">
             <h2 className="text-2xl font-semibold text-center text-custom">Edit Property</h2>
             <form onSubmit={handleSubmit} className="flex flex-col space-y-4 w-full max-w-md mx-auto bg-gray-900 p-6 rounded">
-                <input
+                {/* <input
                     name="title"
                     type="text"
                     value={formData.title}
                     onChange={handleChange}
                     placeholder="Title"
                     className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
-                />
+                /> */}
+                <input
+                            className="w-full p-2 mb-4 text-black rounded"
+                            type="text"
+                            id="title"
+                            name="title"
+                            value={formData.title || ''}
+                            onChange={handleChange}
+                            required
+                        />
                 <input
                     name="price"
                     type="text"
