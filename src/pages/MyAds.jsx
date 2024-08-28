@@ -36,8 +36,8 @@ const MyAds = () => {
         fetchListings();
     }, []);
 
-    if (loading) return <div>Loading...</div>;
-    if (error) return <div>{error}</div>;
+    if (loading) return <div className='text-custom text-center'>Loading...</div>;
+    if (error) return <div className='text-red text-center'>{error}</div>;
 
     return (
         <div className="container mx-auto p-4">

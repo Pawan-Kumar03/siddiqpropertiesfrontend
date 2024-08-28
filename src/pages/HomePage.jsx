@@ -92,7 +92,7 @@ export default function HomePage() {
                 onPlaceAnAd={handlePlaceAnAd}
             />
             {loading ? (
-                <div className="text-center text-grey-light">Loading...</div>
+                <div className="text-center text-custom">Loading...</div>
             ) : (
                 <ResidentialForSale
                     searchParams={searchParams}
