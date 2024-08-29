@@ -9,6 +9,7 @@ import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import TermsAndConditions from "../pages/TermsAndConditions";
 import MyAds from "../pages/MyAds";
+import ProfilePage from "../pages/ProfilePage";
 
 const router = createBrowserRouter([
     {
@@ -47,7 +48,11 @@ const router = createBrowserRouter([
                 path: "/terms-and-conditions",   
                 element: <TermsAndConditions />,
             },
-            { path:"/my-ads", element:<MyAds />}
+            { path:"/my-ads", element:<MyAds />},
+            {
+                path: "/profile",
+                element: <ProfilePage />, // Add this line for the profile page
+            },
         ],
     },
 ]);

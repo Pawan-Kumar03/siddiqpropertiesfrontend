@@ -1,31 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import ListingsContext from "../contexts/ListingsContext";
 
 export default function EditPropertyForm() {
     const { id } = useParams();
     const navigate = useNavigate();
+    const { listings, updateListing } = useContext(ListingsContext);
     const [formData, setFormData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [submitted, setSubmitted] = useState(false);
 
     useEffect(() => {
-        const fetchPropertyData = async () => {
-            try {
-                const response = await fetch(`https://backend-git-main-pawan-togas-projects.vercel.app/api/listings/${id}`);
-                if (!response.ok) {
-                    throw new Error('Failed to fetch property data');
-                }
-                const data = await response.json();
-                setFormData(data);
-            } catch (error) {
-                console.error("Failed to fetch property data:", error);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchPropertyData();
-    }, [id]);
+        const selectedProperty = listings.find((listing) => listing._id === id);
+        if (selectedProperty) {
+            setFormData(selectedProperty);
+            setLoading(false);
+        } else {
+            setLoading(false); // Stop loading if no property is found
+        }
+    }, [id, listings]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -44,7 +37,6 @@ export default function EditPropertyForm() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-    
         const token = localStorage.getItem('token'); // or wherever you store the token
     
         const submissionData = new FormData();
@@ -60,26 +52,24 @@ export default function EditPropertyForm() {
     
         try {
             const response = await fetch(`https://backend-git-main-pawan-togas-projects.vercel.app/api/listings/${id}`, {
-                method: "PUT",
+                method: 'PUT',
                 headers: {
-                    'Authorization': `Bearer ${token}`, // Include token in headers
+                    'Authorization': `Bearer ${token}`
                 },
-                body: submissionData,
+                body: submissionData
             });
     
             if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.message);
+                throw new Error(`Failed to update listing: ${response.statusText}`);
             }
     
-            const result = await response.json();
+            const data = await response.json();
             setSubmitted(true);
         } catch (error) {
             alert("Failed to update listing: " + error.message);
         }
     };
     
-
     if (loading) {
         return <div className="text-center text-custom">Loading...</div>;
     }
@@ -102,7 +92,6 @@ export default function EditPropertyForm() {
             </div>
         );
     }
-
     return (
         <div className="container mx-auto p-4 bg-gray-800 text-gray-100">
             <h2 className="text-2xl font-semibold text-center text-custom">Edit Property</h2>
