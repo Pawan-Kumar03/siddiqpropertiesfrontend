@@ -10,8 +10,11 @@ export default function GetVerifiedPage() {
     const navigate = useNavigate();
 
     useEffect(() => {
+        // Check if user is authenticated
         if (!user) {
-            navigate('/login');
+            // Store the current path
+            sessionStorage.setItem('redirectPath', '/get-verified');
+            // navigate('/login');
             return;
         }
 
