@@ -28,10 +28,10 @@ export default function Login() {
             });
     
             const data = await response.json();
-    
+            console.log('data:', data)
             if (response.ok) {
                 // Ensure both _id and name are set
-                const userData = { _id: data.userId, name: data.username, email: data.email };
+                const userData = { _id: data.userId, name: data.username, email: data.email, isVerified: data.isVerified };
                 login(userData);  // Update user state with correct data
                 localStorage.setItem('user', JSON.stringify(userData));  // Store full user data in local storage
                 localStorage.setItem('token', data.token);

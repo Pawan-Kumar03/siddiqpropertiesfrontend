@@ -10,6 +10,7 @@ import Signup from "../pages/Signup";
 import TermsAndConditions from "../pages/TermsAndConditions";
 import MyAds from "../pages/MyAds";
 import ProfilePage from "../pages/ProfilePage";
+import GetVerifiedPage from '../pages/GetVerifiedPage';
 
 const router = createBrowserRouter([
     {
@@ -51,7 +52,11 @@ const router = createBrowserRouter([
             { path:"/my-ads", element:<MyAds />},
             {
                 path: "/profile",
-                element: <ProfilePage />, // Add this line for the profile page
+                element: <ProfilePage />, 
+            },
+            {
+                path: "/get-verified",
+                element: <GetVerifiedPage />, 
             },
         ],
     },
