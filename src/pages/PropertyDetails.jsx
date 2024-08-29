@@ -42,10 +42,15 @@ export default function PropertyDetails() {
     };
 
     const handleDeleteProperty = async () => {
+        const token = localStorage.getItem('token');
         if (window.confirm("Are you sure you want to delete this property?")) {
             try {
                 const response = await fetch(`https://backend-git-main-pawan-togas-projects.vercel.app/api/listings/${property._id}`, {
                     method: "DELETE",
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                      }
                 });
 
                 if (!response.ok) {
