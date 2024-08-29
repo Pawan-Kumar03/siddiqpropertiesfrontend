@@ -2,36 +2,40 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
+    const [name, setName] = useState("");
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
+    const [successMessage, setSuccessMessage] = useState("");
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Check if passwords match
         if (password !== confirmPassword) {
             setErrorMessage("Passwords do not match.");
             return;
         }
 
         try {
-            const response = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/signup', {                method: 'POST',
+            const response = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/signup', {
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ username, email, password })
+                body: JSON.stringify({ name, email, password })
             });
 
             const data = await response.json();
 
             if (response.ok) {
-                // Navigate to the login page after successful signup
-                navigate("/login");
+                // Display success message
+                setSuccessMessage("Signup successful! Redirecting to login...");
+                // Redirect to login page after a delay
+                setTimeout(() => navigate("/login"), 2000); // Delay of 2 seconds before redirection
             } else {
                 setErrorMessage(data.message || 'Signup failed');
             }
@@ -47,14 +51,14 @@ const Signup = () => {
                 <h2 className="text-2xl font-bold mb-6 text-white text-center">Create an Account</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">
-                        <label className="block text-custom text-sm font-bold mb-2" htmlFor="username">
-                            Username
+                        <label className="block text-custom text-sm font-bold mb-2" htmlFor="name">
+                            Name
                         </label>
                         <input
                             type="text"
-                            id="username"
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
+                            id="name"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
                             required
                             className="w-full px-3 py-2 border border-gray-300 rounded"
                         />
@@ -115,6 +119,11 @@ const Signup = () => {
                             {errorMessage}
                         </div>
                     )}
+                    {successMessage && (
+                        <div className="mb-4 p-2 bg-custom text-black rounded">
+                            {successMessage}
+                        </div>
+                    )}
                     <button
                         type="submit"
                         className="w-full bg-custom text-black py-2 px-4 rounded transition-colors duration-300 hover:bg-custom-dark"
@@ -128,3 +137,4 @@ const Signup = () => {
 };
 
 export default Signup;
+
