@@ -83,8 +83,8 @@ export default function GetVerifiedPage() {
                 <h2 className="text-2xl font-bold mb-6 text-center text-custom">Get Verified</h2>
                 {error && <div className="text-red-500 mb-4">{error}</div>}
                 <div className="mb-4">
-                    <label className="block text-sm font-bold mb-2 text-custom">Verification Status:</label>
-                    <p className="w-full p-2 border border-gray-300 rounded">{status}</p>
+                    <label className="block text-m font-bold mb-2 text-custom">Verification Status:</label>
+                    <p className="w-full p-2 border border-gray-300 rounded text-custom">{status}</p>
                 </div>
                 {status !== 'Verified' && (
                     <button
