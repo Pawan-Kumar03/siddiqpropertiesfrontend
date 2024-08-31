@@ -18,30 +18,34 @@ function PropertiesPage() {
     const location = queryParams.get("location");
 
     useEffect(() => {
-        if (city && location) {
-            fetch(`https://backend-git-main-pawan-togas-projects.vercel.app/api/listings?city=${city}&location=${encodeURIComponent(location)}`)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    if (Array.isArray(data)) {
-                        setProperties(data);
-                        setFilteredProperties(data);
-                    } else {
-                        console.error('Data format is not as expected:', data);
-                        setProperties([]);
-                        setFilteredProperties([]);
-                    }
-                })
-                .catch(error => {
-                    console.error('Error fetching properties:', error);
+        let url = `https://backend-git-main-pawan-togas-projects.vercel.app/api/listings?city=${encodeURIComponent(city)}`;
+
+        if (location) {
+            url += `&location=${encodeURIComponent(location)}`;
+        }
+
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (Array.isArray(data)) {
+                    setProperties(data);
+                    setFilteredProperties(data);
+                } else {
+                    console.error('Data format is not as expected:', data);
                     setProperties([]);
                     setFilteredProperties([]);
-                });
-        }
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching properties:', error);
+                setProperties([]);
+                setFilteredProperties([]);
+            });
     }, [city, location]);
 
     const handleSearch = () => {
@@ -82,10 +86,9 @@ function PropertiesPage() {
     };
 
     return (
-        
         <div className="container mx-auto p-4">
             <div className="text-center mb-8">
-                <h1 className="text-2xl sm:text-3xl font-bold text-custom">Properties in {location} ({city})</h1>
+                <h1 className="text-2xl sm:text-3xl font-bold text-custom">Properties in {location || "All Locations"} ({city})</h1>
             </div>
             
             <div className="mb-8 flex flex-col sm:flex-wrap sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 text-custom">
@@ -177,14 +180,6 @@ function PropertiesPage() {
                         Filter
                     </button>
                 </div>
-            </div>
-
-            <div className="text-center mb-8">
-                <h1 className="text-2xl sm:text-3xl font-bold text-custom">Properties in {location} ({city})</h1>
-            </div>
-            
-            <div className="mb-8 flex flex-col sm:flex-wrap sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 text-custom">
-                {/* Your existing filter controls */}
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

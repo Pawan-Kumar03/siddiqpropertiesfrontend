@@ -1,6 +1,7 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import ListingsContext from "../contexts/ListingsContext"; // Import ListingsContext
+import ListingsContext from "../contexts/ListingsContext"; 
+import UserContext from '../contexts/UserContext';
 
 export default function PlaceAnAdPage() {
   const { addListing } = useContext(ListingsContext); // Use listings context
@@ -25,8 +26,18 @@ export default function PlaceAnAdPage() {
   });
   const [step, setStep] = useState(1);
   const [submitted, setSubmitted] = useState(false); // State variable for submission success
+  const { user } = useContext(UserContext); // Access user from UserContext
   const navigate = useNavigate();
-
+  useEffect(() => {
+    // If user is not logged in, redirect to the login page
+    if (!user) {
+      navigate('/login');
+    }
+  }, [user, navigate]);
+   // Early return to avoid rendering the component before navigation
+   if (!user) {
+    return null;
+  }
   const handleChange = (e) => {
     const { name, value } = e.target;
     const newValue = (name === 'beds' || name === 'baths') ? parseInt(value, 10) || 0 : value;

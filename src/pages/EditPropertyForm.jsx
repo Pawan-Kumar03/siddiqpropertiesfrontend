@@ -95,7 +95,7 @@ export default function EditPropertyForm() {
     return (
         <div className="container mx-auto p-4 bg-gray-800 text-gray-100">
             <h2 className="text-2xl font-semibold text-center text-custom">Edit Property</h2>
-            <form onSubmit={handleSubmit} className="flex flex-col space-y-4 w-full max-w-md mx-auto bg-gray-900 p-6 rounded">
+            <form onSubmit={handleSubmit} className="flex flex-col space-y-4 w-full max-w-md mx-auto bg-gray-900 p-6 rounded border-4 border-custom">
                 <input
                     name="title"
                     type="text"

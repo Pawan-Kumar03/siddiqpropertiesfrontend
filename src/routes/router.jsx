@@ -11,6 +11,8 @@ import TermsAndConditions from "../pages/TermsAndConditions";
 import MyAds from "../pages/MyAds";
 import ProfilePage from "../pages/ProfilePage";
 import GetVerifiedPage from '../pages/GetVerifiedPage';
+import AboutUsPage from '../pages/AboutUsPage';  // New Page
+import ContactUsPage from '../pages/ContactUsPage';  // New Page
 
 const router = createBrowserRouter([
     {
@@ -57,6 +59,14 @@ const router = createBrowserRouter([
             {
                 path: "/get-verified",
                 element: <GetVerifiedPage />, 
+            },
+            {
+                path: "/about-us",
+                element: <AboutUsPage />, 
+            },
+            {
+                path: "/contact-us",
+                element: <ContactUsPage />, 
             },
         ],
     },
