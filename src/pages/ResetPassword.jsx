@@ -8,6 +8,7 @@ export default function ResetPassword() {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
+    const [showPassword, setShowPassword] = useState(false); // State for toggling password visibility
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -48,7 +49,7 @@ export default function ResetPassword() {
                             New Password
                         </label>
                         <input
-                            type="password"
+                            type={showPassword ? "text" : "password"} // Toggle input type
                             id="newPassword"
                             value={newPassword}
                             onChange={(e) => setNewPassword(e.target.value)}
@@ -61,13 +62,24 @@ export default function ResetPassword() {
                             Confirm Password
                         </label>
                         <input
-                            type="password"
+                            type={showPassword ? "text" : "password"} // Toggle input type
                             id="confirmPassword"
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
                             required
                             className="w-full px-3 py-2 border border-gray-300 rounded"
                         />
+                    </div>
+                    <div className="mb-4">
+                        <label className="inline-flex items-center text-custom">
+                            <input
+                                type="checkbox"
+                                className="form-checkbox"
+                                checked={showPassword}
+                                onChange={() => setShowPassword(!showPassword)} // Toggle showPassword state
+                            />
+                            <span className="ml-2">Show Password</span>
+                        </label>
                     </div>
                     {errorMessage && (
                         <div className="mb-4 p-2 bg-red-500 text-white rounded">
