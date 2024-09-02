@@ -12,64 +12,35 @@ export default function GetVerifiedPage() {
     useEffect(() => {
         // Check if user is authenticated
         if (!user) {
-            // Store the current path
             sessionStorage.setItem('redirectPath', '/get-verified');
-            // navigate('/login');
             return;
         }
-
-        // Fetch current verification status
-        const fetchStatus = async () => {
-            try {
-                const response = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/verify/status', {
-                    method: 'GET',
-                    headers: {
-                        'Authorization': `Bearer ${localStorage.getItem('token')}`
-                    }
-                });
-
-                if (response.ok) {
-                    const data = await response.json();
-                    setStatus(data.verificationStatus || 'Not verified yet');
-                } else {
-                    // Check if the response is HTML
-                    const text = await response.text();
-                    if (text.startsWith('<!DOCTYPE html>')) {
-                        throw new Error('Unexpected response from the server');
-                    }
-                    const errorData = JSON.parse(text);
-                    throw new Error(errorData.message || 'An error occurred');
-                }
-            } catch (err) {
-                console.error('Fetch verification status error:', err);
-                setError(err.message || 'An error occurred');
-            }
-        };
-
-        fetchStatus();
+            setStatus(user.isVerified ? 'Verified' : 'Not verified yet');
     }, [user, navigate]);
-
     const handleRequestVerification = async () => {
         setIsRequesting(true);
+       // Get the user from localStorage
+        const user = localStorage.getItem('user');
+        // Parse the string back into an object
+        const parsedUser = JSON.parse(user);
+        // Now you can access the token
+        const token = parsedUser.token;
+        // console.log('user:', parsedUser);
+        // console.log('token:', token);
         try {
-            const response = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/verify', {
+            const response = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/verify/request', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                    'Authorization': `Bearer ${token}`
                 }
             });
 
             if (response.ok) {
-                alert('Verification request submitted successfully');
+                alert('Verification email sent successfully. Please check your inbox.');
                 setStatus('Verification requested');
             } else {
-                // Check if the response is HTML
-                const text = await response.text();
-                if (text.startsWith('<!DOCTYPE html>')) {
-                    throw new Error('Unexpected response from the server');
-                }
-                const errorData = JSON.parse(text);
+                const errorData = await response.json();
                 throw new Error(errorData.message || 'An error occurred');
             }
         } catch (err) {

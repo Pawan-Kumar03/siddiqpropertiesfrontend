@@ -12,41 +12,35 @@ export default function Login() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-    
+      
         if (!acceptedTerms) {
-            setErrorMessage("You must agree to the Terms and Conditions to proceed.");
-            return;
+          setErrorMessage("You must agree to the Terms and Conditions to proceed.");
+          return;
         }
-    
+      
         try {
-            const response = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ email, password })
-            });
-    
-            const data = await response.json();
-            console.log('data:', data)
-            if (response.ok) {
-                // Ensure both _id and name are set
-                const userData = { _id: data.userId, name: data.username, email: data.email, isVerified: data.isVerified };
-                login(userData);  // Update user state with correct data
-                localStorage.setItem('user', JSON.stringify(userData));  // Store full user data in local storage
-                localStorage.setItem('token', data.token);
-                navigate("/");
-            } else {
-                setErrorMessage(data.message || 'Login failed');
-            }
+          const response = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/login', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, password })
+          });
+      
+          const data = await response.json();
+          if (response.ok) {
+            // Ensure both _id and name are set
+            const userData = { _id: data.userId, name: data.username, email: data.email, isVerified: data.isVerified, token: data.token };
+            login(userData);  // Update user state with correct data
+            navigate("/");
+          } else {
+            setErrorMessage(data.message || 'Login failed');
+          }
         } catch (error) {
-            console.error("Login failed:", error);
-            setErrorMessage("An error occurred. Please try again.");
+          setErrorMessage('An error occurred. Please try again.');
         }
-    };
-    
-    
-
+      };
+      
     const handleSignupRedirect = () => {
         navigate("/signup");
     };
