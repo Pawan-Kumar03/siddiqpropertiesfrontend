@@ -37,8 +37,15 @@ export default function EditPropertyForm() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const token = localStorage.getItem('token'); // or wherever you store the token
-    
+       // Get the user from localStorage
+       const user = localStorage.getItem('user');
+       // Parse the string back into an object
+       const parsedUser = JSON.parse(user);
+       // Now you can access the token
+       const token = parsedUser.token;
+       // console.log('user:', parsedUser);
+       // console.log('token:', token);
+   
         const submissionData = new FormData();
         for (const key in formData) {
             if (key === "images" && formData.images) {

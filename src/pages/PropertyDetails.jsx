@@ -42,8 +42,15 @@ export default function PropertyDetails() {
     };
 
     const handleDeleteProperty = async () => {
-        const token = localStorage.getItem('token');
-        if (window.confirm("Are you sure you want to delete this property?")) {
+       // Get the user from localStorage
+       const user = localStorage.getItem('user');
+       // Parse the string back into an object
+       const parsedUser = JSON.parse(user);
+       // Now you can access the token
+       const token = parsedUser.token;
+       // console.log('user:', parsedUser);
+       // console.log('token:', token);
+     if (window.confirm("Are you sure you want to delete this property?")) {
             try {
                 const response = await fetch(`https://backend-git-main-pawan-togas-projects.vercel.app/api/listings/${property._id}`, {
                     method: "DELETE",

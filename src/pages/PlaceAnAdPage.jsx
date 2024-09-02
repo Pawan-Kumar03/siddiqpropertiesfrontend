@@ -93,9 +93,15 @@ export default function PlaceAnAdPage() {
       submissionData.set('phone', formData.agentCallNumber);
       submissionData.set('whatsapp', formData.agentWhatsapp);
     // } 
-    console.log('Broker',submissionData['broker'])
-    console.log('Broker',formData.agentName)
-
+    // Get the user from localStorage
+    const user = localStorage.getItem('user');
+    // Parse the string back into an object
+    const parsedUser = JSON.parse(user);
+    // Now you can access the token
+    const token = parsedUser.token;
+    // console.log('user:', parsedUser);
+    // console.log('token:', token);
+ 
   
     try {
       // Fetch listings first
@@ -123,7 +129,6 @@ export default function PlaceAnAdPage() {
       // After listings are fetched, proceed to submit data
       let postResponse;
       const postStartTime = Date.now();
-      const token = localStorage.getItem('token');
       while (true) {
         postResponse = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/listings', {
           method: 'POST',

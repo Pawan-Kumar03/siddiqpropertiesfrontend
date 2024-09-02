@@ -9,9 +9,15 @@ const MyAds = () => {
     useEffect(() => {
         const fetchListings = async () => {
             try {
-                // Get the token from localStorage
-                const token = localStorage.getItem('token');
-
+              // Get the user from localStorage
+                const user = localStorage.getItem('user');
+                // Parse the string back into an object
+                const parsedUser = JSON.parse(user);
+                // Now you can access the token
+                const token = parsedUser.token;
+                // console.log('user:', parsedUser);
+                // console.log('token:', token);
+            
                 const response = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/user-listings', {
                     method: 'GET',
                     headers: {
