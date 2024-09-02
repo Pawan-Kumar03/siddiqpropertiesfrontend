@@ -39,14 +39,18 @@ export default function Login() {
         } catch (error) {
           setErrorMessage('An error occurred. Please try again.');
         }
-      };
-      
+    };
+    
     const handleSignupRedirect = () => {
         navigate("/signup");
     };
 
     const handleTermsRedirect = () => {
         navigate("/terms-and-conditions", { state: { from: "/login" } });
+    };
+
+    const handleForgotPassword = () => {
+        navigate("/forgot-password");
     };
 
     return (
@@ -117,6 +121,15 @@ export default function Login() {
                         >
                             Don't have an account? Create one
                         </button>
+                        <div className="mt-2">
+                            <button
+                                type="button"
+                                onClick={handleForgotPassword}
+                                className="text-blue-400 underline"
+                            >
+                                Forgot Password?
+                            </button>
+                        </div>
                     </div>
                 </form>
             </div>
