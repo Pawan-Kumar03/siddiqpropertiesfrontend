@@ -14,6 +14,9 @@ import GetVerifiedPage from '../pages/GetVerifiedPage';
 import AboutUsPage from '../pages/AboutUsPage';  // New Page
 import ContactUsPage from '../pages/ContactUsPage';  // New Page
 import VerifyPage from '../pages/VerifyPage'
+import ForgotPassword from '../pages/ForgotPassword'
+import ResetPassword from "../pages/ResetPassword";
+
 const router = createBrowserRouter([
     {
         path: "/",
@@ -71,6 +74,14 @@ const router = createBrowserRouter([
             {
                 path: "/verify/:token",
                 element: <VerifyPage />, 
+            },
+            {
+                path: "/forgot-password",
+                element: <ForgotPassword />, 
+            },
+            {
+                path: "/reset-password/:token",
+                element: <ResetPassword />,
             },
         ],
     },

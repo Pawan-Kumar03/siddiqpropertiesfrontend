@@ -9,7 +9,7 @@ export default function ForgotPassword() {
     e.preventDefault();
 
     try {
-      const response = await fetch('/api/password-reset/request', {
+      const response = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/password-reset-request', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email })
