@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
 export default function VerifyPage() {
-  const { token } = useParams();
+  const { token } = useParams(); // Get the token from the URL
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
 
+  // Function to handle the verification process
   const handleVerification = async () => {
     try {
       const response = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/verify', {
@@ -13,7 +14,7 @@ export default function VerifyPage() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ token }),
+        body: JSON.stringify({ token }), // Send the token to the backend
       });
 
       if (response.ok) {
@@ -29,6 +30,7 @@ export default function VerifyPage() {
     }
   };
 
+  // Automatically trigger the verification when the component mounts
   useEffect(() => {
     if (token) {
       handleVerification();
@@ -40,12 +42,6 @@ export default function VerifyPage() {
       <div className="w-full max-w-md bg-grey-darker p-8 rounded shadow-md border-4 border-custom">
         <h2 className="text-2xl font-bold mb-6 text-center text-custom">Email Verification</h2>
         <p className="text-custom">{message}</p>
-        <button
-          onClick={handleVerification}
-          className="w-full bg-custom text-black py-2 px-4 rounded mt-4"
-        >
-          Verify
-        </button>
       </div>
     </div>
   );
