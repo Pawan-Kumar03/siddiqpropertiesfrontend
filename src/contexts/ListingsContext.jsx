@@ -32,8 +32,7 @@ export const ListingsProvider = ({ children }) => {
         throw new Error('Something went wrong');
       }
       const addedListing = await response.json();
-      setListings(prevListings => [...prevListings, addedListing]);
-      // alert('Listing added successfully!');
+      setListings(prevListings => [...prevListings, addedListing]); // Update state with new listing
     } catch (error) {
       console.error('Failed to add listing:', error);
       alert('Failed to add listing: ' + error.message);
@@ -54,7 +53,6 @@ export const ListingsProvider = ({ children }) => {
       }
       const updatedListingData = await response.json();
       setListings(prevListings => prevListings.map(listing => listing._id === id ? updatedListingData : listing));
-      // alert('Listing updated successfully!');
     } catch (error) {
       console.error('Failed to update listing:', error);
       alert('Failed to update listing: ' + error.message);
@@ -71,10 +69,7 @@ export const ListingsProvider = ({ children }) => {
         throw new Error('Failed to delete listing');
       }
 
-      // Remove the deleted listing from the state
-      setListings(prevListings => prevListings.filter(listing => listing._id !== id));
-
-      // alert('Listing deleted successfully!');
+      setListings(prevListings => prevListings.filter(listing => listing._id !== id)); // Update state to remove listing
     } catch (error) {
       console.error('Failed to delete listing:', error);
       alert('Failed to delete listing: ' + error.message);

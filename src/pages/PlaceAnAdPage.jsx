@@ -87,7 +87,7 @@ export default function PlaceAnAdPage() {
   
     // Add agent details to the submission if the user is an agent
     // if (!formData.landlord) {
-      console.log('inside')
+      // console.log('inside')
       submissionData.set('broker', formData.agentName);
       submissionData.set('email', formData.agentEmail);
       submissionData.set('phone', formData.agentCallNumber);
@@ -121,7 +121,7 @@ export default function PlaceAnAdPage() {
       }
   
       // Print submissionData for debugging
-      console.log('Submission Data: ');
+      // console.log('Submission Data: ');
       submissionData.forEach((value, key) => {
         console.log(key, value);
       });
@@ -151,6 +151,7 @@ export default function PlaceAnAdPage() {
       const result = await postResponse.json();
   
       setSubmitted(true);
+      await addListing(submissionData);
     } catch (error) {
       console.log('Failed to submit listing: ' + error.message);
     }
