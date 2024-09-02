@@ -26,8 +26,11 @@ export default function PlaceAnAdPage() {
   });
   const [step, setStep] = useState(1);
   const [submitted, setSubmitted] = useState(false); // State variable for submission success
-  const { user } = useContext(UserContext); // Access user from UserContext
+  // const { user } = useContext(UserContext); // Access user from UserContext
+   // Get the user from localStorage
+   const user = localStorage.getItem('user');
   const navigate = useNavigate();
+  
   useEffect(() => {
     // If user is not logged in, redirect to the login page
     if (!user) {
