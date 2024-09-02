@@ -13,7 +13,7 @@ import ProfilePage from "../pages/ProfilePage";
 import GetVerifiedPage from '../pages/GetVerifiedPage';
 import AboutUsPage from '../pages/AboutUsPage';  // New Page
 import ContactUsPage from '../pages/ContactUsPage';  // New Page
-
+import VerifyPage from '../pages/VerifyPage'
 const router = createBrowserRouter([
     {
         path: "/",
@@ -67,6 +67,10 @@ const router = createBrowserRouter([
             {
                 path: "/contact-us",
                 element: <ContactUsPage />, 
+            },
+            {
+                path: "/verify/:token",
+                element: <VerifyPage />, 
             },
         ],
     },
