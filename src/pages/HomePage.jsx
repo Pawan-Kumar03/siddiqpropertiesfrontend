@@ -83,7 +83,55 @@ export default function HomePage() {
             </div>
         );
     }
+    let refreshTimeout;
 
+    // Function to start the refresh timeout
+    function startTokenRefreshTimer(expiryTime) {
+        // Clear any existing timeouts
+        clearTimeout(refreshTimeout);
+    
+        // Calculate time remaining (e.g., refresh 5 minutes before expiry)
+        const timeRemaining = expiryTime - Date.now() - (5 * 60 * 1000);
+     // Get the user from localStorage
+     const user = localStorage.getItem('user');
+     // Parse the string back into an object
+     const parsedUser = JSON.parse(user);
+     // Now you can access the token
+     const token = parsedUser.token;
+     // console.log('user:', parsedUser);
+     // console.log('token:', token);
+ 
+        // Set timeout to refresh token
+        refreshTimeout = setTimeout(() => {
+            fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/refresh-token', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.token) {
+                    localStorage.setItem('token', data.token);
+                    startTokenRefreshTimer(Date.now() + 3600000); // Restart timer with new expiry
+                }
+            })
+            .catch(error => {
+                console.error('Token refresh error:', error);
+                // Handle error, possibly force logout
+            });
+        }, timeRemaining);
+    }
+    
+    // Start the timer when the user logs in or refreshes the page
+    document.addEventListener('DOMContentLoaded', () => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            const tokenData = JSON.parse(atob(token.split('.')[1]));
+            startTokenRefreshTimer(tokenData.exp * 1000);
+        }
+    });
+    
     return (
         <div className="bg-gray-800 min-h-screen">
             <Banner
