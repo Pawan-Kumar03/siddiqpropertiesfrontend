@@ -54,7 +54,7 @@ const MyAds = () => {
                         <Card key={listing._id} item={listing} />
                     ))
                 ) : (
-                    <div>No properties found.</div>
+                    <div className='text-custom text-center'>No properties found.</div>
                 )}
             </div>
         </div>
