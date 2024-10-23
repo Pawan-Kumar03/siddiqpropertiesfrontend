@@ -5,18 +5,12 @@ import UserContext from "../contexts/UserContext"; // Import UserContext
 export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [acceptedTerms, setAcceptedTerms] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
     const navigate = useNavigate();
     const { login } = useContext(UserContext); // Use UserContext
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-      
-        if (!acceptedTerms) {
-          setErrorMessage("You must agree to the Terms and Conditions to proceed.");
-          return;
-        }
       
         try {
           const response = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/login', {
@@ -43,10 +37,6 @@ export default function Login() {
     
     const handleSignupRedirect = () => {
         navigate("/signup");
-    };
-
-    const handleTermsRedirect = () => {
-        navigate("/terms-and-conditions", { state: { from: "/login" } });
     };
 
     const handleForgotPassword = () => {
@@ -95,24 +85,6 @@ export default function Login() {
                     >
                         Login
                     </button>
-                    <div className="ml-4 flex items-center mt-4">
-                        <input
-                            type="checkbox"
-                            id="terms"
-                            checked={acceptedTerms}
-                            onChange={() => setAcceptedTerms(!acceptedTerms)}
-                            className="mr-2"
-                        />
-                        <label htmlFor="terms" className="text-white text-sm">
-                            By signing up, I agree to the{" "}
-                            <button
-                                onClick={handleTermsRedirect}
-                                className="text-blue-400 underline"
-                            >
-                                Terms and Conditions
-                            </button>.
-                        </label>
-                    </div>
                     <div className="mt-4 text-center">
                         <button
                             type="button"

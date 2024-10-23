@@ -3,11 +3,11 @@ import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
     const [name, setName] = useState("");
-    const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
+    const [acceptedTerms, setAcceptedTerms] = useState(false); // New state for terms acceptance
     const [errorMessage, setErrorMessage] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
     const navigate = useNavigate();
@@ -17,6 +17,11 @@ const Signup = () => {
 
         if (password !== confirmPassword) {
             setErrorMessage("Passwords do not match.");
+            return;
+        }
+
+        if (!acceptedTerms) {
+            setErrorMessage("You must agree to the Terms and Conditions to proceed.");
             return;
         }
 
@@ -43,6 +48,10 @@ const Signup = () => {
             console.error("Signup failed:", error);
             setErrorMessage("An error occurred. Please try again.");
         }
+    };
+
+    const handleTermsRedirect = () => {
+        navigate("/terms-and-conditions", { state: { from: "/signup" } });
     };
 
     return (
@@ -114,6 +123,25 @@ const Signup = () => {
                             Show Password
                         </label>
                     </div>
+                    {/* Terms and Conditions Checkbox */}
+                    <div className="flex items-center mb-4">
+                        <input
+                            type="checkbox"
+                            id="terms"
+                            checked={acceptedTerms}
+                            onChange={() => setAcceptedTerms(!acceptedTerms)}
+                            className="mr-2"
+                        />
+                        <label htmlFor="terms" className="text-white text-sm">
+                            By signing up, I agree to the{" "}
+                            <button
+                                onClick={handleTermsRedirect}
+                                className="text-blue-400 underline"
+                            >
+                                Terms and Conditions
+                            </button>.
+                        </label>
+                    </div>
                     {errorMessage && (
                         <div className="mb-4 p-2 bg-red-500 text-white rounded">
                             {errorMessage}
@@ -137,4 +165,3 @@ const Signup = () => {
 };
 
 export default Signup;
-
