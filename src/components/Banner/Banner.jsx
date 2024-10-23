@@ -157,6 +157,12 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                             <div className="flex flex-col mb-3">
                                 <label className="mb-1 text-gray-300">Location</label>
                                 <div className="flex flex-wrap items-center">
+                                    <input
+                                        type="text"
+                                        placeholder="Add location and press Enter"
+                                        onKeyPress={handleAddLocation}
+                                        className="flex-1 p-2 lg:rounded-md rounded-full border border-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
+                                    />
                                     {locations.map((loc, index) => (
                                         <div key={index} className="flex items-center space-x-1 mb-1 mr-1 bg-gray-700 dark:bg-gray-900 px-2 py-1 rounded-full">
                                             <span className="text-sm text-gray-100">{loc}</span>
@@ -167,12 +173,6 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                                             </button>
                                         </div>
                                     ))}
-                                    <input
-                                        type="text"
-                                        placeholder="Add location and press Enter"
-                                        onKeyPress={handleAddLocation}
-                                        className="flex-1 p-2 lg:rounded-md rounded-full border border-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
-                                    />
                                 </div>
                             </div>
                             <div className="flex flex-col mb-3">

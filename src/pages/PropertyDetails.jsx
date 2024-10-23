@@ -80,9 +80,13 @@ export default function PropertyDetails() {
 
     const handleContactBroker = (contactMethod) => {
         if (!property) return;
-
-        const message = `Property Details:\n\nTitle: ${property.title}\nPrice: ${property.price}\nCity: ${property.city}\nLocation: ${property.location}\nProperty Type: ${property.propertyType}\nBeds: ${property.beds}`;
-
+    
+        // Generate the property URL
+        const propertyLink = `${window.location.origin}/property/${property._id}`;
+    
+        // Update the message to include the property link
+        const message = `Property Details:\n\nTitle: ${property.title}\nPrice: ${property.price}\nCity: ${property.city}\nLocation: ${property.location}\nProperty Type: ${property.propertyType}\nBeds: ${property.beds}\n\nProperty Link: ${propertyLink}`;
+    
         switch (contactMethod) {
             case 'Email':
                 const emailSubject = `Interested in ${property.title}`;
@@ -105,6 +109,7 @@ export default function PropertyDetails() {
                 break;
         }
     };
+    
     const processImages = (images) => {
         if (typeof images === "string") {
             return images.split('/uploads/').filter(image => image).map(image => `/uploads/${image}`);
