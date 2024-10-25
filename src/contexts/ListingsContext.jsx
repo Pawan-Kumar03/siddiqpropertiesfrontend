@@ -35,7 +35,7 @@ export const ListingsProvider = ({ children }) => {
       setListings(prevListings => [...prevListings, addedListing]); // Update state with new listing
     } catch (error) {
       console.error('Failed to add listing:', error);
-      alert('Failed to add listing: ' + error.message);
+      // alert('Failed to add listing: ' + error.message);
     }
   };
 
