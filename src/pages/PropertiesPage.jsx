@@ -111,7 +111,7 @@ function PropertiesPage() {
                         className="p-2 text-sm sm:text-base border border-gray-300 rounded"
                     >
                         <option value="All">All</option>
-                        <option value="Sell">For Sale</option>
+                        <option value="sell">For Sale</option>
                         <option value="buy">For Rent</option>
                     </select>
                 </div>
