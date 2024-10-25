@@ -21,10 +21,17 @@ export const ListingsProvider = ({ children }) => {
 
   const addListing = async (newListing) => {
     try {
+      // Get the user from localStorage
+    const user = localStorage.getItem('user');
+    // Parse the string back into an object
+    const parsedUser = JSON.parse(user);
+    // Now you can access the token
+    const token = parsedUser.token;
       const response = await fetch(`https://backend-git-main-pawan-togas-projects.vercel.app/api/listings`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`, // Include the Authorization header
+          'Accept': 'application/json'
         },
         body: JSON.stringify(newListing),
       });
@@ -34,7 +41,7 @@ export const ListingsProvider = ({ children }) => {
       const addedListing = await response.json();
       setListings(prevListings => [...prevListings, addedListing]); // Update state with new listing
     } catch (error) {
-      console.error('Failed to add listing:', error);
+      // console.error('Failed to add listing:', error);
       // alert('Failed to add listing: ' + error.message);
     }
   };
