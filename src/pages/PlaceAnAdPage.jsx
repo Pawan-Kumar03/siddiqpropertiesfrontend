@@ -360,15 +360,15 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
 
   const validateForm = () => {
     const errors = {};
-    const requiredFields = ['title', 'price', 'city','images', 'location', 'propertyType','images', 'beds', 'baths', 'landlordName','agentName', 'agentCallNumber', 'agentEmail', 'agentWhatsapp', 'purpose','status'];
+    const requiredFields = ['title', 'price', 'city','images', 'location', 'propertyType','images', 'beds', 'baths', 'landlordName','agentName', 'agentCallNumber', 'agentEmail', 'agentWhatsapp', 'purpose'];
 
     requiredFields.forEach(field => {
       if (!details[field] || details[field] === '') {
         errors[field] = `${field} field is required`;
       }
-      if(field === 'status' && details.status === null) {
-        errors[field] = 'You must select if the property is complete or incomplete' ;
-      }
+      // if(field === 'status' && details.status === null) {
+      //   errors[field] = 'You must select if the property is complete or incomplete' ;
+      // }
       // if(field=='images'){
       //   errors[field] = `${field} field is required`;
 
