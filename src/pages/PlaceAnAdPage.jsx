@@ -76,7 +76,7 @@ export default function PlaceAnAdPage() {
     // Create a new FormData object
     const submissionData = new FormData();
   // Ensure the status field is set to "incomplete" if it's not provided
-  if (!formData.status || formData.status.trim() === "") {
+  if (!formData.status ) {
     formData.status = false;
   }
     // Iterate through formData and append data to submissionData
