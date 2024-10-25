@@ -50,40 +50,51 @@ function PropertiesPage() {
 
     const handleSearch = () => {
         let filtered = properties;
-
+    
+        // Apply search query filter if present
         if (searchQuery) {
             filtered = filtered.filter(property => 
                 property.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
                 property.description.toLowerCase().includes(searchQuery.toLowerCase())
             );
         }
-
+    
+        // Apply purpose filter if a specific purpose is selected
         if (purpose !== "All") {
             filtered = filtered.filter(property => property.purpose === purpose);
         }
-
+    
+        // Apply property type filter if a specific property type is selected
         if (propertyType !== "All") {
             filtered = filtered.filter(property => property.propertyType === propertyType);
         }
-
+    
+        // Apply minimum price filter if a minimum price is set
         if (minPrice) {
-            filtered = filtered.filter(property => parseInt(property.price.replace(/[^\d]/g, ''), 10) >= parseInt(minPrice, 10));
+            filtered = filtered.filter(property => 
+                parseInt(property.price.replace(/[^\d]/g, ''), 10) >= parseInt(minPrice, 10)
+            );
         }
-
+    
+        // Apply maximum price filter if a maximum price is set
         if (maxPrice) {
-            filtered = filtered.filter(property => parseInt(property.price.replace(/[^\d]/g, ''), 10) <= parseInt(maxPrice, 10));
+            filtered = filtered.filter(property => 
+                parseInt(property.price.replace(/[^\d]/g, ''), 10) <= parseInt(maxPrice, 10)
+            );
         }
-
+    
+        // Apply beds filter if a specific number of beds is selected
         if (beds !== "Any") {
             filtered = filtered.filter(property => property.beds === parseInt(beds));
         }
-
+    
+        // Apply baths filter if a specific number of baths is selected
         if (baths !== "Any") {
             filtered = filtered.filter(property => property.baths === parseInt(baths));
         }
-
+    
         setFilteredProperties(filtered);
-    };
+    };    
 
     return (
         <div className="container mx-auto p-4">
@@ -188,7 +199,7 @@ function PropertiesPage() {
                         <Card key={property._id} item={property} />
                     ))
                 ) : (
-                    <p>No properties found for the selected criteria.</p>
+                    <p className="text-custom">No properties found for the selected criteria.</p>
                 )}
             </div>
         </div>
