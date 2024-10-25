@@ -633,7 +633,7 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
     
         </>
     
-        {details.errors.status && <p className="text-red-500 text-sm mt-2">Please Select Property Complete/Incomplete Under Landlord</p>}
+        {/* {details.errors.status && <p className="text-red-500 text-sm mt-2">Please Select Property Complete/Incomplete Under Landlord</p>} */}
         {details.errors.landlordName && <p className="text-red-500 text-sm">Please Click Landlord</p>}
         {/* {details.errors.images && <p className="text-red-500 text-sm">{details.errors.images}</p>} */}
       
