@@ -105,7 +105,7 @@ export default function EditPropertyForm() {
             <h2 className="text-2xl font-semibold text-center text-custom">Edit Property</h2>
             
             {isUpdating ? (
-            <div className="text-center bg-yellow-200 text-yellow-700 p-2 rounded mb-4">
+            <div className="text-center bg-custom text-black p-2 rounded mb-4">
                 Your Ad is updating...
             </div>
         ) : (

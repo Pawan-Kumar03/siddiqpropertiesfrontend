@@ -153,7 +153,7 @@ export default function PlaceAnAdPage() {
   return (
     <div className="container mx-auto p-4">
       {isPublishing ? (
-        <div className="text-center text-lg bg-yellow-200 text-yellow-800 p-4 rounded">
+        <div className="text-center text-black bg-custom  p-4 rounded">
           Your Ad is publishing...
         </div>
       ) : (
