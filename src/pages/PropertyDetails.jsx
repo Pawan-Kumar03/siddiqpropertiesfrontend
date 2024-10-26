@@ -164,8 +164,8 @@ export default function PropertyDetails() {
                     {showDeleteModal && (
                         <div className="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center">
                             <div className="bg-white rounded-lg p-8">
-                                <h3 className="text-lg font-semibold mb-4">Confirm Deletion</h3>
-                                <p className="mb-4">Are you sure you want to delete this property?</p>
+                                <h3 className="text-lg font-semibold mb-4 text-custom">Confirm Deletion</h3>
+                                <p className="mb-4 text-custom">Are you sure you want to delete this property?</p>
                                 <div className="flex justify-end space-x-4">
                                     <button
                                         onClick={() => setShowDeleteModal(false)}
