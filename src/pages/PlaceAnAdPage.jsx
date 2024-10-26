@@ -26,6 +26,7 @@ export default function PlaceAnAdPage() {
   });
   const [step, setStep] = useState(1);
   const [submitted, setSubmitted] = useState(false); // State variable for submission success
+  const [isPublishing, setIsPublishing] = useState(false);
   // const { user } = useContext(UserContext); // Access user from UserContext
    // Get the user from localStorage
    const user = localStorage.getItem('user');
@@ -69,100 +70,60 @@ export default function PlaceAnAdPage() {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
-    // Adding a 2-second delay at the start
-    await new Promise(resolve => setTimeout(resolve, 2000));
-  
-    // Create a new FormData object
-    const submissionData = new FormData();
-  // Ensure the status field is set to "incomplete" if it's not provided
-  if (!formData.status ) {
-    formData.status = false;
-  }
-    // Iterate through formData and append data to submissionData
-    for (const key in formData) {
-      if (key === 'images') {
-        // Handle images separately if formData has an 'images' key
-        formData.images.forEach(image => {
-          submissionData.append('images', image);
-        });
-      } else {
-        submissionData.append(key, formData[key]);
+
+    setIsPublishing(true); // Set publishing state to true
+
+    try {
+      // Adding a 2-second delay at the start
+      await new Promise(resolve => setTimeout(resolve, 2000));
+
+      const submissionData = new FormData();
+      if (!formData.status) {
+        formData.status = false;
       }
-    }
-  
-    // Add agent details to the submission if the user is an agent
-    // if (!formData.landlord) {
-      // console.log('inside')
+
+      for (const key in formData) {
+        if (key === 'images') {
+          formData.images.forEach(image => {
+            submissionData.append('images', image);
+          });
+        } else {
+          submissionData.append(key, formData[key]);
+        }
+      }
+
       submissionData.set('broker', formData.agentName);
       submissionData.set('email', formData.agentEmail);
       submissionData.set('phone', formData.agentCallNumber);
       submissionData.set('whatsapp', formData.agentWhatsapp);
-    // } 
-    // Get the user from localStorage
-    const user = localStorage.getItem('user');
-    // Parse the string back into an object
-    const parsedUser = JSON.parse(user);
-    // Now you can access the token
-    const token = parsedUser.token;
-    // console.log('user:', parsedUser);
-    // console.log('token:', token);
- 
-  
-    try {
-      // Fetch listings first
-      let listingsResponse;
-      const startTime = Date.now();
-      while (true) {
-        const response = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/listings');
-        if (response.ok) {
-          listingsResponse = await response.json();
-          break;
-        } else {
-          await new Promise(resolve => setTimeout(resolve, 1000));
-          if (Date.now() - startTime > 10000) {
-            throw new Error('Timeout waiting for listings');
-          }
-        }
-      }
-  
-      // Print submissionData for debugging
-      // console.log('Submission Data: ');
-      submissionData.forEach((value, key) => {
-        console.log(key, value);
+
+      const user = localStorage.getItem('user');
+      const parsedUser = JSON.parse(user);
+      const token = parsedUser.token;
+
+      let postResponse = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/listings', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Accept': 'application/json',
+        },
+        body: submissionData,
       });
-  
-      // After listings are fetched, proceed to submit data
-      let postResponse;
-      const postStartTime = Date.now();
-      while (true) {
-        postResponse = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/listings', {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${token}`, // Include the Authorization header
-            'Accept': 'application/json'
-          },
-          body: submissionData,
-        });
-        if (postResponse.ok) {
-          break;
-        } else {
-          await new Promise(resolve => setTimeout(resolve, 1000));
-          if (Date.now() - postStartTime > 10000) {
-            throw new Error('Timeout waiting for post response');
-          }
-        }
+
+      if (postResponse.ok) {
+        setSubmitted(true);
+        await addListing(submissionData);
+      } else {
+        throw new Error('Failed to publish listing');
       }
-  
-      const result = await postResponse.json();
-  
-      setSubmitted(true);
-      await addListing(submissionData);
+
     } catch (error) {
-      console.log('Failed to submit listing: ' + error.message);
+      console.error('Failed to submit listing: ' + error.message);
+    } finally {
+      setIsPublishing(false); // Reset publishing state after submission
     }
   };
-  
+
   const handleCategorySelect = (category) => {
     if (category === "Land" || category === "Multiple Units") {
       setFormData({ ...formData, category, subcategory: category });
@@ -190,6 +151,12 @@ export default function PlaceAnAdPage() {
 
   return (
     <div className="container mx-auto p-4">
+      {isPublishing ? (
+        <div className="text-center text-lg bg-yellow-200 text-yellow-800 p-4 rounded">
+          Your Ad is publishing...
+        </div>
+      ) : (
+        <>
       {step === 1 && <Step1 onNext={handleNextStep} />}
       {step === 2 && <StepChooseCategory onNext={handleCategorySelect} onBack={handlePrevStep} title={formData.title} />}
       {step === 3 && formData.category === "Residential" && (
@@ -207,6 +174,8 @@ export default function PlaceAnAdPage() {
         />
       )}
       {step === 5 && <Step4Review onSubmit={handleSubmit} onBack={handlePrevStep} formData={formData} />}
+      </>
+      )}
     </div>
   );
 }
