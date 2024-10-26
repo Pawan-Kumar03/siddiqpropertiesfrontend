@@ -104,11 +104,11 @@ export default function EditPropertyForm() {
         <div className="container mx-auto p-4 bg-gray-800 text-gray-100">
             <h2 className="text-2xl font-semibold text-center text-custom">Edit Property</h2>
             
-            {isUpdating && (
-                <div className="text-center bg-yellow-200 text-yellow-700 p-2 rounded mb-4">
-                    Your Ad is updating...
-                </div>
-            )}
+            {isUpdating ? (
+            <div className="text-center bg-yellow-200 text-yellow-700 p-2 rounded mb-4">
+                Your Ad is updating...
+            </div>
+        ) : (
             <form onSubmit={handleSubmit} className="flex flex-col space-y-4 w-full max-w-md mx-auto bg-gray-900 p-6 rounded border-4 border-custom">
                 <input
                     name="title"
@@ -277,6 +277,7 @@ export default function EditPropertyForm() {
                     </button>
                 </div>
             </form>
+            )}
         </div>
     );
 }
