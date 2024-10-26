@@ -10,11 +10,11 @@ import AuthContext from "../contexts/UserContext";
 
 export default function PropertyDetails() {
     const { id } = useParams();
-    const { listings, setListings } = useContext(ListingsContext);
-    const { user } = useContext(AuthContext); // Get the logged-in user
+    const { listings } = useContext(ListingsContext);
+    const { user } = useContext(AuthContext);
     const [property, setProperty] = useState(null);
     const [isDeleted, setIsDeleted] = useState(false);
-    const [showDeleteModal, setShowDeleteModal] = useState(false); // State to control modal visibility
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -62,7 +62,7 @@ export default function PropertyDetails() {
             }
 
             setIsDeleted(true);
-            setListings(prevListings => prevListings.filter(listing => listing._id !== property._id));
+            // Optionally, you could also update the listings context here
 
             setTimeout(() => {
                 navigate("/");
@@ -147,7 +147,7 @@ export default function PropertyDetails() {
                                 <WhatsAppIcon style={{ cursor: 'pointer' }} onClick={() => handleContactBroker('WhatsApp')} />
                             </div>
 
-                            {user && property && user._id === property.user && ( // Check if the logged-in user is the owner
+                            {user && property && user._id === property.user && ( 
                                 <>
                                     <button onClick={handleEditProperty} className="px-6 py-3 bg-blue-600 bg-custom text-white rounded mr-2">
                                         Edit Property
