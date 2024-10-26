@@ -9,6 +9,7 @@ export default function EditPropertyForm() {
     const [formData, setFormData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [submitted, setSubmitted] = useState(false);
+    const [isUpdating, setIsUpdating] = useState(false);
 
     useEffect(() => {
         const selectedProperty = listings.find((listing) => listing._id === id);
@@ -35,17 +36,14 @@ export default function EditPropertyForm() {
         }));
     };
 
-    const handleSubmit = async (e) => {
+ const handleSubmit = async (e) => {
         e.preventDefault();
-       // Get the user from localStorage
-       const user = localStorage.getItem('user');
-       // Parse the string back into an object
-       const parsedUser = JSON.parse(user);
-       // Now you can access the token
-       const token = parsedUser.token;
-       // console.log('user:', parsedUser);
-       // console.log('token:', token);
-   
+        setIsUpdating(true); // Set updating status to true
+        
+        const user = localStorage.getItem('user');
+        const parsedUser = JSON.parse(user);
+        const token = parsedUser.token;
+
         const submissionData = new FormData();
         for (const key in formData) {
             if (key === "images" && formData.images) {
@@ -56,7 +54,7 @@ export default function EditPropertyForm() {
                 submissionData.append(key, formData[key]);
             }
         }
-    
+
         try {
             const response = await fetch(`https://backend-git-main-pawan-togas-projects.vercel.app/api/listings/${id}`, {
                 method: 'PUT',
@@ -65,18 +63,20 @@ export default function EditPropertyForm() {
                 },
                 body: submissionData
             });
-    
+
             if (!response.ok) {
                 throw new Error(`Failed to update listing: ${response.statusText}`);
             }
-    
+
             const data = await response.json();
+            setIsUpdating(false); // Set updating status to false after success
             setSubmitted(true);
         } catch (error) {
+            setIsUpdating(false); // Set updating status to false after error
             alert("Failed to update listing: " + error.message);
         }
     };
-    
+
     if (loading) {
         return <div className="text-center text-custom">Loading...</div>;
     }
@@ -99,9 +99,16 @@ export default function EditPropertyForm() {
             </div>
         );
     }
+
     return (
         <div className="container mx-auto p-4 bg-gray-800 text-gray-100">
             <h2 className="text-2xl font-semibold text-center text-custom">Edit Property</h2>
+            
+            {isUpdating && (
+                <div className="text-center bg-yellow-200 text-yellow-700 p-2 rounded mb-4">
+                    Your Ad is updating...
+                </div>
+            )}
             <form onSubmit={handleSubmit} className="flex flex-col space-y-4 w-full max-w-md mx-auto bg-gray-900 p-6 rounded border-4 border-custom">
                 <input
                     name="title"
