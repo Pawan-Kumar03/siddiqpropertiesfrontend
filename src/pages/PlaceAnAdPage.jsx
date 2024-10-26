@@ -111,8 +111,9 @@ export default function PlaceAnAdPage() {
       });
 
       if (postResponse.ok) {
-        setSubmitted(true);
-        await addListing(submissionData);
+        const newListing = await postResponse.json(); // Get the newly created listing data
+      setSubmitted(true);
+      addListing(newListing);
       } else {
         throw new Error('Failed to publish listing');
       }
