@@ -22,21 +22,22 @@ export default function PropertyDetails() {
         if (selectedProperty) {
             setProperty(selectedProperty);
         } else {
-            const fetchProperty = async () => {
-                try {
-                    const response = await fetch(`https://backend-git-main-pawan-togas-projects.vercel.app/api/listings/${id}`);
-                    if (!response.ok) {
-                        throw new Error('Property not found');
-                    }
-                    const data = await response.json();
-                    setProperty(data);
-                } catch (error) {
-                    console.error("Failed to fetch property:", error);
-                }
-            };
             fetchProperty();
         }
-    }, [id, listings]);
+    }, [id, listings]); // Ensure it reacts to changes in listings
+
+    const fetchProperty = async () => {
+        try {
+            const response = await fetch(`https://backend-git-main-pawan-togas-projects.vercel.app/api/listings/${id}`);
+            if (!response.ok) {
+                throw new Error('Property not found');
+            }
+            const data = await response.json();
+            setProperty(data);
+        } catch (error) {
+            console.error("Failed to fetch property:", error);
+        }
+    };
 
     const handleEditProperty = () => {
         navigate(`/edit-property/${property._id}`);
