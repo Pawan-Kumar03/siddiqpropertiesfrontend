@@ -14,6 +14,7 @@ export default function PropertyDetails() {
     const { user } = useContext(AuthContext); // Get the logged-in user
     const [property, setProperty] = useState(null);
     const [isDeleted, setIsDeleted] = useState(false);
+    const [showDeleteModal, setShowDeleteModal] = useState(false); // State to control modal visibility
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -42,57 +43,46 @@ export default function PropertyDetails() {
     };
 
     const handleDeleteProperty = async () => {
-       // Get the user from localStorage
-       const user = localStorage.getItem('user');
-       // Parse the string back into an object
-       const parsedUser = JSON.parse(user);
-       // Now you can access the token
-       const token = parsedUser.token;
-       // console.log('user:', parsedUser);
-       // console.log('token:', token);
-     if (window.confirm("Are you sure you want to delete this property?")) {
-            try {
-                const response = await fetch(`https://backend-git-main-pawan-togas-projects.vercel.app/api/listings/${property._id}`, {
-                    method: "DELETE",
-                    headers: {
-                        'Authorization': `Bearer ${token}`,
-                        'Content-Type': 'application/json'
-                      }
-                });
+        const user = localStorage.getItem('user');
+        const parsedUser = JSON.parse(user);
+        const token = parsedUser.token;
 
-                if (!response.ok) {
-                    const errorData = await response.json();
-                    throw new Error(errorData.message);
+        try {
+            const response = await fetch(`https://backend-git-main-pawan-togas-projects.vercel.app/api/listings/${property._id}`, {
+                method: "DELETE",
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
                 }
+            });
 
-                setIsDeleted(true);
-                setListings(prevListings => prevListings.filter(listing => listing._id !== property._id));
-
-                setTimeout(() => {
-                    navigate("/");
-                }, 2000);
-
-            } catch (error) {
-                console.error("Failed to delete listing:", error);
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message);
             }
+
+            setIsDeleted(true);
+            setListings(prevListings => prevListings.filter(listing => listing._id !== property._id));
+
+            setTimeout(() => {
+                navigate("/");
+            }, 2000);
+
+        } catch (error) {
+            console.error("Failed to delete listing:", error);
         }
     };
 
     const handleContactBroker = (contactMethod) => {
         if (!property) return;
-    
-        // Generate the property URL
+
         const propertyLink = `${window.location.origin}/property/${property._id}`;
-    
-        // Update the message to include the property link
         const message = `Property Details:\n\nTitle: ${property.title}\nPrice: ${property.price}\nCity: ${property.city}\nLocation: ${property.location}\nProperty Type: ${property.propertyType}\nBeds: ${property.beds}\n\nProperty Link: ${propertyLink}`;
-    
+
         switch (contactMethod) {
             case 'Email':
                 const emailSubject = `Interested in ${property.title}`;
-                const mailtoLink = `mailto:${property.agentEmail}?subject=${encodeURIComponent(
-                    emailSubject
-                )}&body=${encodeURIComponent(message)}`;
+                const mailtoLink = `mailto:${property.agentEmail}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(message)}`;
                 window.open(mailtoLink);
                 break;
             case 'Call':
@@ -100,16 +90,14 @@ export default function PropertyDetails() {
                 window.open(telLink);
                 break;
             case 'WhatsApp':
-                const whatsappMessage = `https://wa.me/${property.agentWhatsapp}?text=${encodeURIComponent(
-                    message
-                )}`;
+                const whatsappMessage = `https://wa.me/${property.agentWhatsapp}?text=${encodeURIComponent(message)}`;
                 window.open(whatsappMessage);
                 break;
             default:
                 break;
         }
     };
-    
+
     const processImages = (images) => {
         if (typeof images === "string") {
             return images.split('/uploads/').filter(image => image).map(image => `/uploads/${image}`);
@@ -130,20 +118,10 @@ export default function PropertyDetails() {
                     <div className="flex flex-col lg:flex-row">
                         <div className="lg:w-1/2 lg:pr-4">
                             {property.images && processImages(property.images).length > 1 ? (
-                                <Carousel
-                                    showThumbs={false}
-                                    infiniteLoop
-                                    useKeyboardArrows
-                                    autoPlay
-                                    className="h-80"
-                                >
+                                <Carousel showThumbs={false} infiniteLoop useKeyboardArrows autoPlay className="h-80">
                                     {processImages(property.images).map((image, index) => (
                                         <div key={index} className="h-100 flex justify-center items-center">
-                                            <img
-                                                className="rounded-lg object-cover h-80 w-full"
-                                                src={`${image}`}
-                                                alt={property.title}
-                                            />
+                                            <img className="rounded-lg object-cover h-80 w-full" src={`${image}`} alt={property.title} />
                                         </div>
                                     ))}
                                 </Carousel>
@@ -171,22 +149,43 @@ export default function PropertyDetails() {
 
                             {user && property && user._id === property.user && ( // Check if the logged-in user is the owner
                                 <>
-                                    <button 
-                                        onClick={handleEditProperty}
-                                        className="px-6 py-3 bg-blue-600 bg-custom text-white rounded mr-2"
-                                    >
+                                    <button onClick={handleEditProperty} className="px-6 py-3 bg-blue-600 bg-custom text-white rounded mr-2">
                                         Edit Property
                                     </button>
-                                    <button
-                                        onClick={handleDeleteProperty}
-                                        className="px-6 py-3 bg-red-600 bg-custom text-white rounded"
-                                    >
+                                    <button onClick={() => setShowDeleteModal(true)} className="px-6 py-3 bg-red-600 bg-custom text-white rounded">
                                         Delete Property
                                     </button>
                                 </>
                             )}
                         </div>
                     </div>
+
+                    {/* Delete Confirmation Modal */}
+                    {showDeleteModal && (
+                        <div className="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center">
+                            <div className="bg-white rounded-lg p-8">
+                                <h3 className="text-lg font-semibold mb-4">Confirm Deletion</h3>
+                                <p className="mb-4">Are you sure you want to delete this property?</p>
+                                <div className="flex justify-end space-x-4">
+                                    <button
+                                        onClick={() => setShowDeleteModal(false)}
+                                        className="px-6 py-3 bg-gray-500 text-white rounded"
+                                    >
+                                        Cancel
+                                    </button>
+                                    <button
+                                        onClick={() => {
+                                            handleDeleteProperty();
+                                            setShowDeleteModal(false);
+                                        }}
+                                        className="px-6 py-3 bg-red-600 text-white rounded"
+                                    >
+                                        Delete
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    )}
                 </>
             )}
             {isDeleted && (
