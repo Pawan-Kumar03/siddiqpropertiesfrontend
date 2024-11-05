@@ -140,7 +140,7 @@ export default function PropertyDetails() {
                             <p className="mb-4 text-sm">{property.beds} Beds</p>
                             <p className="mb-4 text-sm">{property.baths} Baths</p>
                             <p className="mb-4 text-sm">Landlord: {property.landlordName}</p>
-                            <p className="mb-4 text-sm">{property.propertyComplete ? 'Property Complete' : 'Property Incomplete'}</p>
+                            <p className="mb-4 text-sm">{property.status ? 'Property Complete' : 'Property Incomplete'}</p>
                             <p className="mb-4 text-sm">Broker: {property.broker}</p>
                             <div className="mb-4 flex items-center space-x-4 text-gray-100">
                                 <EmailIcon style={{ cursor: 'pointer' }} onClick={() => handleContactBroker('Email')} />
