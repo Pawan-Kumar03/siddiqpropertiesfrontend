@@ -113,19 +113,36 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                     Properties for Sale in UAE
                 </h1>
                 <div className="lg:bg-gray-800 lg:bg-opacity-50 rounded-md lg:p-4 lg:w-[88%] mx-auto">
-                <div className="flex items-center space-x-2 lg:space-x-14 mb-4">
-    <span className="hidden lg:inline-block text-base font-semibold lg:text-white">
-        Searching in
-    </span>
-    <ul className="flex items-center space-x-20 lg:space-x-8 text-sm"> {/* Increased space here */}
-        <li>
+                <div className="flex justify-center items-center space-x-2 lg:space-x-14 mb-4">
+    <ul className="flex justify-center items-center space-x-4 text-sm"> {/* Centered with flexbox */}
+
+       <li>
             <button
                 className="bg-custom text-white hover:bg-custom duration-200 px-5 py-2 font-semibold rounded-full"
-                onClick={handleDisplayAllListings}
+                onClick={() => console.log('Sale')}
             >
-                Property for Sale
+                Sale
             </button>
         </li>
+        <li>
+
+        <button
+                className="bg-custom text-white hover:bg-custom duration-200 px-5 py-2 font-semibold rounded-full"
+                onClick={() =>  console.log('Rent')}
+            >
+                Rent
+            </button>
+        </li>
+        <li>
+
+        <button
+                className="bg-custom text-white hover:bg-custom duration-200 px-5 py-2 font-semibold rounded-full"
+                onClick={() =>  console.log('Off=Plan') }
+            >
+                Off-Plan
+            </button>
+        </li>
+        
         <li>
             <Link className="bg-custom text-white hover:bg-custom duration-200 px-5 py-2 font-semibold rounded-full" to="/place-an-ad">
                 <span>Place an Ad</span>
@@ -267,7 +284,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                                 >
                                     <option value="">Select Status</option>
                                     <option value="Complete">Ready to Move</option>
-                                    <option value="Incomplete">Under Construction</option>
+                                    <option value="Incomplete">Off Plan</option>
                                 </select>
                             </div>
                             <div className="flex flex-col mb-3">
