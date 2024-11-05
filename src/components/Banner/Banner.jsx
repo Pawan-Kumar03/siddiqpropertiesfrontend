@@ -93,11 +93,21 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         setPurpose("");
     };
 
-    const handleDisplayAllListings = (event) => {
-        event.preventDefault();
-        onSearch({});
+    const handleSaleClick = () => {
+        setPurpose("sell"); // For sale, set the purpose to 'sell'
+        onSearch({ purpose: "sell" }); // Trigger search with purpose 'sell'
     };
-
+    
+    const handleRentClick = () => {
+        setPurpose("buy"); // For rent, set the purpose to 'buy'
+        onSearch({ purpose: "buy" }); // Trigger search with purpose 'buy'
+    };
+    
+    const handleOffPlanClick = () => {
+        setStatus(false); // For off-plan, set status to false
+        onSearch({ status: false }); // Trigger search with status false
+    };
+    
     const handleLocationClick = (location) => {
         const query = new URLSearchParams({
             city,
@@ -114,41 +124,38 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                 </h1>
                 <div className="lg:bg-gray-800 lg:bg-opacity-50 rounded-md lg:p-4 lg:w-[88%] mx-auto">
                 <div className="flex justify-center items-center space-x-2 lg:space-x-14 mb-4">
-    <ul className="flex justify-center items-center space-x-4 text-sm"> {/* Centered with flexbox */}
-
-       <li>
-            <button
-                className="bg-custom text-white hover:bg-custom duration-200 px-5 py-2 font-semibold rounded-full"
-                onClick={() => console.log('Sale')}
-            >
-                Sale
-            </button>
-        </li>
-        <li>
-
+                <ul className="flex justify-center items-center space-x-4 text-sm">
+    <li>
         <button
-                className="bg-custom text-white hover:bg-custom duration-200 px-5 py-2 font-semibold rounded-full"
-                onClick={() =>  console.log('Rent')}
-            >
-                Rent
-            </button>
-        </li>
-        <li>
-
+            className="bg-custom text-white hover:bg-custom duration-200 px-5 py-2 font-semibold rounded-full"
+            onClick={handleSaleClick}
+        >
+            Sale
+        </button>
+    </li>
+    <li>
         <button
-                className="bg-custom text-white hover:bg-custom duration-200 px-5 py-2 font-semibold rounded-full"
-                onClick={() =>  console.log('Off=Plan') }
-            >
-                Off-Plan
-            </button>
-        </li>
-        
-        <li>
-            <Link className="bg-custom text-white hover:bg-custom duration-200 px-5 py-2 font-semibold rounded-full" to="/place-an-ad">
-                <span>Place an Ad</span>
-            </Link>
-        </li>
-    </ul>
+            className="bg-custom text-white hover:bg-custom duration-200 px-5 py-2 font-semibold rounded-full"
+            onClick={handleRentClick}
+        >
+            Rent
+        </button>
+    </li>
+    <li>
+        <button
+            className="bg-custom text-white hover:bg-custom duration-200 px-5 py-2 font-semibold rounded-full"
+            onClick={handleOffPlanClick}
+        >
+            Off-Plan
+        </button>
+    </li>
+    <li>
+        <Link className="bg-custom text-white hover:bg-custom duration-200 px-5 py-2 font-semibold rounded-full" to="/place-an-ad">
+            <span>Place an Ad</span>
+        </Link>
+    </li>
+</ul>
+
 </div>
 
                     <form className="lg:flex lg:flex-col lg:space-y-3 px-2 lg:px-0 py-4 lg:py-0 relative bg-gray-800 lg:bg-transparent" onSubmit={handleSearch}>
