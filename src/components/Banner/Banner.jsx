@@ -152,7 +152,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
 </div>
 
                     <form className="lg:flex lg:flex-col lg:space-y-3 px-2 lg:px-0 py-4 lg:py-0 relative bg-gray-800 lg:bg-transparent" onSubmit={handleSearch}>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                             <div className="flex flex-col mb-3">
                                 <label className="mb-1 text-gray-300">City</label>
                                 <select
