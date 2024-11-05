@@ -104,8 +104,8 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     };
     
     const handleOffPlanClick = () => {
-        setStatus(false); // For off-plan, set status to false
-        onSearch({ status: false }); // Trigger search with status false
+        setStatus("false"); // For off-plan, set status to false
+        onSearch({ status: "false" }); // Trigger search with status false
     };
     
     const handleLocationClick = (location) => {
