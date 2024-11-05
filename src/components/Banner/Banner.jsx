@@ -274,32 +274,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                                     <option value="Agent">Agent</option>
                                 </select>
                             </div>
-                            <div className="flex flex-col mb-3">
-                                <label className="mb-1 text-gray-300">Status</label>
-                                <select
-                                    className="w-full p-2 lg:rounded-md rounded-full border border-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
-                                    name="status"
-                                    value={status}
-                                    onChange={(e) => setStatus(e.target.value)}
-                                >
-                                    <option value="">Select Status</option>
-                                    <option value="Complete">Ready to Move</option>
-                                    <option value="Incomplete">Off Plan</option>
-                                </select>
-                            </div>
-                            <div className="flex flex-col mb-3">
-                                <label className="mb-1 text-gray-300">Purpose</label>
-                                <select
-                                    className="w-full p-2 lg:rounded-md rounded-full border border-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
-                                    name="purpose"
-                                    value={purpose}
-                                    onChange={(e) => setPurpose(e.target.value)}
-                                >
-                                    <option value="">Select Purpose</option>
-                                    <option value="sell">Sell</option>
-                                    <option value="buy">Buy</option>
-                                </select>
-                            </div>
+                            
                         </div>
                         <div className="flex items-center justify-between mt-4 w-full ">
                             <button type="submit" className="bg-custom text-white flex items-center justify-center  w-1/2 px-6 py-2 rounded-full font-semibold mr-2 ">
