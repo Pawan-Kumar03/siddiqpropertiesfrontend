@@ -114,7 +114,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
             beds: beds || "",
             baths: baths || "",
             agentType: agentType || "",
-            status: false, // This ensures that only off-plan properties are shown
+            status: "false", // This ensures that only off-plan properties are shown
             purpose: purpose || ""
         };
     

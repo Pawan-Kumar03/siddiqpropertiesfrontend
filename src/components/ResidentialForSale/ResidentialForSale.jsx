@@ -21,7 +21,7 @@ export default function ResidentialForSale({ searchParams = {}, listings = [] })
                 (listingPrice >= minPrice && listingPrice <= maxPrice) &&
                 (searchParams.beds ? (searchParams.beds === "5" ? listing.beds >= 5 : listing.beds === parseInt(searchParams.beds)) : true) &&
                 (searchParams.baths ? (searchParams.baths === "5" ? listing.baths >= 5 : listing.baths === parseInt(searchParams.baths)) : true) &&
-                (searchParams.status  ? listing.status === searchParams.status : true) &&
+                (searchParams.status === "false" ? listing.status === "false" : "true") &&
                 (searchParams.purpose ? listing.purpose === searchParams.purpose : true) &&
                 (searchParams.agentType ? 
                     (searchParams.agentType === "Owner" ? listing.landlordName : listing.agentName) 
