@@ -21,7 +21,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
             fetch(`https://backend-git-main-pawan-togas-projects.vercel.app/api/listings/${city}`)
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data); // Inspect the API response
+                    // console.log(data); // Inspect the API response
     
                     // Grouping properties by location
                     const locationMap = data.reduce((acc, property) => {
@@ -118,7 +118,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
             purpose: purpose || ""
         };
     
-        console.log("Searching for off-plan properties with parameters:", searchParams); // Add this to inspect search parameters
+        // console.log("Searching for off-plan properties with parameters:", searchParams); // Add this to inspect search parameters
     
         onSearch(searchParams); // Pass the search params including the status=false for off-plan properties
     };
