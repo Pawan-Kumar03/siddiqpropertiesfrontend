@@ -139,7 +139,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         <section>
             <div className="container bg-grey-light lg:bg-banner bg-cover bg-center bg-no-repeat lg:my-2 lg:pb-10 lg:pt-5 rounded-m bg-gray-800">
             <h1 className="text-2xl text-center font-semibold lg:text-white lg:mb-8 ">
-                    Properties for Sale in UAE
+                    Your investment journey starts here
                 </h1>
                 <div className="lg:bg-gray-800 lg:bg-opacity-50 rounded-md lg:p-4 lg:w-[88%] mx-auto">
                 <div className="flex justify-center items-center space-x-2 lg:space-x-14 mb-4">

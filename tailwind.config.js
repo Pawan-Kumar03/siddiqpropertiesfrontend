@@ -34,7 +34,8 @@ export default {
                 custom: "#c5a47e", // Add this line
             },
             fontFamily: {
-                roboto: ["Roboto", "sans-serif"],
+                proxima: ["Proxima Nova", "ProximaNova", "-apple-system", "system-ui", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "sans-serif"],
+                roboto: ["Roboto", "sans-serif"], // Retain Roboto as a fallback
             },
             backgroundImage: {
                 banner: "url('/homepage-banner.jpeg')"
