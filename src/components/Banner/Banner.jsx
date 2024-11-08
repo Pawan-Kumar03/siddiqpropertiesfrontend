@@ -61,11 +61,12 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
             beds: beds || "",
             baths: baths || "",
             agentType: agentType || "",
-            status: status || "",
+            status: status !== "" ? status : "", // Ensure status is included in the search
             purpose: purpose || ""
         };
         onSearch(searchParams); // Pass searchParams to onSearch function
     };
+    
     
     const handleAddLocation = (e) => {
         if (e.key === "Enter" && e.target.value.trim() !== "") {
@@ -104,9 +105,11 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     };
     
     const handleOffPlanClick = () => {
-        setStatus(false); // For off-plan, set status to false
-        onSearch({ status: false }); // Trigger search with status false
+        setStatus(false); // Set status to false for off-plan
+        onSearch({ ...searchParams, status: false }); // Pass the status as false along with other filters
     };
+    
+    
     
     const handleLocationClick = (location) => {
         const query = new URLSearchParams({
