@@ -105,9 +105,21 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     };
     
     const handleOffPlanClick = () => {
-        setStatus(false); // Set status to false for off-plan
-        onSearch({ ...searchParams, status: false }); // Pass the status as false along with other filters
+        const searchParams = {
+            city: city || "",
+            location: locations.join(",") || "",
+            propertyType: propertyType || "",
+            priceMin: priceMin || "",
+            priceMax: priceMax || "",
+            beds: beds || "",
+            baths: baths || "",
+            agentType: agentType || "",
+            status: false, // Set status to false for off-plan
+            purpose: purpose || ""
+        };
+        onSearch(searchParams); // Trigger search with status as false for off-plan properties
     };
+    
     
     
     
