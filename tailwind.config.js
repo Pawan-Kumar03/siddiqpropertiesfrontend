@@ -38,7 +38,7 @@ export default {
                 roboto: ["Roboto", "sans-serif"], // Retain Roboto as a fallback
             },
             backgroundImage: {
-                banner: "url('/homepage-banner.jpeg')"
+                banner: "url('/banner-bg.jpg')"
             }
         },
     },
