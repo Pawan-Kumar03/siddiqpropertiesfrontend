@@ -16,6 +16,7 @@ export default function HomePage() {
     const handleSearch = (query) => {
         setSearchParams(query);
         setShowAllListings(false);
+        console.log(query)
     };
 
     const handleDisplayAllListings = async () => {
