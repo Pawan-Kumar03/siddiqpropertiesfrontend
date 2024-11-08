@@ -114,11 +114,15 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
             beds: beds || "",
             baths: baths || "",
             agentType: agentType || "",
-            status: false, // Set status to false for off-plan
+            status: false, // This ensures that only off-plan properties are shown
             purpose: purpose || ""
         };
-        onSearch(searchParams); // Trigger search with status as false for off-plan properties
+    
+        console.log("Searching for off-plan properties with parameters:", searchParams); // Add this to inspect search parameters
+    
+        onSearch(searchParams); // Pass the search params including the status=false for off-plan properties
     };
+    
     
     
     
