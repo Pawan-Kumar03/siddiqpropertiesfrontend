@@ -1,7 +1,7 @@
 export default function AboutUsPage() {
     return (
         <div className="container mx-auto py-12 text-white   shadow-md ">
-            <h1 className="text-3xl font-bold margin: 1.5rem 0 text-custom">About Us</h1>
+            <h1 className="text-3xl font-bold margin-top:1.5rem margin-bottom:1.5rem text-custom">About Us</h1>
             <p>Welcome to <b>MASKAN</b>, your go-to platform for buying, selling, and renting properties. We connect property owners, real estate agents, and potential buyers or renters through a seamless and user-friendly experience.</p>
 
 <h1 className="text-3xl font-bold mb-6 text-custom"> Who We Are</h1>
