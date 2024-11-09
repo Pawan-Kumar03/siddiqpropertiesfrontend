@@ -15,7 +15,6 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     const [status, setStatus] = useState("");
     const [purpose, setPurpose] = useState("");
     const [locationCounts, setLocationCounts] = useState([]);
-    const [saleDropdownOpen, setSaleDropdownOpen] = useState(false);
 
     useEffect(() => {
         if (city) {
@@ -96,13 +95,8 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     };
 
     const handleSaleClick = () => {
-        setSaleDropdownOpen(!saleDropdownOpen); // Toggle the dropdown visibility
-    };
-    const handleSaleOptionClick = (type) => {
-        setPropertyType(type); // Set the property type based on selection
-        setPurpose("sell"); // Set the purpose to 'sell'
-        setSaleDropdownOpen(false); // Close the dropdown
-        onSearch({ purpose: "sell", propertyType: type }); // Trigger search with the selected type and purpose
+        setPurpose("sell"); // For sale, set the purpose to 'sell'
+        onSearch({ purpose: "sell" }); // Trigger search with purpose 'sell'
     };
     
     const handleRentClick = () => {
