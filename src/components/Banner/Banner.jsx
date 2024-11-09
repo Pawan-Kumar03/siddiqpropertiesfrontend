@@ -137,47 +137,48 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
 
     return (
         <section>
-            <div className="container bg-grey-light lg:bg-banner bg-cover bg-center bg-no-repeat lg:my-2 lg:pb-10 lg:pt-5 rounded-m bg-gray-800">
-            <h1 className="text-2xl text-center font-semibold  lg:text-white lg:mb-8 ">
-            Your Maskan Journey Starts Here
-                </h1>
-                <div className="lg:bg-gray-800 lg:bg-opacity-50 rounded-md lg:p-4 lg:w-[88%] mx-auto">
-                <div className="flex flex-wrap justify-center items-center space-x-2 lg:space-x-14 mb-4">
-  <ul className="flex flex-wrap justify-center items-center space-x-2 text-sm sm:text-base">
-    <li className="mb-2 sm:mb-0">
-      <button
-        className="bg-custom text-white hover:bg-custom duration-200 px-3 py-2 sm:px-5 sm:py-2 font-semibold rounded-full"
-        onClick={handleSaleClick}
-      >
-        Sale
-      </button>
-    </li>
-    <li className="mb-2 sm:mb-0">
-      <button
-        className="bg-custom text-white hover:bg-custom duration-200 px-3 py-2 sm:px-5 sm:py-2 font-semibold rounded-full"
-        onClick={handleRentClick}
-      >
-        Rent
-      </button>
-    </li>
-    <li className="mb-2 sm:mb-0">
-      <button
-        className="bg-custom text-white hover:bg-custom duration-200 px-3 py-2 sm:px-5 sm:py-2 font-semibold rounded-full"
-        onClick={handleOffPlanClick}
-      >
-        Off-Plan
-      </button>
-    </li>
-    <li className="mb-2 sm:mb-0">
-      <Link
-        className="bg-custom text-white hover:bg-custom duration-200 px-3 py-2 sm:px-5 sm:py-2 font-semibold rounded-full"
-        to="/place-an-ad"
-      >
-        <span>Place an Ad</span>
-      </Link>
-    </li>
-  </ul>
-</div>
+<div className="container bg-grey-light lg:bg-banner bg-cover bg-center bg-no-repeat lg:my-2 lg:pb-10 lg:pt-5 rounded-m bg-gray-800">
+        {/* "Your Maskan Journey Starts Here" Section */}
+        <h1 className="text-2xl text-center font-semibold text-white lg:text-white lg:mb-8">
+          Your Maskan Journey Starts Here
+        </h1>
+        <div className="lg:bg-gray-800 lg:bg-opacity-50 rounded-md lg:p-4 lg:w-[88%] mx-auto">
+          <div className="flex flex-wrap justify-center items-center space-x-2 lg:space-x-14 mb-4">
+            <ul className="flex flex-wrap justify-center items-center space-x-2 text-sm sm:text-base">
+              <li className="mb-2 sm:mb-0">
+                <button
+                  className="bg-custom text-white hover:bg-custom duration-200 px-3 py-2 sm:px-5 sm:py-2 font-semibold rounded-full"
+                  onClick={handleSaleClick}
+                >
+                  Sale
+                </button>
+              </li>
+              <li className="mb-2 sm:mb-0">
+                <button
+                  className="bg-custom text-white hover:bg-custom duration-200 px-3 py-2 sm:px-5 sm:py-2 font-semibold rounded-full"
+                  onClick={handleRentClick}
+                >
+                  Rent
+                </button>
+              </li>
+              <li className="mb-2 sm:mb-0">
+                <button
+                  className="bg-custom text-white hover:bg-custom duration-200 px-3 py-2 sm:px-5 sm:py-2 font-semibold rounded-full"
+                  onClick={handleOffPlanClick}
+                >
+                  Off-Plan
+                </button>
+              </li>
+              <li className="mb-2 sm:mb-0">
+                <Link
+                  className="bg-custom text-white hover:bg-custom duration-200 px-3 py-2 sm:px-5 sm:py-2 font-semibold rounded-full"
+                  to="/place-an-ad"
+                >
+                  <span>Place an Ad</span>
+                </Link>
+              </li>
+            </ul>
+          </div>
 
 
 <form className="lg:flex lg:flex-col lg:space-y-3 px-2 lg:px-0 py-4 lg:py-0 relative bg-gray-800 lg:bg-transparent" onSubmit={handleSearch}>
