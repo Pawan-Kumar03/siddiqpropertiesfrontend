@@ -192,6 +192,13 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                 onChange={(e) => setCity(e.target.value)}
             >
                 <option value="">Select City</option>
+                                    <option value="Dubai">Dubai</option>
+                                    <option value="Abu Dhabi">Abu Dhabi</option>
+                                    <option value="Sharjah">Sharjah</option>
+                                    <option value="Ajman">Ajman</option>
+                                    <option value="Fujairah">Fujairah</option>
+                                    <option value="Ras Al Khaimah">Ras Al Khaimah</option>
+                                    <option value="Umm Al Quwain">Umm Al Quwain</option>
             </select>
         </div>
 
@@ -229,6 +236,10 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                 onChange={(e) => setPropertyType(e.target.value)}
             >
                 <option value="">Select Property Type</option>
+                                    <option value="Apartment">Apartment</option>
+                                    <option value="Villa">Villa</option>
+                                    <option value="Townhouse">Townhouse</option>
+                                    <option value="Penthouse">Penthouse</option>
             </select>
         </div>
 
@@ -267,7 +278,12 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                 value={beds}
                 onChange={(e) => setBeds(e.target.value)}
             >
-                <option value="">Select Beds</option>
+                 <option value="">Select Beds</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5+</option>
             </select>
         </div>
 
@@ -281,6 +297,11 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                 onChange={(e) => setBaths(e.target.value)}
             >
                 <option value="">Select Baths</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5+</option>
             </select>
         </div>
 
@@ -294,6 +315,8 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                 onChange={(e) => setAgentType(e.target.value)}
             >
                 <option value="">Select Owner Type</option>
+                <option value="Owner">Landlord</option>
+                <option value="Agent">Agent</option>
             </select>
         </div>
     </div>
