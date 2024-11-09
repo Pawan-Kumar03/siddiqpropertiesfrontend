@@ -1,26 +1,25 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
-import UserContext from "../contexts/UserContext"; // Import UserContext
+import UserContext from "../contexts/UserContext";
 
 export default function Navbar() {
-    const { user, logout } = useContext(UserContext); // Use UserContext
+    const { user, logout } = useContext(UserContext);
     const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false); // Track mobile menu state
     const navigate = useNavigate();
     const logoStyle = {
         width: '80px',
-        height: 'auto'
+        height: 'auto',
     };
 
     useEffect(() => {
-        // Close dropdown if user clicks outside of it
         const handleClickOutside = (event) => {
             const dropdownElement = document.getElementById('dropdown');
             if (dropdownElement && !dropdownElement.contains(event.target) && !event.target.classList.contains('dropdown-toggle')) {
                 setDropdownOpen(false);
             }
         };
-
         document.addEventListener('mousedown', handleClickOutside);
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
@@ -34,6 +33,10 @@ export default function Navbar() {
         setDropdownOpen(!dropdownOpen);
     };
 
+    const toggleMobileMenu = () => {
+        setMobileMenuOpen(!mobileMenuOpen); // Toggle mobile menu
+    };
+
     return (
         <header className="bg-gray-800">
             <div className="lg:border-b lg:border-b-gray-600">
@@ -45,7 +48,7 @@ export default function Navbar() {
                         </Link>
                     </div>
 
-                    {/* Navigation Links on the top right */}
+                    {/* Desktop Navigation Links (hidden on small screens) */}
                     <div className="hidden sm:flex items-center space-x-6">
                         <Link to="/" className="bg-custom text-black py-2 px-4 rounded cursor-pointer">Home</Link>
                         <Link to="/about-us" className="bg-custom text-black py-2 px-4 rounded cursor-pointer">About Us</Link>
@@ -56,7 +59,7 @@ export default function Navbar() {
                                     className="bg-custom text-black py-2 px-4 rounded cursor-pointer dropdown-toggle"
                                     onClick={toggleDropdown}
                                 >
-                                    {user.name} {/* Display username */}
+                                    {user.name}
                                 </span>
                                 {dropdownOpen && (
                                     <div id="dropdown" className="absolute right-0 mt-2 bg-white text-black rounded shadow-lg w-48 z-50">
@@ -100,7 +103,7 @@ export default function Navbar() {
                     {/* Mobile Menu for Smaller Screens */}
                     <div className="sm:hidden flex items-center">
                         <button
-                            onClick={toggleDropdown}
+                            onClick={toggleMobileMenu}
                             className="text-gray-200 focus:outline-none"
                         >
                             {/* Hamburger Menu Icon */}
@@ -119,19 +122,21 @@ export default function Navbar() {
                                 />
                             </svg>
                         </button>
-                        {dropdownOpen && (
-                            <div className="absolute right-0 mt-2 bg-white text-black rounded shadow-lg w-48 z-50">
+
+                        {/* Mobile Menu Dropdown */}
+                        {mobileMenuOpen && (
+                            <div className="absolute right-0 top-12 bg-white text-black rounded shadow-lg w-48 z-50">
                                 <Link
                                     to="/"
                                     className="block px-4 py-2 hover:bg-gray-200"
-                                    onClick={() => setDropdownOpen(false)}
+                                    onClick={() => setMobileMenuOpen(false)}
                                 >
                                     Home
                                 </Link>
                                 <Link
                                     to="/about-us"
                                     className="block px-4 py-2 hover:bg-gray-200"
-                                    onClick={() => setDropdownOpen(false)}
+                                    onClick={() => setMobileMenuOpen(false)}
                                 >
                                     About Us
                                 </Link>
@@ -140,21 +145,21 @@ export default function Navbar() {
                                         <Link
                                             to="/profile"
                                             className="block px-4 py-2 hover:bg-gray-200"
-                                            onClick={() => setDropdownOpen(false)}
+                                            onClick={() => setMobileMenuOpen(false)}
                                         >
                                             My Profile
                                         </Link>
                                         <Link
                                             to="/get-verified"
                                             className="block px-4 py-2 hover:bg-gray-200"
-                                            onClick={() => setDropdownOpen(false)}
+                                            onClick={() => setMobileMenuOpen(false)}
                                         >
                                             Get Verified
                                         </Link>
                                         <Link
                                             to="/my-ads"
                                             className="block px-4 py-2 hover:bg-gray-200"
-                                            onClick={() => setDropdownOpen(false)}
+                                            onClick={() => setMobileMenuOpen(false)}
                                         >
                                             My Ads
                                         </Link>
