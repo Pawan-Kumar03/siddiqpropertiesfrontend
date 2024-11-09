@@ -318,24 +318,25 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                     </form>
 
                     {city && locationCounts.length > 0 && (
-    <div className=" bg-gray-800">
+    <div>
         <h2 className="text-xl font-semibold text-custom">
-            Properties by Location in {city} . {totalProperties} Ads
+            Properties by Location in {city}. {totalProperties} Ads
         </h2>
         <ul className="mt-2 flex flex-wrap gap-2 text-black">
             {locationCounts.map((loc, index) => (
                 <li
                     key={index}
-                    className="flex items-center bg-custom text-white px-4 rounded shadow-md cursor-pointer"
+                    className="flex items-center px-4 rounded shadow-md cursor-pointer"
                     onClick={() => handleLocationClick(loc.location)}
                 >
-                    <span className="mr-2">{loc.location}</span>
+                    <span className="mr-2 truncate max-w-[120px]">{loc.location.split(' ').slice(0, 2).join(' ')}</span>
                     <span className="text-black">{loc.count} properties</span>
                 </li>
             ))}
         </ul>
     </div>
 )}
+
 
                 </div>
             </div>
