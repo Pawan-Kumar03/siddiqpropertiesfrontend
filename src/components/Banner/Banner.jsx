@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import saleProperty from "../../assets/icons/sale-property.svg";
 import inputSearch from "../../assets/icons/input-search.svg";
 import { Link } from "react-router-dom";
@@ -15,15 +15,13 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     const [status, setStatus] = useState("");
     const [purpose, setPurpose] = useState("");
     const [locationCounts, setLocationCounts] = useState([]);
+    const [saleDropdownOpen, setSaleDropdownOpen] = useState(false); // State to toggle dropdown visibility
 
     useEffect(() => {
         if (city) {
             fetch(`https://backend-git-main-pawan-togas-projects.vercel.app/api/listings/${city}`)
                 .then(response => response.json())
                 .then(data => {
-                    // console.log(data); // Inspect the API response
-    
-                    // Grouping properties by location
                     const locationMap = data.reduce((acc, property) => {
                         const location = property.location;
                         if (location) {
@@ -35,7 +33,6 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                         return acc;
                     }, {});
     
-                    // Convert the grouped data back to an array
                     const groupedLocations = Object.values(locationMap);
                     setLocationCounts(groupedLocations);
                 })
@@ -44,7 +41,6 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
             setLocationCounts([]);
         }
     }, [city]);
-    
     
     const totalProperties = locationCounts.reduce((total, loc) => {
         return total + (typeof loc.count === 'number' ? loc.count : 0);
@@ -67,43 +63,22 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         onSearch(searchParams); // Pass searchParams to onSearch function
     };
     
-    
-    const handleAddLocation = (e) => {
-        if (e.key === "Enter" && e.target.value.trim() !== "") {
-            setLocations([...locations, e.target.value.trim()]);
-            e.target.value = "";
-        }
-    };
-
-    const handleRemoveLocation = (index) => {
-        const updatedLocations = [...locations];
-        updatedLocations.splice(index, 1);
-        setLocations(updatedLocations);
-    };
-
-    const handleClearFilters = () => {
-        setCity("");
-        setLocations([]);
-        setPropertyType("");
-        setPriceMin("");
-        setPriceMax("");
-        setBeds("");
-        setBaths("");
-        setAgentType("");
-        setStatus("");
-        setPurpose("");
-    };
-
     const handleSaleClick = () => {
-        setPurpose("sell"); // For sale, set the purpose to 'sell'
-        onSearch({ purpose: "sell" }); // Trigger search with purpose 'sell'
+        setSaleDropdownOpen(!saleDropdownOpen); // Toggle the dropdown visibility
     };
     
+    const handleSaleOptionClick = (type) => {
+        setPropertyType(type); // Set the property type based on selection
+        setPurpose("sell"); // Set the purpose to 'sell'
+        setSaleDropdownOpen(false); // Close the dropdown
+        onSearch({ purpose: "sell", propertyType: type }); // Trigger search with the selected type and purpose
+    };
+
     const handleRentClick = () => {
         setPurpose("buy"); // For rent, set the purpose to 'buy'
         onSearch({ purpose: "buy" }); // Trigger search with purpose 'buy'
     };
-    
+
     const handleOffPlanClick = () => {
         const searchParams = {
             city: city || "",
@@ -114,68 +89,68 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
             beds: beds || "",
             baths: baths || "",
             agentType: agentType || "",
-            status: "false", // This ensures that only off-plan properties are shown
+            status: "false", // Only off-plan properties
             purpose: purpose || ""
         };
-    
-        // console.log("Searching for off-plan properties with parameters:", searchParams); // Add this to inspect search parameters
-    
-        onSearch(searchParams); // Pass the search params including the status=false for off-plan properties
-    };
-    
-    
-    
-    
-    
-    const handleLocationClick = (location) => {
-        const query = new URLSearchParams({
-            city,
-            location,
-        }).toString();
-        window.location.href = `/properties?${query}`;
+        onSearch(searchParams); // Pass search params
     };
 
     return (
         <section>
             <div className="container bg-grey-light lg:bg-banner bg-cover bg-center bg-no-repeat lg:my-2 lg:pb-10 lg:pt-5 rounded-m bg-gray-800">
-            <h1 className="text-2xl text-center font-semibold lg:text-white lg:mb-8 ">
+                <h1 className="text-2xl text-center font-semibold lg:text-white lg:mb-8 ">
                     Your Maskan journey starts here
                 </h1>
                 <div className="lg:bg-gray-800 lg:bg-opacity-50 rounded-md lg:p-4 lg:w-[88%] mx-auto">
-                <div className="flex justify-center items-center space-x-2 lg:space-x-14 mb-4">
-                <ul className="flex justify-center items-center space-x-4 text-sm">
-    <li>
-        <button
-            className="bg-custom text-white hover:bg-custom duration-200 px-5 py-2 font-semibold rounded-full"
-            onClick={handleSaleClick}
-        >
-            Sale
-        </button>
-    </li>
-    <li>
-        <button
-            className="bg-custom text-white hover:bg-custom duration-200 px-5 py-2 font-semibold rounded-full"
-            onClick={handleRentClick}
-        >
-            Rent
-        </button>
-    </li>
-    <li>
-        <button
-            className="bg-custom text-white hover:bg-custom duration-200 px-5 py-2 font-semibold rounded-full"
-            onClick={handleOffPlanClick}
-        >
-            Off-Plan
-        </button>
-    </li>
-    <li>
-        <Link className="bg-custom text-white hover:bg-custom duration-200 px-5 py-2 font-semibold rounded-full" to="/place-an-ad">
-            <span>Place an Ad</span>
-        </Link>
-    </li>
-</ul>
-
-</div>
+                    <div className="flex justify-center items-center space-x-2 lg:space-x-14 mb-4">
+                        <ul className="flex justify-center items-center space-x-4 text-sm">
+                            <li className="relative">
+                                <button
+                                    className="bg-custom text-white hover:bg-custom duration-200 px-5 py-2 font-semibold rounded-full"
+                                    onClick={handleSaleClick}
+                                >
+                                    Sale
+                                </button>
+                                {saleDropdownOpen && (
+                                    <ul className="absolute left-0 mt-2 w-40 bg-white text-black rounded-md shadow-lg">
+                                        <li className="hover:bg-gray-200 px-4 py-2 cursor-pointer" onClick={() => handleSaleOptionClick("Residential")}>
+                                            Residential
+                                        </li>
+                                        <li className="hover:bg-gray-200 px-4 py-2 cursor-pointer" onClick={() => handleSaleOptionClick("Commercial")}>
+                                            Commercial
+                                        </li>
+                                        <li className="hover:bg-gray-200 px-4 py-2 cursor-pointer" onClick={() => handleSaleOptionClick("Land")}>
+                                            Land
+                                        </li>
+                                        <li className="hover:bg-gray-200 px-4 py-2 cursor-pointer" onClick={() => handleSaleOptionClick("Multiple Units")}>
+                                            Multiple Units
+                                        </li>
+                                    </ul>
+                                )}
+                            </li>
+                            <li>
+                                <button
+                                    className="bg-custom text-white hover:bg-custom duration-200 px-5 py-2 font-semibold rounded-full"
+                                    onClick={handleRentClick}
+                                >
+                                    Rent
+                                </button>
+                            </li>
+                            <li>
+                                <button
+                                    className="bg-custom text-white hover:bg-custom duration-200 px-5 py-2 font-semibold rounded-full"
+                                    onClick={handleOffPlanClick}
+                                >
+                                    Off-Plan
+                                </button>
+                            </li>
+                            <li>
+                                <Link className="bg-custom text-white hover:bg-custom duration-200 px-5 py-2 font-semibold rounded-full" to="/place-an-ad">
+                                    <span>Place an Ad</span>
+                                </Link>
+                            </li>
+                        </ul>
+                    </div>
 
                     <form className="lg:flex lg:flex-col lg:space-y-3 px-2 lg:px-0 py-4 lg:py-0 relative bg-gray-800 lg:bg-transparent" onSubmit={handleSearch}>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
