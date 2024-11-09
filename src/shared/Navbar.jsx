@@ -51,7 +51,7 @@ export default function Navbar() {
                         <Link to="/about-us" className="bg-custom text-black py-2 px-4 rounded cursor-pointer">About Us</Link>
 
                         {/* Login Button with Dropdown Menu */}
-                        <div className="relative">
+                        {/* <div className="relative"> */}
                             {user ? (
                                 <div className="relative">
                                     <span
@@ -97,7 +97,7 @@ export default function Navbar() {
                                     Login
                                 </Link>
                             )}
-                        </div>
+                        {/* </div> */}
                     </div>
                 </nav>
             </div>
