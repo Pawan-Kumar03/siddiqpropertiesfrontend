@@ -93,7 +93,7 @@ export default function Navbar() {
                                     )}
                                 </div>
                             ) : (
-                                <Link to="/login" className="bg-custom hover:bg-custom text-black py-2 px-4 rounded">
+                                <Link to="/login" className="bg-custom text-black py-2 px-4 rounded cursor-pointer">
                                     Login
                                 </Link>
                             )}
