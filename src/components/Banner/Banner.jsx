@@ -150,30 +150,31 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                 <div className="lg:bg-gray-800 lg:bg-opacity-50 rounded-md lg:p-4 lg:w-[88%] mx-auto">
                     <div className="flex justify-center items-center space-x-2 lg:space-x-14 mb-4">
                         <ul className="flex justify-center items-center space-x-4 text-sm">
-                            <li className="relative">
-                                <button
-                                    className="bg-custom text-white hover:bg-custom duration-200 px-5 py-2 font-semibold rounded-full"
-                                    onClick={handleSaleClick}
-                                >
-                                    Sale
-                                </button>
-                                {saleDropdownOpen && (
-                                    <ul className="absolute left-0 mt-2 w-40 bg-white text-black rounded-md shadow-lg">
-                                        <li className="hover:bg-gray-200 px-4 py-2 cursor-pointer" onClick={() => handleSaleOptionClick("Residential")}>
-                                            Residential
-                                        </li>
-                                        <li className="hover:bg-gray-200 px-4 py-2 cursor-pointer" onClick={() => handleSaleOptionClick("Commercial")}>
-                                            Commercial
-                                        </li>
-                                        <li className="hover:bg-gray-200 px-4 py-2 cursor-pointer" onClick={() => handleSaleOptionClick("Land")}>
-                                            Land
-                                        </li>
-                                        <li className="hover:bg-gray-200 px-4 py-2 cursor-pointer" onClick={() => handleSaleOptionClick("Multiple Units")}>
-                                            Multiple Units
-                                        </li>
-                                    </ul>
-                                )}
-                            </li>
+                        <li className="relative">
+    <button
+        className="bg-custom text-white hover:bg-custom duration-200 px-5 py-2 font-semibold rounded-full"
+        onClick={handleSaleClick}
+    >
+        Sale
+    </button>
+    {saleDropdownOpen && (
+        <ul className="absolute left-0 bottom-full mb-2 w-40 bg-white text-black rounded-md shadow-lg">
+            <li className="hover:bg-gray-200 px-4 py-2 cursor-pointer" onClick={() => handleSaleOptionClick("Residential")}>
+                Residential
+            </li>
+            <li className="hover:bg-gray-200 px-4 py-2 cursor-pointer" onClick={() => handleSaleOptionClick("Commercial")}>
+                Commercial
+            </li>
+            <li className="hover:bg-gray-200 px-4 py-2 cursor-pointer" onClick={() => handleSaleOptionClick("Land")}>
+                Land
+            </li>
+            <li className="hover:bg-gray-200 px-4 py-2 cursor-pointer" onClick={() => handleSaleOptionClick("Multiple Units")}>
+                Multiple Units
+            </li>
+        </ul>
+    )}
+</li>
+
                             <li>
                                 <button
                                     className="bg-custom text-white hover:bg-custom duration-200 px-5 py-2 font-semibold rounded-full"
