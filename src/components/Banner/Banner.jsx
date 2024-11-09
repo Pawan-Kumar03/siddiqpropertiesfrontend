@@ -323,7 +323,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                 </div>
             </div>
             {city && locationCounts.length > 0 && (
-    <div className=" bg-gray-800">
+    <div className=" bg-gray-800 pl-4">
         <h2 className="text-xl font-semibold text-custom">
             Properties by Location in {city}. {totalProperties} Ads
         </h2>
@@ -335,7 +335,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                     onClick={() => handleLocationClick(loc.location)}
                 >
                     <span className="mr-2 truncate max-w-[120px]">{loc.location.split(' ').slice(0, 2).join(' ')}</span>
-                    <span className="text-black">( {loc.count} )</span>
+                    <span className="text-custom">( {loc.count} )</span>
                 </li>
             ))}
         </ul>
