@@ -144,60 +144,44 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     return (
         <section>
             <div className="container bg-grey-light lg:bg-banner bg-cover bg-center bg-no-repeat lg:my-2 lg:pb-10 lg:pt-5 rounded-m bg-gray-800">
-                <h1 className="text-2xl text-center font-semibold lg:text-white lg:mb-8 ">
+            <h1 className="text-2xl text-center font-semibold lg:text-white lg:mb-8 ">
                     Your Maskan journey starts here
                 </h1>
                 <div className="lg:bg-gray-800 lg:bg-opacity-50 rounded-md lg:p-4 lg:w-[88%] mx-auto">
-                    <div className="flex justify-center items-center space-x-2 lg:space-x-14 mb-4">
-                        <ul className="flex justify-center items-center space-x-4 text-sm">
-                        <li className="relative">
-    <button
-        className="bg-custom text-white hover:bg-custom duration-200 px-5 py-2 font-semibold rounded-full"
-        onClick={handleSaleClick}
-    >
-        Sale
-    </button>
-    {saleDropdownOpen && (
-        <ul className="absolute left-0 bottom-full mb-2 w-40 bg-white text-black rounded-md shadow-lg">
-            <li className="hover:bg-gray-200 px-4 py-2 cursor-pointer" onClick={() => handleSaleOptionClick("Residential")}>
-                Residential
-            </li>
-            <li className="hover:bg-gray-200 px-4 py-2 cursor-pointer" onClick={() => handleSaleOptionClick("Commercial")}>
-                Commercial
-            </li>
-            <li className="hover:bg-gray-200 px-4 py-2 cursor-pointer" onClick={() => handleSaleOptionClick("Land")}>
-                Land
-            </li>
-            <li className="hover:bg-gray-200 px-4 py-2 cursor-pointer" onClick={() => handleSaleOptionClick("Multiple Units")}>
-                Multiple Units
-            </li>
-        </ul>
-    )}
-</li>
+                <div className="flex justify-center items-center space-x-2 lg:space-x-14 mb-4">
+                <ul className="flex justify-center items-center space-x-4 text-sm">
+    <li>
+        <button
+            className="bg-custom text-white hover:bg-custom duration-200 px-5 py-2 font-semibold rounded-full"
+            onClick={handleSaleClick}
+        >
+            Sale
+        </button>
+    </li>
+    <li>
+        <button
+            className="bg-custom text-white hover:bg-custom duration-200 px-5 py-2 font-semibold rounded-full"
+            onClick={handleRentClick}
+        >
+            Rent
+        </button>
+    </li>
+    <li>
+        <button
+            className="bg-custom text-white hover:bg-custom duration-200 px-5 py-2 font-semibold rounded-full"
+            onClick={handleOffPlanClick}
+        >
+            Off-Plan
+        </button>
+    </li>
+    <li>
+        <Link className="bg-custom text-white hover:bg-custom duration-200 px-5 py-2 font-semibold rounded-full" to="/place-an-ad">
+            <span>Place an Ad</span>
+        </Link>
+    </li>
+</ul>
 
-                            <li>
-                                <button
-                                    className="bg-custom text-white hover:bg-custom duration-200 px-5 py-2 font-semibold rounded-full"
-                                    onClick={handleRentClick}
-                                >
-                                    Rent
-                                </button>
-                            </li>
-                            <li>
-                                <button
-                                    className="bg-custom text-white hover:bg-custom duration-200 px-5 py-2 font-semibold rounded-full"
-                                    onClick={handleOffPlanClick}
-                                >
-                                    Off-Plan
-                                </button>
-                            </li>
-                            <li>
-                                <Link className="bg-custom text-white hover:bg-custom duration-200 px-5 py-2 font-semibold rounded-full" to="/place-an-ad">
-                                    <span>Place an Ad</span>
-                                </Link>
-                            </li>
-                        </ul>
-                    </div>
+</div>
 
                     <form className="lg:flex lg:flex-col lg:space-y-3 px-2 lg:px-0 py-4 lg:py-0 relative bg-gray-800 lg:bg-transparent" onSubmit={handleSearch}>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
