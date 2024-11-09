@@ -47,8 +47,8 @@ export default function Navbar() {
 
                     {/* Navigation Links on the top right */}
                     <div className="flex items-center space-x-6">
-                        <Link to="/" className="text-gray-100 hover:text-gray-300">Home</Link>
-                        <Link to="/about-us" className="text-gray-100 hover:text-gray-300">About Us</Link>
+                        <Link to="/" className="bg-custom text-black py-2 px-4 rounded cursor-pointer">Home</Link>
+                        <Link to="/about-us" className="bg-custom text-black py-2 px-4 rounded cursor-pointer">About Us</Link>
 
                         {/* Login Button with Dropdown Menu */}
                         <div className="relative">
