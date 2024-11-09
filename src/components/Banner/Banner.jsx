@@ -317,8 +317,13 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                         </div>
                     </form>
 
-                    {city && locationCounts.length > 0 && (
-    <div className=" bg-gray-200">
+                    
+
+
+                </div>
+            </div>
+            {city && locationCounts.length > 0 && (
+    <div >
         <h2 className="text-xl font-semibold text-custom">
             Properties by Location in {city}. {totalProperties} Ads
         </h2>
@@ -336,10 +341,6 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         </ul>
     </div>
 )}
-
-
-                </div>
-            </div>
         </section>
     );
 }
