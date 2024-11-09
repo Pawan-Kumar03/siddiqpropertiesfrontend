@@ -21,30 +21,29 @@ export default function Footer() {
                 if (selectedLocation && selectedLocation !== 'all') {
                     url += `&location=${encodeURIComponent(selectedLocation)}`;
                 }
-    
+
                 const response = await fetch(url);
-    
+
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
-    
+
                 const data = await response.json();
                 setProperties(data);
             } catch (error) {
                 console.error("Error fetching properties:", error);
             }
         };
-    
+
         fetchProperties();
     }, [selectedCity, selectedLocation]);
-    
+
     const handleCityClick = (e, city) => {
         e.preventDefault(); // Prevent default link behavior
         // Redirect the user to the desired URL with the selected city and location as query parameters
         window.location.href = `/properties?city=${encodeURIComponent(city)}`;
     };
-    
-    
+
     const data = [
         {
             category: "Company",
@@ -104,10 +103,10 @@ export default function Footer() {
                 </div>
 
                 {/* Footer content for smaller screens */}
-                <div className="lg:hidden grid grid-cols-2 gap-6 pb-6">
+                <div className="lg:hidden grid grid-cols-2 gap-4 pb-6">
                     {data.map((footerItem, index) => (
                         <div key={index}>
-                            <h3 className="text-base font-semibold mb-4 text-custom">
+                            <h3 className="text-base font-semibold mb-2 text-custom">
                                 {footerItem.category}
                             </h3>
                             <ul className="space-y-1">
@@ -128,7 +127,7 @@ export default function Footer() {
                 </div>
 
                 {/* Footer Bottom Section */}
-                <div className="mt-8 flex flex-col items-center lg:items-start lg:flex-row justify-between">
+                <div className="mt-6 flex flex-col items-center lg:items-start lg:flex-row justify-between">
                     <div className="flex items-center space-x-4">
                         <img className="w-32" src={logoDark} alt="Logo" />
                         <small className="text-custom text-center lg:text-left mt-4 lg:mt-0">
