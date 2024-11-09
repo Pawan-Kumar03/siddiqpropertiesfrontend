@@ -105,7 +105,12 @@ export default function Footer() {
                 {/* Footer content for smaller screens */}
                 <div className="lg:hidden grid grid-cols-2 gap-4 pb-6">
     {data.map((footerItem, index) => (
-        <div key={index} className="h-auto">
+        <div
+            key={index}
+            className={`${
+                footerItem.category === "Company" ? "w-[376px] h-[80px]" : ""
+            }`} // Apply width and height for 'Company' category only
+        >
             <h3 className="text-base font-semibold mb-2 text-custom">
                 {footerItem.category}
             </h3>
@@ -125,8 +130,7 @@ export default function Footer() {
         </div>
     ))}
 </div>
-
-
+      
                 {/* Footer Bottom Section */}
                 <div className="mt-6 flex flex-col items-center lg:items-start lg:flex-row justify-between">
                     <div className="flex items-center space-x-4">
