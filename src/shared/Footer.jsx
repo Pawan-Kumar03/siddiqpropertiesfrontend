@@ -103,13 +103,17 @@ export default function Footer() {
                 </div>
 
                 {/* Footer content for smaller screens */}
-                <div className="lg:hidden grid grid-cols-2 gap-4 pb-6">
+                <div className="lg:hidden grid grid-cols-2 gap-4 pb-6 space-y-0">
     {data.map((footerItem, index) => (
         <div
             key={index}
             className={`${
-                footerItem.category === "Company" ? "w-[376px] h-[80px]" : ""
-            }`} // Apply width and height for 'Company' category only
+                footerItem.category === "Company"
+                    ? "w-[376px] h-[80px]"
+                    : footerItem.category === "Support"
+                    ? "order-first"
+                    : ""
+            }`}
         >
             <h3 className="text-base font-semibold mb-2 text-custom">
                 {footerItem.category}
@@ -120,7 +124,7 @@ export default function Footer() {
                         <a
                             className="text-sm text-blue-400 hover:text-blue-500 hover:underline"
                             href={item.link}
-                            onClick={item.onClick} // Set the selected city on click
+                            onClick={item.onClick}
                         >
                             {item.name}
                         </a>
@@ -130,6 +134,7 @@ export default function Footer() {
         </div>
     ))}
 </div>
+
       
                 {/* Footer Bottom Section */}
                 <div className="mt-6 flex flex-col items-center lg:items-start lg:flex-row justify-between">
