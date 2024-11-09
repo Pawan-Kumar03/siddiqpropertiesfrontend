@@ -183,13 +183,12 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         <div className="flex flex-col mb-3">
             <label className="mb-1 text-gray-300">City</label>
             <select
-                className="w-full p-2 lg:p-3 lg:rounded-md rounded-full border border-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
+                className="w-full p-3 h-12 rounded-md border border-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
                 name="city"
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
             >
                 <option value="">Select City</option>
-                {/* Options */}
             </select>
         </div>
 
@@ -201,7 +200,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                     type="text"
                     placeholder="Add location and press Enter"
                     onKeyPress={handleAddLocation}
-                    className="flex-1 p-2 lg:p-3 lg:rounded-md rounded-full border border-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
+                    className="flex-1 p-3 h-12 rounded-md border border-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
                 />
                 {/* Location Chips */}
                 {locations.map((loc, index) => (
@@ -221,13 +220,12 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         <div className="flex flex-col mb-3">
             <label className="mb-1 text-gray-300">Property Type</label>
             <select
-                className="w-full p-2 lg:p-3 lg:rounded-md rounded-full border border-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
+                className="w-full p-3 h-12 rounded-md border border-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
                 name="propertyType"
                 value={propertyType}
                 onChange={(e) => setPropertyType(e.target.value)}
             >
                 <option value="">Select Property Type</option>
-                {/* Options */}
             </select>
         </div>
 
@@ -240,7 +238,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                 placeholder="Min Price"
                 value={priceMin}
                 onChange={(e) => setPriceMin(e.target.value)}
-                className="w-full p-2 lg:p-3 lg:rounded-md rounded-full border border-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
+                className="w-full p-3 h-12 rounded-md border border-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
             />
         </div>
 
@@ -253,7 +251,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                 placeholder="Max Price"
                 value={priceMax}
                 onChange={(e) => setPriceMax(e.target.value)}
-                className="w-full p-2 lg:p-3 lg:rounded-md rounded-full border border-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
+                className="w-full p-3 h-12 rounded-md border border-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
             />
         </div>
 
@@ -261,13 +259,12 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         <div className="flex flex-col mb-3">
             <label className="mb-1 text-gray-300">Beds</label>
             <select
-                className="w-full p-2 lg:p-3 lg:rounded-md rounded-full border border-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
+                className="w-full p-3 h-12 rounded-md border border-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
                 name="beds"
                 value={beds}
                 onChange={(e) => setBeds(e.target.value)}
             >
                 <option value="">Select Beds</option>
-                {/* Options */}
             </select>
         </div>
 
@@ -275,13 +272,12 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         <div className="flex flex-col mb-3">
             <label className="mb-1 text-gray-300">Baths</label>
             <select
-                className="w-full p-2 lg:p-3 lg:rounded-md rounded-full border border-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
+                className="w-full p-3 h-12 rounded-md border border-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
                 name="baths"
                 value={baths}
                 onChange={(e) => setBaths(e.target.value)}
             >
                 <option value="">Select Baths</option>
-                {/* Options */}
             </select>
         </div>
 
@@ -289,18 +285,17 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         <div className="flex flex-col mb-3">
             <label className="mb-1 text-gray-300">Owner Type</label>
             <select
-                className="w-full p-2 lg:p-3 lg:rounded-md rounded-full border border-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
+                className="w-full p-3 h-12 rounded-md border border-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
                 name="agentType"
                 value={agentType}
                 onChange={(e) => setAgentType(e.target.value)}
             >
                 <option value="">Select Owner Type</option>
-                <option value="Owner">Landlord</option>
-                <option value="Agent">Agent</option>
             </select>
         </div>
     </div>
 </form>
+
 
                 </div>
             </div>
