@@ -331,11 +331,11 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
             {locationCounts.map((loc, index) => (
                 <li 
                     key={index}
-                    className="flex items-center px-4 rounded shadow-md cursor-pointer text-custom"
+                    className="flex items-center px-4 rounded shadow-md cursor-pointer text-white"
                     onClick={() => handleLocationClick(loc.location)}
                 >
                     <span className="mr-2 truncate max-w-[120px]">{loc.location.split(' ').slice(0, 2).join(' ')}</span>
-                    <span className="text-custom">( {loc.count} )</span>
+                    <span className="text-white">( {loc.count} )</span>
                 </li>
             ))}
         </ul>

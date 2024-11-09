@@ -48,7 +48,7 @@ export default function ResidentialForSale({ searchParams = {}, listings = [] })
         <section className="py-4 px-4 lg:px-0 bg-gray-800 text-gray-100">
             <div className="container">
                 <h1 className="text-2xl font-semibold mb-5 text-custom">
-                    {searchParams.city ? `Properties in ${searchParams.city}` : "Popular Properties for Sale in UAE"}
+                    {searchParams.city ? `Properties in ${searchParams.city}` : "Popular Properties in UAE"}
                 </h1>
                 {filteredResults.length > 0 ? (
                     <Swiper
