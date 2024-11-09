@@ -138,7 +138,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     return (
         <section>
             <div className="container bg-grey-light lg:bg-banner bg-cover bg-center bg-no-repeat lg:my-2 lg:pb-10 lg:pt-5 rounded-m bg-gray-800">
-            <h1 className="text-2xl text-center font-semibold font-cofo-sans lg:text-white lg:mb-8 ">
+            <h1 className="text-2xl text-center font-semibold  lg:text-white lg:mb-8 ">
             Your Maskan Journey Starts Here
                 </h1>
                 <div className="lg:bg-gray-800 lg:bg-opacity-50 rounded-md lg:p-4 lg:w-[88%] mx-auto">
