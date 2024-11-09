@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState,useEffect } from "react";
 import saleProperty from "../../assets/icons/sale-property.svg";
 import inputSearch from "../../assets/icons/input-search.svg";
 import { Link } from "react-router-dom";
@@ -15,13 +15,16 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     const [status, setStatus] = useState("");
     const [purpose, setPurpose] = useState("");
     const [locationCounts, setLocationCounts] = useState([]);
-    const [saleDropdownOpen, setSaleDropdownOpen] = useState(false); // State to toggle dropdown visibility
+    const [saleDropdownOpen, setSaleDropdownOpen] = useState(false);
 
     useEffect(() => {
         if (city) {
             fetch(`https://backend-git-main-pawan-togas-projects.vercel.app/api/listings/${city}`)
                 .then(response => response.json())
                 .then(data => {
+                    // console.log(data); // Inspect the API response
+    
+                    // Grouping properties by location
                     const locationMap = data.reduce((acc, property) => {
                         const location = property.location;
                         if (location) {
@@ -33,6 +36,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                         return acc;
                     }, {});
     
+                    // Convert the grouped data back to an array
                     const groupedLocations = Object.values(locationMap);
                     setLocationCounts(groupedLocations);
                 })
@@ -41,6 +45,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
             setLocationCounts([]);
         }
     }, [city]);
+    
     
     const totalProperties = locationCounts.reduce((total, loc) => {
         return total + (typeof loc.count === 'number' ? loc.count : 0);
@@ -63,22 +68,48 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         onSearch(searchParams); // Pass searchParams to onSearch function
     };
     
+    
+    const handleAddLocation = (e) => {
+        if (e.key === "Enter" && e.target.value.trim() !== "") {
+            setLocations([...locations, e.target.value.trim()]);
+            e.target.value = "";
+        }
+    };
+
+    const handleRemoveLocation = (index) => {
+        const updatedLocations = [...locations];
+        updatedLocations.splice(index, 1);
+        setLocations(updatedLocations);
+    };
+
+    const handleClearFilters = () => {
+        setCity("");
+        setLocations([]);
+        setPropertyType("");
+        setPriceMin("");
+        setPriceMax("");
+        setBeds("");
+        setBaths("");
+        setAgentType("");
+        setStatus("");
+        setPurpose("");
+    };
+
     const handleSaleClick = () => {
         setSaleDropdownOpen(!saleDropdownOpen); // Toggle the dropdown visibility
     };
-    
     const handleSaleOptionClick = (type) => {
         setPropertyType(type); // Set the property type based on selection
         setPurpose("sell"); // Set the purpose to 'sell'
         setSaleDropdownOpen(false); // Close the dropdown
         onSearch({ purpose: "sell", propertyType: type }); // Trigger search with the selected type and purpose
     };
-
+    
     const handleRentClick = () => {
         setPurpose("buy"); // For rent, set the purpose to 'buy'
         onSearch({ purpose: "buy" }); // Trigger search with purpose 'buy'
     };
-
+    
     const handleOffPlanClick = () => {
         const searchParams = {
             city: city || "",
@@ -89,10 +120,25 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
             beds: beds || "",
             baths: baths || "",
             agentType: agentType || "",
-            status: "false", // Only off-plan properties
+            status: "false", // This ensures that only off-plan properties are shown
             purpose: purpose || ""
         };
-        onSearch(searchParams); // Pass search params
+    
+        // console.log("Searching for off-plan properties with parameters:", searchParams); // Add this to inspect search parameters
+    
+        onSearch(searchParams); // Pass the search params including the status=false for off-plan properties
+    };
+    
+    
+    
+    
+    
+    const handleLocationClick = (location) => {
+        const query = new URLSearchParams({
+            city,
+            location,
+        }).toString();
+        window.location.href = `/properties?${query}`;
     };
 
     return (
