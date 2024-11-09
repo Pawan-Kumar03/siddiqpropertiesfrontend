@@ -52,21 +52,22 @@ export default function ResidentialForSale({ searchParams = {}, listings = [] })
                 </h1>
                 {filteredResults.length > 0 ? (
                     <Swiper
-                        spaceBetween={10}
-                        autoplay={{ delay: 5000 }}
-                        pagination={{ clickable: true }}
-                        breakpoints={{
-                            400: { slidesPerView: 2 },
-                            768: { slidesPerView: 3 },
-                            1024: { slidesPerView: 5 },
-                        }}
-                    >
-                        {filteredResults.map((item, index) => (
-                            <SwiperSlide className="mb-10" key={index}>
-                                <Card item={item} />
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
+                    spaceBetween={20} // More space between cards for consistency
+                    autoplay={{ delay: 5000 }}
+                    pagination={{ clickable: true }}
+                    breakpoints={{
+                        400: { slidesPerView: 2 },
+                        768: { slidesPerView: 3 },
+                        1024: { slidesPerView: 5 },
+                    }}
+                >
+                    {filteredResults.map((item, index) => (
+                        <SwiperSlide className="mb-10" key={index}>
+                            <Card item={item} />
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+                
                 ) : (
                     <>
                         <p className="text-center text-gray-300">No properties match your search criteria.</p>

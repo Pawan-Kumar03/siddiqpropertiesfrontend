@@ -3,10 +3,7 @@ import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 
 export default function Card({ item }) {
-    // Ensure item is defined
-    if (!item) {
-        return null; // Or return a placeholder UI for missing data
-    }
+    if (!item) return null;
 
     const {
         image = '', // Default to an empty string if image is undefined
@@ -30,25 +27,27 @@ export default function Card({ item }) {
 
     return (
         <div
-            className="hover:shadow-lg p-4 rounded-lg bg-gray-800 dark:bg-gray-900 cursor-pointer transition duration-200"
+            className="hover:shadow-lg p-4 rounded-lg bg-gray-800 dark:bg-gray-900 cursor-pointer transition duration-200 h-80 flex flex-col justify-between"
             onClick={handleClick}
+            style={{ minWidth: '220px' }} // Ensure minimum width for consistency
         >
             {imageUrl ? (
                 <img
-                    className="rounded-lg mb-3 object-cover h-56 lg:h-32 w-full"
+                    className="rounded-lg mb-3 object-cover h-40 w-full"
                     src={imageUrl}
                     alt={`${title} image`}
+                    style={{ objectFit: "cover" }} // Ensure image fits within the container
                 />
             ) : (
-                <div className="rounded-lg mb-3 object-cover h-56 lg:h-32 w-full bg-gray-700 flex items-center justify-center">
+                <div className="rounded-lg mb-3 object-cover h-40 w-full bg-gray-700 flex items-center justify-center">
                     <span className="text-gray-400">No Image Available</span>
                 </div>
             )}
-            <h3 className="text-lg font-semibold" style={{ color: '#c5a47e' }}>
+            <h3 className="text-lg font-semibold text-custom">
                 {price}
             </h3>
-            <p className="text-gray-100 font-semibold">{title}</p>
-            <p className="text-gray-300 text-sm">{extension}</p>
+            <p className="text-gray-100 font-semibold truncate">{title}</p>
+            <p className="text-gray-300 text-sm truncate">{extension}</p>
         </div>
     );
 }
