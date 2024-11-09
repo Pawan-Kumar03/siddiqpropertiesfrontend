@@ -47,7 +47,7 @@ export default function ResidentialForSale({ searchParams = {}, listings = [] })
     return (
         <section className="py-4 px-4 lg:px-0 bg-gray-800 text-gray-100">
             <div className="container">
-                <h1 className="text-2xl font-semibold mb-5 text-custom">
+                <h1 className="text-2xl font-semibold mb-5 text-white">
                     {searchParams.city ? `Properties in ${searchParams.city}` : "Popular Developments"}
                 </h1>
                 {filteredResults.length > 0 ? (
