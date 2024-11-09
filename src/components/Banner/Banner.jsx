@@ -323,7 +323,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                 </div>
             </div>
             {city && locationCounts.length > 0 && (
-    <div >
+    <div className=" bg-gray-800">
         <h2 className="text-xl font-semibold text-custom">
             Properties by Location in {city}. {totalProperties} Ads
         </h2>
