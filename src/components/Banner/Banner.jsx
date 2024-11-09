@@ -139,7 +139,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         <section>
             <div className="container bg-grey-light lg:bg-banner bg-cover bg-center bg-no-repeat lg:my-2 lg:pb-10 lg:pt-5 rounded-m bg-gray-800">
             <h1 className="text-2xl text-center font-semibold lg:text-white lg:mb-8 ">
-                    Your Maskan journey starts here
+            Your Maskan Journey Starts Here
                 </h1>
                 <div className="lg:bg-gray-800 lg:bg-opacity-50 rounded-md lg:p-4 lg:w-[88%] mx-auto">
                 <div className="flex justify-center items-center space-x-2 lg:space-x-14 mb-4">
@@ -318,7 +318,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                     </form>
 
                     {city && locationCounts.length > 0 && (
-    <div>
+    <div className=" bg-gray-200">
         <h2 className="text-xl font-semibold text-custom">
             Properties by Location in {city}. {totalProperties} Ads
         </h2>
@@ -330,7 +330,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                     onClick={() => handleLocationClick(loc.location)}
                 >
                     <span className="mr-2 truncate max-w-[120px]">{loc.location.split(' ').slice(0, 2).join(' ')}</span>
-                    <span className="text-black">{loc.count} properties</span>
+                    <span className="text-black">( {loc.count} )</span>
                 </li>
             ))}
         </ul>
