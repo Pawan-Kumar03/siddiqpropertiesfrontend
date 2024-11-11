@@ -39,7 +39,7 @@ export default {
                 'cofo-sans': ["'cofo-sans-variable'", "sans-serif"], // Add Cofo Sans
             },
             backgroundImage: {
-                banner: "url('/homepage-banner.jpeg')"
+                banner: "url('/homepage-banner-img.jpeg')"
             }
         },
     },
