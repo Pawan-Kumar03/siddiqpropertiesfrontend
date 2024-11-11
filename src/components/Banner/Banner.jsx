@@ -321,6 +321,19 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
             </select>
         </div>
     </div>
+    <div className="flex items-center justify-between mt-4 w-full ">
+                            <button type="submit" className="bg-custom text-white flex items-center justify-center  w-1/2 px-6 py-2 rounded-full font-semibold mr-2 ">
+                                <img src={inputSearch} alt="Search" className="w-5 h-5 mr-2" />
+                                Search
+                            </button>
+                            <button
+                                type="button"
+                                onClick={handleClearFilters}
+                                className="flex items-center justify-center bg-gray-700 text-white w-1/2 px-6 py-2 rounded-full font-semibold ml-2 bg-custom text-white"
+                            >
+                                Clear Filters
+                            </button>
+                        </div>
 </form>
 
 
