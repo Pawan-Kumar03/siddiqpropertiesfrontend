@@ -136,19 +136,19 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     };
 
     return (
-        <section >
-<div className="container bg-cover bg-center bg-no-repeat lg:my-2 lg:pb-10 lg:pt-5 rounded-m bg-gray-800"
-
->
-        {/* "Your Maskan Journey Starts Here" Section */}
-
-        <h1 className="text-2xl text-center font-semibold text-white lg:text-white lg:mb-8">
-          Your Maskan Journey Starts Here
-        </h1>
-        <div className="lg:bg-gray-800 lg:bg-opacity-50 rounded-md lg:p-4 lg:w-[88%] mx-auto"  >
-          <div className="flex flex-wrap justify-center items-center space-x-2 lg:space-x-14 mb-4" style={{ backgroundImage: `url('/homepage-banner-img.jpeg')` }}>
-            <ul className="flex flex-wrap justify-center items-center space-x-2 text-sm sm:text-base">
-              <li className="mb-2 sm:mb-0">
+        <section>
+            <div
+                className="container bg-gray-800 lg:bg-cover lg:bg-center lg:bg-no-repeat lg:my-2 lg:pb-10 lg:pt-5 rounded-m"
+                style={{ backgroundImage: `url('/homepage-banner-img.jpeg')` }} // Applies only on larger screens
+            >
+                {/* "Your Maskan Journey Starts Here" Section */}
+                <h1 className="text-2xl text-center font-semibold text-white lg:text-white lg:mb-8">
+                    Your Maskan Journey Starts Here
+                </h1>
+                <div className="lg:bg-gray-800 lg:bg-opacity-50 rounded-md lg:p-4 lg:w-[88%] mx-auto">
+                    <div className="flex flex-wrap justify-center items-center space-x-2 lg:space-x-14 mb-4">
+                        <ul className="flex flex-wrap justify-center items-center space-x-2 text-sm sm:text-base">
+                            <li className="mb-2 sm:mb-0">
                 <button
                   className="bg-custom text-white hover:bg-custom duration-200 px-3 py-2 sm:px-5 sm:py-2 font-semibold rounded-full"
                   onClick={handleSaleClick}
@@ -184,9 +184,9 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
           </div>
 
 
-<form className="lg:flex lg:flex-col lg:space-y-3 px-2 lg:px-0 py-4 lg:py-0 relative bg-gray-800 lg:bg-transparent" onSubmit={handleSearch}>
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        {/* City Input */}
+          <form className="lg:flex lg:flex-col lg:space-y-3 px-2 lg:px-0 py-4 lg:py-0 relative bg-gray-800 lg:bg-transparent" onSubmit={handleSearch}>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                             {/* City Input */}
         <div className="flex flex-col mb-3">
             <label className="mb-1 text-gray-300">City</label>
             <select
