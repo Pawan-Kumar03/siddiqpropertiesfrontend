@@ -177,7 +177,7 @@ style={{ backgroundImage: `url('/homepage-banner-img.jpeg')` }}
                   className="bg-custom text-white hover:bg-custom duration-200 px-3 py-2 sm:px-5 sm:py-2 font-semibold rounded-full"
                   to="/place-an-ad"
                 >
-                  <span>Place an Ad</span>
+                  <span> Create A Listing</span>
                 </Link>
               </li>
             </ul>

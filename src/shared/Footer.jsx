@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import logoDark from "../assets/logo.png";
+import logoDark from "../assets/logo.jpeg";
 import Card from "../components/Card/Card";
 import { Swiper, SwiperSlide } from "swiper/react";
 // import "swiper/swiper-bundle.min.css"; // Import Swiper styles
@@ -49,7 +49,7 @@ export default function Footer() {
             category: "Company",
             items: [
                 { name: "About Us", link: "/about-us" },
-                { name: "Advertising", link: "/place-an-ad" },
+                { name: " Create A Listing", link: "/place-an-ad" },
                 { name: "Terms of Use", link: "/terms-and-conditions" },
             ],
         },
