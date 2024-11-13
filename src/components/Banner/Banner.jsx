@@ -145,8 +145,8 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         <h1 className="text-2xl text-center font-semibold text-white lg:text-white lg:mb-8">
           Your Maskan Journey Starts Here
         </h1>
-        <div className="lg:bg-gray-800 lg:bg-opacity-50 rounded-md lg:p-4 lg:w-[88%] mx-auto" style={{ backgroundImage: `url('/homepage-banner-img.jpeg')` }} >
-          <div className="flex flex-wrap justify-center items-center space-x-2 lg:space-x-14 mb-4">
+        <div className="lg:bg-gray-800 lg:bg-opacity-50 rounded-md lg:p-4 lg:w-[88%] mx-auto"  >
+          <div className="flex flex-wrap justify-center items-center space-x-2 lg:space-x-14 mb-4" style={{ backgroundImage: `url('/homepage-banner-img.jpeg')` }}>
             <ul className="flex flex-wrap justify-center items-center space-x-2 text-sm sm:text-base">
               <li className="mb-2 sm:mb-0">
                 <button
