@@ -137,13 +137,13 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
 
     return (
         <section >
-<div
-    className="container bg-cover bg-center bg-no-repeat lg:my-2 lg:pb-10 lg:pt-5 rounded-m bg-gray-800"
-    style={{ backgroundImage: `url('/homepage-banner-img.jpeg')` }}
-  >
-    <div className="bg-gray-800 bg-opacity-50 lg:bg-transparent lg:bg-cover lg:bg-center lg:bg-no-repeat lg:block hidden rounded-md p-4 lg:w-[88%] mx-auto">
-      <h1 className="text-2xl text-center font-semibold text-white lg:text-white lg:mb-8">
-             Your Maskan Journey Starts Here
+<div className="container bg-cover bg-center bg-no-repeat lg:my-2 lg:pb-10 lg:pt-5 rounded-m bg-gray-800"
+
+>
+        {/* "Your Maskan Journey Starts Here" Section */}
+
+        <h1 className="text-2xl text-center font-semibold text-white lg:text-white lg:mb-8">
+          Your Maskan Journey Starts Here
         </h1>
         <div className="lg:bg-gray-800 lg:bg-opacity-50 rounded-md lg:p-4 lg:w-[88%] mx-auto">
           <div className="flex flex-wrap justify-center items-center space-x-2 lg:space-x-14 mb-4">
@@ -361,7 +361,6 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         </ul>
     </div>
 )}
-          </div>
         </section>
     );
 }
