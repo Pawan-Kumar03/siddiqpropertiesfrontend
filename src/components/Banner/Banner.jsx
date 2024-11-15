@@ -137,22 +137,22 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
 
     return (
         <section>
-            <div
-                className="container bg-gray-800 lg:bg-cover lg:bg-center lg:bg-no-repeat lg:my-2 lg:pb-10 lg:pt-5 rounded-m"
-                style={{ backgroundImage: `url('/homepage-banner-img.jpeg')` }} // Applies only on larger screens
-            >
-                {/* "Your Maskan Journey Starts Here" Section */}
+    <div
+        className="container bg-gray-800 lg:bg-cover lg:bg-center lg:bg-no-repeat lg:my-2 lg:pb-10 lg:pt-5 rounded-m"
+        style={{ backgroundImage: `url('/homepage-banner-img.jpeg')` }} // Applies background image on large screens
+    >
+                {/* "Your InvestiBayt Journey Starts Here" Section */}
                 <h1 className="text-2xl text-center font-semibold text-white lg:text-white lg:mb-8">
-                    Your InvestiBayt Journey Starts Here
-                </h1>
-                <div className="lg:bg-gray-800 lg:bg-opacity-50 rounded-md lg:p-4 lg:w-[88%] mx-auto">
-                    <div className="flex flex-wrap justify-center items-center space-x-2 lg:space-x-14 mb-4">
-                        <ul className="flex flex-wrap justify-center items-center space-x-2 text-sm sm:text-base">
-                            <li className="mb-2 sm:mb-0">
-                <button
-                  className="bg-custom text-white hover:bg-custom duration-200 px-3 py-2 sm:px-5 sm:py-2 font-semibold rounded-full"
-                  onClick={handleSaleClick}
-                >
+            Your InvestiBayt Journey Starts Here
+        </h1>
+        <div className="lg:bg-gray-800 lg:bg-opacity-50 rounded-md lg:p-4 lg:w-[88%] mx-auto">
+            <div className="flex flex-wrap justify-center items-center space-x-2 lg:space-x-14 mb-4">
+                <ul className="flex flex-wrap justify-center items-center space-x-2 text-sm sm:text-base">
+                    <li className="mb-2 sm:mb-0">
+                        <button
+                            className="bg-custom text-white hover:bg-custom duration-200 px-3 py-2 sm:px-5 sm:py-2 font-semibold rounded-full"
+                            onClick={handleSaleClick}
+                        >
                   Sale
                 </button>
               </li>
