@@ -143,7 +143,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
             >
                 {/* "Your Maskan Journey Starts Here" Section */}
                 <h1 className="text-2xl text-center font-semibold text-white lg:text-white lg:mb-8">
-                    Your Maskan Journey Starts Here
+                    Your Investibayt Journey Starts Here
                 </h1>
                 <div className="lg:bg-gray-800 lg:bg-opacity-50 rounded-md lg:p-4 lg:w-[88%] mx-auto">
                     <div className="flex flex-wrap justify-center items-center space-x-2 lg:space-x-14 mb-4">

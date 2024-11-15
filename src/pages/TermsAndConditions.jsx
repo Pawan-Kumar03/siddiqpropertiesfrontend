@@ -20,7 +20,7 @@ const TermsAndConditions = () => {
                 <div className="text-white text-sm">
                     <p className="mb-4">
 <h3 className="text-1xl font-bold mb-6 text-white text-center">1. Introduction</h3>
-By using <b>MASKAN</b>, you agree to these Terms and Conditions. If you disagree, please do not use our website.
+By using <b>Investibayt</b>, you agree to these Terms and Conditions. If you disagree, please do not use our website.
 
 <h3 className="text-1xl font-bold mb-6 text-white text-center">2. Account Responsibilities</h3>
 Eligibility: Must be 18 or older.

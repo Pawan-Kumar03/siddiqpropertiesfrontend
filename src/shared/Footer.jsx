@@ -141,7 +141,7 @@ export default function Footer() {
                     <div className="flex items-center space-x-4">
                         <img className="w-32" src={logoDark} alt="Logo" />
                         <small className="text-custom text-center lg:text-left mt-4 lg:mt-0">
-                            &copy; Maskan.com {new Date().getFullYear()}, All Rights Reserved.
+                            &copy; Investibayt.com {new Date().getFullYear()}, All Rights Reserved.
                         </small>
                     </div>
                     {/* Uncomment if you want to use the cart image */}
