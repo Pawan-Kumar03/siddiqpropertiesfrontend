@@ -3,7 +3,7 @@ import Navbar from "../shared/Navbar";
 import Footer from '../shared/Footer'
 export default function Main() {
     return (
-        <div className="bg-gray-800 min-h-screen relative">
+        <div className="bg-gray-800 min-h-screen relative overflow-x-hidden">
             <Navbar />
             <Outlet />
             <Footer/>
