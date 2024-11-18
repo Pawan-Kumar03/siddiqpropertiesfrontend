@@ -683,6 +683,15 @@ function Step4Review({ onSubmit, onBack, formData }) {
           <label className="font-semibold">Price:</label>
           <div className="p-2 border border-gray-300 rounded bg-gray-100">{formData.price}</div>
         </div>
+        <div className="flex flex-col space-y-2">
+          <label className="font-semibold">Country:</label>
+          <div className="p-2 border border-gray-300 rounded bg-gray-100">{formData.country}</div>
+        </div>
+
+        <div className="flex flex-col space-y-2">
+          <label className="font-semibold">Development:</label>
+          <div className="p-2 border border-gray-300 rounded bg-gray-100">{formData.development}</div>
+        </div>
         {formData.bedrooms && (
           <div className="flex flex-col space-y-2">
             <label className="font-semibold">Bedrooms:</label>
