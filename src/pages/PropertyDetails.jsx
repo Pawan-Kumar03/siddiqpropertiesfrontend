@@ -172,7 +172,7 @@ export default function PropertyDetails() {
               </h3>
               <p className="text-sm mb-2">{property.price} AED</p>
               <p className="text-sm mb-2">
-  <LocationOnIcon /> {property.building} ({property.buildingType}), {property.development} ({property.developmentType}), {property.location} ({property.locationType}), {property.city} ({property.cityType}), {property.country} ({property.countryType})
+  <LocationOnIcon /> {property.building} , {property.developments} , {property.location} , {property.city} , {property.country} 
 </p>
               <p className="text-sm mb-2">
                 <strong>Property Type:</strong> {property.propertyType}
