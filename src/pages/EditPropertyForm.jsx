@@ -143,6 +143,30 @@ export default function EditPropertyForm() {
                     className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
                 />
                 <input
+                    name="country"
+                    type="text"
+                    value={formData.country || ''}
+                    onChange={handleChange}
+                    placeholder="Country"
+                    className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
+                />
+                <input
+                    name="developments"
+                    type="text"
+                    value={formData.developments || ''}
+                    onChange={handleChange}
+                    placeholder="Developments"
+                    className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
+                />
+                <input
+                    name="amenities"
+                    type="text"
+                    value={formData.amenities || ''}
+                    onChange={handleChange}
+                    placeholder="Amenities"
+                    className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
+                />
+                <input
                     name="propertyType"
                     type="text"
                     value={formData.propertyType || ''}
