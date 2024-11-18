@@ -24,7 +24,7 @@ export default function PlaceAnAdPage() {
     agentWhatsapp: '',
     landlord: false, // to distinguish between landlord and agent
     country: '',        
-    development: '', 
+    developments: '', 
   });
   const [step, setStep] = useState(1);
   const [submitted, setSubmitted] = useState(false); // State variable for submission success
@@ -306,7 +306,7 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
     agentWhatsapp: formData.agentWhatsapp,
     landlord: formData.landlord,
     country: '', 
-    development: '', 
+    developments: '', 
     errors: {}, // Error messages state
     ...formData,
   });
@@ -334,7 +334,7 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
 
   const validateForm = () => {
     const errors = {};
-    const requiredFields = ['title', 'price', 'city','images', 'location', 'propertyType','images', 'beds', 'baths', 'landlordName','agentName', 'agentCallNumber', 'agentEmail', 'agentWhatsapp', 'purpose', 'country', 'development'];
+    const requiredFields = ['title', 'price', 'city','images', 'location', 'propertyType','images', 'beds', 'baths', 'landlordName','agentName', 'agentCallNumber', 'agentEmail', 'agentWhatsapp', 'purpose', 'country', 'developments'];
 
     requiredFields.forEach(field => {
       if (!details[field] || details[field] === '') {
@@ -562,14 +562,14 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
                         className="border border-gray-300 p-2 rounded w-full"
                     />
                     <input
-      name="development"
+      name="developments"
       type="text"
-      value={details.development || ""}
+      value={details.developments || ""}
       onChange={handleDetailsChange}
       placeholder="Development"
       className="border border-gray-300 p-2 rounded w-full"
     />
-    {details.errors.development && <p className="text-red-500 text-sm">{details.errors.development}</p>}
+    {details.errors.developments && <p className="text-red-500 text-sm">{details.errors.developments}</p>}
 
                     <input
                         type="text"
@@ -690,7 +690,7 @@ function Step4Review({ onSubmit, onBack, formData }) {
 
         <div className="flex flex-col space-y-2">
           <label className="font-semibold">Development:</label>
-          <div className="p-2 border border-gray-300 rounded bg-gray-100">{formData.development}</div>
+          <div className="p-2 border border-gray-300 rounded bg-gray-100">{formData.developments}</div>
         </div>
         {formData.bedrooms && (
           <div className="flex flex-col space-y-2">
