@@ -195,6 +195,8 @@ export default function PropertyDetails() {
                 <strong>Completion Status:</strong>{" "}
                 {property.status === "false" ? "Off-Plan" : "Ready"}
               </p>
+
+              {/* Amenities */}
               {property.amenities && (
                 <div className="mb-4">
                   <h4 className="font-semibold">Amenities:</h4>
@@ -206,12 +208,15 @@ export default function PropertyDetails() {
                 </div>
               )}
 
+              {/* Description */}
               {property.description && (
                 <div className="mb-4">
                   <h4 className="font-semibold">Description:</h4>
                   <p className="text-sm">{property.description}</p>
                 </div>
               )}
+
+              {/* Contact Buttons */}
               <div className="mb-4 flex items-center space-x-4 text-gray-100">
                 <EmailIcon
                   style={{ cursor: "pointer" }}
@@ -256,19 +261,16 @@ export default function PropertyDetails() {
                 <p className="mb-4 text-custom">
                   Are you sure you want to delete this property?
                 </p>
-                <div className="flex justify-end space-x-4">
+                <div className="flex justify-end">
                   <button
                     onClick={() => setShowDeleteModal(false)}
-                    className="px-6 py-3 bg-gray-500 text-white rounded"
+                    className="px-4 py-2 bg-gray-500 text-white rounded mr-2"
                   >
                     Cancel
                   </button>
                   <button
-                    onClick={() => {
-                      handleDeleteProperty();
-                      setShowDeleteModal(false);
-                    }}
-                    className="px-6 py-3 bg-red-600 text-white rounded"
+                    onClick={handleDeleteProperty}
+                    className="px-4 py-2 bg-red-600 text-white rounded"
                   >
                     Delete
                   </button>
@@ -277,16 +279,6 @@ export default function PropertyDetails() {
             </div>
           )}
         </>
-      )}
-      {isDeleted && (
-        <div className="flex justify-center mt-4">
-          <button
-            onClick={() => navigate("/")}
-            className="px-6 py-3 bg-green-600 text-white rounded"
-          >
-            Go to Home
-          </button>
-        </div>
       )}
     </div>
   );
