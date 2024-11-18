@@ -188,11 +188,8 @@ export default function PropertyDetails() {
                 <strong>Landlord:</strong> {property.landlordName}
               </p>
               <p className="text-sm mb-2">
-                <strong>Building:</strong> {property.building}
-              </p>
-              <p className="text-sm mb-2">
-                <strong>Status:</strong>{" "}
-                {property.status === "false" ? "Incomplete" : "Complete"}
+                <strong>Completion Status:</strong>{" "}
+                {property.status === "false" ? "Off-Plan" : "Ready"}
               </p>
               <div className="mb-4 flex items-center space-x-4 text-gray-100">
                 <EmailIcon
