@@ -7,6 +7,7 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import ListingsContext from "../contexts/ListingsContext";
 import AuthContext from "../contexts/UserContext";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 
 export default function PropertyDetails() {
   const { id } = useParams();
@@ -171,14 +172,8 @@ export default function PropertyDetails() {
               </h3>
               <p className="text-sm mb-2">{property.price} AED</p>
               <p className="text-sm mb-2">
-                <strong>City:</strong> {property.city}
-              </p>
-              <p className="text-sm mb-2">
-                <strong>Location:</strong> {property.location}
-              </p>
-              <p className="text-sm mb-2">
-                <strong>Country:</strong> {property.country}
-              </p>
+  <LocationOnIcon /> {property.building} ({property.buildingType}), {property.development} ({property.developmentType}), {property.location} ({property.locationType}), {property.city} ({property.cityType}), {property.country} ({property.countryType})
+</p>
               <p className="text-sm mb-2">
                 <strong>Property Type:</strong> {property.propertyType}
               </p>
