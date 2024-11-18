@@ -23,6 +23,8 @@ export default function PlaceAnAdPage() {
     agentEmail: '',
     agentWhatsapp: '',
     landlord: false, // to distinguish between landlord and agent
+    country: '',        
+    development: '', 
   });
   const [step, setStep] = useState(1);
   const [submitted, setSubmitted] = useState(false); // State variable for submission success
@@ -303,6 +305,8 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
     agentEmail: formData.agentEmail,
     agentWhatsapp: formData.agentWhatsapp,
     landlord: formData.landlord,
+    country: '', 
+    development: '', 
     errors: {}, // Error messages state
     ...formData,
   });
@@ -330,7 +334,7 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
 
   const validateForm = () => {
     const errors = {};
-    const requiredFields = ['title', 'price', 'city','images', 'location', 'propertyType','images', 'beds', 'baths', 'landlordName','agentName', 'agentCallNumber', 'agentEmail', 'agentWhatsapp', 'purpose'];
+    const requiredFields = ['title', 'price', 'city','images', 'location', 'propertyType','images', 'beds', 'baths', 'landlordName','agentName', 'agentCallNumber', 'agentEmail', 'agentWhatsapp', 'purpose', 'country', 'development'];
 
     requiredFields.forEach(field => {
       if (!details[field] || details[field] === '') {
@@ -386,6 +390,16 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
       <h2 className="text-2xl font-semibold text-center text-custom">You’re almost there!</h2>
       <h3 className="text-center text-custom">Include as much details and pictures as possible, and set the right price!</h3>
       <h4 className="text-center text-custom">{formData.title} {">"} {formData.category}</h4>
+      <input
+      name="country"
+      type="text"
+      value={details.country || ""}
+      onChange={handleDetailsChange}
+      placeholder="Country"
+      className="border border-gray-300 p-2 rounded w-full"
+    />
+    {details.errors.country && <p className="text-red-500 text-sm">{details.errors.country}</p>}
+
       <input
         type="text"
         name="city"
@@ -547,6 +561,16 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
                         placeholder="Building"
                         className="border border-gray-300 p-2 rounded w-full"
                     />
+                    <input
+      name="development"
+      type="text"
+      value={details.development || ""}
+      onChange={handleDetailsChange}
+      placeholder="Development"
+      className="border border-gray-300 p-2 rounded w-full"
+    />
+    {details.errors.development && <p className="text-red-500 text-sm">{details.errors.development}</p>}
+
                     <input
                         type="text"
                         value={details.neighborhood}
