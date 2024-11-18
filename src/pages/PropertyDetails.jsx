@@ -163,6 +163,14 @@ export default function PropertyDetails() {
                   alt={property.title}
                 />
               )}
+              {/* Description */}
+              {property.description && (
+                <div className="mb-4">
+                  <h4 className="font-semibold">Description:</h4>
+                  <p className="text-sm">{property.description}</p>
+                </div>
+              )}
+
             </div>
             <div className="lg:w-1/2 lg:pl-4">
               <h3
@@ -208,14 +216,7 @@ export default function PropertyDetails() {
                 </div>
               )}
 
-              {/* Description */}
-              {property.description && (
-                <div className="mb-4">
-                  <h4 className="font-semibold">Description:</h4>
-                  <p className="text-sm">{property.description}</p>
-                </div>
-              )}
-
+              
               {/* Contact Buttons */}
               <div className="mb-4 flex items-center space-x-4 text-gray-100">
                 <EmailIcon
