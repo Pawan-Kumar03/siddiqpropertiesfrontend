@@ -195,6 +195,23 @@ export default function PropertyDetails() {
                 <strong>Completion Status:</strong>{" "}
                 {property.status === "false" ? "Off-Plan" : "Ready"}
               </p>
+              {property.amenities && (
+                <div className="mb-4">
+                  <h4 className="font-semibold">Amenities:</h4>
+                  <ul className="list-disc pl-5">
+                    {property.amenities.map((amenity, index) => (
+                      <li key={index} className="text-sm">{amenity}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {property.description && (
+                <div className="mb-4">
+                  <h4 className="font-semibold">Description:</h4>
+                  <p className="text-sm">{property.description}</p>
+                </div>
+              )}
               <div className="mb-4 flex items-center space-x-4 text-gray-100">
                 <EmailIcon
                   style={{ cursor: "pointer" }}

@@ -25,6 +25,8 @@ export default function PlaceAnAdPage() {
     landlord: false, // to distinguish between landlord and agent
     country: '',        
     developments: '', 
+    description: '', // Added description
+    amenities: [], // Added amenities
   });
   const [step, setStep] = useState(1);
   const [submitted, setSubmitted] = useState(false); // State variable for submission success
@@ -307,6 +309,8 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
     landlord: formData.landlord,
     country: '', 
     developments: '', 
+    description: '', // Added description
+    amenities: [], // Added amenities
     errors: {}, // Error messages state
     ...formData,
   });
@@ -334,7 +338,7 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
 
   const validateForm = () => {
     const errors = {};
-    const requiredFields = ['title', 'price', 'city','images', 'location', 'propertyType','images', 'beds', 'baths', 'landlordName','agentName', 'agentCallNumber', 'agentEmail', 'agentWhatsapp', 'purpose', 'country', 'developments'];
+    const requiredFields = ['title', 'price', 'city','images', 'location', 'propertyType','images', 'beds', 'baths', 'landlordName','agentName', 'agentCallNumber', 'agentEmail', 'agentWhatsapp', 'purpose', 'country', 'developments','amenities','description'];
 
     requiredFields.forEach(field => {
       if (!details[field] || details[field] === '') {
