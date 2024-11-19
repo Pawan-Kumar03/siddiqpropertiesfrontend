@@ -42,7 +42,7 @@ export default function ContactUsPage() {
     };
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-100">
+        <div className="flex items-center justify-center min-h-screen bg-gray-800">
             <div className="w-full max-w-md bg-grey-darker p-8 rounded shadow-md border-4 border-custom">
                 <h1 className="text-3xl font-bold mb-6 text-custom text-center">Contact Us</h1>
                 <form className="max-w-md mx-auto" onSubmit={sendEmail}>
