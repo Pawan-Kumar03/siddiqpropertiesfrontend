@@ -6,6 +6,7 @@ export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
     const { login } = useContext(UserContext); // Use UserContext
 
@@ -73,6 +74,18 @@ export default function Login() {
                             required
                             className="w-full px-3 py-2 border border-gray-300 rounded"
                         />
+                    </div>
+                    <div className="flex items-center mb-4">
+                        <input
+                            type="checkbox"
+                            id="showPassword"
+                            checked={showPassword}
+                            onChange={() => setShowPassword(!showPassword)}
+                            className="mr-2"
+                        />
+                        <label htmlFor="showPassword" className="text-white text-sm">
+                            Show Password
+                        </label>
                     </div>
                     {errorMessage && (
                         <div className="mb-4 p-2 bg-red-500 text-white rounded">
