@@ -13,18 +13,42 @@ export default function HomePage() {
     const [deleteMessage, setDeleteMessage] = useState("");
     const navigate = useNavigate();
 
+    useEffect(() => {
+        // Automatically fetch listings on page load
+        handleDisplayAllListings();
+    }, []);
+
     const handleSearch = (query) => {
         setSearchParams(query);
         setShowAllListings(false);
         // console.log('Query: ',query)
     };
 
-    const handleDisplayAllListings = async () => {
+const handleDisplayAllListings = async () => {
         setLoading(true);
         try {
-            const response = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/listings');
+            const token = localStorage.getItem('token'); // Retrieve token if available
+            const headers = token
+                ? { Authorization: `Bearer ${JSON.parse(token)}` }
+                : {};
+            
+            const response = await fetch(
+                'https://backend-git-main-pawan-togas-projects.vercel.app/api/listings',
+                {
+                    headers,
+                }
+            );
+
+            if (!response.ok) {
+                throw new Error(`Error fetching listings: ${response.statusText}`);
+            }
+
             const data = await response.json();
-            setListings(data);
+            if (data && Array.isArray(data)) {
+                setListings(data);
+            } else {
+                console.error("Unexpected data format:", data);
+            }
             setShowAllListings(true);
         } catch (error) {
             console.error("Failed to fetch listings:", error);
