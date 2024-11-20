@@ -123,6 +123,12 @@ export default function PropertyDetails() {
 
   return (
     <div className="container mt-8 bg-gray-800 text-gray-100 p-4 rounded-lg">
+      <button
+        onClick={() => navigate(-1)}
+        className="mb-4 px-4 py-2 bg-gray-600 text-white rounded"
+      >
+        Back
+      </button>
       {isDeleted && (
         <div className="text-center bg-green-200 text-green-700 p-4 rounded mb-4">
           Your ad has been deleted successfully!
