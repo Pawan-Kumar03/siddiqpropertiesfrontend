@@ -131,21 +131,19 @@ export default function PropertyDetails() {
         </div>
       )}
       {!isDeleted && property && (
-        <>
-        <div className="flex items-center mb-4">
-        <button
-          onClick={() => navigate(-1)}
-          className="flex items-center text-custom hover:underline"
-        >
-          <ArrowBackIcon className="mr-2 sm:mr-0 sm:text-gray-500 sm:text-lg" />
-          <span className="hidden sm:inline">Back to Search</span>
-        </button>
-      </div>
-          <h2 className="text-custom text-xl font-semibold mb-3">
-            Property Details
-          </h2>
-          <div className="flex flex-col lg:flex-row">
-            <div className="lg:w-1/2 lg:pr-4">
+       <>
+       <div className="flex items-center justify-between mb-4">
+         <button
+           onClick={() => navigate(-1)}
+           className="flex items-center text-custom hover:underline"
+         >
+           <ArrowBackIcon className="mr-2 sm:mr-0 sm:text-gray-500 sm:text-lg" />
+           <span>Back to Search</span>
+         </button>
+         <h2 className="text-custom text-xl font-semibold">Property Details</h2>
+       </div>
+       <div className="flex flex-col lg:flex-row">
+         <div className="lg:w-1/2 lg:pr-4">
               {property.images && processImages(property.images).length > 1 ? (
                 <Carousel
                   showThumbs={false}
