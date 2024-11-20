@@ -4,20 +4,25 @@ export default function ForgotPassword() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+  const [isRequestSent, setIsRequestSent] = useState(false); // Track button state
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/password-reset-request', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email })
-      });
+      const response = await fetch(
+        'https://backend-git-main-pawan-togas-projects.vercel.app/api/password-reset-request',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email })
+        }
+      );
 
       const data = await response.json();
       if (response.ok) {
         setMessage(data.message);
+        setIsRequestSent(true); // Disable the button
       } else {
         setError(data.message || 'Request failed');
       }
@@ -56,9 +61,12 @@ export default function ForgotPassword() {
           )}
           <button
             type="submit"
-            className="w-full bg-custom text-black py-2 px-4 rounded transition-colors duration-300 hover:bg-custom-dark"
+            className={`w-full bg-custom text-black py-2 px-4 rounded transition-colors duration-300 ${
+              isRequestSent ? 'opacity-50 cursor-not-allowed' : 'hover:bg-custom-dark'
+            }`}
+            disabled={isRequestSent} // Disable the button if request sent
           >
-            Request Password Reset
+            {isRequestSent ? "Email Sent" : "Request Password Reset"}
           </button>
         </form>
       </div>
