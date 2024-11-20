@@ -132,7 +132,7 @@ export default function PropertyDetails() {
       )}
       {!isDeleted && property && (
        <>
-       <div className="flex items-center justify-between mb-4">
+       <div className="flex items-center  mb-4">
          <button
            onClick={() => navigate(-1)}
            className="flex items-center text-custom hover:underline"
