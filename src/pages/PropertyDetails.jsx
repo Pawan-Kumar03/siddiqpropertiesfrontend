@@ -122,6 +122,7 @@ export default function PropertyDetails() {
     return images;
   };
 
+  
   return (
     <div className="container mt-8 bg-gray-800 text-gray-100 p-4 rounded-lg">
       
@@ -139,8 +140,7 @@ export default function PropertyDetails() {
   >
     <ArrowBackIcon className="mr-1 sm:text-gray-500 sm:text-lg" />
     <span className="flex items-center">
-      Back to Search&nbsp;
-      <span className="font-semibold">Property Details</span>
+      Back
     </span>
   </button>
 </div>
