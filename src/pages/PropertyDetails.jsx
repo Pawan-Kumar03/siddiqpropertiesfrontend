@@ -125,14 +125,14 @@ export default function PropertyDetails() {
   return (
     <div className="container mt-8 bg-gray-800 text-gray-100 p-4 rounded-lg">
       <div className="flex items-center mb-4">
-    <button
-      onClick={() => navigate(-1)}
-      className="flex items-center text-custom hover:underline"
-    >
-      <ArrowBackIcon className="mr-2" />
-      Back to Search
-    </button>
-  </div>
+        <button
+          onClick={() => navigate(-1)}
+          className="flex items-center text-custom hover:underline"
+        >
+          <ArrowBackIcon className="mr-2 sm:mr-0 sm:text-gray-500 sm:text-lg" />
+          <span className="hidden sm:inline">Back to Search</span>
+        </button>
+      </div>
       {isDeleted && (
         <div className="text-center bg-green-200 text-green-700 p-4 rounded mb-4">
           Your ad has been deleted successfully!
