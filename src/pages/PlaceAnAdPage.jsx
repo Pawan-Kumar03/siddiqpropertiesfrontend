@@ -112,6 +112,7 @@ export default function PlaceAnAdPage() {
           'Accept': 'application/json',
         },
         body: submissionData,
+        mode: 'cors',
       });
 
       if (postResponse.ok) {
