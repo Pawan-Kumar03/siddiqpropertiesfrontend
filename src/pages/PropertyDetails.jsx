@@ -178,7 +178,6 @@ export default function PropertyDetails() {
               {/* Description */}
               {property.description && (
                 <div className="mb-4">
-                  <h4 className="font-semibold">Description:</h4>
                   <p className="text-sm">{property.description}</p>
                 </div>
               )}
