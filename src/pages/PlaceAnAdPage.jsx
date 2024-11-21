@@ -114,7 +114,8 @@ export default function PlaceAnAdPage() {
         body: submissionData,
         mode: 'cors',
       });
-
+      console.log('Submission data: ', submissionData);
+      
       if (postResponse.ok) {
         const newListing = await postResponse.json(); // Get the newly created listing data
       setSubmitted(true);
