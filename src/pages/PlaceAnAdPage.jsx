@@ -74,7 +74,7 @@ export default function PlaceAnAdPage() {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('formdata:',formData)
+
     setIsPublishing(true); // Set publishing state to true
 
     try {
@@ -100,12 +100,11 @@ export default function PlaceAnAdPage() {
       submissionData.set('email', formData.agentEmail);
       submissionData.set('phone', formData.agentCallNumber);
       submissionData.set('whatsapp', formData.agentWhatsapp);
-      console.log('Submission data: ', submissionData);
 
       const user = localStorage.getItem('user');
       const parsedUser = JSON.parse(user);
       const token = parsedUser.token;
-      console.log('user:',parsedUser)
+
       let postResponse = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/listings', {
         method: 'POST',
         headers: {
@@ -113,7 +112,6 @@ export default function PlaceAnAdPage() {
           'Accept': 'application/json',
         },
         body: submissionData,
-        mode: 'cors',
       });
 
       if (postResponse.ok) {
@@ -788,4 +786,3 @@ function Step4Review({ onSubmit, onBack, formData }) {
     </div>
   );
 }
-
