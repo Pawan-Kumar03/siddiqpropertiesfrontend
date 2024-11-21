@@ -109,7 +109,7 @@ export default function PlaceAnAdPage() {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
-          'Accept': 'application/text',
+          'Accept': 'application/json',
         },
         body: submissionData,
       });
