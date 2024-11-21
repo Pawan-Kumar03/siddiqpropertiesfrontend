@@ -74,7 +74,7 @@ export default function PlaceAnAdPage() {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    console.log('formdata:',formData)
     setIsPublishing(true); // Set publishing state to true
 
     try {
