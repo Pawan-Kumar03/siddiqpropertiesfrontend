@@ -100,11 +100,12 @@ export default function PlaceAnAdPage() {
       submissionData.set('email', formData.agentEmail);
       submissionData.set('phone', formData.agentCallNumber);
       submissionData.set('whatsapp', formData.agentWhatsapp);
+      console.log('Submission data: ', submissionData);
 
       const user = localStorage.getItem('user');
       const parsedUser = JSON.parse(user);
       const token = parsedUser.token;
-
+      console.log('user:',parsedUser)
       let postResponse = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/listings', {
         method: 'POST',
         headers: {
@@ -114,8 +115,7 @@ export default function PlaceAnAdPage() {
         body: submissionData,
         mode: 'cors',
       });
-      console.log('Submission data: ', submissionData);
-      
+
       if (postResponse.ok) {
         const newListing = await postResponse.json(); // Get the newly created listing data
       setSubmitted(true);
