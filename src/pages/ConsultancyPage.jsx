@@ -10,6 +10,9 @@ export default function ConsultancyPage() {
         contactMethod: "email",
     });
 
+    const [success, setSuccess] = useState(false);
+    const [error, setError] = useState(false);
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
@@ -17,71 +20,77 @@ export default function ConsultancyPage() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("Form submitted:", formData);
-        alert("Thank you! Our team will contact you shortly.");
-        // Add form submission logic (e.g., API call)
+        try {
+            console.log("Form submitted:", formData);
+            setSuccess(true);
+            setError(false);
+            setTimeout(() => setSuccess(false), 3000); // Hide success message after 3 seconds
+        } catch (err) {
+            setError(true);
+            setSuccess(false);
+            setTimeout(() => setError(false), 3000); // Hide error message after 3 seconds
+        }
     };
 
     return (
-        <div className="container mx-auto py-10 px-4">
-            <h1 className="text-3xl font-bold text-center mb-6">Your InvestiBayt Journey</h1>
-            <p className="text-lg text-center mb-8">
-                At <strong>InvestiBayt</strong>, we provide personalized property consultancy services tailored to your needs. 
-                Whether you're looking for residential, commercial, or rental properties, we are here to assist you every step of the way.
-            </p>
-
-            <div className="bg-gray-100 p-8 rounded-lg shadow-lg max-w-3xl mx-auto">
-                <h2 className="text-2xl font-semibold mb-4">Let Us Help You Find Your Dream Property</h2>
-                <p className="text-gray-700 mb-6">
-                    Fill out the form below, and one of our team members will reach out to you shortly to discuss your requirements.
-                </p>
+        <div className="flex items-center justify-center min-h-screen bg-gray-800">
+            <div className="w-full max-w-md bg-gray-900 p-8 rounded shadow-md border-4 border-blue-500">
+                <h1 className="text-3xl font-bold mb-6 text-blue-500 text-center">Consultancy Form</h1>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">
-                        <label className="block text-gray-700 mb-2" htmlFor="name">Name</label>
+                        <label className="block text-blue-300 text-sm font-bold mb-2" htmlFor="name">
+                            Name
+                        </label>
                         <input
-                            type="text"
                             id="name"
+                            type="text"
                             name="name"
                             value={formData.name}
                             onChange={handleChange}
-                            className="w-full p-2 border border-gray-300 rounded"
-                            required
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             placeholder="Enter your full name"
+                            required
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block text-gray-700 mb-2" htmlFor="email">Email Address</label>
+                        <label className="block text-blue-300 text-sm font-bold mb-2" htmlFor="email">
+                            Email
+                        </label>
                         <input
-                            type="email"
                             id="email"
+                            type="email"
                             name="email"
                             value={formData.email}
                             onChange={handleChange}
-                            className="w-full p-2 border border-gray-300 rounded"
-                            required
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             placeholder="Enter your email"
+                            required
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block text-gray-700 mb-2" htmlFor="phone">Phone Number (Optional)</label>
+                        <label className="block text-blue-300 text-sm font-bold mb-2" htmlFor="phone">
+                            Phone (Optional)
+                        </label>
                         <input
-                            type="tel"
                             id="phone"
+                            type="tel"
                             name="phone"
                             value={formData.phone}
                             onChange={handleChange}
-                            className="w-full p-2 border border-gray-300 rounded"
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             placeholder="Enter your phone number"
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block text-gray-700 mb-2" htmlFor="propertyType">Property Type</label>
+                        <label className="block text-blue-300 text-sm font-bold mb-2" htmlFor="propertyType">
+                            Property Type
+                        </label>
                         <select
                             id="propertyType"
                             name="propertyType"
                             value={formData.propertyType}
                             onChange={handleChange}
-                            className="w-full p-2 border border-gray-300 rounded"
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             required
                         >
                             <option value="residential">Residential</option>
@@ -90,25 +99,30 @@ export default function ConsultancyPage() {
                         </select>
                     </div>
                     <div className="mb-4">
-                        <label className="block text-gray-700 mb-2" htmlFor="message">Message/Inquiry</label>
+                        <label className="block text-blue-300 text-sm font-bold mb-2" htmlFor="message">
+                            Message
+                        </label>
                         <textarea
                             id="message"
                             name="message"
                             value={formData.message}
                             onChange={handleChange}
-                            className="w-full p-2 border border-gray-300 rounded"
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             rows="4"
                             placeholder="Provide details about your inquiry"
-                        ></textarea>
+                            required
+                        />
                     </div>
-                    <div className="mb-6">
-                        <label className="block text-gray-700 mb-2" htmlFor="contactMethod">Preferred Contact Method</label>
+                    <div className="mb-4">
+                        <label className="block text-blue-300 text-sm font-bold mb-2" htmlFor="contactMethod">
+                            Preferred Contact Method
+                        </label>
                         <select
                             id="contactMethod"
                             name="contactMethod"
                             value={formData.contactMethod}
                             onChange={handleChange}
-                            className="w-full p-2 border border-gray-300 rounded"
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             required
                         >
                             <option value="email">Email</option>
@@ -118,11 +132,22 @@ export default function ConsultancyPage() {
                     </div>
                     <button
                         type="submit"
-                        className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700"
+                        className="w-full bg-blue-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline hover:bg-blue-600"
                     >
                         Submit
                     </button>
                 </form>
+
+                {success && (
+                    <div className="text-center bg-green-200 text-green-700 p-4 rounded mt-4">
+                        Thank you! Our team will contact you shortly.
+                    </div>
+                )}
+                {error && (
+                    <div className="text-center bg-red-200 text-red-700 p-4 rounded mt-4">
+                        Oops! Something went wrong. Please try again later.
+                    </div>
+                )}
             </div>
         </div>
     );
