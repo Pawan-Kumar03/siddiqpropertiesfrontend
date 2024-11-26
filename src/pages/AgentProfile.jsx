@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function AgentProfile({ onNext, formData, setFormData }) {
+export default function AgentProfile({ onNext, onBack, formData, setFormData }) {
     const [agentName, setAgentName] = useState(formData.agentName || '');
     const [agentEmail, setAgentEmail] = useState(formData.agentEmail || '');
     const [contactNumber, setContactNumber] = useState(formData.contactNumber || '');
@@ -108,6 +108,13 @@ export default function AgentProfile({ onNext, formData, setFormData }) {
                         </div>
                     )}
                     <div className="flex items-center justify-between">
+                        <button
+                            className="bg-gray-400 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                            type="button"
+                            onClick={onBack}
+                        >
+                            Back
+                        </button>
                         <button
                             className="bg-custom text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                             type="submit"
