@@ -688,7 +688,7 @@ const StepSelectRole = ({ onNext }) => {
 
   return (
     <div className="container mx-auto p-4">
-      <h2 className="text-lg font-bold mb-4">Are you a Landlord or an Agent?</h2>
+      <h2 className="text-lg font-bold mb-4 text-center text-custom">Are you a Landlord or an Agent?</h2>
       <div className="flex justify-around">
         <button
           className="px-6 py-3 bg-blue-500 text-white rounded"
