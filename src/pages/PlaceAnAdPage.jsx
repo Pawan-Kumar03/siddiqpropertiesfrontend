@@ -187,31 +187,37 @@ export default function PlaceAnAdPage() {
               title={formData.title}
             />
           )}
-          {step === 4 && (
-            <StepSelectRole
-              onNext={(role) => {
-                setFormData((prev) => ({ ...prev, landlord: role === "landlord" }));
-                handleNextStep();
-              }}
-              onBack={handlePrevStep}
-            />
-          )}
-          {step === 5 && formData.landlord === false && (
-            <AgentProfile
-              onNext={() => setStep(3)}
-              user={user}
-              formData={formData}
-              setFormData={setFormData}
-            />
-          )}
-          {step === 5 && formData.landlord === true && (
-            <Step3Details
-              onNext={handleNextStep}
-              onBack={handlePrevStep}
-              formData={formData}
-              noAmenities={formData.category === "Land" || formData.category === "Multiple Units"}
-            />
-          )}
+{step === 4 && (
+  <StepSelectRole
+    onNext={(role) => {
+      setFormData((prev) => ({ ...prev, landlord: role === "landlord" }));
+      if (role === "landlord") {
+        // Skip AgentProfile and go directly to Step3Details
+        setStep(5);
+      } else {
+        handleNextStep(); // Proceed to AgentProfile
+      }
+    }}
+    onBack={handlePrevStep}
+  />
+)}
+{step === 5 && formData.landlord === false && (
+  <AgentProfile
+    onNext={() => setStep(3)}
+    user={user}
+    formData={formData}
+    setFormData={setFormData}
+  />
+)}
+{step === 5 && formData.landlord === true && (
+  <Step3Details
+    onNext={handleNextStep}
+    onBack={handlePrevStep}
+    formData={formData}
+    noAmenities={formData.category === "Land" || formData.category === "Multiple Units"}
+  />
+)}
+
           {step === 6 && (
             <Step4Review
               onSubmit={handleSubmit}
@@ -696,13 +702,13 @@ const StepSelectRole = ({ onNext }) => {
       <h2 className="text-lg font-bold mb-4 text-center text-custom">Are you a Landlord or an Agent?</h2>
       <div className="flex justify-around">
         <button
-          className="px-6 py-3 bg-blue-500 text-white rounded"
+          className="px-6 py-3 bg-custom text-black rounded"
           onClick={() => handleRoleSelection("landlord")}
         >
           Landlord
         </button>
         <button
-          className="px-6 py-3 bg-green-500 text-white rounded"
+          className="px-6 py-3 bg-custom text-black rounded"
           onClick={() => handleRoleSelection("agent")}
         >
           Agent
