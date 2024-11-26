@@ -198,11 +198,11 @@ export default function PlaceAnAdPage() {
           )}
           {step === 5 && formData.landlord === false && (
             <AgentProfile
-            onNext={() => setStep(3)}
-            user={user}
-            formData={formData}
-            setFormData={setFormData}
-          />
+              onNext={() => setStep(3)}
+              user={user}
+              formData={formData}
+              setFormData={setFormData}
+            />
           )}
           {step === 5 && formData.landlord === true && (
             <Step3Details
@@ -213,12 +213,17 @@ export default function PlaceAnAdPage() {
             />
           )}
           {step === 6 && (
-            <Step4Review onSubmit={handleSubmit} onBack={handlePrevStep} formData={formData} />
+            <Step4Review
+              onSubmit={handleSubmit}
+              onBack={handlePrevStep}
+              formData={formData}
+            />
           )}
         </>
       )}
     </div>
   );
+  
   
 }
 
