@@ -59,4 +59,4 @@ const AgentProfile = ({ onNext, user, formData, setFormData }) => {
       </div>
     );
   };
-  
+  export default AgentProfile;
