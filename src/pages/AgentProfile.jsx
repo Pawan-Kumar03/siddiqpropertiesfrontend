@@ -34,12 +34,11 @@ export default function AgentProfile({ onNext, onBack, formData, setFormData }) 
   
       const response = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/agent-profile', {
         method: 'POST',
-  headers: {
-    'Authorization': `Bearer ${token}`,
-    'Accept': 'application/json',
-    'Content-Type': 'multipart/form-data', 
-  },
-        body: formDataToSubmit,
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Accept': 'application/json',
+        },
+        body: formDataToSubmit, // Send the form data directly
       });
   
       // Check if the response status is 201 (created)
@@ -59,6 +58,7 @@ export default function AgentProfile({ onNext, onBack, formData, setFormData }) 
       setIsPublishing(false); // Reset publishing state after submission
     }
   };
+  
   
 
   const handleFileChange = (e) => {
