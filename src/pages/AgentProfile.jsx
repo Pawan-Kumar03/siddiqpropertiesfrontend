@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 
 export default function AgentProfile({ onNext, onBack, formData, setFormData }) {
   const [agentName, setAgentName] = useState(formData.agentName || '');
@@ -8,33 +7,52 @@ export default function AgentProfile({ onNext, onBack, formData, setFormData }) 
   const [contactWhatsApp, setContactWhatsApp] = useState(formData.contactWhatsApp || '');
   const [profilePhoto, setProfilePhoto] = useState(formData.profilePhoto || null);
   const [error, setError] = useState('');
+  const [isPublishing, setIsPublishing] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsPublishing(true); // Set publishing state to true
+
     if (!agentName || !agentEmail || !contactNumber || !contactWhatsApp || !profilePhoto) {
       setError('All fields are required.');
+      setIsPublishing(false);
       return;
     }
-    
-    const formData = new FormData();
-    formData.append('agentName', agentName);
-    formData.append('agentEmail', agentEmail);
-    formData.append('contactNumber', contactNumber);
-    formData.append('contactWhatsApp', contactWhatsApp);
-    formData.append('profilePhoto', profilePhoto);
+
+    const formDataToSubmit = new FormData();
+    formDataToSubmit.append('agentName', agentName);
+    formDataToSubmit.append('agentEmail', agentEmail);
+    formDataToSubmit.append('contactNumber', contactNumber);
+    formDataToSubmit.append('contactWhatsApp', contactWhatsApp);
+    formDataToSubmit.append('profilePhoto', profilePhoto);
 
     try {
-      const response = await axios.post('/api/agent-profile', formData, {
+      // Adding a 2-second delay at the start (to simulate network delay)
+      await new Promise(resolve => setTimeout(resolve, 2000));
+
+      const token = localStorage.getItem('token'); // Retrieve token from local storage
+
+      const response = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/agent-profile', {
+        method: 'POST',
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`,  // Include the auth token
-          'Content-Type': 'multipart/form-data',
+          'Authorization': `Bearer ${token}`,
+          'Accept': 'application/json',
         },
+        body: formDataToSubmit,
       });
-      console.log('Agent Profile saved:', response.data);
-      onNext();
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Agent Profile saved:', data);
+        onNext(); // Move to next step
+      } else {
+        throw new Error('Failed to save agent profile');
+      }
     } catch (error) {
       setError('Failed to save agent profile.');
       console.error(error);
+    } finally {
+      setIsPublishing(false); // Reset publishing state after submission
     }
   };
 
@@ -50,54 +68,54 @@ export default function AgentProfile({ onNext, onBack, formData, setFormData }) 
       <div className="w-full max-w-md bg-grey-darker p-8 rounded shadow-md border-4 border-custom">
         <h1 className="text-3xl font-bold mb-6 text-custom text-center">Agent Profile</h1>
         <form onSubmit={handleSubmit}>
-        <div className="mb-4">
-                        <label className="block text-custom text-sm font-bold mb-2" htmlFor="agentName">
-                            Agent Name
-                        </label>
-                        <input
-                            id="agentName"
-                            type="text"
-                            value={agentName}
-                            onChange={(e) => setAgentName(e.target.value)}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        />
-                    </div>
-                    <div className="mb-4">
-                        <label className="block text-custom text-sm font-bold mb-2" htmlFor="agentEmail">
-                            Agent Email
-                        </label>
-                        <input
-                            id="agentEmail"
-                            type="email"
-                            value={agentEmail}
-                            onChange={(e) => setAgentEmail(e.target.value)}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        />
-                    </div>
-                    <div className="mb-4">
-                        <label className="block text-custom text-sm font-bold mb-2" htmlFor="contactNumber">
-                            Contact Number
-                        </label>
-                        <input
-                            id="contactNumber"
-                            type="text"
-                            value={contactNumber}
-                            onChange={(e) => setContactNumber(e.target.value)}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        />
-                    </div>
-                    <div className="mb-4">
-                        <label className="block text-custom text-sm font-bold mb-2" htmlFor="contactWhatsApp">
-                            WhatsApp Contact
-                        </label>
-                        <input
-                            id="contactWhatsApp"
-                            type="text"
-                            value={contactWhatsApp}
-                            onChange={(e) => setContactWhatsApp(e.target.value)}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        />
-                    </div>
+          <div className="mb-4">
+            <label className="block text-custom text-sm font-bold mb-2" htmlFor="agentName">
+              Agent Name
+            </label>
+            <input
+              id="agentName"
+              type="text"
+              value={agentName}
+              onChange={(e) => setAgentName(e.target.value)}
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-custom text-sm font-bold mb-2" htmlFor="agentEmail">
+              Agent Email
+            </label>
+            <input
+              id="agentEmail"
+              type="email"
+              value={agentEmail}
+              onChange={(e) => setAgentEmail(e.target.value)}
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-custom text-sm font-bold mb-2" htmlFor="contactNumber">
+              Contact Number
+            </label>
+            <input
+              id="contactNumber"
+              type="text"
+              value={contactNumber}
+              onChange={(e) => setContactNumber(e.target.value)}
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-custom text-sm font-bold mb-2" htmlFor="contactWhatsApp">
+              WhatsApp Contact
+            </label>
+            <input
+              id="contactWhatsApp"
+              type="text"
+              value={contactWhatsApp}
+              onChange={(e) => setContactWhatsApp(e.target.value)}
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+          </div>
 
           <div className="mb-6">
             <label className="block text-custom text-sm font-bold mb-2" htmlFor="profilePhoto">
@@ -134,7 +152,7 @@ export default function AgentProfile({ onNext, onBack, formData, setFormData }) 
               type="submit"
               className="bg-custom text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             >
-              Submit
+              {isPublishing ? 'Submitting...' : 'Submit'}
             </button>
           </div>
         </form>
