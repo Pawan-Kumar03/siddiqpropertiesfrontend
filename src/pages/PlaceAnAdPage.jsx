@@ -193,7 +193,13 @@ export default function PlaceAnAdPage() {
       setFormData((prev) => ({ ...prev, landlord: role === "landlord" }));
       if (role === "landlord") {
         // Skip AgentProfile and go directly to Step3Details
-        setStep(5);
+        // setStep(5);
+        <Step3Details
+    onNext={handleNextStep}
+    onBack={handlePrevStep}
+    formData={formData}
+    noAmenities={formData.category === "Land" || formData.category === "Multiple Units"}
+  />
       } else {
         handleNextStep(); // Proceed to AgentProfile
       }
