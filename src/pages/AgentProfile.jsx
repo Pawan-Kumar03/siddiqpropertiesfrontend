@@ -34,10 +34,11 @@ export default function AgentProfile({ onNext, onBack, formData, setFormData }) 
   
       const response = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/agent-profile', {
         method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Accept': 'application/json',
-        },
+  headers: {
+    'Authorization': `Bearer ${token}`,
+    'Accept': 'application/json',
+    'Content-Type': 'multipart/form-data', 
+  },
         body: formDataToSubmit,
       });
   
