@@ -24,65 +24,65 @@ export default function ConsultancyPage() {
             console.log("Form submitted:", formData);
             setSuccess(true);
             setError(false);
-            setTimeout(() => setSuccess(false), 3000); // Hide success message after 3 seconds
+            setTimeout(() => setSuccess(false), 3000);
         } catch (err) {
             setError(true);
             setSuccess(false);
-            setTimeout(() => setError(false), 3000); // Hide error message after 3 seconds
+            setTimeout(() => setError(false), 3000);
         }
     };
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-800">
-            <div className="w-full max-w-md bg-grey-darker p-8 rounded shadow-md border-4 border-custom">
-                <h1 className="text-3xl font-bold mb-6 text-blue-500 text-center">Consultancy Form</h1>
+            <div className="w-full max-w-md bg-gray-900 p-8 rounded-lg shadow-lg border border-gray-700">
+                <h1 className="text-3xl font-bold text-center text-white mb-6">Consultancy Form</h1>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">
-                        <label className="block text-custom text-sm font-bold mb-2" htmlFor="name">
+                        <label htmlFor="name" className="block text-sm font-medium text-white mb-2">
                             Name
                         </label>
                         <input
                             id="name"
-                            type="text"
                             name="name"
+                            type="text"
                             value={formData.name}
                             onChange={handleChange}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            className="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                             placeholder="Enter your full name"
                             required
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block text-custom text-sm font-bold mb-2" htmlFor="email">
+                        <label htmlFor="email" className="block text-sm font-medium text-white mb-2">
                             Email
                         </label>
                         <input
                             id="email"
-                            type="email"
                             name="email"
+                            type="email"
                             value={formData.email}
                             onChange={handleChange}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            className="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                             placeholder="Enter your email"
                             required
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block text-custom text-sm font-bold mb-2" htmlFor="phone">
+                        <label htmlFor="phone" className="block text-sm font-medium text-white mb-2">
                             Phone (Optional)
                         </label>
                         <input
                             id="phone"
-                            type="tel"
                             name="phone"
+                            type="tel"
                             value={formData.phone}
                             onChange={handleChange}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            className="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                             placeholder="Enter your phone number"
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block text-custom text-sm font-bold mb-2" htmlFor="propertyType">
+                        <label htmlFor="propertyType" className="block text-sm font-medium text-white mb-2">
                             Property Type
                         </label>
                         <select
@@ -90,7 +90,7 @@ export default function ConsultancyPage() {
                             name="propertyType"
                             value={formData.propertyType}
                             onChange={handleChange}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            className="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                             required
                         >
                             <option value="residential">Residential</option>
@@ -99,7 +99,7 @@ export default function ConsultancyPage() {
                         </select>
                     </div>
                     <div className="mb-4">
-                        <label className="block text-custom text-sm font-bold mb-2" htmlFor="message">
+                        <label htmlFor="message" className="block text-sm font-medium text-white mb-2">
                             Message
                         </label>
                         <textarea
@@ -107,14 +107,14 @@ export default function ConsultancyPage() {
                             name="message"
                             value={formData.message}
                             onChange={handleChange}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             rows="4"
+                            className="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                             placeholder="Provide details about your inquiry"
                             required
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block text-custom text-sm font-bold mb-2" htmlFor="contactMethod">
+                        <label htmlFor="contactMethod" className="block text-sm font-medium text-white mb-2">
                             Preferred Contact Method
                         </label>
                         <select
@@ -122,7 +122,7 @@ export default function ConsultancyPage() {
                             name="contactMethod"
                             value={formData.contactMethod}
                             onChange={handleChange}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            className="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                             required
                         >
                             <option value="email">Email</option>
@@ -130,10 +130,10 @@ export default function ConsultancyPage() {
                             <option value="in-person">In-Person Meeting</option>
                         </select>
                     </div>
-                    <div className="flex items-center justify-between">
+                    <div>
                         <button
-                            className="bg-custom text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                             type="submit"
+                            className="w-full bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         >
                             Submit
                         </button>
@@ -141,12 +141,12 @@ export default function ConsultancyPage() {
                 </form>
 
                 {success && (
-                    <div className="text-center bg-green-200 text-green-700 p-4 rounded mt-4">
+                    <div className="mt-4 p-4 bg-green-200 text-green-800 text-center rounded-lg">
                         Thank you! Our team will contact you shortly.
                     </div>
                 )}
                 {error && (
-                    <div className="text-center bg-red-200 text-red-700 p-4 rounded mt-4">
+                    <div className="mt-4 p-4 bg-red-200 text-red-800 text-center rounded-lg">
                         Oops! Something went wrong. Please try again later.
                     </div>
                 )}
