@@ -11,8 +11,9 @@ export default function AgentProfile({ onNext, onBack, formData, setFormData }) 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsPublishing(true); // Set publishing state to true
-  
+    setIsPublishing(true);
+    
+    // Validate form fields
     if (!agentName || !agentEmail || !contactNumber || !contactWhatsApp || !profilePhoto) {
       setError('All fields are required.');
       setIsPublishing(false);
@@ -27,37 +28,34 @@ export default function AgentProfile({ onNext, onBack, formData, setFormData }) 
     formDataToSubmit.append('profilePhoto', profilePhoto);
   
     try {
-      // Adding a 2-second delay at the start (to simulate network delay)
-      await new Promise(resolve => setTimeout(resolve, 2000));
-  
-      const token = localStorage.getItem('token'); // Retrieve token from local storage
-  
+      const token = localStorage.getItem('token');
       const response = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/agent-profile', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
           'Accept': 'application/json',
         },
-        body: formDataToSubmit, // Send the form data directly
+        body: formDataToSubmit,
       });
   
-      // Check if the response status is 201 (created)
+      const data = await response.json();
+  
       if (response.status === 201) {
-        const data = await response.json();
         console.log('Agent Profile saved:', data);
-        onNext(); // Move to next step
+        onNext(); // Proceed to next step after successful profile creation
+      } else if (response.status === 400 && data.message === 'Agent profile already exists.') {
+        setError('Agent profile already exists. Please log in or update your existing profile.');
       } else {
-        // Handle other status codes
-        const errorData = await response.json();
-        throw new Error(errorData.message || 'Failed to save agent profile');
+        setError(data.message || 'Failed to save agent profile');
       }
     } catch (error) {
-      setError(error.message);  // Display the error message returned by the backend
+      setError('An error occurred while saving the profile.');
       console.error(error);
     } finally {
-      setIsPublishing(false); // Reset publishing state after submission
+      setIsPublishing(false);
     }
   };
+  
   
   
 
