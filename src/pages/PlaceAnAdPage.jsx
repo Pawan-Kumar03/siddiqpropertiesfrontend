@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ListingsContext from "../contexts/ListingsContext"; 
 import UserContext from '../contexts/UserContext';
+import AgentProfile from './AgentProfile'
 
 export default function PlaceAnAdPage() {
   const { addListing } = useContext(ListingsContext); // Use listings context
@@ -157,32 +158,68 @@ export default function PlaceAnAdPage() {
   return (
     <div className="container mx-auto p-4">
       {isPublishing ? (
-        <div className="text-center text-black bg-custom  p-4 rounded">
+        <div className="text-center text-black bg-custom p-4 rounded">
           Your Ad is publishing...
         </div>
       ) : (
         <>
-      {step === 1 && <Step1 onNext={handleNextStep} />}
-      {step === 2 && <StepChooseCategory onNext={handleCategorySelect} onBack={handlePrevStep} title={formData.title} />}
-      {step === 3 && formData.category === "Residential" && (
-        <Step2Residential onNext={handleNextStep} onBack={handlePrevStep} category={formData.category} title={formData.title} />
-      )}
-      {step === 3 && formData.category === "Commercial" && (
-        <Step2Commercial onNext={handleNextStep} onBack={handlePrevStep} category={formData.category} title={formData.title} />
-      )}
-      {step === 4 && (
-        <Step3Details
-          onNext={handleNextStep}
-          onBack={handlePrevStep}
-          formData={formData}
-          noAmenities={formData.category === "Land" || formData.category === "Multiple Units"}
-        />
-      )}
-      {step === 5 && <Step4Review onSubmit={handleSubmit} onBack={handlePrevStep} formData={formData} />}
-      </>
+          {step === 1 && <Step1 onNext={handleNextStep} />}
+          {step === 2 && (
+            <StepChooseCategory
+              onNext={handleCategorySelect}
+              onBack={handlePrevStep}
+              title={formData.title}
+            />
+          )}
+          {step === 3 && formData.category === "Residential" && (
+            <Step2Residential
+              onNext={handleNextStep}
+              onBack={handlePrevStep}
+              category={formData.category}
+              title={formData.title}
+            />
+          )}
+          {step === 3 && formData.category === "Commercial" && (
+            <Step2Commercial
+              onNext={handleNextStep}
+              onBack={handlePrevStep}
+              category={formData.category}
+              title={formData.title}
+            />
+          )}
+          {step === 4 && (
+            <StepSelectRole
+              onNext={(role) => {
+                setFormData((prev) => ({ ...prev, landlord: role === "landlord" }));
+                handleNextStep();
+              }}
+              onBack={handlePrevStep}
+            />
+          )}
+          {step === 5 && formData.landlord === false && (
+            <AgentProfile
+            onNext={() => setStep(3)}
+            user={user}
+            formData={formData}
+            setFormData={setFormData}
+          />
+          )}
+          {step === 5 && formData.landlord === true && (
+            <Step3Details
+              onNext={handleNextStep}
+              onBack={handlePrevStep}
+              formData={formData}
+              noAmenities={formData.category === "Land" || formData.category === "Multiple Units"}
+            />
+          )}
+          {step === 6 && (
+            <Step4Review onSubmit={handleSubmit} onBack={handlePrevStep} formData={formData} />
+          )}
+        </>
       )}
     </div>
   );
+  
 }
 
 function Step1({ onNext }) {
@@ -644,6 +681,31 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
   );
 }
 
+const StepSelectRole = ({ onNext }) => {
+  const handleRoleSelection = (role) => {
+    onNext({ landlord: role === "landlord" });
+  };
+
+  return (
+    <div className="container mx-auto p-4">
+      <h2 className="text-lg font-bold mb-4">Are you a Landlord or an Agent?</h2>
+      <div className="flex justify-around">
+        <button
+          className="px-6 py-3 bg-blue-500 text-white rounded"
+          onClick={() => handleRoleSelection("landlord")}
+        >
+          Landlord
+        </button>
+        <button
+          className="px-6 py-3 bg-green-500 text-white rounded"
+          onClick={() => handleRoleSelection("agent")}
+        >
+          Agent
+        </button>
+      </div>
+    </div>
+  );
+};
 
 
 function Step4Review({ onSubmit, onBack, formData }) {
