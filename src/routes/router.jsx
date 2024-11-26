@@ -16,6 +16,7 @@ import ContactUsPage from '../pages/ContactUsPage';  // New Page
 import VerifyPage from '../pages/VerifyPage'
 import ForgotPassword from '../pages/ForgotPassword'
 import ResetPassword from "../pages/ResetPassword";
+import ConsultancyPage from '../pages/ConsultancyPage'
 
 const router = createBrowserRouter([
     {
@@ -70,6 +71,11 @@ const router = createBrowserRouter([
             {
                 path: "/contact-us",
                 element: <ContactUsPage />, 
+            }
+            ,
+            {
+                path: "/ConsultancyPage",
+                element: <ConsultancyPage />, 
             },
             {
                 path: "/verify/:token",

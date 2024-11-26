@@ -52,7 +52,8 @@ export default function Navbar() {
                     <div className="hidden sm:flex items-center space-x-6">
                         <Link to="/" className="bg-custom text-black py-2 px-4 rounded cursor-pointer">Home</Link>
                         <Link to="/about-us" className="bg-custom text-black py-2 px-4 rounded cursor-pointer">About Us</Link>
-
+                        <Link to="/ConsultancyPage" className="bg-custom text-black py-2 px-4 rounded cursor-pointer">ConsultancyPage</Link>
+                        
                         {user ? (
                             <div className="relative">
                                 <span
