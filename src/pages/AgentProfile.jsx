@@ -12,26 +12,26 @@ export default function AgentProfile({ onNext, onBack, formData, setFormData }) 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsPublishing(true); // Set publishing state to true
-
+  
     if (!agentName || !agentEmail || !contactNumber || !contactWhatsApp || !profilePhoto) {
       setError('All fields are required.');
       setIsPublishing(false);
       return;
     }
-
+  
     const formDataToSubmit = new FormData();
     formDataToSubmit.append('agentName', agentName);
     formDataToSubmit.append('agentEmail', agentEmail);
     formDataToSubmit.append('contactNumber', contactNumber);
     formDataToSubmit.append('contactWhatsApp', contactWhatsApp);
     formDataToSubmit.append('profilePhoto', profilePhoto);
-
+  
     try {
       // Adding a 2-second delay at the start (to simulate network delay)
       await new Promise(resolve => setTimeout(resolve, 2000));
-
+  
       const token = localStorage.getItem('token'); // Retrieve token from local storage
-
+  
       const response = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/agent-profile', {
         method: 'POST',
         headers: {
@@ -40,21 +40,25 @@ export default function AgentProfile({ onNext, onBack, formData, setFormData }) 
         },
         body: formDataToSubmit,
       });
-
-      if (response.ok) {
+  
+      // Check if the response status is 201 (created)
+      if (response.status === 201) {
         const data = await response.json();
         console.log('Agent Profile saved:', data);
         onNext(); // Move to next step
       } else {
-        throw new Error('Failed to save agent profile');
+        // Handle other status codes
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to save agent profile');
       }
     } catch (error) {
-      setError('Failed to save agent profile.');
+      setError(error.message);  // Display the error message returned by the backend
       console.error(error);
     } finally {
       setIsPublishing(false); // Reset publishing state after submission
     }
   };
+  
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
