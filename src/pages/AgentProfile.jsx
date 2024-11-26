@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 const AgentProfile = ({ onNext, user, formData, setFormData }) => {
     const [agentData, setAgentData] = useState({
       username: '',
