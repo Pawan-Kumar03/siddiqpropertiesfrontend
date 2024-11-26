@@ -34,11 +34,11 @@ export default function ConsultancyPage() {
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-800">
-            <div className="w-full max-w-md bg-gray-900 p-8 rounded shadow-md border-4 border-blue-500">
+            <div className="w-full max-w-md bg-grey-darker p-8 rounded shadow-md border-4 border-custom">
                 <h1 className="text-3xl font-bold mb-6 text-blue-500 text-center">Consultancy Form</h1>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">
-                        <label className="block text-blue-300 text-sm font-bold mb-2" htmlFor="name">
+                        <label className="block text-custom text-sm font-bold mb-2" htmlFor="name">
                             Name
                         </label>
                         <input
@@ -53,7 +53,7 @@ export default function ConsultancyPage() {
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block text-blue-300 text-sm font-bold mb-2" htmlFor="email">
+                        <label className="block text-custom text-sm font-bold mb-2" htmlFor="email">
                             Email
                         </label>
                         <input
@@ -68,7 +68,7 @@ export default function ConsultancyPage() {
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block text-blue-300 text-sm font-bold mb-2" htmlFor="phone">
+                        <label className="block text-custom text-sm font-bold mb-2" htmlFor="phone">
                             Phone (Optional)
                         </label>
                         <input
@@ -82,7 +82,7 @@ export default function ConsultancyPage() {
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block text-blue-300 text-sm font-bold mb-2" htmlFor="propertyType">
+                        <label className="block text-custom text-sm font-bold mb-2" htmlFor="propertyType">
                             Property Type
                         </label>
                         <select
@@ -99,7 +99,7 @@ export default function ConsultancyPage() {
                         </select>
                     </div>
                     <div className="mb-4">
-                        <label className="block text-blue-300 text-sm font-bold mb-2" htmlFor="message">
+                        <label className="block text-custom text-sm font-bold mb-2" htmlFor="message">
                             Message
                         </label>
                         <textarea
@@ -114,7 +114,7 @@ export default function ConsultancyPage() {
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block text-blue-300 text-sm font-bold mb-2" htmlFor="contactMethod">
+                        <label className="block text-custom text-sm font-bold mb-2" htmlFor="contactMethod">
                             Preferred Contact Method
                         </label>
                         <select
@@ -130,12 +130,14 @@ export default function ConsultancyPage() {
                             <option value="in-person">In-Person Meeting</option>
                         </select>
                     </div>
-                    <button
-                        type="submit"
-                        className="w-full bg-blue-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline hover:bg-blue-600"
-                    >
-                        Submit
-                    </button>
+                    <div className="flex items-center justify-between">
+                        <button
+                            className="bg-custom text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                            type="submit"
+                        >
+                            Submit
+                        </button>
+                    </div>
                 </form>
 
                 {success && (
