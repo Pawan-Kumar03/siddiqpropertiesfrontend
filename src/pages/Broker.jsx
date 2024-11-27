@@ -11,41 +11,41 @@ export default function Broker({ onNext, onBack, formData = {}, setFormData }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsPublishing(true);
-
+  
     if (!reraBrokerID || !companyLicenseNumber || !companyTelephoneNumber || !reraIDCard) {
       setError('All fields are required.');
       setIsPublishing(false);
       return;
     }
-
+  
     const formDataToSubmit = new FormData();
     formDataToSubmit.append('reraBrokerID', reraBrokerID);
     formDataToSubmit.append('companyLicenseNumber', companyLicenseNumber);
     formDataToSubmit.append('companyTelephoneNumber', companyTelephoneNumber);
     formDataToSubmit.append('reraIDCard', reraIDCard);
-
+  
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/agent-profile', {
+      const response = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/broker-profile', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
         },
         body: formDataToSubmit,
       });
-
+  
       if (response.status === 201) {
         const data = await response.json();
-        console.log('Broker ID saved:', data);
-
+        console.log('Broker profile created:', data);
+  
         setFormData((prevData) => ({
           ...prevData,
           reraBrokerID,
           companyLicenseNumber,
           companyTelephoneNumber,
-          reraIDCard,
+          reraIDCard: data.broker.reraIDCardUrl, // Save the URL
         }));
-
+  
         onNext();
       } else {
         const errorData = await response.json();
@@ -58,6 +58,7 @@ export default function Broker({ onNext, onBack, formData = {}, setFormData }) {
       setIsPublishing(false);
     }
   };
+  
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
