@@ -45,8 +45,8 @@ export default function Broker({ onNext, onBack, formData = {}, setFormData }) {
           companyTelephoneNumber,
           reraIDCard: data.broker.reraIDCardUrl, // Save the URL
         }));
-  
-        onNext();
+        
+        // onNext();
       } else {
         const errorData = await response.json();
         throw new Error(errorData.message || 'Failed to save Broker profile');

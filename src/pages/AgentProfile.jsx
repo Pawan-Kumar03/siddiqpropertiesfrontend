@@ -45,7 +45,7 @@ export default function AgentProfile({ onNext, onBack, formData, setFormData }) 
       if (response.status === 201) {
         const data = await response.json();
         console.log('Agent Profile saved:', data);
-        onNext(); // Move to next step
+        // onNext(); // Move to next step
       } else {
         // Handle other status codes
         const errorData = await response.json();
