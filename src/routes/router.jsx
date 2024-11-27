@@ -17,6 +17,7 @@ import VerifyPage from '../pages/VerifyPage'
 import ForgotPassword from '../pages/ForgotPassword'
 import ResetPassword from "../pages/ResetPassword";
 import ConsultancyPage from '../pages/ConsultancyPage'
+import Broker from '../pages/Broker'
 
 const router = createBrowserRouter([
     {
@@ -67,6 +68,10 @@ const router = createBrowserRouter([
             {
                 path: "/about-us",
                 element: <AboutUsPage />, 
+            },
+            {
+                path: "/Broker",
+                element: <Broker />, 
             },
             {
                 path: "/contact-us",

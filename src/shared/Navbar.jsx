@@ -53,6 +53,7 @@ export default function Navbar() {
                         <Link to="/" className="bg-custom text-black py-2 px-4 rounded cursor-pointer">Home</Link>
                         <Link to="/about-us" className="bg-custom text-black py-2 px-4 rounded cursor-pointer">About Us</Link>
                         <Link to="/ConsultancyPage" className="bg-custom text-black py-2 px-4 rounded cursor-pointer">Consultant</Link>
+                        <Link to="/Broker" className="bg-custom text-black py-2 px-4 rounded cursor-pointer">Broker</Link>
                         
                         {user ? (
                             <div className="relative">
