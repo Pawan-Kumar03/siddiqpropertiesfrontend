@@ -20,20 +20,59 @@ export default function ConsultancyPage() {
 
     
 
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     try {
+    //         console.log("Form submitted:", formData);
+    //         setSuccess(true);
+    //         setError(false);
+    //         setTimeout(() => setSuccess(false), 3000);
+    //     } catch (err) {
+    //         setError(true);
+    //         setSuccess(false);
+    //         setTimeout(() => setError(false), 3000);
+    //     }
+    // };
     const handleSubmit = (e) => {
         e.preventDefault();
-        try {
-            console.log("Form submitted:", formData);
-            setSuccess(true);
-            setError(false);
-            setTimeout(() => setSuccess(false), 3000);
-        } catch (err) {
-            setError(true);
-            setSuccess(false);
-            setTimeout(() => setError(false), 3000);
-        }
+    
+        const templateParams = {
+            from_name: formData.name,
+            reply_to: formData.email,
+            phone: formData.phone,
+            property_type: formData.propertyType,
+            preferred_contact_method: formData.contactMethod,
+            query_message: formData.message,
+        };
+    
+        emailjs
+            .send(
+                'service_v5kh1li',       // Replace with your actual Service ID
+                'template_81xid4a',      // Replace with your actual Template ID
+                templateParams,
+                'P2ZFcnicoD2IhAgfn'      // Replace with your actual Public Key
+            )
+            .then(() => {
+                setSuccess(true);
+                setError(false);
+                setFormData({
+                    name: "",
+                    email: "",
+                    phone: "",
+                    propertyType: "residential",
+                    message: "",
+                    contactMethod: "email",
+                });
+                setTimeout(() => setSuccess(false), 3000);
+            })
+            .catch(() => {
+                setError(true);
+                setSuccess(false);
+                setTimeout(() => setError(false), 3000);
+            });
     };
-
+    
+    
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-800">
             <div className="w-full max-w-md bg-grey-darker p-8 rounded shadow-md border-4 border-custom">
@@ -142,16 +181,19 @@ export default function ConsultancyPage() {
                     </div>
                 </form>
 
-                {success && (
-                    <div className="mt-4 p-4 bg-green-200 text-green-800 text-center rounded-lg">
-                        Thank you! Our team will contact you shortly.
-                    </div>
-                )}
-                {error && (
-                    <div className="mt-4 p-4 bg-red-200 text-red-800 text-center rounded-lg">
-                        Oops! Something went wrong. Please try again later.
-                    </div>
-                )}
+                {/* Success message */}
+            {success && (
+                <div className="mt-4 p-4 bg-green-200 text-green-800 text-center rounded-lg">
+                    Thank you! Your message has been sent successfully.
+                </div>
+            )}
+
+            {/* Error message */}
+            {error && (
+                <div className="mt-4 p-4 bg-red-200 text-red-800 text-center rounded-lg">
+                    Oops! Something went wrong. Please try again later.
+                </div>
+            )}
             </div>
         </div>
     );
