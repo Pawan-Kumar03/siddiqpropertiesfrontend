@@ -38,13 +38,13 @@ export default function Broker({ onNext, onBack, formData = {}, setFormData }) {
         const data = await response.json();
         console.log('Broker profile created:', data);
   
-        setFormData((prevData) => ({
-          ...prevData,
-          reraBrokerID,
-          companyLicenseNumber,
-          companyTelephoneNumber,
-          reraIDCard: data.broker.reraIDCardUrl, // Save the URL
-        }));
+        // setFormData((prevData) => ({
+        //   ...prevData,
+        //   reraBrokerID,
+        //   companyLicenseNumber,
+        //   companyTelephoneNumber,
+        //   reraIDCard: data.broker.reraIDCardUrl, // Save the URL
+        // }));
         
         // onNext();
       } else {
