@@ -44,7 +44,7 @@ export default function ConsultancyPage() {
             preferred_contact_method: formData.contactMethod,
             query_message: formData.message,
         };
-    
+        console.log(templateParams)
         emailjs
             .send(
                 'service_v5kh1li',       // Replace with your actual Service ID
@@ -53,6 +53,7 @@ export default function ConsultancyPage() {
                 'P2ZFcnicoD2IhAgfn'      // Replace with your actual Public Key
             )
             .then(() => {
+                console.log('success')
                 setSuccess(true);
                 setError(false);
                 setFormData({
