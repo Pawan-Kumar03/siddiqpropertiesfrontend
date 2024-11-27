@@ -7,59 +7,54 @@ export default function AgentProfile({ onNext, onBack, formData, setFormData }) 
   const [contactWhatsApp, setContactWhatsApp] = useState(formData.contactWhatsApp || '');
   const [profilePhoto, setProfilePhoto] = useState(formData.profilePhoto || null);
   const [error, setError] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
   const [isPublishing, setIsPublishing] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsPublishing(true); // Set publishing state to true
-  
+    setIsPublishing(true); // Disable button during submission
+    setError('');
+    setSuccessMessage('');
+
     if (!agentName || !agentEmail || !contactNumber || !contactWhatsApp || !profilePhoto) {
       setError('All fields are required.');
       setIsPublishing(false);
       return;
     }
-  
+
     const formDataToSubmit = new FormData();
     formDataToSubmit.append('agentName', agentName);
     formDataToSubmit.append('agentEmail', agentEmail);
     formDataToSubmit.append('contactNumber', contactNumber);
     formDataToSubmit.append('contactWhatsApp', contactWhatsApp);
     formDataToSubmit.append('profilePhoto', profilePhoto);
-  
+
     try {
-      // Adding a 2-second delay at the start (to simulate network delay)
-      await new Promise(resolve => setTimeout(resolve, 2000));
-  
       const token = localStorage.getItem('token'); // Retrieve token from local storage
-  
+
       const response = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/agent-profile', {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${token}`,
-          'Accept': 'application/json',
+          Authorization: `Bearer ${token}`,
         },
-        body: formDataToSubmit, // Send the form data directly
+        body: formDataToSubmit,
       });
-  
-      // Check if the response status is 201 (created)
+
       if (response.status === 201) {
         const data = await response.json();
         console.log('Agent Profile saved:', data);
-        // onNext(); // Move to next step
+        setSuccessMessage('Agent profile created successfully!');
       } else {
-        // Handle other status codes
         const errorData = await response.json();
         throw new Error(errorData.message || 'Failed to save agent profile');
       }
     } catch (error) {
-      setError(error.message);  // Display the error message returned by the backend
+      setError(error.message);
       console.error(error);
     } finally {
-      setIsPublishing(false); // Reset publishing state after submission
+      setIsPublishing(false); // Enable button after submission
     }
   };
-  
-  
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -121,7 +116,6 @@ export default function AgentProfile({ onNext, onBack, formData, setFormData }) 
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             />
           </div>
-
           <div className="mb-6">
             <label className="block text-custom text-sm font-bold mb-2" htmlFor="profilePhoto">
               Agent Profile Photo
@@ -145,6 +139,12 @@ export default function AgentProfile({ onNext, onBack, formData, setFormData }) 
             </div>
           )}
 
+          {successMessage && (
+            <div className="text-green-500 text-sm mb-4">
+              {successMessage}
+            </div>
+          )}
+
           <div className="flex items-center justify-between">
             <button
               type="button"
@@ -155,7 +155,10 @@ export default function AgentProfile({ onNext, onBack, formData, setFormData }) 
             </button>
             <button
               type="submit"
-              className="bg-custom text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              disabled={isPublishing}
+              className={`bg-custom text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ${
+                isPublishing ? 'opacity-50 cursor-not-allowed' : ''
+              }`}
             >
               {isPublishing ? 'Submitting...' : 'Submit'}
             </button>
