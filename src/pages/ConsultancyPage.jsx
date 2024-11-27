@@ -48,7 +48,7 @@ export default function ConsultancyPage() {
         emailjs
             .send(
                 'service_v5kh1li',       // Replace with your actual Service ID
-                'template_81xid4a',      // Replace with your actual Template ID
+                'template_dry15bi',      // Replace with your actual Template ID
                 templateParams,
                 'P2ZFcnicoD2IhAgfn'      // Replace with your actual Public Key
             )
