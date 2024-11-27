@@ -6,24 +6,27 @@ export default function Broker({ onNext, onBack, formData = {}, setFormData }) {
   const [companyTelephoneNumber, setCompanyTelephoneNumber] = useState(formData.companyTelephoneNumber || '');
   const [reraIDCard, setReraIDCard] = useState(formData.reraIDCard || null);
   const [error, setError] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
   const [isPublishing, setIsPublishing] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsPublishing(true);
-  
+    setError('');
+    setSuccessMessage('');
+
     if (!reraBrokerID || !companyLicenseNumber || !companyTelephoneNumber || !reraIDCard) {
       setError('All fields are required.');
       setIsPublishing(false);
       return;
     }
-  
+
     const formDataToSubmit = new FormData();
     formDataToSubmit.append('reraBrokerID', reraBrokerID);
     formDataToSubmit.append('companyLicenseNumber', companyLicenseNumber);
     formDataToSubmit.append('companyTelephoneNumber', companyTelephoneNumber);
     formDataToSubmit.append('reraIDCard', reraIDCard);
-  
+
     try {
       const token = localStorage.getItem('token');
       const response = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/broker-profile', {
@@ -33,20 +36,13 @@ export default function Broker({ onNext, onBack, formData = {}, setFormData }) {
         },
         body: formDataToSubmit,
       });
-  
+
       if (response.status === 201) {
         const data = await response.json();
         console.log('Broker profile created:', data);
-  
-        // setFormData((prevData) => ({
-        //   ...prevData,
-        //   reraBrokerID,
-        //   companyLicenseNumber,
-        //   companyTelephoneNumber,
-        //   reraIDCard: data.broker.reraIDCardUrl, // Save the URL
-        // }));
-        
-        // onNext();
+        setSuccessMessage('Broker profile created successfully!');
+        // setFormData({}); // Clear the form data if necessary
+        // if (onNext) onNext();
       } else {
         const errorData = await response.json();
         throw new Error(errorData.message || 'Failed to save Broker profile');
@@ -58,7 +54,6 @@ export default function Broker({ onNext, onBack, formData = {}, setFormData }) {
       setIsPublishing(false);
     }
   };
-  
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -131,6 +126,12 @@ export default function Broker({ onNext, onBack, formData = {}, setFormData }) {
             </div>
           )}
 
+          {successMessage && (
+            <div className="text-green-500 text-sm mb-4">
+              {successMessage}
+            </div>
+          )}
+
           <div className="flex items-center justify-between">
             <button
               type="button"
@@ -141,6 +142,7 @@ export default function Broker({ onNext, onBack, formData = {}, setFormData }) {
             </button>
             <button
               type="submit"
+              disabled={isPublishing}
               className="bg-custom text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             >
               {isPublishing ? 'Submitting...' : 'Submit'}
