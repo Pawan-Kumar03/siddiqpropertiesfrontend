@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function Broker({ onNext, onBack, formData, setFormData }) {
+export default function Broker({ onNext, onBack, formData = {}, setFormData }) {
   const [reraBrokerID, setReraBrokerID] = useState(formData.reraBrokerID || '');
   const [companyLicenseNumber, setCompanyLicenseNumber] = useState(formData.companyLicenseNumber || '');
   const [companyTelephoneNumber, setCompanyTelephoneNumber] = useState(formData.companyTelephoneNumber || '');
@@ -12,6 +12,7 @@ export default function Broker({ onNext, onBack, formData, setFormData }) {
     e.preventDefault();
     setIsPublishing(true);
 
+    // Validate required fields
     if (!reraBrokerID || !companyLicenseNumber || !companyTelephoneNumber || !reraIDCard) {
       setError('All fields are required.');
       setIsPublishing(false);
@@ -37,6 +38,16 @@ export default function Broker({ onNext, onBack, formData, setFormData }) {
       if (response.status === 201) {
         const data = await response.json();
         console.log('Broker ID saved:', data);
+
+        // Update parent state with new data
+        setFormData((prevData) => ({
+          ...prevData,
+          reraBrokerID,
+          companyLicenseNumber,
+          companyTelephoneNumber,
+          reraIDCard,
+        }));
+
         onNext();
       } else {
         const errorData = await response.json();
