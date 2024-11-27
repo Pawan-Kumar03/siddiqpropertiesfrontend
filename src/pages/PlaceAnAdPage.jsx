@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import ListingsContext from "../contexts/ListingsContext"; 
-import UserContext from '../contexts/UserContext';
+import ListingsContext from "../contexts/ListingsContext";
+import imageCompression from 'browser-image-compression';
 
 export default function PlaceAnAdPage() {
   const { addListing } = useContext(ListingsContext); // Use listings context
@@ -74,60 +74,86 @@ export default function PlaceAnAdPage() {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     setIsPublishing(true); // Set publishing state to true
-
+  
     try {
       // Adding a 2-second delay at the start
-      await new Promise(resolve => setTimeout(resolve, 2000));
-
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+  
       const submissionData = new FormData();
       if (!formData.status) {
         formData.status = false;
       }
-
+  
+      // Compress images before appending them
+      const compressedImages = await Promise.all(
+        formData.images.map(async (image) => {
+          const options = {
+            maxSizeMB: 1, // Target size of 1MB
+            maxWidthOrHeight: 1920, // Maximum width or height in pixels
+            useWebWorker: true, // Use a web worker for faster processing
+          };
+          try {
+            const compressedImage = await imageCompression(image, options);
+            return compressedImage;
+          } catch (error) {
+            console.error('Error compressing image:', error);
+            throw error;
+          }
+        })
+      );
+  
+      // Append all compressed images to the FormData
+      compressedImages.forEach((image) => {
+        submissionData.append('images', image);
+      });
+  
+      // Append other form data
       for (const key in formData) {
-        if (key === 'images') {
-          formData.images.forEach(image => {
-            submissionData.append('images', image);
-          });
-        } else {
+        if (key !== 'images') {
           submissionData.append(key, formData[key]);
         }
       }
-
+  
+      // Append additional broker data
       submissionData.set('broker', formData.agentName);
       submissionData.set('email', formData.agentEmail);
       submissionData.set('phone', formData.agentCallNumber);
       submissionData.set('whatsapp', formData.agentWhatsapp);
-
+  
+      // Retrieve token from localStorage
       const user = localStorage.getItem('user');
       const parsedUser = JSON.parse(user);
       const token = parsedUser.token;
-
-      let postResponse = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/listings', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Accept': 'application/json',
-        },
-        body: submissionData,
-      });
-
+  
+      // Send the form data to the backend
+      let postResponse = await fetch(
+        'https://backend-git-main-pawan-togas-projects.vercel.app/api/listings',
+        {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${token}`,
+            Accept: 'application/json',
+          },
+          body: submissionData,
+        }
+      );
+  
       if (postResponse.ok) {
         const newListing = await postResponse.json(); // Get the newly created listing data
-      setSubmitted(true);
-      addListing(newListing);
+        setSubmitted(true);
+        addListing(newListing);
       } else {
         throw new Error('Failed to publish listing');
       }
-
     } catch (error) {
       console.error('Failed to submit listing: ' + error.message);
     } finally {
       setIsPublishing(false); // Reset publishing state after submission
     }
   };
+  
 
   const handleCategorySelect = (category) => {
     if (category === "Land" || category === "Multiple Units") {
