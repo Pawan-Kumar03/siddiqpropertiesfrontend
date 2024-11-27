@@ -71,7 +71,6 @@ export default function PlaceAnAdPage() {
   const handlePrevStep = () => {
     setStep(step - 1);
   };
-  
   const handleSubmit = async (e) => {
     e.preventDefault();
   
@@ -86,23 +85,26 @@ export default function PlaceAnAdPage() {
         formData.status = false;
       }
   
-      // Compress images before appending them
-      const compressedImages = await Promise.all(
-        formData.images.map(async (image) => {
-          const options = {
-            maxSizeMB: 1, // Target size of 1MB
-            maxWidthOrHeight: 1920, // Maximum width or height in pixels
-            useWebWorker: true, // Use a web worker for faster processing
-          };
-          try {
-            const compressedImage = await imageCompression(image, options);
-            return compressedImage;
-          } catch (error) {
-            console.error('Error compressing image:', error);
-            throw error;
-          }
-        })
-      );
+     // Compress images before appending them
+    const compressedImages = await Promise.all(
+      formData.images.map(async (image) => {
+        console.log(`Original size of image: ${(image.size / 1024 / 1024).toFixed(2)} MB`); // Log original size
+        const options = {
+          maxSizeMB: 1, // Target size of 1MB
+          maxWidthOrHeight: 1920, // Maximum width or height in pixels
+          useWebWorker: true, // Use a web worker for faster processing
+        };
+        try {
+          const compressedImage = await imageCompression(image, options);
+          console.log(`Compressed size of image: ${(compressedImage.size / 1024 / 1024).toFixed(2)} MB`); // Log compressed size
+          return compressedImage;
+        } catch (error) {
+          console.error('Error compressing image:', error);
+          throw error;
+        }
+      })
+    );
+      
   
       // Append all compressed images to the FormData
       compressedImages.forEach((image) => {
