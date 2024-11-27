@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function AgentProfile({ onNext, onBack, formData, setFormData }) {
+export default function Broker({ onNext, onBack, formData, setFormData }) {
   const [reraBrokerID, setReraBrokerID] = useState(formData.reraBrokerID || '');
   const [companyLicenseNumber, setCompanyLicenseNumber] = useState(formData.companyLicenseNumber || '');
   const [companyTelephoneNumber, setCompanyTelephoneNumber] = useState(formData.companyTelephoneNumber || '');
