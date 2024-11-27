@@ -12,7 +12,6 @@ export default function Broker({ onNext, onBack, formData = {}, setFormData }) {
     e.preventDefault();
     setIsPublishing(true);
 
-    // Validate required fields
     if (!reraBrokerID || !companyLicenseNumber || !companyTelephoneNumber || !reraIDCard) {
       setError('All fields are required.');
       setIsPublishing(false);
@@ -39,7 +38,6 @@ export default function Broker({ onNext, onBack, formData = {}, setFormData }) {
         const data = await response.json();
         console.log('Broker ID saved:', data);
 
-        // Update parent state with new data
         setFormData((prevData) => ({
           ...prevData,
           reraBrokerID,
@@ -70,11 +68,11 @@ export default function Broker({ onNext, onBack, formData = {}, setFormData }) {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-800">
-      <div className="w-full max-w-md bg-white p-8 rounded shadow-md">
-        <h1 className="text-2xl font-bold mb-6 text-gray-800 text-center">Enter RERA Broker ID Details</h1>
+      <div className="w-full max-w-md bg-grey-darker p-8 rounded shadow-md border-4 border-custom">
+        <h1 className="text-3xl font-bold mb-6 text-custom text-center">Broker Profile</h1>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="reraBrokerID">
+            <label className="block text-custom text-sm font-bold mb-2" htmlFor="reraBrokerID">
               RERA Broker ID
             </label>
             <input
@@ -86,7 +84,7 @@ export default function Broker({ onNext, onBack, formData = {}, setFormData }) {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="companyLicenseNumber">
+            <label className="block text-custom text-sm font-bold mb-2" htmlFor="companyLicenseNumber">
               Company License Number
             </label>
             <input
@@ -98,7 +96,7 @@ export default function Broker({ onNext, onBack, formData = {}, setFormData }) {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="companyTelephoneNumber">
+            <label className="block text-custom text-sm font-bold mb-2" htmlFor="companyTelephoneNumber">
               Company Telephone Number
             </label>
             <input
@@ -110,8 +108,8 @@ export default function Broker({ onNext, onBack, formData = {}, setFormData }) {
             />
           </div>
           <div className="mb-6">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="reraIDCard">
-              Upload a copy of your RERA ID Card
+            <label className="block text-custom text-sm font-bold mb-2" htmlFor="reraIDCard">
+              RERA ID Card
             </label>
             <input
               id="reraIDCard"
@@ -142,9 +140,9 @@ export default function Broker({ onNext, onBack, formData = {}, setFormData }) {
             </button>
             <button
               type="submit"
-              className="bg-blue-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              className="bg-custom text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             >
-              {isPublishing ? 'Submitting...' : 'Next'}
+              {isPublishing ? 'Submitting...' : 'Submit'}
             </button>
           </div>
         </form>
