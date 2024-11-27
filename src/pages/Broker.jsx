@@ -36,11 +36,11 @@ export default function Broker({ onNext, onBack, formData, setFormData }) {
 
       if (response.status === 201) {
         const data = await response.json();
-        console.log('Agent Profile saved:', data);
+        console.log('Broker ID saved:', data);
         onNext();
       } else {
         const errorData = await response.json();
-        throw new Error(errorData.message || 'Failed to save agent profile');
+        throw new Error(errorData.message || 'Failed to save Broker profile');
       }
     } catch (error) {
       setError(error.message);
