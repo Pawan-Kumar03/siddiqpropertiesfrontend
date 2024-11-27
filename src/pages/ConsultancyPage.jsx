@@ -18,6 +18,8 @@ export default function ConsultancyPage() {
         setFormData({ ...formData, [name]: value });
     };
 
+    
+
     const handleSubmit = (e) => {
         e.preventDefault();
         try {
@@ -34,11 +36,11 @@ export default function ConsultancyPage() {
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-800">
-            <div className="w-full max-w-md bg-gray-900 p-8 rounded-lg shadow-lg border border-gray-700">
-                <h1 className="text-3xl font-bold text-center text-white mb-6">Consultancy Form</h1>
-                <form onSubmit={handleSubmit}>
+            <div className="w-full max-w-md bg-grey-darker p-8 rounded shadow-md border-4 border-custom">
+                  <h1 className="text-3xl font-bold mb-6 text-custom text-center">Consultancy Form</h1>
+                <form className="max-w-md mx-auto" onSubmit={handleSubmit}>
                     <div className="mb-4">
-                        <label htmlFor="name" className="block text-sm font-medium text-white mb-2">
+                        <label htmlFor="name" className="block text-custom text-sm font-bold mb-2">
                             Name
                         </label>
                         <input
@@ -53,7 +55,7 @@ export default function ConsultancyPage() {
                         />
                     </div>
                     <div className="mb-4">
-                        <label htmlFor="email" className="block text-sm font-medium text-white mb-2">
+                        <label htmlFor="email" className="block text-custom text-sm font-bold mb-2">
                             Email
                         </label>
                         <input
@@ -68,7 +70,7 @@ export default function ConsultancyPage() {
                         />
                     </div>
                     <div className="mb-4">
-                        <label htmlFor="phone" className="block text-sm font-medium text-white mb-2">
+                        <label htmlFor="phone" className="block text-custom text-sm font-bold mb-2">
                             Phone (Optional)
                         </label>
                         <input
@@ -82,7 +84,7 @@ export default function ConsultancyPage() {
                         />
                     </div>
                     <div className="mb-4">
-                        <label htmlFor="propertyType" className="block text-sm font-medium text-white mb-2">
+                        <label htmlFor="propertyType" className="block text-custom text-sm font-bold mb-2">
                             Property Type
                         </label>
                         <select
@@ -99,7 +101,7 @@ export default function ConsultancyPage() {
                         </select>
                     </div>
                     <div className="mb-4">
-                        <label htmlFor="message" className="block text-sm font-medium text-white mb-2">
+                        <label htmlFor="message" className="block text-custom text-sm font-bold mb-2">
                             Message
                         </label>
                         <textarea
@@ -114,7 +116,7 @@ export default function ConsultancyPage() {
                         />
                     </div>
                     <div className="mb-4">
-                        <label htmlFor="contactMethod" className="block text-sm font-medium text-white mb-2">
+                        <label htmlFor="contactMethod" className="block text-custom text-sm font-bold mb-2">
                             Preferred Contact Method
                         </label>
                         <select
@@ -130,10 +132,10 @@ export default function ConsultancyPage() {
                             <option value="in-person">In-Person Meeting</option>
                         </select>
                     </div>
-                    <div>
+                    <div className="flex items-center justify-between">
                         <button
+                            className="bg-custom text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                             type="submit"
-                            className="w-full bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         >
                             Submit
                         </button>
