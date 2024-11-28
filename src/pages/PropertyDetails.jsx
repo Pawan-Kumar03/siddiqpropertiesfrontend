@@ -18,6 +18,7 @@ export default function PropertyDetails() {
   const [property, setProperty] = useState(null);
   const [isDeleted, setIsDeleted] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [fullscreenImage, setFullscreenImage] = useState(null); 
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -42,6 +43,16 @@ export default function PropertyDetails() {
     } catch (error) {
       console.error("Failed to fetch property:", error);
     }
+  };
+
+
+
+  const openFullscreenImage = (image) => {
+    setFullscreenImage(image);
+  };
+
+  const closeFullscreenImage = () => {
+    setFullscreenImage(null);
   };
 
   const handleEditProperty = () => {
@@ -145,8 +156,8 @@ export default function PropertyDetails() {
   </button>
 </div>
 
-       <div className="flex flex-col lg:flex-row">
-         <div className="lg:w-1/2 lg:pr-4">
+<div className="flex flex-col lg:flex-row">
+            <div className="lg:w-1/2 lg:pr-4">
               {property.images && processImages(property.images).length > 1 ? (
                 <Carousel
                   showThumbs={false}
@@ -159,10 +170,11 @@ export default function PropertyDetails() {
                     <div
                       key={index}
                       className="h-100 flex justify-center items-center"
+                      onClick={() => openFullscreenImage(image)} // Add click handler
                     >
                       <img
-                        className="rounded-lg object-cover h-80 w-full"
-                        src={`${image}`}
+                        className="rounded-lg object-cover h-80 w-full cursor-pointer"
+                        src={image}
                         alt={property.title}
                       />
                     </div>
@@ -170,9 +182,10 @@ export default function PropertyDetails() {
                 </Carousel>
               ) : (
                 <img
-                  className="rounded-lg mb-4 object-cover h-80 w-full"
+                  className="rounded-lg mb-4 object-cover h-80 w-full cursor-pointer"
                   src={`${property.image}`}
                   alt={property.title}
+                  onClick={() => openFullscreenImage(property.image)} // Add click handler
                 />
               )}
               {/* Description */}
