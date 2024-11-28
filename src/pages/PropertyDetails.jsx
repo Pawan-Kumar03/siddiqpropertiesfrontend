@@ -275,6 +275,24 @@ export default function PropertyDetails() {
               )}
             </div>
           </div>
+          {fullscreenImage && (
+              <div
+                className="fixed inset-0 bg-black bg-opacity-90 flex justify-center items-center z-50"
+                onClick={closeFullscreenImage}
+              >
+                <img
+                  src={fullscreenImage}
+                  alt="Fullscreen View"
+                  className="max-w-full max-h-full"
+                />
+                <button
+                  className="absolute top-4 right-4 text-white bg-gray-800 rounded-full p-2"
+                  onClick={closeFullscreenImage}
+                >
+                  Close
+                </button>
+              </div>
+            )}
 
           {/* Delete Confirmation Modal */}
           {showDeleteModal && (
