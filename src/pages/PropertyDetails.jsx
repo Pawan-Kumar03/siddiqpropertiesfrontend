@@ -10,6 +10,7 @@ import AuthContext from "../contexts/UserContext";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import CloseIcon from "@mui/icons-material/Close"; 
 
 export default function PropertyDetails() {
   const { id } = useParams();
@@ -286,11 +287,11 @@ export default function PropertyDetails() {
                   className="max-w-full max-h-full"
                 />
                 <button
-                  className="absolute top-4 right-4 text-white bg-gray-800 rounded-full p-2"
-                  onClick={closeFullscreenImage}
-                >
-                  Close
-                </button>
+      className="absolute top-4 right-4 text-white bg-gray-800 rounded-full p-2"
+      onClick={closeFullscreenImage}
+    >
+      <CloseIcon />
+    </button>
               </div>
             )}
 
