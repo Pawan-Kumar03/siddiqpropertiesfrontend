@@ -71,6 +71,9 @@ export default function Footer() {
             items: [
                 { name: "Contact Us", link: "/contact-us" },
             ],
+            items: [
+                { name: "Consultant", link: "/ConsultancyPage" },
+            ],
         },
     ];
 
