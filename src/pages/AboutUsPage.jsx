@@ -1,6 +1,6 @@
 export default function AboutUsPage() {
     return (
-        <div className="container mx-auto py-12 text-white   shadow-md ">
+        <div className="container mx-auto py-12 text-white  font-playfair shadow-md ">
             <h1 className="text-3xl font-bold my-6 text-custom">About Us</h1>
             <p>Welcome to <b>InvestiBayt</b>, your go-to platform for buying, selling, and renting properties. We connect property owners, real estate agents, and potential buyers or renters through a seamless and user-friendly experience.</p>
 
