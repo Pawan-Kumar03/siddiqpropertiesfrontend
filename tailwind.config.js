@@ -34,9 +34,8 @@ export default {
                 custom: "#c5a47e",
             },
             fontFamily: {
-                proxima: ["Proxima Nova", "ProximaNova", "-apple-system", "system-ui", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "sans-serif"],
-                roboto: ["Roboto", "sans-serif"], // Retain Roboto as a fallback
-                'cofo-sans': ["'cofo-sans-variable'", "sans-serif"], // Add Cofo Sans
+                parkinsans: ["'Parkinsans'", "sans-serif"], // Add Parkinsans
+                playfair: ["'Playfair Display'", "serif"], // Add Playfair Display
             }
         },
     },
