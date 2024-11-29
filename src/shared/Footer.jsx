@@ -77,11 +77,11 @@ export default function Footer() {
     ];
 
     return (
-        <footer className="bg-gray-800 dark:bg-gray-900 py-8 px-4 lg:px-0">
-            <div className="container mx-auto">
+        <footer className="bg-gray-800 dark:bg-gray-900 py-8 px-4 lg:px-0 font-playfair">
+            <div className="container mx-auto font-playfair">
 
                 {/* Footer content for larger screens */}
-                <div className="hidden lg:flex lg:justify-between pb-6">
+                <div className="hidden lg:flex lg:justify-between pb-6 font-playfair">
                     {data.map((footerItem, index) => (
                         <div key={index} className="flex-1">
                             <h3 className="text-base font-semibold mb-4 text-custom">
@@ -105,7 +105,7 @@ export default function Footer() {
                 </div>
 
                 {/* Footer content for smaller screens */}
-                <div className="lg:hidden grid grid-cols-2 gap-4 pb-6 space-y-0">
+                <div className="lg:hidden grid grid-cols-2 gap-4 pb-6 space-y-0 font-playfair">
     {data.map((footerItem, index) => (
         <div
             key={index}
@@ -139,8 +139,8 @@ export default function Footer() {
 
       
                 {/* Footer Bottom Section */}
-                <div className="mt-6 flex flex-col items-center lg:items-start lg:flex-row justify-between">
-                    <div className="flex items-center space-x-4">
+                <div className="mt-6 font-playfair flex flex-col items-center lg:items-start lg:flex-row justify-between">
+                    <div className="flex items-center space-x-4 font-playfair">
                         <img className="w-32" src={logoDark} alt="Logo" />
                         <small className="text-custom text-center lg:text-left mt-4 lg:mt-0">
                             &copy; InvestiBayt.com {new Date().getFullYear()}, All Rights Reserved.
