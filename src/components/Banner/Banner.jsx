@@ -142,7 +142,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         style={{ backgroundImage: `url('/homepage-banner-img.jpeg')` }} // Applies background image on large screens
     >
                 {/* "Your InvestiBayt Journey Starts Here" Section */}
-                <h1 className="text-2xl text-center font-impact text-white lg:text-white lg:mb-8">
+                <h1 className="text-2xl text-center font-josefin text-white lg:text-white lg:mb-8">
     Your InvestiBayt Journey Starts Here
 </h1>
 
