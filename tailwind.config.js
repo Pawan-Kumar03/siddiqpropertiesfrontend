@@ -36,6 +36,12 @@ export default {
             fontFamily: {
                 parkinsans: ["'Parkinsans'", "sans-serif"], // Add Parkinsans
                 playfair: ["'Playfair Display'", "serif"], // Add Playfair Display
+                impact: ["'Impact'", "sans-serif"], // Add Impact
+                josefin: ["'Josefin Sans'", "sans-serif"], // Add Josefin Sans
+                openSans: ["'Open Sans'", "sans-serif"], // Add Open Sans
+                parkinsans: ["'Parkinsans'", "sans-serif"], // Add Parkinsans
+                playfair: ["'Playfair Display'", "serif"], // Add Playfair Display
+                lato: ["'Lato'", "sans-serif"], // Add Lato
             }
         },
     },
