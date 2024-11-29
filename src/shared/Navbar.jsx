@@ -38,9 +38,9 @@ export default function Navbar() {
     };
 
     return (
-        <header className="bg-gray-800">
-            <div className="lg:border-b lg:border-b-gray-600">
-                <nav className="relative container mx-auto p-4 text-gray-100 flex items-center justify-between">
+        <header className="bg-gray-800 font-playfair">
+            <div className="lg:border-b lg:border-b-gray-600 font-playfair">
+                <nav className="relative font-playfair container mx-auto p-4 text-gray-100 flex items-center justify-between">
                     {/* Logo on the top left */}
                     <div className="flex items-center">
                         <Link to="/">
