@@ -40,14 +40,14 @@ export default function Card({ item }) {
                 />
             ) : (
                 <div className="rounded-lg mb-3 object-cover h-40 w-full bg-gray-700 flex items-center justify-center">
-                    <span className="text-gray-400">No Image Available</span>
+                    <span className="text-gray-400 font-playfair">No Image Available</span>
                 </div>
             )}
-            <h3 className="text-lg font-semibold text-custom">
+            <h3 className="text-lg font-semibold text-custom font-playfair">
                 {price}
             </h3>
-            <p className="text-gray-100 font-semibold truncate">{title}</p>
-            <p className="text-gray-300 text-sm truncate">{extension}</p>
+            <p className="text-gray-100 font-semibold truncate font-playfair">{title}</p>
+            <p className="text-gray-300 text-sm truncate font-playfair">{extension}</p>
         </div>
     );
 }
