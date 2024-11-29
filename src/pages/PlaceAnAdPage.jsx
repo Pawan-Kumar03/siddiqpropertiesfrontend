@@ -88,7 +88,7 @@ export default function PlaceAnAdPage() {
      // Compress images before appending them
     const compressedImages = await Promise.all(
       formData.images.map(async (image) => {
-        console.log(`Original size of image: ${(image.size / 1024 / 1024).toFixed(2)} MB`); // Log original size
+        // console.log(`Original size of image: ${(image.size / 1024 / 1024).toFixed(2)} MB`); // Log original size
         const options = {
           maxSizeMB: 1, // Target size of 1MB
           maxWidthOrHeight: 1920, // Maximum width or height in pixels
@@ -96,7 +96,7 @@ export default function PlaceAnAdPage() {
         };
         try {
           const compressedImage = await imageCompression(image, options);
-          console.log(`Compressed size of image: ${(compressedImage.size / 1024 / 1024).toFixed(2)} MB`); // Log compressed size
+          // console.log(`Compressed size of image: ${(compressedImage.size / 1024 / 1024).toFixed(2)} MB`); // Log compressed size
           return compressedImage;
         } catch (error) {
           console.error('Error compressing image:', error);
@@ -169,11 +169,11 @@ export default function PlaceAnAdPage() {
 
   if (submitted) {
     return (
-      <div className="container mx-auto p-4">
-        <div className="text-center bg-green-200 text-green-700 p-4 rounded">
+      <div className="container mx-auto p-4 font-playfair">
+        <div className="text-center bg-green-200 text-green-700 p-4 rounded font-playfair">
           Your ad has been published successfully!
         </div>
-        <div className="flex justify-center mt-4">
+        <div className="flex justify-center mt-4 font-playfair">
           <button onClick={() => navigate("/")} className="px-6 py-3 bg-custom text-white rounded">
             Go to Home
           </button>
@@ -183,7 +183,7 @@ export default function PlaceAnAdPage() {
   }
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 font-playfair">
       {isPublishing ? (
         <div className="text-center text-black bg-custom  p-4 rounded">
           Your Ad is publishing...
@@ -221,7 +221,7 @@ function Step1({ onNext }) {
   };
 
   return (
-    <div className="flex flex-col items-center space-y-4 w-full max-w-md mx-auto">
+    <div className="flex flex-col items-center space-y-4 w-full max-w-md mx-auto font-playfair">
       <h2 className="text-2xl font-semibold text-center text-custom">Enter a short title to describe your listing</h2>
       <h3 className="text-center text-custom">Make your title informative and attractive.</h3>
       <input
@@ -245,15 +245,15 @@ function StepChooseCategory({ onNext, onBack, title }) {
   };
 
   return (
-    <div className="flex flex-col items-center space-y-4 w-full max-w-md mx-auto">
-      <h2 className="text-2xl font-semibold text-center text-custom">Now choose the right category for your ad: {title}</h2>
-      <div className="space-y-2 w-3/4">
+    <div className="flex flex-col items-center space-y-4 w-full max-w-md mx-auto font-playfair">
+      <h2 className="text-2xl  font-playfair font-semibold text-center text-custom">Now choose the right category for your ad: {title}</h2>
+      <div className="space-y-2 w-3/4 font-playfair">
         <button onClick={() => handleCategorySelect("Residential")} className={`block w-full px-6 py-3 rounded ${category === "Residential" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Residential</button>
         <button onClick={() => handleCategorySelect("Commercial")} className={`block w-full px-6 py-3 rounded ${category === "Commercial" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Commercial</button>
         <button onClick={() => handleCategorySelect("Land")} className={`block w-full px-6 py-3 rounded ${category === "Land" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Land</button>
         <button onClick={() => handleCategorySelect("Multiple Units")} className={`block w-full px-6 py-3 rounded ${category === "Multiple Units" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Multiple Units</button>
       </div>
-      <button onClick={onBack} className="px-4 py-2 bg-gray-500 text-white rounded w-full">Back</button>
+      <button onClick={onBack} className="px-4 py-2 font-playfair bg-gray-500 text-white rounded w-full">Back</button>
     </div>
   );
 }
@@ -266,9 +266,9 @@ function Step2Residential({ onNext, onBack, category, title }) {
   };
 
   return (
-    <div className="flex flex-col items-center space-y-4 w-full max-w-md mx-auto">
-      <h2 className="text-2xl font-semibold text-center text-custom">Now choose the right category for your ad: {title} {">"} {category}</h2>
-      <div className="space-y-2 w-3/4">
+    <div className="flex font-playfair flex-col items-center space-y-4 w-full max-w-md mx-auto">
+      <h2 className="text-2xl font-playfair font-semibold text-center text-custom">Now choose the right category for your ad: {title} {">"} {category}</h2>
+      <div className="space-y- font-playfair w-3/4">
         <button onClick={() => setSubcategory("Apartment")} className={`block w-full px-6 py-3 rounded ${subcategory === "Apartment" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Apartment</button>
         <button onClick={() => setSubcategory("Villa")} className={`block w-full px-6 py-3 rounded ${subcategory === "Villa" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Villa</button>
         <button onClick={() => setSubcategory("Townhouse")} className={`block w-full px-6 py-3 rounded ${subcategory === "Townhouse" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Townhouse</button>
@@ -291,9 +291,9 @@ function Step2Commercial({ onNext, onBack, category, title }) {
   };
 
   return (
-    <div className="flex flex-col items-center space-y-4 w-full max-w-md mx-auto">
-      <h2 className="text-2xl font-semibold text-center text-custom">Now choose the right category for your ad: {title} {">"} {category}</h2>
-      <div className="space-y-2 w-3/4">
+    <div className="flex font-playfair flex-col items-center space-y-4 w-full max-w-md mx-auto">
+      <h2 className="text-2xl font-playfair font-semibold text-center text-custom">Now choose the right category for your ad: {title} {">"} {category}</h2>
+      <div className="space-y-2 w-3/4 font-playfair">
         <button onClick={() => setSubcategory("Office")} className={`block w-full px-6 py-3 rounded ${subcategory === "Office" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Office</button>
         <button onClick={() => setSubcategory("Retail")} className={`block w-full px-6 py-3 rounded ${subcategory === "Retail" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Retail</button>
         <button onClick={() => setSubcategory("Industrial")} className={`block w-full px-6 py-3 rounded ${subcategory === "Industrial" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Industrial</button>
@@ -418,7 +418,7 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
     setDetails(prev => ({ ...prev, [name]: newValue }));
   };
   return (
-    <div className="flex flex-col items-center space-y-4 w-full max-w-lg mx-auto">
+    <div className="flex flex-col items-center space-y-4 w-full max-w-lg mx-auto font-playfair">
       <h2 className="text-2xl font-semibold text-center text-custom">You’re almost there!</h2>
       <h3 className="text-center text-custom">Include as much details and pictures as possible, and set the right price!</h3>
       <h4 className="text-center text-custom">{formData.title} {">"} {formData.category}</h4>
@@ -676,7 +676,7 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
 
 function Step4Review({ onSubmit, onBack, formData }) {
   return (
-    <div className="flex flex-col items-center space-y-4 w-full max-w-lg mx-auto p-4 bg-white shadow-lg rounded">
+    <div className="flex font-playfair flex-col items-center space-y-4 w-full max-w-lg mx-auto p-4 bg-white shadow-lg rounded">
       <h2 className="text-2xl font-semibold text-center mb-4">Review Your Ad</h2>
 
       <div className="w-full space-y-4">
