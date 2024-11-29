@@ -75,8 +75,8 @@ export default function ProfilePage() {
     };
 
     return (
-        <div className="flex justify-center items-center min-h-screen">
-            <div className="w-full max-w-md bg-grey-darker p-8 rounded shadow-md border-4 border-custom">
+        <div className="flex justify-center items-center min-h-screen font-playfair">
+            <div className="w-full max-w-md bg-grey-darker p-8 rounded shadow-md border-4 border-custom font-playfair">
                 <h2 className="text-2xl font-bold mb-6 text-center text-custom">Edit Profile</h2>
                 {error && <div className="text-red-500 mb-4">{error}</div>}
                 <form onSubmit={handleSubmit}>
