@@ -78,20 +78,20 @@ export default function EditPropertyForm() {
     };
 
     if (loading) {
-        return <div className="text-center text-custom">Loading...</div>;
+        return <div className="text-center text-custom font-playfair">Loading...</div>;
     }
 
     if (!formData) {
-        return <div className="text-center text-custom">No property data found</div>;
+        return <div className="text-center text-custom font-playfair">No property data found</div>;
     }
 
     if (submitted) {
         return (
-            <div className="container mx-auto p-4">
+            <div className="container mx-auto p-4 font-playfair">
                 <div className="text-center bg-green-200 text-green-700 p-4 rounded">
                     Your ad has been modified successfully!
                 </div>
-                <div className="flex justify-center mt-4">
+                <div className="flex justify-center mt-4 font-playfair">
                     <button onClick={() => navigate("/")} className="px-6 py-3 bg-custom text-white rounded">
                         Go to Home
                     </button>
@@ -101,7 +101,7 @@ export default function EditPropertyForm() {
     }
 
     return (
-        <div className="container mx-auto p-4 bg-gray-800 text-gray-100">
+        <div className="container mx-auto p-4 bg-gray-800 text-gray-100 font-playfair">
             <h2 className="text-2xl font-semibold text-center text-custom">Edit Property</h2>
             
             {isUpdating ? (
