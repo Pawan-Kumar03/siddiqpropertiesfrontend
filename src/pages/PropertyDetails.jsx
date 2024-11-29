@@ -136,7 +136,7 @@ export default function PropertyDetails() {
 
   
   return (
-    <div className="container mt-8 bg-cream-100 text-gray-800 p-4 rounded-lg font-playfair">
+    <div className="container mt-8 bg-gray-800 text-gray-100 p-4 rounded-lg font-playfair">
       
       {isDeleted && (
         <div className="text-center bg-green-200 text-green-700 p-4 rounded mb-4">
@@ -305,7 +305,7 @@ export default function PropertyDetails() {
                 <p className="mb-4 text-custom">
                   Are you sure you want to delete this property?
                 </p>
-                <div className="flex justify-end font-playfair">
+                <div className="flex justify-end">
                   <button
                     onClick={() => setShowDeleteModal(false)}
                     className="px-4 py-2 bg-gray-500 text-white rounded mr-2"
