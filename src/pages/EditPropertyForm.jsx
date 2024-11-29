@@ -102,14 +102,14 @@ export default function EditPropertyForm() {
 
     return (
         <div className="container mx-auto p-4 bg-gray-800 text-gray-100 font-playfair">
-            <h2 className="text-2xl font-semibold text-center text-custom">Edit Property</h2>
+            <h2 className="text-2xl font-semibold text-center text-custom font-playfair">Edit Property</h2>
             
             {isUpdating ? (
-            <div className="text-center bg-custom text-black p-2 rounded mb-4">
+            <div className="text-center bg-custom text-black p-2 rounded mb-4 font-playfair">
                 Your Ad is updating...
             </div>
         ) : (
-            <form onSubmit={handleSubmit} className="flex flex-col space-y-4 w-full max-w-md mx-auto bg-gray-900 p-6 rounded border-4 border-custom">
+            <form onSubmit={handleSubmit} className="flex font-playfair flex-col space-y-4 w-full max-w-md mx-auto bg-gray-900 p-6 rounded border-4 border-custom">
                 <input
                     name="title"
                     type="text"
