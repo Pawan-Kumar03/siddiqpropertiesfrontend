@@ -138,7 +138,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     return (
         <section>
     <div
-        className="container bg-cream lg:bg-cover lg:bg-center lg:bg-no-repeat lg:my-2 lg:pb-10 lg:pt-5 rounded-m"
+        className="container bg-gray-800 lg:bg-cover lg:bg-center lg:bg-no-repeat lg:my-2 lg:pb-10 lg:pt-5 rounded-m"
         style={{ backgroundImage: `url('/homepage-banner-img.jpeg')` }} // Applies background image on large screens
     >
                 {/* "Your InvestiBayt Journey Starts Here" Section */}
@@ -146,7 +146,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     Your InvestiBayt Journey Starts Here
 </h1>
 
-        <div className="lg:bg-cream lg:bg-opacity-50 rounded-md lg:p-4 lg:w-[88%] mx-auto">
+        <div className="lg:bg-gray-800 lg:bg-opacity-50 rounded-md lg:p-4 lg:w-[88%] mx-auto">
             <div className="flex flex-wrap justify-center items-center space-x-2 lg:space-x-14 mb-4">
                 <ul className="flex flex-wrap justify-center items-center space-x-2 text-sm sm:text-base">
                     <li className="mb-2 sm:mb-0">
@@ -185,13 +185,13 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
           </div>
 
 
-          <form className="lg:flex lg:flex-col lg:space-y-3 px-2 lg:px-0 py-4 lg:py-0 relative bg-cream lg:bg-transparent" onSubmit={handleSearch}>
+          <form className="lg:flex lg:flex-col lg:space-y-3 px-2 lg:px-0 py-4 lg:py-0 relative bg-gray-800 lg:bg-transparent" onSubmit={handleSearch}>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                              {/* City Input */}
         <div className="flex flex-col mb-3">
             <label className="mb-1 font-playfair  text-gray-300">City</label>
             <select
-                className="w-full p-3 h-12 rounded-md border border-gray-400 dark:border-gray-600 dark:bg-cream dark:text-gray-300"
+                className="w-full p-3 h-12 rounded-md border border-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
                 name="city"
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
@@ -215,7 +215,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                     type="text"
                     placeholder="Add location and press Enter"
                     onKeyPress={handleAddLocation}
-                    className="flex-1 p-3 h-12 rounded-md border border-gray-400 dark:border-gray-600 dark:bg-cream dark:text-gray-300"
+                    className="flex-1 p-3 h-12 rounded-md border border-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
                 />
                 {/* Location Chips */}
                 {locations.map((loc, index) => (
@@ -235,7 +235,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         <div className="flex flex-col mb-3">
             <label className="mb-1 text-gray-300font-playfair">Property Type</label>
             <select
-                className="w-full p-3 h-12 rounded-md border border-gray-400 dark:border-gray-600 dark:bg-cream dark:text-gray-300"
+                className="w-full p-3 h-12 rounded-md border border-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
                 name="propertyType"
                 value={propertyType}
                 onChange={(e) => setPropertyType(e.target.value)}
@@ -257,7 +257,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                 placeholder="Min Price"
                 value={priceMin}
                 onChange={(e) => setPriceMin(e.target.value)}
-                className="w-full p-3 h-12 rounded-md font-playfair border border-gray-400 dark:border-gray-600 dark:bg-cream dark:text-gray-300"
+                className="w-full p-3 h-12 rounded-md font-playfair border border-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
             />
         </div>
 
@@ -270,7 +270,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                 placeholder="Max Price"
                 value={priceMax}
                 onChange={(e) => setPriceMax(e.target.value)}
-                className="w-full p-3 h-12 font-playfair rounded-md border border-gray-400 dark:border-gray-600 dark:bg-cream dark:text-gray-300"
+                className="w-full p-3 h-12 font-playfair rounded-md border border-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
             />
         </div>
 
@@ -278,7 +278,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         <div className="flex flex-col mb-3">
             <label className="mb-1 text-gray-300 font-playfair">Beds</label>
             <select
-                className="w-full font-playfair p-3 h-12 rounded-md border border-gray-400 dark:border-gray-600 dark:bg-cream dark:text-gray-300"
+                className="w-full font-playfair p-3 h-12 rounded-md border border-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
                 name="beds"
                 value={beds}
                 onChange={(e) => setBeds(e.target.value)}
@@ -296,7 +296,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         <div className="flex flex-col mb-3">
             <label className="mb-1 text-gray-300 font-playfair">Baths</label>
             <select
-                className="w-full font-playfair p-3 h-12 rounded-md border border-gray-400 dark:border-gray-600 dark:bg-cream dark:text-gray-300"
+                className="w-full font-playfair p-3 h-12 rounded-md border border-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
                 name="baths"
                 value={baths}
                 onChange={(e) => setBaths(e.target.value)}
@@ -314,7 +314,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         <div className="flex flex-col mb-3">
             <label className="mb-1 text-gray-300 font-playfair">Owner Type</label>
             <select
-                className="w-full  font-playfair p-3 h-12 rounded-md border border-gray-400 dark:border-gray-600 dark:bg-cream dark:text-gray-300"
+                className="w-full  font-playfair p-3 h-12 rounded-md border border-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
                 name="agentType"
                 value={agentType}
                 onChange={(e) => setAgentType(e.target.value)}
@@ -344,7 +344,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                 </div>
             </div>
             {city && locationCounts.length > 0 && (
-    <div className=" bg-cream pl-14">
+    <div className=" bg-gray-800 pl-14">
         <h2 className="text-xl font-semibold text-custom font-playfair">
             Properties by Location in {city}. {totalProperties} Ads
         </h2>

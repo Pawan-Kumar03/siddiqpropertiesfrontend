@@ -297,8 +297,8 @@ export default function PropertyDetails() {
 
           {/* Delete Confirmation Modal */}
           {showDeleteModal && (
-            <div className="fixed font-playfair inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center">
-              <div className="bg-white rounded-lg p-8 font-playfair">
+            <div className="fixed  font-playfair inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center">
+              <div className="bg-white font-playfair rounded-lg p-8">
                 <h3 className="text-lg font-semibold mb-4 text-custom">
                   Confirm Deletion
                 </h3>
