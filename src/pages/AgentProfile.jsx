@@ -64,8 +64,8 @@ export default function AgentProfile({ onNext, onBack, formData, setFormData }) 
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-800">
-      <div className="w-full max-w-md bg-grey-darker p-8 rounded shadow-md border-4 border-custom">
+    <div className="flex font-playfair items-center justify-center min-h-screen bg-gray-800">
+      <div className="w-full font-playfair max-w-md bg-grey-darker p-8 rounded shadow-md border-4 border-custom">
         <h1 className="text-3xl font-bold mb-6 text-custom text-center">Agent Profile</h1>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
