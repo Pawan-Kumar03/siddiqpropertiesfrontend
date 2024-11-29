@@ -136,7 +136,7 @@ export default function PropertyDetails() {
 
   
   return (
-    <div className="container mt-8 bg-gray-800 text-gray-100 p-4 rounded-lg">
+    <div className="container mt-8 bg-gray-800 text-gray-100 p-4 rounded-lg font-playfair">
       
       {isDeleted && (
         <div className="text-center bg-green-200 text-green-700 p-4 rounded mb-4">
@@ -145,7 +145,7 @@ export default function PropertyDetails() {
       )}
       {!isDeleted && property && (
        <>
-       <div className="flex items-center mb-4">
+       <div className="flex items-center mb-4 font-playfair">
   <button
     onClick={() => navigate(-1)}
     className="flex items-center text-custom hover:underline"
@@ -157,7 +157,7 @@ export default function PropertyDetails() {
   </button>
 </div>
 
-<div className="flex flex-col lg:flex-row">
+<div className="flex flex-col lg:flex-row font-playfair">
             <div className="lg:w-1/2 lg:pr-4">
               {property.images && processImages(property.images).length > 1 ? (
                 <Carousel
@@ -197,7 +197,7 @@ export default function PropertyDetails() {
               )}
 
             </div>
-            <div className="lg:w-1/2 lg:pl-4">
+            <div className="lg:w-1/2 lg:pl-4 font-playfair">
               <h3
                 className="text-lg font-semibold mb-2"
                 style={{ color: "#c5a47e" }}
@@ -297,15 +297,15 @@ export default function PropertyDetails() {
 
           {/* Delete Confirmation Modal */}
           {showDeleteModal && (
-            <div className="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center">
-              <div className="bg-white rounded-lg p-8">
+            <div className="fixed font-playfair inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center">
+              <div className="bg-white rounded-lg p-8 font-playfair">
                 <h3 className="text-lg font-semibold mb-4 text-custom">
                   Confirm Deletion
                 </h3>
                 <p className="mb-4 text-custom">
                   Are you sure you want to delete this property?
                 </p>
-                <div className="flex justify-end">
+                <div className="flex justify-end font-playfair">
                   <button
                     onClick={() => setShowDeleteModal(false)}
                     className="px-4 py-2 bg-gray-500 text-white rounded mr-2"
