@@ -45,8 +45,8 @@ export default function Login() {
     };
 
     return (
-        <div className="min-h-screen flex justify-center items-center bg-gray-800 ">
-            <div className="bg-grey-darker p-8 rounded shadow-md w-full max-w-md border-4 border-custom">
+        <div className="min-h-screen flex justify-center items-center bg-gray-800 font-playfair ">
+            <div className="bg-grey-darker p-8 rounded shadow-md w-full max-w-md border-4 border-custom font-playfair">
                 <h2 className="text-2xl font-bold mb-6 text-white text-center">Log in to favorite an Ad</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">
