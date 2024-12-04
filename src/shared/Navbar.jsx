@@ -38,7 +38,7 @@ export default function Navbar() {
     };
 
     return (
-<header className="bg-lightBlue font-primary">
+<header className="bg-white font-primary">
     <div className="lg:border-b lg:border-b-accent font-primary">
         <nav className="relative font-primary container mx-auto p-4 flex items-center justify-between rounded-lg shadow-md bg-lightBlue">
             {/* Logo */}
@@ -71,7 +71,7 @@ export default function Navbar() {
                 {user ? (
                     <div className="relative">
                         <span
-                            className="bg-white text-primary py-2 px-4 rounded-full cursor-pointer dropdown-toggle shadow-sm"
+                            className="bg-text-primary text-white py-2 px-4 rounded-full cursor-pointer dropdown-toggle shadow-sm"
                             onClick={toggleDropdown}
                         >
                             {user.name}
