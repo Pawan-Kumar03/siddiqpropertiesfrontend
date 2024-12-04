@@ -84,13 +84,14 @@ export default function ContactUsPage() {
                         ></textarea>
                     </div>
                     <div className="text-center">
-                        <button
-                            className="w-full bg-button text-text-button font-bold py-2 px-4 rounded hover:bg-button-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent"
-                            type="submit"
-                        >
-                            Submit
-                        </button>
-                    </div>
+    <button
+        className="w-full bg-button font-bold py-2 px-4 rounded hover:bg-white hover:text-primary-text focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent"
+        type="submit"
+    >
+        Submit
+    </button>
+</div>
+
                 </form>
                 <div
                     id="success-message"
