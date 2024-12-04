@@ -7,8 +7,9 @@
     --grey-darkest: #212121;
     --custom-color: #c5a47e;
 } */
-:root {
-    --bg-cream: #f5f5dc; /* Cream color */
+
+/* :root {
+    --bg-cream: #f5f5dc; 
     --grey-light: #f7f7f7;
     --grey-lighter: #e1e1e1;
     --grey: #bdbdbd;
@@ -16,7 +17,17 @@
     --grey-darker: #424242;
     --grey-darkest: #212121;
     --custom-color: #c5a47e;
-}
+} */
+:root {
+    --primary-bg: #fefae0; /* Background color */
+    --primary-text: #283618; /* Dark green for text */
+    --secondary-text: #606c38; /* Muted green */
+    --accent-color: #dda15e; /* Highlight color */
+    --button-bg: #bc6c25; /* Button background */
+    --button-hover: #a65b1e; /* Button hover */
+    --button-text: #fff; /* Button text */
+    --font-family: 'Playfair Display', serif;
+} 
 .bg-cream {
     background-color: var(--bg-cream);
 }
