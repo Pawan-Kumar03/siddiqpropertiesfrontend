@@ -6,6 +6,7 @@
     --button-bg:#27466D; /* Button background */
     --button-hover: #4c6f9b; /* Button hover */
     --button-text: #fff; /* Button text */
+    --light-blue: #EAF3FA;
     --font-family: 'Playfair Display', serif;
 } 
 .bg-primary {
@@ -38,6 +39,13 @@
 
 .text-button {
     color: var(--button-text); /* Button text */
+}
+.bg-lightBlue {
+    background-color: var(--light-blue);
+}
+
+.rounded-full {
+    border-radius: 9999px;
 }
 
 /* General Text Styles */

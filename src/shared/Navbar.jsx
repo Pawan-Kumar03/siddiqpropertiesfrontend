@@ -40,38 +40,38 @@ export default function Navbar() {
     return (
 <header className="bg-lightBlue font-primary">
     <div className="lg:border-b lg:border-b-accent font-primary">
-        <nav className="relative font-primary container mx-auto p-4 flex items-center justify-between">
-            {/* Logo on the top left */}
+        <nav className="relative font-primary container mx-auto p-4 flex items-center justify-between rounded-lg shadow-md bg-lightBlue">
+            {/* Logo */}
             <div className="flex items-center">
                 <Link to="/">
                     <img style={logoStyle} src={logo} alt="logo" />
                 </Link>
             </div>
 
-            {/* Desktop Navigation Links */}
+            {/* Desktop Navigation */}
             <div className="hidden sm:flex items-center space-x-4">
                 <Link
                     to="/"
-                    className="bg-white text-primary py-2 px-4 rounded-lg hover:bg-gray-100"
+                    className="bg-white text-primary py-2 px-4 rounded-full hover:bg-gray-100 shadow-sm"
                 >
                     Home
                 </Link>
                 <Link
                     to="/about-us"
-                    className="bg-white text-primary py-2 px-4 rounded-lg hover:bg-gray-100"
+                    className="bg-white text-primary py-2 px-4 rounded-full hover:bg-gray-100 shadow-sm"
                 >
                     About Us
                 </Link>
                 <Link
                     to="/ConsultancyPage"
-                    className="bg-white text-primary py-2 px-4 rounded-lg hover:bg-gray-100"
+                    className="bg-white text-primary py-2 px-4 rounded-full hover:bg-gray-100 shadow-sm"
                 >
                     Consultant
                 </Link>
                 {user ? (
                     <div className="relative">
                         <span
-                            className="bg-white text-primary py-2 px-4 rounded-lg cursor-pointer dropdown-toggle"
+                            className="bg-white text-primary py-2 px-4 rounded-full cursor-pointer dropdown-toggle shadow-sm"
                             onClick={toggleDropdown}
                         >
                             {user.name}
@@ -114,105 +114,103 @@ export default function Navbar() {
                 ) : (
                     <Link
                         to="/login"
-                        className="bg-primary text-white py-2 px-4 rounded-lg hover:bg-primary-dark"
+                        className="bg-primary text-white py-2 px-4 rounded-full hover:bg-primary-dark shadow-sm"
                     >
                         Login
                     </Link>
                 )}
             </div>
 
-                    {/* Mobile Menu for Smaller Screens */}
-<div className="sm:hidden flex items-center">
-    <button
-        onClick={toggleMobileMenu}
-        className="text-primary focus:outline-none"
-    >
-        {/* Hamburger Menu Icon */}
-        <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-        >
-            <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h16M4 18h16"
-            />
-        </svg>
-    </button>
-
-    {/* Mobile Menu Dropdown */}
-    {mobileMenuOpen && (
-        <div className="absolute right-0 top-12 bg-lightBlue text-primary rounded-lg shadow-lg w-48 z-50">
-            <Link
-                to="/"
-                className="block bg-white text-primary py-2 px-4 rounded-lg hover:bg-gray-100 mb-2"
-                onClick={() => setMobileMenuOpen(false)}
-            >
-                Home
-            </Link>
-            <Link
-                to="/about-us"
-                className="block bg-white text-primary py-2 px-4 rounded-lg hover:bg-gray-100 mb-2"
-                onClick={() => setMobileMenuOpen(false)}
-            >
-                About Us
-            </Link>
-            <Link
-                to="/ConsultancyPage"
-                className="block bg-white text-primary py-2 px-4 rounded-lg hover:bg-gray-100 mb-2"
-                onClick={() => setMobileMenuOpen(false)}
-            >
-                Consultant
-            </Link>
-            {user ? (
-                <>
-                    <Link
-                        to="/profile"
-                        className="block bg-white text-primary py-2 px-4 rounded-lg hover:bg-gray-100 mb-2"
-                        onClick={() => setMobileMenuOpen(false)}
-                    >
-                        My Profile
-                    </Link>
-                    <Link
-                        to="/get-verified"
-                        className="block bg-white text-primary py-2 px-4 rounded-lg hover:bg-gray-100 mb-2"
-                        onClick={() => setMobileMenuOpen(false)}
-                    >
-                        Get Verified
-                    </Link>
-                    <Link
-                        to="/my-ads"
-                        className="block bg-white text-primary py-2 px-4 rounded-lg hover:bg-gray-100 mb-2"
-                        onClick={() => setMobileMenuOpen(false)}
-                    >
-                        My Ads
-                    </Link>
-                    <button
-                        onClick={handleLogout}
-                        className="w-full text-left bg-white text-primary py-2 px-4 rounded-lg hover:bg-gray-100 mb-2"
-                    >
-                        Sign Out
-                    </button>
-                </>
-            ) : (
-                <Link
-                    to="/login"
-                    className="block bg-primary text-white py-2 px-4 rounded-lg hover:bg-primary-dark"
-                    onClick={() => setMobileMenuOpen(false)}
+            {/* Mobile Menu */}
+            <div className="sm:hidden flex items-center">
+                <button
+                    onClick={toggleMobileMenu}
+                    className="text-primary focus:outline-none"
                 >
-                    Login
-                </Link>
-            )}
-        </div>
-    )}
-</div>
+                    <svg
+                        className="w-6 h-6"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M4 6h16M4 12h16M4 18h16"
+                        />
+                    </svg>
+                </button>
 
-                </nav>
+                {mobileMenuOpen && (
+                    <div className="absolute right-0 top-12 bg-lightBlue text-primary rounded-lg shadow-lg w-48 z-50">
+                        <Link
+                            to="/"
+                            className="block bg-white text-primary py-2 px-4 rounded-full hover:bg-gray-100 mb-2"
+                            onClick={() => setMobileMenuOpen(false)}
+                        >
+                            Home
+                        </Link>
+                        <Link
+                            to="/about-us"
+                            className="block bg-white text-primary py-2 px-4 rounded-full hover:bg-gray-100 mb-2"
+                            onClick={() => setMobileMenuOpen(false)}
+                        >
+                            About Us
+                        </Link>
+                        <Link
+                            to="/ConsultancyPage"
+                            className="block bg-white text-primary py-2 px-4 rounded-full hover:bg-gray-100 mb-2"
+                            onClick={() => setMobileMenuOpen(false)}
+                        >
+                            Consultant
+                        </Link>
+                        {user ? (
+                            <>
+                                <Link
+                                    to="/profile"
+                                    className="block bg-white text-primary py-2 px-4 rounded-full hover:bg-gray-100 mb-2"
+                                    onClick={() => setMobileMenuOpen(false)}
+                                >
+                                    My Profile
+                                </Link>
+                                <Link
+                                    to="/get-verified"
+                                    className="block bg-white text-primary py-2 px-4 rounded-full hover:bg-gray-100 mb-2"
+                                    onClick={() => setMobileMenuOpen(false)}
+                                >
+                                    Get Verified
+                                </Link>
+                                <Link
+                                    to="/my-ads"
+                                    className="block bg-white text-primary py-2 px-4 rounded-full hover:bg-gray-100 mb-2"
+                                    onClick={() => setMobileMenuOpen(false)}
+                                >
+                                    My Ads
+                                </Link>
+                                <button
+                                    onClick={handleLogout}
+                                    className="w-full text-left bg-white text-primary py-2 px-4 rounded-full hover:bg-gray-100 mb-2"
+                                >
+                                    Sign Out
+                                </button>
+                            </>
+                        ) : (
+                            <Link
+                                to="/login"
+                                className="block bg-primary text-white py-2 px-4 rounded-full hover:bg-primary-dark"
+                                onClick={() => setMobileMenuOpen(false)}
+                            >
+                                Login
+                            </Link>
+                        )}
+                    </div>
+                )}
             </div>
-        </header>
+        </nav>
+    </div>
+</header>
+
     );
 }
