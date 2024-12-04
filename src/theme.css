@@ -3,8 +3,8 @@
     --primary-text: #1D4783; /* Dark green for text */
     --secondary-text: #010339; /* Muted green */
     --accent-color: #F5FAFE; /* Highlight color */
-    --button-bg:#FFFF; /* Button background */
-    --button-hover: #27466D; /* Button hover */
+    --button-bg:#27466D; /* Button background */
+    --button-hover: #4c6f9b; /* Button hover */
     --button-text: #fff; /* Button text */
     --font-family: 'Playfair Display', serif;
 } 
