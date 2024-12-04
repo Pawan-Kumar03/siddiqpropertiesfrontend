@@ -25,13 +25,11 @@ export default function ContactUsPage() {
         )
         .then((response) => {
             console.log('SUCCESS!', response.status, response.text);
-            // Show success message and navigate to home
             document.querySelector('#success-message').style.display = 'block';
             setTimeout(() => navigate("/"), 3000); // Redirect after 3 seconds
         })
         .catch((error) => {
             console.error('FAILED...', error);
-            // Show error message and navigate to home
             document.querySelector('#error-message').style.display = 'block';
             setTimeout(() => navigate("/"), 3000); // Redirect after 3 seconds
         });
@@ -42,12 +40,12 @@ export default function ContactUsPage() {
     };
 
     return (
-        <div className="flex font-playfair items-center justify-center min-h-screen bg-gray-800">
-            <div className="w-full max-w-md bg-grey-darker p-8 rounded shadow-md border-4 border-custom">
+        <div className="flex font-playfair items-center justify-center min-h-screen bg-grey-darker text-grey-light">
+            <div className="w-full max-w-md bg-grey p-8 rounded-lg shadow-lg border-4 border-custom">
                 <h1 className="text-3xl font-bold mb-6 text-custom text-center">Contact Us</h1>
-                <form className="max-w-md mx-auto" onSubmit={sendEmail}>
-                    <div className="mb-4">
-                        <label className="block text-custom text-sm font-bold mb-2" htmlFor="name">
+                <form className="space-y-4" onSubmit={sendEmail}>
+                    <div>
+                        <label className="block text-custom text-sm font-semibold mb-1" htmlFor="name">
                             Name
                         </label>
                         <input
@@ -55,11 +53,12 @@ export default function ContactUsPage() {
                             type="text"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            className="w-full p-2 rounded bg-grey-light text-grey-dark focus:outline-none focus:ring-2 focus:ring-custom focus:border-transparent"
+                            required
                         />
                     </div>
-                    <div className="mb-4">
-                        <label className="block text-custom text-sm font-bold mb-2" htmlFor="email">
+                    <div>
+                        <label className="block text-custom text-sm font-semibold mb-1" htmlFor="email">
                             Email
                         </label>
                         <input
@@ -67,41 +66,45 @@ export default function ContactUsPage() {
                             type="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            className="w-full p-2 rounded bg-grey-light text-grey-dark focus:outline-none focus:ring-2 focus:ring-custom focus:border-transparent"
+                            required
                         />
                     </div>
-                    <div className="mb-6">
-                        <label className="block text-custom text-sm font-bold mb-2" htmlFor="query">
+                    <div>
+                        <label className="block text-custom text-sm font-semibold mb-1" htmlFor="query">
                             Query
                         </label>
                         <textarea
                             id="query"
                             value={query}
                             onChange={(e) => setQuery(e.target.value)}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        />
+                            className="w-full p-2 rounded bg-grey-light text-grey-dark focus:outline-none focus:ring-2 focus:ring-custom focus:border-transparent"
+                            rows="4"
+                            required
+                        ></textarea>
                     </div>
-                    <div className="flex items-center justify-between">
+                    <div className="text-center">
                         <button
-                            className="bg-custom text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                            className="w-full bg-custom text-grey-darkest font-bold py-2 px-4 rounded hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-custom"
                             type="submit"
                         >
                             Submit
                         </button>
                     </div>
                 </form>
-                <div id="success-message" className="container mx-auto p-4 mt-4" style={{ display: 'none' }}>
-                    <div className="text-center bg-green-200 text-green-700 p-4 rounded">
-                        Your query has been sent successfully!
-                    </div>
+                <div
+                    id="success-message"
+                    className="mt-4 hidden text-center bg-green-200 text-green-700 p-4 rounded"
+                >
+                    Your query has been sent successfully!
                 </div>
-                <div id="error-message" className="container mx-auto p-4 mt-4" style={{ display: 'none' }}>
-                    <div className="text-center bg-red-200 text-black p-4 rounded">
-                        Error in Sending Your Query.
-                    </div>
+                <div
+                    id="error-message"
+                    className="mt-4 hidden text-center bg-red-200 text-red-700 p-4 rounded"
+                >
+                    Error in Sending Your Query.
                 </div>
             </div>
         </div>
     );
-    
 }
