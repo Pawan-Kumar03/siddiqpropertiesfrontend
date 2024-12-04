@@ -168,44 +168,45 @@ export default function Navbar() {
                             Consultant
                         </Link>
                         {user ? (
-                            <>
-                                <Link
-                                    to="/profile"
-                                    className="block bg-white text-primary py-2 px-4 rounded-full hover:bg-gray-100 mb-2"
-                                    onClick={() => setMobileMenuOpen(false)}
-                                >
-                                    My Profile
-                                </Link>
-                                <Link
-                                    to="/get-verified"
-                                    className="block bg-white text-primary py-2 px-4 rounded-full hover:bg-gray-100 mb-2"
-                                    onClick={() => setMobileMenuOpen(false)}
-                                >
-                                    Get Verified
-                                </Link>
-                                <Link
-                                    to="/my-ads"
-                                    className="block bg-white text-primary py-2 px-4 rounded-full hover:bg-gray-100 mb-2"
-                                    onClick={() => setMobileMenuOpen(false)}
-                                >
-                                    My Ads
-                                </Link>
-                                <button
-                                    onClick={handleLogout}
-                                    className="w-full text-left bg-white text-primary py-2 px-4 rounded-full hover:bg-gray-100 mb-2"
-                                >
-                                    Sign Out
-                                </button>
-                            </>
-                        ) : (
-                            <Link
-                                to="/login"
-                                className="block bg-primary text-white py-2 px-4 rounded-full hover:bg-primary-dark"
-                                onClick={() => setMobileMenuOpen(false)}
-                            >
-                                Login
-                            </Link>
-                        )}
+    <>
+        <Link
+            to="/profile"
+            className="block bg-white text-primary py-2 px-4 rounded-full hover:bg-gray-100 mb-2"
+            onClick={() => setMobileMenuOpen(false)}
+        >
+            My Profile
+        </Link>
+        <Link
+            to="/get-verified"
+            className="block bg-white text-primary py-2 px-4 rounded-full hover:bg-gray-100 mb-2"
+            onClick={() => setMobileMenuOpen(false)}
+        >
+            Get Verified
+        </Link>
+        <Link
+            to="/my-ads"
+            className="block bg-white text-primary py-2 px-4 rounded-full hover:bg-gray-100 mb-2"
+            onClick={() => setMobileMenuOpen(false)}
+        >
+            My Ads
+        </Link>
+        <button
+            onClick={handleLogout}
+            className="w-full text-left bg-white text-primary py-2 px-4 rounded-full hover:bg-gray-100 mb-2"
+        >
+            Sign Out
+        </button>
+    </>
+) : (
+    <Link
+        to="/login"
+        className="block bg-button text-button py-2 px-4 rounded-full hover:bg-button-hover mb-2"
+        onClick={() => setMobileMenuOpen(false)}
+    >
+        Login
+    </Link>
+)}
+
                     </div>
                 )}
             </div>
