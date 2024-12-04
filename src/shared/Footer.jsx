@@ -113,7 +113,7 @@ export default function Footer() {
                                     : ""
                             }`}
                         >
-                            <h3 className="text-base font-semibold mb-2 text-bg-primary text-center">
+                            <h3 className="text-base font-semibold mb-2 text-bg-primary">
                                 {footerItem.category}
                             </h3>
                             <ul className="space-y-1">
