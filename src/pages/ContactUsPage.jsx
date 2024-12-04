@@ -94,13 +94,13 @@ export default function ContactUsPage() {
                 </form>
                 <div
                     id="success-message"
-                    className="mt-4 hidden text-center bg-green-200 text-green-700 p-4 rounded"
+                    className="mt-4 hidden text-center bg-accent text-primary p-4 rounded"
                 >
                     Your query has been sent successfully!
                 </div>
                 <div
                     id="error-message"
-                    className="mt-4 hidden text-center bg-red-200 text-red-700 p-4 rounded"
+                    className="mt-4 hidden text-center bg-button-hover text-button p-4 rounded"
                 >
                     Error in Sending Your Query.
                 </div>
