@@ -84,7 +84,7 @@ export default function Footer() {
                 <div className="hidden lg:flex lg:justify-between pb-6 font-playfair">
                     {data.map((footerItem, index) => (
                         <div key={index} className="flex-1">
-                            <h3 className="text-bg-primary font-semibold mb-4 text-custom">
+                            <h3 className="text-base font-semibold mb-4 text-bg-primary">
                                 {footerItem.category}
                             </h3>
                             <ul className="space-y-1">
@@ -142,7 +142,7 @@ export default function Footer() {
                 <div className="mt-6 font-playfair flex flex-col items-center lg:items-start lg:flex-row justify-between">
                     <div className="flex items-center space-x-4 font-playfair">
                         <img className="w-32" src={logoDark} alt="Logo" />
-                        <small className="text-custom text-center lg:text-left mt-4 lg:mt-0">
+                        <small className="text-bg-primary text-center lg:text-left mt-4 lg:mt-0">
                             &copy; InvestiBayt.com {new Date().getFullYear()}, All Rights Reserved.
                         </small>
                     </div>
