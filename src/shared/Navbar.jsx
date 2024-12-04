@@ -43,7 +43,6 @@ export default function Navbar() {
     <div className="lg:border-b lg:border-b-accent font-primary">
         <nav className="relative font-primary container mx-auto p-4 flex items-center justify-between rounded-lg shadow-md bg-lightBlue" >
             {/* Logo */}
-            <div  style={{ height: '60px' }}>
             <div className="flex items-center">
                 <Link to="/">
                     <img style={logoStyle} src={logo} alt="logo" />
@@ -51,7 +50,7 @@ export default function Navbar() {
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden sm:flex items-center space-x-4" >
+            <div className="hidden sm:flex items-center space-x-4" style={{ height: '60px' }}>
                 <Link
                     to="/"
                     className="bg-white text-primary py-2 px-4 rounded-full hover:bg-gray-100 shadow-sm"
@@ -122,7 +121,6 @@ export default function Navbar() {
     </Link>
 )}
 
-            </div>
             </div>
             {/* Mobile Menu */}
             <div className="sm:hidden flex items-center">
