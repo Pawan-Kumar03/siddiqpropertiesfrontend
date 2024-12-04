@@ -101,7 +101,7 @@ export default function Footer() {
                 </div>
 
                 {/* Footer content for smaller screens */}
-                <div className="lg:hidden grid grid-cols-2 gap-4 pb-6 space-y-0 font-playfair text-center">
+                <div className="lg:hidden grid grid-cols-2 gap-4 pb-6 space-y-0 font-playfair ">
                     {data.map((footerItem, index) => (
                         <div
                             key={index}
@@ -113,7 +113,7 @@ export default function Footer() {
                                     : ""
                             }`}
                         >
-                            <h3 className="text-base font-semibold mb-2 text-bg-primary">
+                            <h3 className="text-base font-semibold mb-2 text-bg-primary text-center">
                                 {footerItem.category}
                             </h3>
                             <ul className="space-y-1">
