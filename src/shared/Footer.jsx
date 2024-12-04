@@ -77,21 +77,21 @@ export default function Footer() {
     ];
 
     return (
-        <footer className="bg-gray-800 dark:bg-gray-900 py-8 px-4 lg:px-0 font-playfair">
+        <footer className="bg-primary  py-8 px-4 lg:px-0 font-playfair">
             <div className="container mx-auto font-playfair">
 
                 {/* Footer content for larger screens */}
                 <div className="hidden lg:flex lg:justify-between pb-6 font-playfair">
                     {data.map((footerItem, index) => (
                         <div key={index} className="flex-1">
-                            <h3 className="text-base font-semibold mb-4 text-custom">
+                            <h3 className="text-bg-primary font-semibold mb-4 text-custom">
                                 {footerItem.category}
                             </h3>
                             <ul className="space-y-1">
                                 {footerItem.items.map((item, itemIndex) => (
                                     <li key={itemIndex}>
                                         <a
-                                            className="text-sm text-blue-400 hover:text-blue-500 hover:underline"
+                                            className="text-sm text-#7A7A7E hover:text-blue-500 hover:underline"
                                             href={item.link}
                                             onClick={item.onClick} // Set the selected city on click
                                         >
