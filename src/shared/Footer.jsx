@@ -81,6 +81,30 @@ export default function Footer() {
             <div className="container mx-auto font-playfair">
 
                 {/* Footer content for larger screens */}
+                <div className="hidden lg:flex lg:justify-center pb-6 font-playfair">
+                    {data.map((footerItem, index) => (
+                        <div key={index} className="flex-1">
+                            <h3 className="text-base font-semibold mb-4 text-bg-primary">
+                                {footerItem.category}
+                            </h3>
+                            <ul className="space-y-1">
+                                {footerItem.items.map((item, itemIndex) => (
+                                    <li key={itemIndex}>
+                                        <a
+                                            className="text-sm text-#7A7A7E hover:text-bg-primary hover:underline"
+                                            href={item.link}
+                                            onClick={item.onClick} // Set the selected city on click
+                                        >
+                                            {item.name}
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    ))}
+                </div>
+
+                {/* Footer content for smaller screens */}
                 <div className="lg:hidden grid grid-cols-2 gap-4 pb-6 space-y-0 font-playfair">
     {data.map((footerItem, index) => (
         <div
@@ -111,40 +135,6 @@ export default function Footer() {
     ))}
 </div>
 
-
-                {/* Footer content for smaller screens */}
-                <div className="lg:hidden grid grid-cols-2 gap-4 pb-6 space-y-0 font-playfair">
-                {data.map((footerItem, index) => (
-    <div
-        key={index}
-        className={`${
-            footerItem.category === "Company"
-                ? "w-[376px] h-[80px]"
-                : footerItem.category === "Support"
-                ? "order-first"
-                : ""
-        }`}
-    >
-        <h3 className="text-base font-semibold mb-2 text-bg-primary">
-            {footerItem.category}
-        </h3>
-        <ul className="space-y-1">
-            {footerItem.items.map((item, itemIndex) => (
-                <li key={itemIndex}>
-                    <a
-                        className="text-sm text-#7a7a7e hover:shadow-lg hover:shadow-bg-primary"
-                        href={item.link}
-                        onClick={item.onClick}
-                    >
-                        {item.name}
-                    </a>
-                </li>
-            ))}
-        </ul>
-    </div>
-))}
-
-</div>
 
       
                 {/* Footer Bottom Section */}
