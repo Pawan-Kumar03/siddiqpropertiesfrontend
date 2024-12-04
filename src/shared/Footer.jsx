@@ -91,7 +91,7 @@ export default function Footer() {
                                 {footerItem.items.map((item, itemIndex) => (
                                     <li key={itemIndex}>
                                         <a
-                                            className="text-sm text-#7A7A7E hover:text-blue-500 hover:underline"
+                                            className="text-sm text-#7A7A7E hover:text-bg-primary hover:underline"
                                             href={item.link}
                                             onClick={item.onClick} // Set the selected city on click
                                         >
