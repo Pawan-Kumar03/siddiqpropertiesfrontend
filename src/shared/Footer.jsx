@@ -1,3 +1,6 @@
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import logoDark from "../assets/logo.jpeg";
 export default function Footer() {
     const [properties, setProperties] = useState([]);
     const [selectedCity, setSelectedCity] = useState('Dubai'); // Default city
@@ -138,10 +141,9 @@ export default function Footer() {
                             &copy; InvestiBayt.com {new Date().getFullYear()}, All Rights Reserved.
                         </small>
                     </div>
-                    {/* Uncomment if you want to use the cart image */}
-                    {/* <img className="w-36" src={cart} alt="Cart" /> */}
                 </div>
             </div>
         </footer>
     );
 }
+
