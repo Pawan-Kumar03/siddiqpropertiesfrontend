@@ -1,87 +1,85 @@
-/* :root {
-    --grey-light: #f7f7f7;
-    --grey-lighter: #e1e1e1;
-    --grey: #bdbdbd;
-    --grey-dark: #757575;
-    --grey-darker: #424242;
-    --grey-darkest: #212121;
-    --custom-color: #c5a47e;
-} */
-
-/* :root {
-    --bg-cream: #f5f5dc; 
-    --grey-light: #f7f7f7;
-    --grey-lighter: #e1e1e1;
-    --grey: #bdbdbd;
-    --grey-dark: #757575;
-    --grey-darker: #424242;
-    --grey-darkest: #212121;
-    --custom-color: #c5a47e;
-} */
-:root {
-    --primary-bg: #fefae0; /* Background color */
-    --primary-text: #283618; /* Dark green for text */
-    --secondary-text: #606c38; /* Muted green */
-    --accent-color: #dda15e; /* Highlight color */
-    --button-bg: #bc6c25; /* Button background */
-    --button-hover: #a65b1e; /* Button hover */
-    --button-text: #fff; /* Button text */
-    --font-family: 'Playfair Display', serif;
-} 
-.bg-cream {
-    background-color: var(--bg-cream);
+.bg-primary {
+    background-color: var(--primary-bg); /* Background color */
 }
-/* .bg-custom {
-    background-color: var(--custom-color);
-} */
 
-.text-custom {
-    color: var(--custom-color);
+.text-primary {
+    color: var(--primary-text); /* Dark green for text */
 }
+
+.text-secondary {
+    color: var(--secondary-text); /* Muted green */
+}
+
+.bg-accent {
+    background-color: var(--accent-color); /* Highlight color */
+}
+
+.text-accent {
+    color: var(--accent-color); /* Highlight text color */
+}
+
+.bg-button {
+    background-color: var(--button-bg); /* Button background */
+}
+
+.bg-button-hover {
+    background-color: var(--button-hover); /* Button hover */
+}
+
+.text-button {
+    color: var(--button-text); /* Button text */
+}
+
+/* General Text Styles */
+.font-primary {
+    font-family: var(--font-family); /* Primary font */
+}
+
+/* Old Classes Updated for Consistency */
 .bg-grey-light {
-    background-color: var(--grey-light);
+    background-color: var(--secondary-text); /* Muted green as grey-light */
 }
 
 .bg-grey-lighter {
-    background-color: var(--grey-lighter);
+    background-color: var(--primary-bg); /* Lightest background */
 }
 
 .bg-grey {
-    background-color: var(--grey);
+    background-color: var(--accent-color); /* Highlight as grey */
 }
 
 .bg-grey-dark {
-    background-color: var(--grey-dark);
+    background-color: var(--button-bg); /* Button background as grey-dark */
 }
 
 .bg-grey-darker {
-    background-color: var(--grey-darker);
+    background-color: var(--primary-text); /* Dark green as grey-darker */
 }
 
 .bg-grey-darkest {
-    background-color: var(--grey-darkest);
+    background-color: var(--button-hover); /* Hover button color as grey-darkest */
 }
 
 .text-grey-light {
-    color: var(--grey-light);
+    color: var(--secondary-text); /* Muted green as grey-light */
 }
 
 .text-grey-lighter {
-    color: var(--grey-lighter);
+    color: var(--primary-bg); /* Light background as text-grey-lighter */
 }
 
 .text-grey {
-    color: var(--grey);
+    color: var(--accent-color); /* Highlight as text-grey */
 }
 
 .text-grey-dark {
-    color: var(--grey-dark);
+    color: var(--button-bg); /* Button background as text-grey-dark */
 }
 
 .text-grey-darker {
-    color: var(--grey-darker);
+    color: var(--primary-text); /* Dark green as text-grey-darker */
 }
 
 .text-grey-darkest {
-    color: var(--grey-darkest);
+    color: var(--button-hover); /* Hover button as text-grey-darkest */
 }

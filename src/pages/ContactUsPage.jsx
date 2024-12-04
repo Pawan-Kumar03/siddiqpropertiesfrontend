@@ -40,12 +40,12 @@ export default function ContactUsPage() {
     };
 
     return (
-        <div className="flex font-playfair items-center justify-center min-h-screen bg-grey-darker text-grey-light">
-            <div className="w-full max-w-md bg-grey p-8 rounded-lg shadow-lg border-4 border-custom">
-                <h1 className="text-3xl font-bold mb-6 text-custom text-center">Contact Us</h1>
+        <div className="flex font-primary items-center justify-center min-h-screen bg-primary text-secondary">
+            <div className="w-full max-w-md bg-grey-light p-8 rounded-lg shadow-lg border-4 border-accent">
+                <h1 className="text-3xl font-bold mb-6 text-primary text-center">Contact Us</h1>
                 <form className="space-y-4" onSubmit={sendEmail}>
                     <div>
-                        <label className="block text-custom text-sm font-semibold mb-1" htmlFor="name">
+                        <label className="block text-secondary text-sm font-semibold mb-1" htmlFor="name">
                             Name
                         </label>
                         <input
@@ -53,12 +53,12 @@ export default function ContactUsPage() {
                             type="text"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
-                            className="w-full p-2 rounded bg-grey-light text-grey-dark focus:outline-none focus:ring-2 focus:ring-custom focus:border-transparent"
+                            className="w-full p-2 rounded bg-grey-lighter text-primary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
                             required
                         />
                     </div>
                     <div>
-                        <label className="block text-custom text-sm font-semibold mb-1" htmlFor="email">
+                        <label className="block text-secondary text-sm font-semibold mb-1" htmlFor="email">
                             Email
                         </label>
                         <input
@@ -66,26 +66,26 @@ export default function ContactUsPage() {
                             type="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            className="w-full p-2 rounded bg-grey-light text-grey-dark focus:outline-none focus:ring-2 focus:ring-custom focus:border-transparent"
+                            className="w-full p-2 rounded bg-grey-lighter text-primary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
                             required
                         />
                     </div>
                     <div>
-                        <label className="block text-custom text-sm font-semibold mb-1" htmlFor="query">
+                        <label className="block text-secondary text-sm font-semibold mb-1" htmlFor="query">
                             Query
                         </label>
                         <textarea
                             id="query"
                             value={query}
                             onChange={(e) => setQuery(e.target.value)}
-                            className="w-full p-2 rounded bg-grey-light text-grey-dark focus:outline-none focus:ring-2 focus:ring-custom focus:border-transparent"
+                            className="w-full p-2 rounded bg-grey-lighter text-primary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
                             rows="4"
                             required
                         ></textarea>
                     </div>
                     <div className="text-center">
                         <button
-                            className="w-full bg-custom text-grey-darkest font-bold py-2 px-4 rounded hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-custom"
+                            className="w-full bg-button text-button font-bold py-2 px-4 rounded hover:bg-button-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent"
                             type="submit"
                         >
                             Submit
