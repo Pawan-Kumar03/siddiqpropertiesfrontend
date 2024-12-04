@@ -1,10 +1,10 @@
 :root {
-    --primary-bg: #fefae0; /* Background color */
-    --primary-text: #283618; /* Dark green for text */
-    --secondary-text: #606c38; /* Muted green */
-    --accent-color: #dda15e; /* Highlight color */
-    --button-bg: #bc6c25; /* Button background */
-    --button-hover: #a65b1e; /* Button hover */
+    --primary-bg: #FFFF; /* Background color */
+    --primary-text: #1D4783; /* Dark green for text */
+    --secondary-text: #010339; /* Muted green */
+    --accent-color: #F5FAFE; /* Highlight color */
+    --button-bg:#FFFF; /* Button background */
+    --button-hover: #27466D; /* Button hover */
     --button-text: #fff; /* Button text */
     --font-family: 'Playfair Display', serif;
 } 
