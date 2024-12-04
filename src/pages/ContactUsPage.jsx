@@ -41,11 +41,11 @@ export default function ContactUsPage() {
 
     return (
         <div className="flex font-primary items-center justify-center min-h-screen bg-primary text-secondary">
-            <div className="w-full max-w-md bg-grey-light p-8 rounded-lg shadow-lg border-4 border-accent">
+            <div className="w-full max-w-md bg-accent-color p-8 rounded-lg shadow-lg ">
                 <h1 className="text-3xl font-bold mb-6 text-primary text-center">Contact Us</h1>
                 <form className="space-y-4" onSubmit={sendEmail}>
                     <div>
-                        <label className="block text-secondary text-sm font-semibold mb-1" htmlFor="name">
+                        <label className="block text-primary text-sm font-semibold mb-1" htmlFor="name">
                             Name
                         </label>
                         <input
@@ -58,7 +58,7 @@ export default function ContactUsPage() {
                         />
                     </div>
                     <div>
-                        <label className="block text-secondary text-sm font-semibold mb-1" htmlFor="email">
+                        <label className="block text-primary text-sm font-semibold mb-1" htmlFor="email">
                             Email
                         </label>
                         <input
@@ -71,7 +71,7 @@ export default function ContactUsPage() {
                         />
                     </div>
                     <div>
-                        <label className="block text-secondary text-sm font-semibold mb-1" htmlFor="query">
+                        <label className="block text-primary text-sm font-semibold mb-1" htmlFor="query">
                             Query
                         </label>
                         <textarea
@@ -85,7 +85,7 @@ export default function ContactUsPage() {
                     </div>
                     <div className="text-center">
                         <button
-                            className="w-full bg-button text-button font-bold py-2 px-4 rounded hover:bg-button-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent"
+                            className="w-full bg-button text-text-button font-bold py-2 px-4 rounded hover:bg-button-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent"
                             type="submit"
                         >
                             Submit
