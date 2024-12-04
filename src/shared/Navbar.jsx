@@ -69,56 +69,57 @@ export default function Navbar() {
                     Consultant
                 </Link>
                 {user ? (
-                    <div className="relative">
-                        <span
-                            className="bg-text-primary text-white py-2 px-4 rounded-full cursor-pointer dropdown-toggle shadow-sm"
-                            onClick={toggleDropdown}
-                        >
-                            {user.name}
-                        </span>
-                        {dropdownOpen && (
-                            <div
-                                id="dropdown"
-                                className="absolute right-0 mt-2 bg-white text-black rounded-lg shadow-lg w-48 z-50"
-                            >
-                                <Link
-                                    to="/profile"
-                                    className="block px-4 py-2 hover:bg-gray-100"
-                                    onClick={() => setDropdownOpen(false)}
-                                >
-                                    My Profile
-                                </Link>
-                                <Link
-                                    to="/get-verified"
-                                    className="block px-4 py-2 hover:bg-gray-100"
-                                    onClick={() => setDropdownOpen(false)}
-                                >
-                                    Get Verified
-                                </Link>
-                                <Link
-                                    to="/my-ads"
-                                    className="block px-4 py-2 hover:bg-gray-100"
-                                    onClick={() => setDropdownOpen(false)}
-                                >
-                                    My Ads
-                                </Link>
-                                <button
-                                    onClick={handleLogout}
-                                    className="w-full text-left px-4 py-2 hover:bg-gray-100"
-                                >
-                                    Sign Out
-                                </button>
-                            </div>
-                        )}
-                    </div>
-                ) : (
-                    <Link
-                        to="/login"
-                        className="bg-primary text-white py-2 px-4 rounded-full hover:bg-primary-dark shadow-sm"
-                    >
-                        Login
-                    </Link>
-                )}
+    <div className="relative">
+        <span
+            className="bg-white text-primary py-2 px-4 rounded-full cursor-pointer dropdown-toggle shadow-sm"
+            onClick={toggleDropdown}
+        >
+            {user.name}
+        </span>
+        {dropdownOpen && (
+            <div
+                id="dropdown"
+                className="absolute right-0 mt-2 bg-white text-black rounded-lg shadow-lg w-48 z-50"
+            >
+                <Link
+                    to="/profile"
+                    className="block px-4 py-2 hover:bg-gray-100"
+                    onClick={() => setDropdownOpen(false)}
+                >
+                    My Profile
+                </Link>
+                <Link
+                    to="/get-verified"
+                    className="block px-4 py-2 hover:bg-gray-100"
+                    onClick={() => setDropdownOpen(false)}
+                >
+                    Get Verified
+                </Link>
+                <Link
+                    to="/my-ads"
+                    className="block px-4 py-2 hover:bg-gray-100"
+                    onClick={() => setDropdownOpen(false)}
+                >
+                    My Ads
+                </Link>
+                <button
+                    onClick={handleLogout}
+                    className="w-full text-left px-4 py-2 hover:bg-gray-100"
+                >
+                    Sign Out
+                </button>
+            </div>
+        )}
+    </div>
+) : (
+    <Link
+        to="/login"
+        className="bg-button text-button py-2 px-4 rounded-full hover:bg-button-hover shadow-sm"
+    >
+        Login
+    </Link>
+)}
+
             </div>
 
             {/* Mobile Menu */}
