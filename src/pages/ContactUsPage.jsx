@@ -85,7 +85,7 @@ export default function ContactUsPage() {
                     </div>
                     <div className="text-center">
     <button
-        className="w-full bg-button font-bold py-2 px-4 rounded hover:bg-white hover:text-primary-text focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent"
+        className="w-full bg-button text-white font-bold py-2 px-4 rounded hover:bg-white hover:text-primary-text focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent"
         type="submit"
     >
         Submit
