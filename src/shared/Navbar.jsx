@@ -38,9 +38,9 @@ export default function Navbar() {
     };
 
     return (
-        <header className="bg-gray-800 font-playfair">
-            <div className="lg:border-b lg:border-b-gray-600 font-playfair">
-                <nav className="relative font-playfair container mx-auto p-4 text-gray-100 flex items-center justify-between">
+        <header className="bg-primary font-primary">
+            <div className="lg:border-b lg:border-b-accent font-primary">
+                <nav className="relative font-primary container mx-auto p-4 text-primary flex items-center justify-between">
                     {/* Logo on the top left */}
                     <div className="flex items-center">
                         <Link to="/">
@@ -50,14 +50,14 @@ export default function Navbar() {
 
                     {/* Desktop Navigation Links (hidden on small screens) */}
                     <div className="hidden sm:flex items-center space-x-6">
-                        <Link to="/" className="bg-custom text-black py-2 px-4 rounded cursor-pointer">Home</Link>
-                        <Link to="/about-us" className="bg-custom text-black py-2 px-4 rounded cursor-pointer">About Us</Link>
-                        <Link to="/ConsultancyPage" className="bg-custom text-black py-2 px-4 rounded cursor-pointer">Consultant</Link>
+                        <Link to="/" className="bg-button text-button py-2 px-4 rounded cursor-pointer">Home</Link>
+                        <Link to="/about-us" className="bg-button text-button py-2 px-4 rounded cursor-pointer">About Us</Link>
+                        <Link to="/ConsultancyPage" className="bg-button text-button py-2 px-4 rounded cursor-pointer">Consultant</Link>
                         
                         {user ? (
                             <div className="relative">
                                 <span
-                                    className="bg-custom text-black py-2 px-4 rounded cursor-pointer dropdown-toggle"
+                                    className="bg-button text-button py-2 px-4 rounded cursor-pointer dropdown-toggle"
                                     onClick={toggleDropdown}
                                 >
                                     {user.name}
@@ -66,28 +66,28 @@ export default function Navbar() {
                                     <div id="dropdown" className="absolute right-0 mt-2 bg-white text-black rounded shadow-lg w-48 z-50">
                                         <Link
                                             to="/profile"
-                                            className="block px-4 py-2 hover:bg-gray-200"
+                                            className="block px-4 py-2 hover:bg-accent"
                                             onClick={() => setDropdownOpen(false)}
                                         >
                                             My Profile
                                         </Link>
                                         <Link
                                             to="/get-verified"
-                                            className="block px-4 py-2 hover:bg-gray-200"
+                                            className="block px-4 py-2 hover:bg-accent"
                                             onClick={() => setDropdownOpen(false)}
                                         >
                                             Get Verified
                                         </Link>
                                         <Link
                                             to="/my-ads"
-                                            className="block px-4 py-2 hover:bg-gray-200"
+                                            className="block px-4 py-2 hover:bg-accent"
                                             onClick={() => setDropdownOpen(false)}
                                         >
                                             My Ads
                                         </Link>
                                         <button
                                             onClick={handleLogout}
-                                            className="w-full text-left px-4 py-2 hover:bg-gray-200"
+                                            className="w-full text-left px-4 py-2 hover:bg-accent"
                                         >
                                             Sign Out
                                         </button>
@@ -95,7 +95,7 @@ export default function Navbar() {
                                 )}
                             </div>
                         ) : (
-                            <Link to="/login" className="bg-custom text-black py-2 px-4 rounded cursor-pointer">
+                            <Link to="/login" className="bg-button text-button py-2 px-4 rounded cursor-pointer">
                                 Login
                             </Link>
                         )}
@@ -105,7 +105,7 @@ export default function Navbar() {
                     <div className="sm:hidden flex items-center">
                         <button
                             onClick={toggleMobileMenu}
-                            className="text-gray-200 focus:outline-none"
+                            className="text-primary focus:outline-none"
                         >
                             {/* Hamburger Menu Icon */}
                             <svg
@@ -129,21 +129,21 @@ export default function Navbar() {
                             <div className="absolute right-0 top-12 bg-white text-black rounded shadow-lg w-48 z-50">
                                 <Link
                                     to="/"
-                                    className="block px-4 py-2 hover:bg-gray-200"
+                                    className="block px-4 py-2 hover:bg-accent"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
                                     Home
                                 </Link>
                                 <Link
                                     to="/about-us"
-                                    className="block px-4 py-2 hover:bg-gray-200"
+                                    className="block px-4 py-2 hover:bg-accent"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
                                     About Us
                                 </Link>
                                 <Link
                                     to="/ConsultancyPage"
-                                    className="block px-4 py-2 hover:bg-gray-200"
+                                    className="block px-4 py-2 hover:bg-accent"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
                                     Consultant
@@ -152,34 +152,34 @@ export default function Navbar() {
                                     <>
                                         <Link
                                             to="/profile"
-                                            className="block px-4 py-2 hover:bg-gray-200"
+                                            className="block px-4 py-2 hover:bg-accent"
                                             onClick={() => setMobileMenuOpen(false)}
                                         >
                                             My Profile
                                         </Link>
                                         <Link
                                             to="/get-verified"
-                                            className="block px-4 py-2 hover:bg-gray-200"
+                                            className="block px-4 py-2 hover:bg-accent"
                                             onClick={() => setMobileMenuOpen(false)}
                                         >
                                             Get Verified
                                         </Link>
                                         <Link
                                             to="/my-ads"
-                                            className="block px-4 py-2 hover:bg-gray-200"
+                                            className="block px-4 py-2 hover:bg-accent"
                                             onClick={() => setMobileMenuOpen(false)}
                                         >
                                             My Ads
                                         </Link>
                                         <button
                                             onClick={handleLogout}
-                                            className="w-full text-left px-4 py-2 hover:bg-gray-200"
+                                            className="w-full text-left px-4 py-2 hover:bg-accent"
                                         >
                                             Sign Out
                                         </button>
                                     </>
                                 ) : (
-                                    <Link to="/login" className="block px-4 py-2 hover:bg-gray-200">
+                                    <Link to="/login" className="block px-4 py-2 hover:bg-accent">
                                         Login
                                     </Link>
                                 )}
