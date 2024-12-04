@@ -41,7 +41,7 @@ export default function Navbar() {
     return (
 <header className="bg-white font-primary">
     <div className="lg:border-b lg:border-b-accent font-primary">
-        <nav className="relative font-primary container mx-auto p-4 flex items-center justify-between rounded-lg shadow-md bg-lightBlue" >
+        <nav className="relative font-primary container mx-auto p-4 flex items-center justify-between rounded-lg shadow-md bg-lightBlue" style={{ backgroundColor: 'rgba(245, 250, 254, 0.5)' }} >
             {/* Logo */}
             <div className="flex items-center">
                 <Link to="/">
