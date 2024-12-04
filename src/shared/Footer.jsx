@@ -77,21 +77,21 @@ export default function Footer() {
     ];
 
     return (
-        <footer className="bg-primary  py-8 px-4 lg:px-0 font-playfair">
+        <footer className="bg-gray-800 dark:bg-gray-900 py-8 px-4 lg:px-0 font-playfair">
             <div className="container mx-auto font-playfair">
 
                 {/* Footer content for larger screens */}
                 <div className="hidden lg:flex lg:justify-between pb-6 font-playfair">
                     {data.map((footerItem, index) => (
                         <div key={index} className="flex-1">
-                            <h3 className="text-base font-semibold mb-4 text-bg-primary">
+                            <h3 className="text-base font-semibold mb-4 text-custom">
                                 {footerItem.category}
                             </h3>
                             <ul className="space-y-1">
                                 {footerItem.items.map((item, itemIndex) => (
                                     <li key={itemIndex}>
                                         <a
-                                            className="text-sm text-#7A7A7E hover:text-bg-primary hover:underline"
+                                            className="text-sm text-blue-400 hover:text-blue-500 hover:underline"
                                             href={item.link}
                                             onClick={item.onClick} // Set the selected city on click
                                         >
@@ -106,36 +106,35 @@ export default function Footer() {
 
                 {/* Footer content for smaller screens */}
                 <div className="lg:hidden grid grid-cols-2 gap-4 pb-6 space-y-0 font-playfair">
-                {data.map((footerItem, index) => (
-    <div
-        key={index}
-        className={`${
-            footerItem.category === "Company"
-                ? "w-[376px] h-[80px]"
-                : footerItem.category === "Support"
-                ? "order-first"
-                : ""
-        }`}
-    >
-        <h3 className="text-base font-semibold mb-2 text-bg-primary">
-            {footerItem.category}
-        </h3>
-        <ul className="space-y-1">
-            {footerItem.items.map((item, itemIndex) => (
-                <li key={itemIndex}>
-                    <a
-                        className="text-sm text-#7a7a7e hover:shadow-lg hover:shadow-bg-primary"
-                        href={item.link}
-                        onClick={item.onClick}
-                    >
-                        {item.name}
-                    </a>
-                </li>
-            ))}
-        </ul>
-    </div>
-))}
-
+    {data.map((footerItem, index) => (
+        <div
+            key={index}
+            className={`${
+                footerItem.category === "Company"
+                    ? "w-[376px] h-[80px]"
+                    : footerItem.category === "Support"
+                    ? "order-first"
+                    : ""
+            }`}
+        >
+            <h3 className="text-base font-semibold mb-2 text-custom">
+                {footerItem.category}
+            </h3>
+            <ul className="space-y-1">
+                {footerItem.items.map((item, itemIndex) => (
+                    <li key={itemIndex}>
+                        <a
+                            className="text-sm text-blue-400 hover:text-blue-500 hover:underline"
+                            href={item.link}
+                            onClick={item.onClick}
+                        >
+                            {item.name}
+                        </a>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    ))}
 </div>
 
       
@@ -143,7 +142,7 @@ export default function Footer() {
                 <div className="mt-6 font-playfair flex flex-col items-center lg:items-start lg:flex-row justify-between">
                     <div className="flex items-center space-x-4 font-playfair">
                         <img className="w-32" src={logoDark} alt="Logo" />
-                        <small className="text-bg-primary text-center lg:text-left mt-4 lg:mt-0">
+                        <small className="text-custom text-center lg:text-left mt-4 lg:mt-0">
                             &copy; InvestiBayt.com {new Date().getFullYear()}, All Rights Reserved.
                         </small>
                     </div>
