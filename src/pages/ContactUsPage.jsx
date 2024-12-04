@@ -53,7 +53,7 @@ export default function ContactUsPage() {
                             type="text"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
-                            className="w-full p-2 rounded bg-grey-lighter text-primary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+                            className="w-full p-2 rounded bg-accent text-primary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
                             required
                         />
                     </div>
@@ -66,7 +66,7 @@ export default function ContactUsPage() {
                             type="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            className="w-full p-2 rounded bg-grey-lighter text-primary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+                            className="w-full p-2 rounded bg-accent text-primary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
                             required
                         />
                     </div>
@@ -78,7 +78,7 @@ export default function ContactUsPage() {
                             id="query"
                             value={query}
                             onChange={(e) => setQuery(e.target.value)}
-                            className="w-full p-2 rounded bg-grey-lighter text-primary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+                            className="w-full p-2 rounded bg-accent text-primary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
                             rows="4"
                             required
                         ></textarea>
