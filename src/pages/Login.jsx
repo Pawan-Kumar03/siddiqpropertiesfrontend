@@ -12,30 +12,35 @@ export default function Login() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-      
+
         try {
-          const response = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/login', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ email, password })
-          });
-      
-          const data = await response.json();
-          if (response.ok) {
-            // Ensure both _id and name are set
-            const userData = { _id: data.userId, name: data.username, email: data.email, isVerified: data.isVerified, token: data.token };
-            login(userData);  // Update user state with correct data
-            navigate("/");
-          } else {
-            setErrorMessage(data.message || 'Login failed');
-          }
+            const response = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, password }),
+            });
+
+            const data = await response.json();
+            if (response.ok) {
+                const userData = {
+                    _id: data.userId,
+                    name: data.username,
+                    email: data.email,
+                    isVerified: data.isVerified,
+                    token: data.token,
+                };
+                login(userData); // Update user state with correct data
+                navigate("/");
+            } else {
+                setErrorMessage(data.message || "Login failed");
+            }
         } catch (error) {
-          setErrorMessage('An error occurred. Please try again.');
+            setErrorMessage("An error occurred. Please try again.");
         }
     };
-    
+
     const handleSignupRedirect = () => {
         navigate("/signup");
     };
@@ -45,37 +50,39 @@ export default function Login() {
     };
 
     return (
-        <div className="min-h-screen flex justify-center items-center bg-gray-800 font-playfair ">
-            <div className="bg-grey-darker p-8 rounded shadow-md w-full max-w-md border-4 border-custom font-playfair">
-                <h2 className="text-2xl font-bold mb-6 text-white text-center">Log in to favorite an Ad</h2>
-                <form onSubmit={handleSubmit}>
-                    <div className="mb-4">
-                        <label className="block text-custom text-sm font-bold mb-2" htmlFor="email">
+        <div className="flex font-primary items-center justify-center min-h-screen bg-primary">
+            <div className="w-full max-w-md bg-accent-color p-8 rounded-lg shadow-lg">
+                <h1 className="text-3xl font-bold mb-6 text-primary text-center">
+                    Log in to favorite an Ad
+                </h1>
+                <form className="space-y-4" onSubmit={handleSubmit}>
+                    <div>
+                        <label className="block text-primary text-sm font-semibold mb-1" htmlFor="email">
                             Email
                         </label>
                         <input
-                            type="email"
                             id="email"
+                            type="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
+                            className="w-full p-2 rounded bg-accent text-primary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
                             required
-                            className="w-full px-3 py-2 border border-gray-300 rounded"
                         />
                     </div>
-                    <div className="mb-6">
-                        <label className="block text-custom text-sm font-bold mb-2" htmlFor="password">
+                    <div>
+                        <label className="block text-primary text-sm font-semibold mb-1" htmlFor="password">
                             Password
                         </label>
                         <input
-                            type={showPassword ? "text" : "password"}
                             id="password"
+                            type={showPassword ? "text" : "password"}
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
+                            className="w-full p-2 rounded bg-accent text-primary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
                             required
-                            className="w-full px-3 py-2 border border-gray-300 rounded"
                         />
                     </div>
-                    <div className="flex items-center mb-4">
+                    <div className="flex items-center">
                         <input
                             type="checkbox"
                             id="showPassword"
@@ -83,21 +90,23 @@ export default function Login() {
                             onChange={() => setShowPassword(!showPassword)}
                             className="mr-2"
                         />
-                        <label htmlFor="showPassword" className="text-white text-sm">
+                        <label htmlFor="showPassword" className="text-primary text-sm">
                             Show Password
                         </label>
                     </div>
                     {errorMessage && (
-                        <div className="mb-4 p-2 bg-red-500 text-white rounded">
+                        <div className="mt-4 text-center bg-button-hover text-button p-4 rounded">
                             {errorMessage}
                         </div>
                     )}
-                    <button
-                        type="submit"
-                        className="w-full bg-custom text-black py-2 px-4 rounded transition-colors duration-300 hover:bg-custom-dark"
-                    >
-                        Login
-                    </button>
+                    <div className="text-center">
+                        <button
+                            className="w-full bg-button text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent"
+                            type="submit"
+                        >
+                            Login
+                        </button>
+                    </div>
                     <div className="mt-4 text-center">
                         <button
                             type="button"
