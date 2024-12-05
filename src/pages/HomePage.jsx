@@ -96,8 +96,8 @@ const handleDisplayAllListings = async () => {
 
     if (submitted) {
         return (
-            <div className="container mx-auto p-4 bg-grey-dark text-grey-light font-playfair">
-                <div className="text-center bg-green-200 text-green-700 p-4 rounded">
+            <div className="container mx-auto p-4 bg-primary text-primary font-playfair">
+                <div className="text-center bg-primary text-primary p-4 rounded">
                     {deleteMessage}
                 </div>
                 <div className="flex justify-center mt-4 font-playfair">
@@ -158,14 +158,14 @@ const handleDisplayAllListings = async () => {
     });
     
     return (
-        <div className="bg-gray-800 min-h-screen font-playfair">
+        <div className="bg-primary min-h-screen font-playfair">
             <Banner
                 onSearch={handleSearch}
                 onDisplayAllListings={handleDisplayAllListings}
                 onPlaceAnAd={handlePlaceAnAd}
             />
             {loading ? (
-                <div className="text-center text-custom">Loading...</div>
+                <div className="text-center text-primary">Loading...</div>
             ) : (
                 <ResidentialForSale
                     searchParams={searchParams}
