@@ -47,8 +47,6 @@ export default function ProfilePage() {
              const parsedUser = JSON.parse(user);
              // Now you can access the token
              const token = parsedUser.token;
-             // console.log('user:', parsedUser);
-             // console.log('token:', token);
          
             const response = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/profile', {
                 method: 'PUT',
@@ -75,13 +73,17 @@ export default function ProfilePage() {
     };
 
     return (
-        <div className="flex justify-center items-center min-h-screen font-playfair">
-            <div className="w-full max-w-md bg-grey-darker p-8 rounded shadow-md border-4 border-custom font-playfair">
-                <h2 className="text-2xl font-bold mb-6 text-center text-custom">Edit Profile</h2>
-                {error && <div className="text-red-500 mb-4">{error}</div>}
+        <div className="flex justify-center items-center min-h-screen bg-primary font-primary">
+            <div className="w-full max-w-md bg-accent-color p-8 rounded-lg shadow-lg">
+                <h2 className="text-3xl font-bold mb-6 text-primary text-center">Edit Profile</h2>
+                {error && (
+                    <div className="mb-4 p-3 text-center bg-button-hover text-white rounded">
+                        {error}
+                    </div>
+                )}
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">
-                        <label className="block text-sm font-bold mb-2 text-custom">Name</label>
+                        <label className="block text-sm font-medium mb-2 text-primary">Name</label>
                         <input
                             type="text"
                             value={name}
@@ -90,7 +92,7 @@ export default function ProfilePage() {
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block text-sm font-bold mb-2 text-custom">Email</label>
+                        <label className="block text-sm font-medium mb-2 text-primary">Email</label>
                         <input
                             type="email"
                             value={email}
@@ -99,7 +101,7 @@ export default function ProfilePage() {
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block text-sm font-bold mb-2 text-custom">Password</label>
+                        <label className="block text-sm font-medium mb-2 text-primary">Password</label>
                         <input
                             type={showPassword ? 'text' : 'password'}
                             value={password}
@@ -108,7 +110,7 @@ export default function ProfilePage() {
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block text-sm font-bold mb-2 text-custom">Confirm Password</label>
+                        <label className="block text-sm font-medium mb-2 text-primary">Confirm Password</label>
                         <input
                             type={showPassword ? 'text' : 'password'}
                             value={confirmPassword}
@@ -123,11 +125,11 @@ export default function ProfilePage() {
                             onChange={() => setShowPassword(!showPassword)}
                             className="mr-2"
                         />
-                        <label className="text-sm text-custom">Show Password</label>
+                        <label className="text-sm text-primary">Show Password</label>
                     </div>
                     <button
                         type="submit"
-                        className="w-full bg-custom text-black py-2 px-4 rounded"
+                        className="w-full bg-button text-white py-2 px-4 rounded hover:bg-button-hover"
                     >
                         Save Changes
                     </button>
