@@ -64,7 +64,7 @@ export default function GetVerifiedPage() {
                     <label className="block text-sm font-medium mb-1 text-primary">
                         Verification Status:
                     </label>
-                    <p className={`w-full p-2 rounded ${status === 'Verified' ? 'bg-green-500 text-white' : 'bg-yellow-500 text-white'}`}>
+                    <p className={`w-full p-2 rounded ${status === 'Verified' ? 'bg-button text-white' : 'bg-button text-white'}`}>
                         {status}
                     </p>
                 </div>
@@ -74,7 +74,7 @@ export default function GetVerifiedPage() {
                         disabled={isRequesting}
                         className={`w-full py-2 px-4 rounded text-white font-bold ${
                             isRequesting
-                                ? 'bg-gray-400 cursor-not-allowed'
+                                ? 'bg-button cursor-not-allowed'
                                 : 'bg-button hover:bg-button-hover'
                         }`}
                     >
