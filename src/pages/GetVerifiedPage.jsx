@@ -15,26 +15,26 @@ export default function GetVerifiedPage() {
             sessionStorage.setItem('redirectPath', '/get-verified');
             return;
         }
-            setStatus(user.isVerified ? 'Verified' : 'Not verified yet');
+        setStatus(user.isVerified ? 'Verified' : 'Not verified yet');
     }, [user, navigate]);
+
     const handleRequestVerification = async () => {
         setIsRequesting(true);
-       // Get the user from localStorage
         const user = localStorage.getItem('user');
-        // Parse the string back into an object
         const parsedUser = JSON.parse(user);
-        // Now you can access the token
         const token = parsedUser.token;
-        // console.log('user:', parsedUser);
-        // console.log('token:', token);
+
         try {
-            const response = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/verify/request', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
+            const response = await fetch(
+                'https://backend-git-main-pawan-togas-projects.vercel.app/api/verify/request',
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`,
+                    },
                 }
-            });
+            );
 
             if (response.ok) {
                 alert('Verification email sent successfully. Please check your inbox.');
@@ -52,19 +52,31 @@ export default function GetVerifiedPage() {
     };
 
     return (
-        <div className="flex justify-center items-center min-h-screen font-playfair">
-            <div className="w-full max-w-md bg-grey-darker p-8 rounded shadow-md border-4 border-custom font-playfair">
-                <h2 className="text-2xl font-bold mb-6 text-center text-custom">Get Verified</h2>
-                {error && <div className="text-red-500 mb-4">{error}</div>}
-                <div className="mb-4">
-                    <label className="block text-m font-bold mb-2 text-custom">Verification Status:</label>
-                    <p className="w-full p-2 border border-gray-300 rounded text-custom">{status}</p>
+        <div className="flex justify-center items-center min-h-screen bg-primary font-primary">
+            <div className="w-full max-w-md bg-accent-color p-8 rounded-lg shadow-lg">
+                <h2 className="text-3xl font-bold mb-6 text-primary text-center">Get Verified</h2>
+                {error && (
+                    <div className="mb-4 p-3 text-center bg-button-hover text-white rounded">
+                        {error}
+                    </div>
+                )}
+                <div className="mb-6">
+                    <label className="block text-sm font-medium mb-1 text-primary">
+                        Verification Status:
+                    </label>
+                    <p className={`w-full p-2 rounded ${status === 'Verified' ? 'bg-green-500 text-white' : 'bg-yellow-500 text-white'}`}>
+                        {status}
+                    </p>
                 </div>
                 {status !== 'Verified' && (
                     <button
                         onClick={handleRequestVerification}
                         disabled={isRequesting}
-                        className="w-full bg-custom text-black py-2 px-4 rounded"
+                        className={`w-full py-2 px-4 rounded text-white font-bold ${
+                            isRequesting
+                                ? 'bg-gray-400 cursor-not-allowed'
+                                : 'bg-button hover:bg-button-hover'
+                        }`}
                     >
                         {isRequesting ? 'Requesting...' : 'Request Verification'}
                     </button>
