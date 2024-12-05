@@ -209,7 +209,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
 
         {/* Location Input */}
         <div className="flex flex-col mb-3">
-            <label className="mb-1 text-primaryfont-playfair">Location</label>
+            <label className="mb-1 text-primary font-playfair">Location</label>
             <div className="flex flex-wrap items-center">
                 <input
                     type="text"
@@ -326,14 +326,14 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         </div>
     </div>
     <div className="flex items-center justify-between mt-4 w-full ">
-                            <button type="submit" className="bg-primary text-white flex items-center justify-center  w-1/2 px-6 py-2 rounded-full font-semibold mr-2 ">
+                            <button type="submit" className="bg-button text-primary flex items-center justify-center  w-1/2 px-6 py-2 rounded-full font-semibold mr-2 ">
                                 <img src={inputSearch} alt="Search" className="w-5 h-5 mr-2 font-playfair" />
                                 Search
                             </button>
                             <button
                                 type="button"
                                 onClick={handleClearFilters}
-                                className="flex items-center font-playfair justify-center bg-primary text-white w-1/2 px-6 py-2 rounded-full font-semibold ml-2 bg-primary text-white"
+                                className="flex items-center font-playfair justify-center bg-primary text-primary w-1/2 px-6 py-2 rounded-full font-semibold ml-2 bg-primary text-primary"
                             >
                                 Clear Filters
                             </button>
@@ -352,11 +352,11 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
             {locationCounts.map((loc, index) => (
                 <li 
                     key={index}
-                    className="flex  font-playfair items-center px-4 rounded shadow-md cursor-pointer text-white"
+                    className="flex  font-playfair items-center px-4 rounded shadow-md cursor-pointer text-primary"
                     onClick={() => handleLocationClick(loc.location)}
                 >
                     <span className="mr-2 font-playfair truncate max-w-[120px]">{loc.location.split(' ').slice(0, 2).join(' ')}</span>
-                    <span className="text-white font-playfair">( {loc.count} )</span>
+                    <span className="text-primary font-playfair">( {loc.count} )</span>
                 </li>
             ))}
         </ul>
