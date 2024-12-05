@@ -32,12 +32,12 @@ export default function ForgotPassword() {
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center bg-gray-800 font-playfair">
-      <div className="bg-grey-dark p-8 rounded shadow-md w-full max-w-md border-4 border-custom font-playfair">
-        <h2 className="text-2xl font-bold mb-6 text-white text-center">Forgot Password</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="mb-4 font-playfair">
-            <label className="block text-custom text-sm font-bold mb-2" htmlFor="email">
+    <div className="flex font-primary items-center justify-center min-h-screen bg-primary">
+      <div className="w-full max-w-md bg-accent-color p-8 rounded-lg shadow-lg">
+        <h2 className="text-3xl font-bold mb-6 text-primary text-center">Forgot Password</h2>
+        <form className="space-y-4" onSubmit={handleSubmit}>
+          <div>
+            <label className="block text-primary text-sm font-semibold mb-1" htmlFor="email">
               Email
             </label>
             <input
@@ -46,28 +46,30 @@ export default function ForgotPassword() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded"
+              className="w-full p-2 rounded bg-accent text-primary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
             />
           </div>
           {message && (
-            <div className="mb-4 p-2 bg-green-500 text-white rounded font-playfair">
+            <div className="mt-4 p-2 bg-accent text-primary text-center rounded">
               {message}
             </div>
           )}
           {error && (
-            <div className="mb-4 p-2 bg-red-500 text-white rounded font-playfair">
+            <div className="mt-4 p-2 bg-button-hover text-button text-center rounded">
               {error}
             </div>
           )}
-          <button
-            type="submit"
-            className={`w-full bg-custom text-black py-2 px-4  font-playfair rounded transition-colors duration-300 ${
-              isRequestSent ? 'opacity-50 cursor-not-allowed' : 'hover:bg-custom-dark'
-            }`}
-            disabled={isRequestSent} // Disable the button if request sent
-          >
-            {isRequestSent ? "Email Sent" : "Request Password Reset"}
-          </button>
+          <div className="text-center">
+            <button
+              type="submit"
+              className={`w-full bg-button text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent ${
+                isRequestSent ? 'opacity-50 cursor-not-allowed' : ''
+              }`}
+              disabled={isRequestSent}
+            >
+              {isRequestSent ? "Email Sent" : "Request Password Reset"}
+            </button>
+          </div>
         </form>
       </div>
     </div>
