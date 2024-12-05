@@ -27,27 +27,29 @@ export default function Card({ item }) {
 
     return (
         <div
-            className="hover:shadow-lg p-4 rounded-lg bg-gray-800 dark:bg-gray-900 cursor-pointer transition duration-200 h-80 flex flex-col justify-between"
+            className="hover:shadow-xl p-6 rounded-lg bg-primary text-primary cursor-pointer transition duration-300 ease-in-out h-96 flex flex-col justify-between"
             onClick={handleClick}
-            style={{ minWidth: '220px' }} // Ensure minimum width for consistency
+            style={{ minWidth: '240px' }} // Ensure minimum width for consistency
         >
             {imageUrl ? (
                 <img
-                    className="rounded-lg mb-3 object-cover h-40 w-full"
+                    className="rounded-lg mb-4 object-cover h-48 w-full"
                     src={imageUrl}
                     alt={`${title} image`}
                     style={{ objectFit: "cover" }} // Ensure image fits within the container
                 />
             ) : (
-                <div className="rounded-lg mb-3 object-cover h-40 w-full bg-gray-700 flex items-center justify-center">
-                    <span className="text-gray-400 font-playfair">No Image Available</span>
+                <div className="rounded-lg mb-4 object-cover h-48 w-full bg-lightBlue flex items-center justify-center">
+                    <span className="text-primary font-playfair">No Image Available</span>
                 </div>
             )}
-            <h3 className="text-lg font-semibold text-custom font-playfair">
-                {price}
-            </h3>
-            <p className="text-gray-100 font-semibold truncate font-playfair">{title}</p>
-            <p className="text-gray-300 text-sm truncate font-playfair">{extension}</p>
+            <div className="flex flex-col justify-between">
+                <h3 className="text-2xl font-semibold text-button-text font-playfair">
+                    {price}
+                </h3>
+                <p className="text-primary font-semibold truncate mb-2 font-playfair">{title}</p>
+                <p className="text-secondary text-sm truncate font-playfair">{extension}</p>
+            </div>
         </div>
     );
 }
