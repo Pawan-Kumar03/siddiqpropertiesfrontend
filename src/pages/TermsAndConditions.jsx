@@ -15,7 +15,7 @@ const TermsAndConditions = () => {
 
     return (
         <div className="min-h-screen flex justify-center items-center bg-primary font-playfair">
-            <div className="bg-primary p-8 rounded shadow-md w-full max-w-md w-full max-w-md font-playfair bg-primary p-8 rounded shadow-md border-4 border-lightBlue">
+            <div className="bg-primary p-8 rounded shadow-md w-full max-w-md w-full max-w-md font-playfair bg-primary p-8 rounded shadow-md shadow-lg ">
                 <h2 className="text-2xl font-bold mb-6 text-primary text-center">Terms and Conditions</h2>
                 <div className="text-primary text-sm">
                     <p className="mb-4">
