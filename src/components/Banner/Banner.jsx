@@ -138,20 +138,20 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     return (
         <section>
     <div
-        className="container bg-gray-800 lg:bg-cover lg:bg-center lg:bg-no-repeat lg:my-2 lg:pb-10 lg:pt-5 rounded-m"
+        className="container bg-primary lg:bg-cover lg:bg-center lg:bg-no-repeat lg:my-2 lg:pb-10 lg:pt-5 rounded-m"
         style={{ backgroundImage: `url('/homepage-banner-img.jpeg')` }} // Applies background image on large screens
     >
                 {/* "Your InvestiBayt Journey Starts Here" Section */}
-                <h1 className="text-2xl text-center font-playfair text-white lg:text-white lg:mb-8">
+                <h1 className="text-2xl text-center bg-lightBlue font-playfair text-primary lg:text-primary lg:mb-8">
     Your InvestiBayt Journey Starts Here
 </h1>
 
-        <div className="lg:bg-gray-800 lg:bg-opacity-50 rounded-md lg:p-4 lg:w-[88%] mx-auto">
+        <div className="lg:bg-primary lg:bg-opacity-50 rounded-md lg:p-4 lg:w-[88%] mx-auto">
             <div className="flex flex-wrap justify-center items-center space-x-2 lg:space-x-14 mb-4">
                 <ul className="flex flex-wrap justify-center items-center space-x-2 text-sm sm:text-base">
                     <li className="mb-2 sm:mb-0">
                         <button
-                            className="bg-custom font-playfair  text-white hover:bg-custom duration-200 px-3 py-2 sm:px-5 sm:py-2 font-semibold rounded-full"
+                            className="bg-primary font-playfair  text-primary hover:bg-primary duration-200 px-3 py-2 sm:px-5 sm:py-2 font-semibold rounded-full"
                             onClick={handleSaleClick}
                         >
                   Sale
@@ -159,7 +159,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
               </li>
               <li className="mb-2 sm:mb-0">
                 <button
-                  className="bg-custom font-playfair  text-white hover:bg-custom duration-200 px-3 py-2 sm:px-5 sm:py-2 font-semibold rounded-full"
+                  className="bg-primary font-playfair  text-primary hover:bg-primary duration-200 px-3 py-2 sm:px-5 sm:py-2 font-semibold rounded-full"
                   onClick={handleRentClick}
                 >
                   Rent
@@ -167,7 +167,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
               </li>
               <li className="mb-2 sm:mb-0">
                 <button
-                  className="bg-custom font-playfair  text-white hover:bg-custom duration-200 px-3 py-2 sm:px-5 sm:py-2 font-semibold rounded-full"
+                  className="bg-primary font-playfair  text-primary hover:bg-primary duration-200 px-3 py-2 sm:px-5 sm:py-2 font-semibold rounded-full"
                   onClick={handleOffPlanClick}
                 >
                   Off-Plan
@@ -175,7 +175,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
               </li>
               <li className="mb-2 sm:mb-0">
                 <Link
-                  className="bg-custom font-playfair  text-white hover:bg-custom duration-200 px-3 py-2 sm:px-5 sm:py-2 font-semibold rounded-full"
+                  className="bg-primary font-playfair  text-primary hover:bg-primary duration-200 px-3 py-2 sm:px-5 sm:py-2 font-semibold rounded-full"
                   to="/place-an-ad"
                 >
                   <span> Create A Listing</span>
@@ -185,13 +185,13 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
           </div>
 
 
-          <form className="lg:flex lg:flex-col lg:space-y-3 px-2 lg:px-0 py-4 lg:py-0 relative bg-gray-800 lg:bg-transparent" onSubmit={handleSearch}>
+          <form className="lg:flex lg:flex-col lg:space-y-3 px-2 lg:px-0 py-4 lg:py-0 relative bg-primary lg:bg-transparent" onSubmit={handleSearch}>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                              {/* City Input */}
         <div className="flex flex-col mb-3">
-            <label className="mb-1 font-playfair  text-gray-300">City</label>
+            <label className="mb-1 font-playfair  text-primary">City</label>
             <select
-                className="w-full p-3 h-12 rounded-md border border-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
+                className="w-full p-3 h-12 rounded-md border border-lightBlue dark:border-lightBlue dark:bg-primary dark:text-primary"
                 name="city"
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
@@ -209,18 +209,18 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
 
         {/* Location Input */}
         <div className="flex flex-col mb-3">
-            <label className="mb-1 text-gray-300font-playfair">Location</label>
+            <label className="mb-1 text-primaryfont-playfair">Location</label>
             <div className="flex flex-wrap items-center">
                 <input
                     type="text"
                     placeholder="Add location and press Enter"
                     onKeyPress={handleAddLocation}
-                    className="flex-1 p-3 h-12 rounded-md border border-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
+                    className="flex-1 p-3 h-12 rounded-md border border-primary dark:border-primary dark:bg-primary dark:text-primary"
                 />
                 {/* Location Chips */}
                 {locations.map((loc, index) => (
-                    <div key={index} className="flex items-center space-x-1 mb-1 mr-1 bg-gray-700 dark:bg-gray-900 px-2 py-1 rounded-full">
-                        <span className="text-sm text-gray-100">{loc}</span>
+                    <div key={index} className="flex items-center space-x-1 mb-1 mr-1 bg-primary dark:bg-primary px-2 py-1 rounded-full">
+                        <span className="text-sm text-primary">{loc}</span>
                         <button type="button" onClick={() => handleRemoveLocation(index)} className="ml-1">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -233,9 +233,9 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
 
         {/* Property Type */}
         <div className="flex flex-col mb-3">
-            <label className="mb-1 text-gray-300font-playfair">Property Type</label>
+            <label className="mb-1 text-primaryfont-playfair">Property Type</label>
             <select
-                className="w-full p-3 h-12 rounded-md border border-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
+                className="w-full p-3 h-12 rounded-md border border-primary dark:border-primary dark:bg-primary dark:text-primary"
                 name="propertyType"
                 value={propertyType}
                 onChange={(e) => setPropertyType(e.target.value)}
@@ -250,35 +250,35 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
 
         {/* Min Price */}
         <div className="flex flex-col mb-3">
-            <label className="mb-1 text-gray-300 font-playfair">Min Price</label>
+            <label className="mb-1 text-primary font-playfair">Min Price</label>
             <input
                 type="number"
                 name="priceMin"
                 placeholder="Min Price"
                 value={priceMin}
                 onChange={(e) => setPriceMin(e.target.value)}
-                className="w-full p-3 h-12 rounded-md font-playfair border border-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
+                className="w-full p-3 h-12 rounded-md font-playfair border border-primary dark:border-primary dark:bg-primary dark:text-primary"
             />
         </div>
 
         {/* Max Price */}
         <div className="flex flex-col mb-3">
-            <label className="mb-1 text-gray-300 font-playfair">Max Price</label>
+            <label className="mb-1 text-primary font-playfair">Max Price</label>
             <input
                 type="number"
                 name="priceMax"
                 placeholder="Max Price"
                 value={priceMax}
                 onChange={(e) => setPriceMax(e.target.value)}
-                className="w-full p-3 h-12 font-playfair rounded-md border border-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
+                className="w-full p-3 h-12 font-playfair rounded-md border border-primary dark:border-primary dark:bg-primary dark:text-primary"
             />
         </div>
 
         {/* Beds */}
         <div className="flex flex-col mb-3">
-            <label className="mb-1 text-gray-300 font-playfair">Beds</label>
+            <label className="mb-1 text-primary font-playfair">Beds</label>
             <select
-                className="w-full font-playfair p-3 h-12 rounded-md border border-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
+                className="w-full font-playfair p-3 h-12 rounded-md border border-primary dark:border-primary dark:bg-primary dark:text-primary"
                 name="beds"
                 value={beds}
                 onChange={(e) => setBeds(e.target.value)}
@@ -294,9 +294,9 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
 
         {/* Baths */}
         <div className="flex flex-col mb-3">
-            <label className="mb-1 text-gray-300 font-playfair">Baths</label>
+            <label className="mb-1 text-primary font-playfair">Baths</label>
             <select
-                className="w-full font-playfair p-3 h-12 rounded-md border border-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
+                className="w-full font-playfair p-3 h-12 rounded-md border border-primary dark:border-primary dark:bg-primary dark:text-primary"
                 name="baths"
                 value={baths}
                 onChange={(e) => setBaths(e.target.value)}
@@ -312,9 +312,9 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
 
         {/* Agent Type */}
         <div className="flex flex-col mb-3">
-            <label className="mb-1 text-gray-300 font-playfair">Owner Type</label>
+            <label className="mb-1 text-primary font-playfair">Owner Type</label>
             <select
-                className="w-full  font-playfair p-3 h-12 rounded-md border border-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
+                className="w-full  font-playfair p-3 h-12 rounded-md border border-primary dark:border-primary dark:bg-primary dark:text-primary"
                 name="agentType"
                 value={agentType}
                 onChange={(e) => setAgentType(e.target.value)}
@@ -326,14 +326,14 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         </div>
     </div>
     <div className="flex items-center justify-between mt-4 w-full ">
-                            <button type="submit" className="bg-custom text-white flex items-center justify-center  w-1/2 px-6 py-2 rounded-full font-semibold mr-2 ">
+                            <button type="submit" className="bg-primary text-white flex items-center justify-center  w-1/2 px-6 py-2 rounded-full font-semibold mr-2 ">
                                 <img src={inputSearch} alt="Search" className="w-5 h-5 mr-2 font-playfair" />
                                 Search
                             </button>
                             <button
                                 type="button"
                                 onClick={handleClearFilters}
-                                className="flex items-center font-playfair justify-center bg-gray-700 text-white w-1/2 px-6 py-2 rounded-full font-semibold ml-2 bg-custom text-white"
+                                className="flex items-center font-playfair justify-center bg-primary text-white w-1/2 px-6 py-2 rounded-full font-semibold ml-2 bg-primary text-white"
                             >
                                 Clear Filters
                             </button>
@@ -344,8 +344,8 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                 </div>
             </div>
             {city && locationCounts.length > 0 && (
-    <div className=" bg-gray-800 pl-14">
-        <h2 className="text-xl font-semibold text-custom font-playfair">
+    <div className=" bg-primary pl-14">
+        <h2 className="text-xl font-semibold text-primary font-playfair">
             Properties by Location in {city}. {totalProperties} Ads
         </h2>
         <ul className="mt-2 flex flex-wrap gap-2 text-black">
