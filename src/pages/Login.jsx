@@ -119,7 +119,7 @@ export default function Login() {
                             <button
                                 type="button"
                                 onClick={handleForgotPassword}
-                                className="text-blue-400 underline"
+                                className="text-primary underline"
                             >
                                 Forgot Password?
                             </button>
