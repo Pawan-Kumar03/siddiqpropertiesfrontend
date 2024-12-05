@@ -136,10 +136,10 @@ export default function PropertyDetails() {
 
   
   return (
-    <div className="container mt-8 bg-gray-800 text-gray-100 p-4 rounded-lg font-playfair">
+    <div className="container mt-8 bg-primary text-primary p-4 rounded-lg font-playfair">
       
       {isDeleted && (
-        <div className="text-center bg-green-200 text-green-700 p-4 rounded mb-4">
+        <div className="text-center bg-accent text-primary p-4 rounded mb-4">
           Your ad has been deleted successfully!
         </div>
       )}
@@ -148,9 +148,9 @@ export default function PropertyDetails() {
        <div className="flex items-center mb-4 font-playfair">
   <button
     onClick={() => navigate(-1)}
-    className="flex items-center text-custom hover:underline"
+    className="flex items-center text-primary hover:underline"
   >
-    <ArrowBackIcon className="mr-1 sm:text-gray-500 sm:text-lg" />
+    <ArrowBackIcon className="mr-1 sm:text-primary sm:text-lg" />
     <span className="flex items-center">
       Back
     </span>
@@ -200,7 +200,7 @@ export default function PropertyDetails() {
             <div className="lg:w-1/2 lg:pl-4 font-playfair">
               <h3
                 className="text-lg font-semibold mb-2"
-                style={{ color: "#c5a47e" }}
+                style={{ color: "#27466D" }}
               >
                 {property.title}
               </h3>
@@ -243,7 +243,7 @@ export default function PropertyDetails() {
 
               
               {/* Contact Buttons */}
-              <div className="mb-4 flex items-center space-x-4 text-gray-100">
+              <div className="mb-4 flex items-center space-x-4 text-primary">
                 <EmailIcon
                   style={{ cursor: "pointer" }}
                   onClick={() => handleContactBroker("Email")}
@@ -262,13 +262,13 @@ export default function PropertyDetails() {
                 <>
                   <button
                     onClick={handleEditProperty}
-                    className="px-6 py-3 bg-blue-600 bg-custom text-white rounded mr-2"
+                    className="px-6 py-3 bg-button bg-button text-white rounded mr-2"
                   >
                     Edit Property
                   </button>
                   <button
                     onClick={() => setShowDeleteModal(true)}
-                    className="px-6 py-3 bg-red-600 bg-custom text-white rounded"
+                    className="px-6 py-3 bg-red-500 text-white rounded"
                   >
                     Delete Property
                   </button>
@@ -278,7 +278,7 @@ export default function PropertyDetails() {
           </div>
           {fullscreenImage && (
               <div
-                className="fixed inset-0 bg-black bg-opacity-90 flex justify-center items-center z-50"
+                className="fixed inset-0 bg-primary bg-opacity-90 flex justify-center items-center z-50"
                 onClick={closeFullscreenImage}
               >
                 <img
@@ -287,7 +287,7 @@ export default function PropertyDetails() {
                   className="max-w-full max-h-full"
                 />
                 <button
-      className="absolute top-4 right-4 text-white bg-gray-800 rounded-full p-2"
+      className="absolute top-4 right-4 text-white bg-primary rounded-full p-2"
       onClick={closeFullscreenImage}
     >
       <CloseIcon />
@@ -297,12 +297,12 @@ export default function PropertyDetails() {
 
           {/* Delete Confirmation Modal */}
           {showDeleteModal && (
-            <div className="fixed  font-playfair inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center">
-              <div className="bg-white font-playfair rounded-lg p-8">
-                <h3 className="text-lg font-semibold mb-4 text-custom">
+            <div className="fixed  font-playfair inset-0 bg-lightBlue bg-opacity-75 flex items-center justify-center">
+              <div className="bg-lightBlue font-playfair rounded-lg p-8">
+                <h3 className="text-lg font-semibold mb-4 text-primary ">
                   Confirm Deletion
                 </h3>
-                <p className="mb-4 text-custom">
+                <p className="mb-4 text-primary ">
                   Are you sure you want to delete this property?
                 </p>
                 <div className="flex justify-end">
@@ -314,7 +314,7 @@ export default function PropertyDetails() {
                   </button>
                   <button
                     onClick={handleDeleteProperty}
-                    className="px-4 py-2 bg-red-600 text-white rounded"
+                    className="px-4 py-2 bg-red-500 text-white rounded"
                   >
                     Delete
                   </button>
