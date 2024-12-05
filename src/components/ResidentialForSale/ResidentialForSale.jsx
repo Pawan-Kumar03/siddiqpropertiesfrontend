@@ -13,7 +13,7 @@ export default function ResidentialForSale({ searchParams = {}, listings = [] })
             const listingPrice = parseInt(listing.price.replace(/[^0-9]/g, ""));
             const minPrice = searchParams.priceMin ? parseInt(searchParams.priceMin) : 0;
             const maxPrice = searchParams.priceMax ? parseInt(searchParams.priceMax) : Infinity;
-        
+
             return (
                 (searchParams.city ? listing.city === searchParams.city : true) &&
                 (searchParams.location ? searchParams.location.split(",").some(loc => listing.location.toLowerCase().includes(loc.trim().toLowerCase())) : true) &&
@@ -45,49 +45,48 @@ export default function ResidentialForSale({ searchParams = {}, listings = [] })
     }, [searchParams, listings]);
 
     return (
-        <section className="py-4 px-4 lg:px-0 bg-gray-800 text-gray-100">
-            <div className="container">
-                <h1 className="text-2xl font-semibold mb-5 text-white font-playfair">
+        <section className="py-8 px-4 lg:px-0 bg-primary text-primary">
+            <div className="container mx-auto">
+                <h1 className="text-3xl font-bold mb-6 text-primary font-primary">
                     {searchParams.city ? `Properties in ${searchParams.city}` : "Popular Developments"}
                 </h1>
                 {filteredResults.length > 0 ? (
                     <Swiper
-                    spaceBetween={20} // More space between cards for consistency
-                    autoplay={{ delay: 5000 }}
-                    pagination={{ clickable: true }}
-                    breakpoints={{
-                        400: { slidesPerView: 2 },
-                        768: { slidesPerView: 3 },
-                        1024: { slidesPerView: 5 },
-                    }}
-                >
-                    {filteredResults.map((item, index) => (
-                        <SwiperSlide className="mb-10" key={index}>
-                            <Card item={item} />
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
-                
+                        spaceBetween={30} // Increased space between cards
+                        autoplay={{ delay: 4000 }}
+                        pagination={{ clickable: true }}
+                        breakpoints={{
+                            400: { slidesPerView: 2 },
+                            768: { slidesPerView: 3 },
+                            1024: { slidesPerView: 4 }, // Adjusted to 4 for larger screens
+                        }}
+                    >
+                        {filteredResults.map((item, index) => (
+                            <SwiperSlide key={index} className="mb-10">
+                                <Card item={item} />
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
                 ) : (
                     <>
-                        <p className="text-center text-gray-300 font-playfair">No properties match your search criteria.</p>
+                        <p className="text-center text-secondary font-primary">No properties match your search criteria.</p>
                         {relatedResults.length > 0 && (
                             <>
-                                <h2 className="text-xl font-semibold mt-8 font-playfair">
+                                <h2 className="text-2xl font-semibold mt-8 text-primary font-primary">
                                     Related Properties in {searchParams.city} - {searchParams.propertyType}
                                 </h2>
                                 <Swiper
-                                    spaceBetween={10}
-                                    autoplay={{ delay: 5000 }}
+                                    spaceBetween={30}
+                                    autoplay={{ delay: 4000 }}
                                     pagination={{ clickable: true }}
                                     breakpoints={{
                                         400: { slidesPerView: 2 },
                                         768: { slidesPerView: 3 },
-                                        1024: { slidesPerView: 5 },
+                                        1024: { slidesPerView: 4 },
                                     }}
                                 >
                                     {relatedResults.map((item, index) => (
-                                        <SwiperSlide className="mb-10" key={index}>
+                                        <SwiperSlide key={index} className="mb-10">
                                             <Card item={item} />
                                         </SwiperSlide>
                                     ))}
