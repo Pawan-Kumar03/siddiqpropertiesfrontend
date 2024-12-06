@@ -136,195 +136,196 @@ export default function PropertyDetails() {
 
   
   return (
-    <div className="container mt-8 bg-white/40 backdrop-blur-lg text-blue-900 p-6 rounded-lg font-playfair shadow-lg max-w-5xl mx-auto">
-      {isDeleted && (
-        <div className="text-center bg-white/30 text-blue-900 p-4 rounded mb-4">
-          Your ad has been deleted successfully!
+<div className="container mt-8 bg-blue-100/40 backdrop-blur-lg text-blue-900 p-6 rounded-lg font-playfair shadow-lg max-w-5xl mx-auto">
+  {isDeleted && (
+    <div className="text-center bg-blue-100/30 text-blue-900 p-4 rounded mb-4">
+      Your ad has been deleted successfully!
+    </div>
+  )}
+  {!isDeleted && property && (
+    <>
+      <div className="flex items-center mb-4">
+        <button
+          onClick={() => navigate(-1)}
+          className="flex items-center text-blue-900 hover:underline bg-blue-100/30 rounded-full px-4 py-2 transition duration-300"
+        >
+          <ArrowBackIcon className="mr-1 sm:text-lg text-blue-900" />
+          <span className="flex items-center">Back</span>
+        </button>
+      </div>
+
+      <div className="flex flex-col lg:flex-row">
+        <div className="lg:w-1/2 lg:pr-4">
+          {property.images && processImages(property.images).length > 1 ? (
+            <Carousel
+              showThumbs={false}
+              infiniteLoop
+              useKeyboardArrows
+              autoPlay
+              className="h-80 rounded-lg shadow-md"
+            >
+              {processImages(property.images).map((image, index) => (
+                <div
+                  key={index}
+                  className="h-100 flex justify-center items-center"
+                  onClick={() => openFullscreenImage(image)} // Add click handler
+                >
+                  <img
+                    className="rounded-lg object-cover h-80 w-full cursor-pointer"
+                    src={image}
+                    alt={property.title}
+                  />
+                </div>
+              ))}
+            </Carousel>
+          ) : (
+            <img
+              className="rounded-lg mb-4 object-cover h-80 w-full cursor-pointer shadow-md"
+              src={`${property.image}`}
+              alt={property.title}
+              onClick={() => openFullscreenImage(property.image)} // Add click handler
+            />
+          )}
+          {/* Description */}
+          {property.description && (
+            <div className="mb-4">
+              <p className="text-sm">{property.description}</p>
+            </div>
+          )}
+        </div>
+        <div className="lg:w-1/2 lg:pl-4">
+          <h3 className="text-lg font-semibold mb-2 text-blue-900">
+            {property.title}
+          </h3>
+          <p className="text-sm mb-2">
+            <AttachMoneyIcon className="mr-2 text-blue-900" />
+            {property.price} AED
+          </p>
+          <p className="text-sm mb-2">
+            <LocationOnIcon className="mr-2 text-blue-900" />
+            {property.building}, {property.developments}, {property.location}, {property.city}, {property.country}
+          </p>
+          <p className="text-sm mb-2">
+            <strong>Property Type:</strong> {property.propertyType}
+          </p>
+          <p className="text-sm mb-2">
+            <strong>Beds:</strong> {property.beds}
+          </p>
+          <p className="text-sm mb-2">
+            <strong>Baths:</strong> {property.baths}
+          </p>
+          <p className="text-sm mb-2">
+            <strong>Landlord:</strong> {property.landlordName}
+          </p>
+          <p className="text-sm mb-2">
+            <strong>Purpose:</strong>{" "}
+            {property.purpose === "sell" ? "Sale" : "Buy"}
+          </p>
+          <p className="text-sm mb-2">
+            <strong>Completion Status:</strong>{" "}
+            {property.status === "false" ? "Off-Plan" : "Ready"}
+          </p>
+
+          {/* Amenities */}
+          {property.amenities && (
+            <div className="mb-4">
+              <h4 className="font-semibold">Amenities:</h4>
+              <ul className="list-disc pl-5">
+                {property.amenities.map((amenity, index) => (
+                  <li key={index} className="text-sm">{amenity}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {/* Contact Buttons */}
+          <div className="mb-4 flex items-center space-x-4 text-blue-900">
+            <EmailIcon
+              style={{ cursor: "pointer" }}
+              onClick={() => handleContactBroker("Email")}
+              className="hover:text-blue-700 transition duration-300"
+            />
+            <PhoneIcon
+              style={{ cursor: "pointer" }}
+              onClick={() => handleContactBroker("Call")}
+              className="hover:text-blue-700 transition duration-300"
+            />
+            <WhatsAppIcon
+              style={{ cursor: "pointer" }}
+              onClick={() => handleContactBroker("WhatsApp")}
+              className="hover:text-blue-700 transition duration-300"
+            />
+          </div>
+
+          {user && property && user._id === property.user && (
+            <>
+              <button
+                onClick={handleEditProperty}
+                className="px-6 py-3 bg-blue-700 text-white rounded-full hover:bg-blue-800 transition duration-300 mb-2"
+              >
+                Edit Property
+              </button>
+              <button
+                onClick={() => setShowDeleteModal(true)}
+                className="px-6 py-3 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-300"
+              >
+                Delete Property
+              </button>
+            </>
+          )}
+        </div>
+      </div>
+      
+      {fullscreenImage && (
+        <div
+          className="fixed inset-0 bg-blue-700/90 flex justify-center items-center z-50"
+          onClick={closeFullscreenImage}
+        >
+          <img
+            src={fullscreenImage}
+            alt="Fullscreen View"
+            className="max-w-full max-h-full"
+          />
+          <button
+            className="absolute top-4 right-4 text-white bg-blue-700 rounded-full p-2"
+            onClick={closeFullscreenImage}
+          >
+            <CloseIcon />
+          </button>
         </div>
       )}
-      {!isDeleted && property && (
-        <>
-          <div className="flex items-center mb-4">
-            <button
-              onClick={() => navigate(-1)}
-              className="flex items-center text-blue-900 hover:underline bg-white/30 rounded-full px-4 py-2 transition duration-300"
-            >
-              <ArrowBackIcon className="mr-1 sm:text-lg text-blue-900" />
-              <span className="flex items-center">Back</span>
-            </button>
-          </div>
-  
-          <div className="flex flex-col lg:flex-row">
-            <div className="lg:w-1/2 lg:pr-4">
-              {property.images && processImages(property.images).length > 1 ? (
-                <Carousel
-                  showThumbs={false}
-                  infiniteLoop
-                  useKeyboardArrows
-                  autoPlay
-                  className="h-80 rounded-lg shadow-md"
-                >
-                  {processImages(property.images).map((image, index) => (
-                    <div
-                      key={index}
-                      className="h-100 flex justify-center items-center"
-                      onClick={() => openFullscreenImage(image)} // Add click handler
-                    >
-                      <img
-                        className="rounded-lg object-cover h-80 w-full cursor-pointer"
-                        src={image}
-                        alt={property.title}
-                      />
-                    </div>
-                  ))}
-                </Carousel>
-              ) : (
-                <img
-                  className="rounded-lg mb-4 object-cover h-80 w-full cursor-pointer shadow-md"
-                  src={`${property.image}`}
-                  alt={property.title}
-                  onClick={() => openFullscreenImage(property.image)} // Add click handler
-                />
-              )}
-              {/* Description */}
-              {property.description && (
-                <div className="mb-4">
-                  <p className="text-sm">{property.description}</p>
-                </div>
-              )}
-            </div>
-            <div className="lg:w-1/2 lg:pl-4">
-              <h3 className="text-lg font-semibold mb-2 text-blue-900">
-                {property.title}
-              </h3>
-              <p className="text-sm mb-2">
-                <AttachMoneyIcon className="mr-2 text-blue-900" />
-                {property.price} AED
-              </p>
-              <p className="text-sm mb-2">
-                <LocationOnIcon className="mr-2 text-blue-900" />
-                {property.building}, {property.developments}, {property.location}, {property.city}, {property.country}
-              </p>
-              <p className="text-sm mb-2">
-                <strong>Property Type:</strong> {property.propertyType}
-              </p>
-              <p className="text-sm mb-2">
-                <strong>Beds:</strong> {property.beds}
-              </p>
-              <p className="text-sm mb-2">
-                <strong>Baths:</strong> {property.baths}
-              </p>
-              <p className="text-sm mb-2">
-                <strong>Landlord:</strong> {property.landlordName}
-              </p>
-              <p className="text-sm mb-2">
-                <strong>Purpose:</strong>{" "}
-                {property.purpose === "sell" ? "Sale" : "Buy"}
-              </p>
-              <p className="text-sm mb-2">
-                <strong>Completion Status:</strong>{" "}
-                {property.status === "false" ? "Off-Plan" : "Ready"}
-              </p>
-  
-              {/* Amenities */}
-              {property.amenities && (
-                <div className="mb-4">
-                  <h4 className="font-semibold">Amenities:</h4>
-                  <ul className="list-disc pl-5">
-                    {property.amenities.map((amenity, index) => (
-                      <li key={index} className="text-sm">{amenity}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-  
-              {/* Contact Buttons */}
-              <div className="mb-4 flex items-center space-x-4 text-blue-900">
-                <EmailIcon
-                  style={{ cursor: "pointer" }}
-                  onClick={() => handleContactBroker("Email")}
-                  className="hover:text-blue-700 transition duration-300"
-                />
-                <PhoneIcon
-                  style={{ cursor: "pointer" }}
-                  onClick={() => handleContactBroker("Call")}
-                  className="hover:text-blue-700 transition duration-300"
-                />
-                <WhatsAppIcon
-                  style={{ cursor: "pointer" }}
-                  onClick={() => handleContactBroker("WhatsApp")}
-                  className="hover:text-blue-700 transition duration-300"
-                />
-              </div>
-  
-              {user && property && user._id === property.user && (
-                <>
-                  <button
-                    onClick={handleEditProperty}
-                    className="px-6 py-3 bg-blue-700 text-white rounded-full hover:bg-blue-800 transition duration-300 mb-2"
-                  >
-                    Edit Property
-                  </button>
-                  <button
-                    onClick={() => setShowDeleteModal(true)}
-                    className="px-6 py-3 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-300"
-                  >
-                    Delete Property
-                  </button>
-                </>
-              )}
-            </div>
-          </div>
-          
-          {fullscreenImage && (
-            <div
-              className="fixed inset-0 bg-primary bg-opacity-90 flex justify-center items-center z-50"
-              onClick={closeFullscreenImage}
-            >
-              <img
-                src={fullscreenImage}
-                alt="Fullscreen View"
-                className="max-w-full max-h-full"
-              />
+
+      {/* Delete Confirmation Modal */}
+      {showDeleteModal && (
+        <div className="fixed inset-0 bg-blue-100/40 backdrop-blur-lg flex items-center justify-center z-50">
+          <div className="bg-white/80 rounded-lg p-8 text-blue-900 shadow-lg">
+            <h3 className="text-lg font-semibold mb-4 text-blue-900">
+              Confirm Deletion
+            </h3>
+            <p className="mb-4 text-blue-900">
+              Are you sure you want to delete this property?
+            </p>
+            <div className="flex justify-end">
               <button
-                className="absolute top-4 right-4 text-white bg-primary rounded-full p-2"
-                onClick={closeFullscreenImage}
+                onClick={() => setShowDeleteModal(false)}
+                className="px-4 py-2 bg-gray-500 text-white rounded-full hover:bg-gray-600 transition duration-300 mr-2"
               >
-                <CloseIcon />
+                Cancel
+              </button>
+              <button
+                onClick={handleDeleteProperty}
+                className="px-4 py-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-300"
+              >
+                Delete
               </button>
             </div>
-          )}
-  
-          {/* Delete Confirmation Modal */}
-          {showDeleteModal && (
-            <div className="fixed inset-0 bg-white/40 backdrop-blur-lg flex items-center justify-center z-50">
-              <div className="bg-white/80 rounded-lg p-8 text-blue-900 shadow-lg">
-                <h3 className="text-lg font-semibold mb-4 text-blue-900">
-                  Confirm Deletion
-                </h3>
-                <p className="mb-4 text-blue-900">
-                  Are you sure you want to delete this property?
-                </p>
-                <div className="flex justify-end">
-                  <button
-                    onClick={() => setShowDeleteModal(false)}
-                    className="px-4 py-2 bg-gray-500 text-white rounded-full hover:bg-gray-600 transition duration-300 mr-2"
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    onClick={handleDeleteProperty}
-                    className="px-4 py-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-300"
-                  >
-                    Delete
-                  </button>
-                </div>
-              </div>
-            </div>
-          )}
-        </>
+          </div>
+        </div>
       )}
-    </div>
+    </>
+  )}
+</div>
+
   );
   
 }
