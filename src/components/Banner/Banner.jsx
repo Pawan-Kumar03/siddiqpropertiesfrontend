@@ -151,7 +151,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
   <ul className="flex flex-wrap justify-center items-center gap-2 lg:gap-6 text-sm sm:text-base">
     <li>
       <button
-        className="bg-lightBlue text-white hover:bg-blue-600 transition duration-300 px-4 py-2 sm:px-6 sm:py-2 rounded-full font-semibold shadow-md"
+        className="bg-white/30 text-blue-900 hover:bg-blue-600 transition duration-300 px-4 py-2 sm:px-6 sm:py-2 rounded-full font-semibold shadow-md"
         onClick={handleSaleClick}
       >
         Sale
@@ -159,7 +159,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     </li>
     <li>
       <button
-        className="bg-lightBlue text-white hover:bg-blue-600 transition duration-300 px-4 py-2 sm:px-6 sm:py-2 rounded-full font-semibold shadow-md"
+        className="bg-white/30 text-blue-900 hover:bg-blue-600 transition duration-300 px-4 py-2 sm:px-6 sm:py-2 rounded-full font-semibold shadow-md"
         onClick={handleRentClick}
       >
         Rent
@@ -167,7 +167,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     </li>
     <li>
       <button
-        className="bg-lightBlue text-white hover:bg-blue-600 transition duration-300 px-4 py-2 sm:px-6 sm:py-2 rounded-full font-semibold shadow-md"
+        className="bg-white/30 text-blue-900 hover:bg-blue-600 transition duration-300 px-4 py-2 sm:px-6 sm:py-2 rounded-full font-semibold shadow-md"
         onClick={handleOffPlanClick}
       >
         Off-Plan
@@ -175,7 +175,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     </li>
     <li>
       <Link
-        className="bg-lightBlue text-white hover:bg-blue-600 transition duration-300 px-4 py-2 sm:px-6 sm:py-2 rounded-full font-semibold shadow-md"
+        className="bg-white/30 text-blue-900 hover:bg-blue-600 transition duration-300 px-4 py-2 sm:px-6 sm:py-2 rounded-full font-semibold shadow-md"
         to="/place-an-ad"
       >
         Create A Listing
