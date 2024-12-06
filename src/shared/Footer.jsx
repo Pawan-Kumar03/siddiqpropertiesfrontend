@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import logoDark from "../assets/logo.jpeg";
+import Card from "../components/Card/Card";
 import { Swiper, SwiperSlide } from "swiper/react";
+// import "swiper/swiper-bundle.min.css"; // Import Swiper styles
 
 export default function Footer() {
     const [properties, setProperties] = useState([]);
     const [selectedCity, setSelectedCity] = useState('Dubai'); // Default city
+    const [showProperties, setShowProperties] = useState(false);
     const [selectedLocation, setSelectedLocation] = useState('all'); // Default location
 
     useEffect(() => {
@@ -39,6 +42,7 @@ export default function Footer() {
 
     const handleCityClick = (e, city) => {
         e.preventDefault(); // Prevent default link behavior
+        // Redirect the user to the desired URL with the selected city and location as query parameters
         window.location.href = `/properties?city=${encodeURIComponent(city)}`;
     };
 
@@ -74,20 +78,20 @@ export default function Footer() {
     ];
 
     return (
-        <footer className="bg-darkBlue py-8 px-4 lg:px-0 text-light font-primary">
+        <footer className="bg-gradient-to-b from-blue-200 to-blue-400 py-8 px-4 lg:px-0 text-blue-900 rounded-full shadow-lg">
             <div className="container mx-auto">
                 {/* Footer content for larger screens */}
                 <div className="hidden lg:flex lg:justify-between pb-6">
                     {data.map((footerItem, index) => (
                         <div key={index} className="flex-1">
-                            <h3 className="text-base font-semibold mb-4 text-white">
+                            <h3 className="text-base font-semibold mb-4 text-blue-700">
                                 {footerItem.category}
                             </h3>
                             <ul className="space-y-1">
                                 {footerItem.items.map((item, itemIndex) => (
                                     <li key={itemIndex}>
                                         <a
-                                            className="text-sm text-lightGray hover:text-white hover:underline"
+                                            className="text-sm text-blue-900 hover:text-blue-700 hover:underline"
                                             href={item.link}
                                             onClick={item.onClick}
                                         >
@@ -104,14 +108,14 @@ export default function Footer() {
                 <div className="lg:hidden grid grid-cols-2 gap-4 pb-6">
                     {data.map((footerItem, index) => (
                         <div key={index}>
-                            <h3 className="text-base font-semibold mb-2 text-white">
+                            <h3 className="text-base font-semibold mb-2 text-blue-700">
                                 {footerItem.category}
                             </h3>
                             <ul className="space-y-1">
                                 {footerItem.items.map((item, itemIndex) => (
                                     <li key={itemIndex}>
                                         <a
-                                            className="text-sm text-lightGray hover:text-white hover:underline"
+                                            className="text-sm text-blue-900 hover:text-blue-700 hover:underline"
                                             href={item.link}
                                             onClick={item.onClick}
                                         >
@@ -128,7 +132,7 @@ export default function Footer() {
                 <div className="mt-6 flex flex-col items-center lg:items-start lg:flex-row justify-between">
                     <div className="flex items-center space-x-4">
                         <img className="w-32" src={logoDark} alt="Logo" />
-                        <small className="text-lightGray text-center lg:text-left mt-4 lg:mt-0">
+                        <small className="text-blue-700 text-center lg:text-left mt-4 lg:mt-0">
                             &copy; InvestiBayt.com {new Date().getFullYear()}, All Rights Reserved.
                         </small>
                     </div>
