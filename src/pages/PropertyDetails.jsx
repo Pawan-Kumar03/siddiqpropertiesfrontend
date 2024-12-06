@@ -136,9 +136,9 @@ export default function PropertyDetails() {
 
   
   return (
-    <div className="container mt-8 bg-white/40 backdrop-blur-lg rounded-xl p-4 max-w-5xl mx-auto">
+    <div className="container mt-8 bg-white/40 backdrop-blur-lg text-blue-900 p-6 rounded-lg font-playfair shadow-lg max-w-5xl mx-auto">
       {isDeleted && (
-        <div className="text-center bg-accent text-primary p-4 rounded-lg mb-4">
+        <div className="text-center bg-white/30 text-blue-900 p-4 rounded mb-4">
           Your ad has been deleted successfully!
         </div>
       )}
@@ -147,14 +147,14 @@ export default function PropertyDetails() {
           <div className="flex items-center mb-4">
             <button
               onClick={() => navigate(-1)}
-              className="flex items-center text-blue-900 hover:bg-blue-100 px-4 py-2 rounded-full bg-white/30 transition duration-300"
+              className="flex items-center text-blue-900 hover:underline bg-white/30 rounded-full px-4 py-2 transition duration-300"
             >
-              <ArrowBackIcon className="mr-1" />
-              <span>Back</span>
+              <ArrowBackIcon className="mr-1 sm:text-lg text-blue-900" />
+              <span className="flex items-center">Back</span>
             </button>
           </div>
   
-          <div className="flex flex-col lg:flex-row mb-8">
+          <div className="flex flex-col lg:flex-row">
             <div className="lg:w-1/2 lg:pr-4">
               {property.images && processImages(property.images).length > 1 ? (
                 <Carousel
@@ -162,7 +162,7 @@ export default function PropertyDetails() {
                   infiniteLoop
                   useKeyboardArrows
                   autoPlay
-                  className="h-80 rounded-lg"
+                  className="h-80 rounded-lg shadow-md"
                 >
                   {processImages(property.images).map((image, index) => (
                     <div
@@ -180,7 +180,7 @@ export default function PropertyDetails() {
                 </Carousel>
               ) : (
                 <img
-                  className="rounded-lg mb-4 object-cover h-80 w-full cursor-pointer"
+                  className="rounded-lg mb-4 object-cover h-80 w-full cursor-pointer shadow-md"
                   src={`${property.image}`}
                   alt={property.title}
                   onClick={() => openFullscreenImage(property.image)} // Add click handler
@@ -193,39 +193,43 @@ export default function PropertyDetails() {
                 </div>
               )}
             </div>
-  
             <div className="lg:w-1/2 lg:pl-4">
-              <h3 className="text-xl font-semibold mb-4 text-blue-900">{property.title}</h3>
-              <p className="text-lg text-blue-700 mb-4">
-                <AttachMoneyIcon className="mr-2" />
+              <h3 className="text-lg font-semibold mb-2 text-blue-900">
+                {property.title}
+              </h3>
+              <p className="text-sm mb-2">
+                <AttachMoneyIcon className="mr-2 text-blue-900" />
                 {property.price} AED
               </p>
-              <p className="text-sm text-gray-700 mb-2">
-                <LocationOnIcon /> {property.building}, {property.developments}, {property.location}, {property.city}, {property.country}
+              <p className="text-sm mb-2">
+                <LocationOnIcon className="mr-2 text-blue-900" />
+                {property.building}, {property.developments}, {property.location}, {property.city}, {property.country}
               </p>
-              <p className="text-sm text-gray-700 mb-2">
+              <p className="text-sm mb-2">
                 <strong>Property Type:</strong> {property.propertyType}
               </p>
-              <p className="text-sm text-gray-700 mb-2">
+              <p className="text-sm mb-2">
                 <strong>Beds:</strong> {property.beds}
               </p>
-              <p className="text-sm text-gray-700 mb-2">
+              <p className="text-sm mb-2">
                 <strong>Baths:</strong> {property.baths}
               </p>
-              <p className="text-sm text-gray-700 mb-2">
+              <p className="text-sm mb-2">
                 <strong>Landlord:</strong> {property.landlordName}
               </p>
-              <p className="text-sm text-gray-700 mb-2">
-                <strong>Purpose:</strong> {property.purpose === "sell" ? "Sale" : "Buy"}
+              <p className="text-sm mb-2">
+                <strong>Purpose:</strong>{" "}
+                {property.purpose === "sell" ? "Sale" : "Buy"}
               </p>
-              <p className="text-sm text-gray-700 mb-2">
-                <strong>Completion Status:</strong> {property.status === "false" ? "Off-Plan" : "Ready"}
+              <p className="text-sm mb-2">
+                <strong>Completion Status:</strong>{" "}
+                {property.status === "false" ? "Off-Plan" : "Ready"}
               </p>
   
               {/* Amenities */}
               {property.amenities && (
                 <div className="mb-4">
-                  <h4 className="font-semibold text-blue-900 mb-2">Amenities:</h4>
+                  <h4 className="font-semibold">Amenities:</h4>
                   <ul className="list-disc pl-5">
                     {property.amenities.map((amenity, index) => (
                       <li key={index} className="text-sm">{amenity}</li>
@@ -235,18 +239,21 @@ export default function PropertyDetails() {
               )}
   
               {/* Contact Buttons */}
-              <div className="mb-4 flex items-center space-x-4 text-primary">
+              <div className="mb-4 flex items-center space-x-4 text-blue-900">
                 <EmailIcon
                   style={{ cursor: "pointer" }}
                   onClick={() => handleContactBroker("Email")}
+                  className="hover:text-blue-700 transition duration-300"
                 />
                 <PhoneIcon
                   style={{ cursor: "pointer" }}
                   onClick={() => handleContactBroker("Call")}
+                  className="hover:text-blue-700 transition duration-300"
                 />
                 <WhatsAppIcon
                   style={{ cursor: "pointer" }}
                   onClick={() => handleContactBroker("WhatsApp")}
+                  className="hover:text-blue-700 transition duration-300"
                 />
               </div>
   
@@ -254,13 +261,13 @@ export default function PropertyDetails() {
                 <>
                   <button
                     onClick={handleEditProperty}
-                    className="px-6 py-3 bg-blue-700 text-white rounded-lg mr-2 hover:bg-blue-800 transition duration-300"
+                    className="px-6 py-3 bg-blue-700 text-white rounded-full hover:bg-blue-800 transition duration-300 mb-2"
                   >
                     Edit Property
                   </button>
                   <button
                     onClick={() => setShowDeleteModal(true)}
-                    className="px-6 py-3 bg-red-500 text-white rounded-lg hover:bg-red-600 transition duration-300"
+                    className="px-6 py-3 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-300"
                   >
                     Delete Property
                   </button>
@@ -268,8 +275,7 @@ export default function PropertyDetails() {
               )}
             </div>
           </div>
-  
-          {/* Fullscreen Image */}
+          
           {fullscreenImage && (
             <div
               className="fixed inset-0 bg-primary bg-opacity-90 flex justify-center items-center z-50"
@@ -291,20 +297,24 @@ export default function PropertyDetails() {
   
           {/* Delete Confirmation Modal */}
           {showDeleteModal && (
-            <div className="fixed inset-0 bg-blue-700 bg-opacity-75 flex items-center justify-center">
-              <div className="bg-white p-8 rounded-lg">
-                <h3 className="text-lg font-semibold mb-4 text-blue-900">Confirm Deletion</h3>
-                <p className="mb-4 text-blue-900">Are you sure you want to delete this property?</p>
+            <div className="fixed inset-0 bg-white/40 backdrop-blur-lg flex items-center justify-center z-50">
+              <div className="bg-white/80 rounded-lg p-8 text-blue-900 shadow-lg">
+                <h3 className="text-lg font-semibold mb-4 text-blue-900">
+                  Confirm Deletion
+                </h3>
+                <p className="mb-4 text-blue-900">
+                  Are you sure you want to delete this property?
+                </p>
                 <div className="flex justify-end">
                   <button
                     onClick={() => setShowDeleteModal(false)}
-                    className="px-4 py-2 bg-gray-500 text-white rounded mr-2"
+                    className="px-4 py-2 bg-gray-500 text-white rounded-full hover:bg-gray-600 transition duration-300 mr-2"
                   >
                     Cancel
                   </button>
                   <button
                     onClick={handleDeleteProperty}
-                    className="px-4 py-2 bg-red-500 text-white rounded"
+                    className="px-4 py-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-300"
                   >
                     Delete
                   </button>
