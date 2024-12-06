@@ -38,7 +38,7 @@ export default function Navbar() {
     };
 
     return (
-        <header className="bg-gradient-to-b from-blue-200 to-blue-400">
+        <header className="bg-blue-100/40">
             <nav className="bg-white/40 backdrop-blur-lg rounded-full mx-auto max-w-5xl flex items-center justify-between px-6 py-2 shadow-lg">
                 {/* Logo */}
                 <div>
