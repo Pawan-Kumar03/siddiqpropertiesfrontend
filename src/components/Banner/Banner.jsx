@@ -141,7 +141,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         className="container bg-lightBlue lg:bg-cover lg:bg-center lg:bg-no-repeat lg:my-2 lg:pb-10 lg:pt-5 rounded-m"
         // style={{ backgroundImage: `url('/homepage-banner-img.jpeg')` }} // Applies background image on large screens
     >
-        
+
                 {/* "Your InvestiBayt Journey Starts Here" Section */}
                 <h1 className="text-2xl text-center bg-lightBlue font-playfair text-primary lg:text-primary lg:mb-8">
     Your InvestiBayt Journey Starts Here
@@ -234,7 +234,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
 
         {/* Property Type */}
         <div className="flex flex-col mb-3">
-            <label className="mb-1 text-primaryfont-playfair">Property Type</label>
+            <label className="mb-1 text-primary font-playfair">Property Type</label>
             <select
                 className="w-full p-3 h-12 rounded-md border border-primary dark:border-primary dark:bg-primary dark:text-primary"
                 name="propertyType"
