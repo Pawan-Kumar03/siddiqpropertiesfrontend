@@ -136,28 +136,25 @@ export default function PropertyDetails() {
 
   
   return (
-    <div className="container mt-8 bg-primary text-primary p-4 rounded-lg font-playfair">
-      
+    <div className="container mt-8 bg-white/40 backdrop-blur-lg rounded-xl p-4 max-w-5xl mx-auto">
       {isDeleted && (
-        <div className="text-center bg-accent text-primary p-4 rounded mb-4">
+        <div className="text-center bg-accent text-primary p-4 rounded-lg mb-4">
           Your ad has been deleted successfully!
         </div>
       )}
       {!isDeleted && property && (
-       <>
-       <div className="flex items-center mb-4 font-playfair">
-  <button
-    onClick={() => navigate(-1)}
-    className="flex items-center text-primary hover:underline"
-  >
-    <ArrowBackIcon className="mr-1 sm:text-primary sm:text-lg" />
-    <span className="flex items-center">
-      Back
-    </span>
-  </button>
-</div>
-
-<div className="flex flex-col lg:flex-row font-playfair">
+        <>
+          <div className="flex items-center mb-4">
+            <button
+              onClick={() => navigate(-1)}
+              className="flex items-center text-blue-900 hover:bg-blue-100 px-4 py-2 rounded-full bg-white/30 transition duration-300"
+            >
+              <ArrowBackIcon className="mr-1" />
+              <span>Back</span>
+            </button>
+          </div>
+  
+          <div className="flex flex-col lg:flex-row mb-8">
             <div className="lg:w-1/2 lg:pr-4">
               {property.images && processImages(property.images).length > 1 ? (
                 <Carousel
@@ -165,7 +162,7 @@ export default function PropertyDetails() {
                   infiniteLoop
                   useKeyboardArrows
                   autoPlay
-                  className="h-80"
+                  className="h-80 rounded-lg"
                 >
                   {processImages(property.images).map((image, index) => (
                     <div
@@ -195,44 +192,40 @@ export default function PropertyDetails() {
                   <p className="text-sm">{property.description}</p>
                 </div>
               )}
-
             </div>
-            <div className="lg:w-1/2 lg:pl-4 font-playfair">
-              <h3
-                className="text-lg font-semibold mb-2"
-                style={{ color: "#27466D" }}
-              >
-                {property.title}
-              </h3>
-              <p className="text-sm mb-2"><AttachMoneyIcon className="mr-2" />{property.price} AED</p>
-              <p className="text-sm mb-2">
-  <LocationOnIcon /> {property.building} , {property.developments} , {property.location} , {property.city} , {property.country} 
-</p>
-              <p className="text-sm mb-2">
+  
+            <div className="lg:w-1/2 lg:pl-4">
+              <h3 className="text-xl font-semibold mb-4 text-blue-900">{property.title}</h3>
+              <p className="text-lg text-blue-700 mb-4">
+                <AttachMoneyIcon className="mr-2" />
+                {property.price} AED
+              </p>
+              <p className="text-sm text-gray-700 mb-2">
+                <LocationOnIcon /> {property.building}, {property.developments}, {property.location}, {property.city}, {property.country}
+              </p>
+              <p className="text-sm text-gray-700 mb-2">
                 <strong>Property Type:</strong> {property.propertyType}
               </p>
-              <p className="text-sm mb-2">
+              <p className="text-sm text-gray-700 mb-2">
                 <strong>Beds:</strong> {property.beds}
               </p>
-              <p className="text-sm mb-2">
+              <p className="text-sm text-gray-700 mb-2">
                 <strong>Baths:</strong> {property.baths}
               </p>
-              <p className="text-sm mb-2">
+              <p className="text-sm text-gray-700 mb-2">
                 <strong>Landlord:</strong> {property.landlordName}
               </p>
-              <p className="text-sm mb-2">
-                <strong>Purpose:</strong>{" "}
-                {property.purpose === "sell" ? "Sale" : "Buy"}
+              <p className="text-sm text-gray-700 mb-2">
+                <strong>Purpose:</strong> {property.purpose === "sell" ? "Sale" : "Buy"}
               </p>
-              <p className="text-sm mb-2">
-                <strong>Completion Status:</strong>{" "}
-                {property.status === "false" ? "Off-Plan" : "Ready"}
+              <p className="text-sm text-gray-700 mb-2">
+                <strong>Completion Status:</strong> {property.status === "false" ? "Off-Plan" : "Ready"}
               </p>
-
+  
               {/* Amenities */}
               {property.amenities && (
                 <div className="mb-4">
-                  <h4 className="font-semibold">Amenities:</h4>
+                  <h4 className="font-semibold text-blue-900 mb-2">Amenities:</h4>
                   <ul className="list-disc pl-5">
                     {property.amenities.map((amenity, index) => (
                       <li key={index} className="text-sm">{amenity}</li>
@@ -240,8 +233,7 @@ export default function PropertyDetails() {
                   </ul>
                 </div>
               )}
-
-              
+  
               {/* Contact Buttons */}
               <div className="mb-4 flex items-center space-x-4 text-primary">
                 <EmailIcon
@@ -257,18 +249,18 @@ export default function PropertyDetails() {
                   onClick={() => handleContactBroker("WhatsApp")}
                 />
               </div>
-
+  
               {user && property && user._id === property.user && (
                 <>
                   <button
                     onClick={handleEditProperty}
-                    className="px-6 py-3 bg-button bg-button text-white rounded mr-2"
+                    className="px-6 py-3 bg-blue-700 text-white rounded-lg mr-2 hover:bg-blue-800 transition duration-300"
                   >
                     Edit Property
                   </button>
                   <button
                     onClick={() => setShowDeleteModal(true)}
-                    className="px-6 py-3 bg-red-500 text-white rounded"
+                    className="px-6 py-3 bg-red-500 text-white rounded-lg hover:bg-red-600 transition duration-300"
                   >
                     Delete Property
                   </button>
@@ -276,35 +268,33 @@ export default function PropertyDetails() {
               )}
             </div>
           </div>
+  
+          {/* Fullscreen Image */}
           {fullscreenImage && (
-              <div
-                className="fixed inset-0 bg-primary bg-opacity-90 flex justify-center items-center z-50"
+            <div
+              className="fixed inset-0 bg-primary bg-opacity-90 flex justify-center items-center z-50"
+              onClick={closeFullscreenImage}
+            >
+              <img
+                src={fullscreenImage}
+                alt="Fullscreen View"
+                className="max-w-full max-h-full"
+              />
+              <button
+                className="absolute top-4 right-4 text-white bg-primary rounded-full p-2"
                 onClick={closeFullscreenImage}
               >
-                <img
-                  src={fullscreenImage}
-                  alt="Fullscreen View"
-                  className="max-w-full max-h-full"
-                />
-                <button
-      className="absolute top-4 right-4 text-white bg-primary rounded-full p-2"
-      onClick={closeFullscreenImage}
-    >
-      <CloseIcon />
-    </button>
-              </div>
-            )}
-
+                <CloseIcon />
+              </button>
+            </div>
+          )}
+  
           {/* Delete Confirmation Modal */}
           {showDeleteModal && (
-            <div className="fixed  font-playfair inset-0 bg-lightBlue bg-opacity-75 flex items-center justify-center">
-              <div className="bg-lightBlue font-playfair rounded-lg p-8">
-                <h3 className="text-lg font-semibold mb-4 text-primary ">
-                  Confirm Deletion
-                </h3>
-                <p className="mb-4 text-primary ">
-                  Are you sure you want to delete this property?
-                </p>
+            <div className="fixed inset-0 bg-blue-700 bg-opacity-75 flex items-center justify-center">
+              <div className="bg-white p-8 rounded-lg">
+                <h3 className="text-lg font-semibold mb-4 text-blue-900">Confirm Deletion</h3>
+                <p className="mb-4 text-blue-900">Are you sure you want to delete this property?</p>
                 <div className="flex justify-end">
                   <button
                     onClick={() => setShowDeleteModal(false)}
@@ -326,4 +316,5 @@ export default function PropertyDetails() {
       )}
     </div>
   );
+  
 }
