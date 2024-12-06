@@ -78,7 +78,7 @@ export default function Footer() {
     ];
 
     return (
-        <footer className="bg-gradient-to-b from-blue-200 to-blue-400 py-8 px-4 lg:px-0 text-blue-900 rounded-full shadow-lg">
+        <footer className="bg-gradient-to-b from-blue-200 to-blue-400 py-8 px-4 lg:px-0 text-blue-900 shadow-lg">
             <div className="container mx-auto">
                 {/* Footer content for larger screens */}
                 <div className="hidden lg:flex lg:justify-between pb-6">
