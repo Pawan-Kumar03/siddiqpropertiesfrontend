@@ -136,67 +136,52 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     };
 
     return (
-        <section>
-    <div
-        className="container bg-lightBlue lg:bg-cover lg:bg-center lg:bg-no-repeat lg:my-2 lg:pb-10 lg:pt-5 rounded-m"
-        // style={{ backgroundImage: `url('/homepage-banner-img.jpeg')` }} // Applies background image on large screens
-    >
-
-                {/* "Your InvestiBayt Journey Starts Here" Section */}
-                <h1 className="text-2xl text-center bg-lightBlue font-playfair text-primary lg:text-primary lg:mb-8">
-    Your InvestiBayt Journey Starts Here
-</h1>
-
-        <div className="lg:bg-primary lg:bg-opacity-50 rounded-md lg:p-4 lg:w-[88%] mx-auto">
-            <div className="flex flex-wrap justify-center items-center space-x-2 lg:space-x-14 mb-4">
-                <ul className="flex flex-wrap justify-center items-center space-x-2 text-sm sm:text-base">
-                    <li className="mb-2 sm:mb-0">
-                        <button
-                            className="bg-primary font-playfair  text-primary hover:bg-primary duration-200 px-3 py-2 sm:px-5 sm:py-2 font-semibold rounded-full"
-                            onClick={handleSaleClick}
-                        >
-                  Sale
-                </button>
-              </li>
-              <li className="mb-2 sm:mb-0">
+        <section className="bg-lightBlue lg:bg-cover lg:bg-center lg:py-10 lg:px-5 rounded-md">
+        <h1 className="text-2xl font-playfair text-primary text-center mb-5">
+            Your InvestiBayt Journey Starts Here
+        </h1>
+        <div className="lg:bg-white lg:bg-opacity-80 lg:p-6 lg:rounded-lg lg:shadow-lg">
+            <div className="flex justify-center space-x-4 mb-6">
                 <button
-                  className="bg-primary font-playfair  text-primary hover:bg-primary duration-200 px-3 py-2 sm:px-5 sm:py-2 font-semibold rounded-full"
-                  onClick={handleRentClick}
+                    className="px-6 py-2 font-semibold text-white bg-primary rounded-full hover:bg-primary-dark"
+                    onClick={() => handlePurposeClick("sell")}
                 >
-                  Rent
+                    Sale
                 </button>
-              </li>
-              <li className="mb-2 sm:mb-0">
                 <button
-                  className="bg-primary font-playfair  text-primary hover:bg-primary duration-200 px-3 py-2 sm:px-5 sm:py-2 font-semibold rounded-full"
-                  onClick={handleOffPlanClick}
+                    className="px-6 py-2 font-semibold text-white bg-primary rounded-full hover:bg-primary-dark"
+                    onClick={() => handlePurposeClick("rent")}
                 >
-                  Off-Plan
+                    Rent
                 </button>
-              </li>
-              <li className="mb-2 sm:mb-0">
+                <button
+                    className="px-6 py-2 font-semibold text-white bg-primary rounded-full hover:bg-primary-dark"
+                    onClick={() => handlePurposeClick("off-plan")}
+                >
+                    Off-Plan
+                </button>
                 <Link
-                  className="bg-primary font-playfair  text-primary hover:bg-primary duration-200 px-3 py-2 sm:px-5 sm:py-2 font-semibold rounded-full"
-                  to="/place-an-ad"
+                    to="/place-an-ad"
+                    className="px-6 py-2 font-semibold text-white bg-primary rounded-full hover:bg-primary-dark"
                 >
-                  <span> Create A Listing</span>
+                    Create A Listing
                 </Link>
-              </li>
-            </ul>
-          </div>
+            </div>
 
 
-          <form className="lg:flex lg:flex-col lg:space-y-3 px-2 lg:px-0 py-4 lg:py-0 relative bg-primary lg:bg-transparent" onSubmit={handleSearch}>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                             {/* City Input */}
-        <div className="flex flex-col mb-3">
-            <label className="mb-1 font-playfair  text-primary">City</label>
-            <select
-                className="w-full p-3 h-12 rounded-md border border-lightBlue dark:border-lightBlue dark:bg-primary dark:text-primary"
-                name="city"
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
-            >
+            <form
+                    onSubmit={handleSearch}
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+                >
+                    <div>
+                        <label className="block mb-1 font-semibold text-primary">
+                            City
+                        </label>
+                        <select
+                            className="w-full p-3 border rounded-md focus:outline-none"
+                            value={city}
+                            onChange={(e) => setCity(e.target.value)}
+                        >
                 <option value="" className=" font-playfair ">Select City</option>
                                     <option value="Dubai" className=" font-playfair ">Dubai</option>
                                     <option value="Abu Dhabi" className=" font-playfair ">Abu Dhabi</option>
@@ -209,38 +194,43 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         </div>
 
         {/* Location Input */}
-        <div className="flex flex-col mb-3">
-            <label className="mb-1 text-primary font-playfair">Location</label>
-            <div className="flex flex-wrap items-center">
-                <input
-                    type="text"
-                    placeholder="Add location and press Enter"
-                    onKeyPress={handleAddLocation}
-                    className="flex-1 p-3 h-12 rounded-md border border-primary dark:border-primary dark:bg-primary dark:text-primary"
-                />
-                {/* Location Chips */}
-                {locations.map((loc, index) => (
-                    <div key={index} className="flex items-center space-x-1 mb-1 mr-1 bg-primary dark:bg-primary px-2 py-1 rounded-full">
-                        <span className="text-sm text-primary">{loc}</span>
-                        <button type="button" onClick={() => handleRemoveLocation(index)} className="ml-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        </button>
+        <div>
+                        <label className="block mb-1 font-semibold text-primary">
+                            Location
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="Add location and press Enter"
+                            onKeyPress={handleAddLocation}
+                            className="w-full p-3 border rounded-md focus:outline-none"
+                        />
+                        {locations.map((loc, index) => (
+                            <span
+                                key={index}
+                                className="inline-block px-2 py-1 mt-2 mr-2 text-sm bg-gray-200 rounded-full"
+                            >
+                                {loc}
+                                <button
+                                    type="button"
+                                    onClick={() => handleRemoveLocation(index)}
+                                    className="ml-1 text-red-600"
+                                >
+                                    ×
+                                </button>
+                            </span>
+                        ))}
                     </div>
-                ))}
-            </div>
-        </div>
 
         {/* Property Type */}
-        <div className="flex flex-col mb-3">
-            <label className="mb-1 text-primary font-playfair">Property Type</label>
-            <select
-                className="w-full p-3 h-12 rounded-md border border-primary dark:border-primary dark:bg-primary dark:text-primary"
-                name="propertyType"
-                value={propertyType}
-                onChange={(e) => setPropertyType(e.target.value)}
-            >
+        <div>
+                        <label className="block mb-1 font-semibold text-primary">
+                            Property Type
+                        </label>
+                        <select
+                            className="w-full p-3 border rounded-md focus:outline-none"
+                            value={propertyType}
+                            onChange={(e) => setPropertyType(e.target.value)}
+                        >
                 <option value="" className=" font-playfair ">Select Property Type</option>
                                     <option value="Apartment" className=" font-playfair ">Apartment</option>
                                     <option value="Villa" className=" font-playfair ">Villa</option>
@@ -250,114 +240,116 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         </div>
 
         {/* Min Price */}
-        <div className="flex flex-col mb-3">
-            <label className="mb-1 text-primary font-playfair">Min Price</label>
-            <input
-                type="number"
-                name="priceMin"
-                placeholder="Min Price"
-                value={priceMin}
-                onChange={(e) => setPriceMin(e.target.value)}
-                className="w-full p-3 h-12 rounded-md font-playfair border border-primary dark:border-primary dark:bg-primary dark:text-primary"
-            />
-        </div>
-
-        {/* Max Price */}
-        <div className="flex flex-col mb-3">
-            <label className="mb-1 text-primary font-playfair">Max Price</label>
-            <input
-                type="number"
-                name="priceMax"
-                placeholder="Max Price"
-                value={priceMax}
-                onChange={(e) => setPriceMax(e.target.value)}
-                className="w-full p-3 h-12 font-playfair rounded-md border border-primary dark:border-primary dark:bg-primary dark:text-primary"
-            />
-        </div>
-
+        <div>
+                        <label className="block mb-1 font-semibold text-primary">
+                            Min Price
+                        </label>
+                        <input
+                            type="number"
+                            placeholder="Min Price"
+                            value={priceMin}
+                            onChange={(e) => setPriceMin(e.target.value)}
+                            className="w-full p-3 border rounded-md focus:outline-none"
+                        />
+                    </div>
+                    <div>
+                        <label className="block mb-1 font-semibold text-primary">
+                            Max Price
+                        </label>
+                        <input
+                            type="number"
+                            placeholder="Max Price"
+                            value={priceMax}
+                            onChange={(e) => setPriceMax(e.target.value)}
+                            className="w-full p-3 border rounded-md focus:outline-none"
+                        />
+                    </div>
         {/* Beds */}
         <div className="flex flex-col mb-3">
-            <label className="mb-1 text-primary font-playfair">Beds</label>
-            <select
-                className="w-full font-playfair p-3 h-12 rounded-md border border-primary dark:border-primary dark:bg-primary dark:text-primary"
-                name="beds"
-                value={beds}
-                onChange={(e) => setBeds(e.target.value)}
-            >
-                 <option value="" className=" font-playfair ">Select Beds</option>
-                                    <option value="1" className=" font-playfair ">1</option>
-                                    <option value="2" className=" font-playfair ">2</option>
-                                    <option value="3" className=" font-playfair ">3</option>
-                                    <option value="4" className=" font-playfair ">4</option>
-                                    <option value="5" className=" font-playfair ">5+</option>
-            </select>
-        </div>
+    <label className="mb-1 text-primary font-playfair">Beds</label>
+    <select
+        className="w-full font-playfair p-3 h-12 rounded-md border border-primary dark:border-primary dark:bg-primary dark:text-primary"
+        name="beds"
+        value={beds}
+        onChange={(e) => setBeds(e.target.value)}
+    >
+        <option value="" className="font-playfair">Select Beds</option>
+        <option value="1" className="font-playfair">1</option>
+        <option value="2" className="font-playfair">2</option>
+        <option value="3" className="font-playfair">3</option>
+        <option value="4" className="font-playfair">4</option>
+        <option value="5" className="font-playfair">5+</option>
+    </select>
+</div>
 
         {/* Baths */}
         <div className="flex flex-col mb-3">
-            <label className="mb-1 text-primary font-playfair">Baths</label>
-            <select
-                className="w-full font-playfair p-3 h-12 rounded-md border border-primary dark:border-primary dark:bg-primary dark:text-primary"
-                name="baths"
-                value={baths}
-                onChange={(e) => setBaths(e.target.value)}
-            >
-                <option value="" className=" font-playfair ">Select Baths</option>
-                                    <option value="1" className=" font-playfair ">1</option>
-                                    <option value="2" className=" font-playfair ">2</option>
-                                    <option value="3" className=" font-playfair ">3</option>
-                                    <option value="4" className=" font-playfair ">4</option>
-                                    <option value="5" className=" font-playfair ">5+</option>
-            </select>
-        </div>
+    <label className="mb-1 text-primary font-playfair">Baths</label>
+    <select
+        className="w-full font-playfair p-3 h-12 rounded-md border border-primary dark:border-primary dark:bg-primary dark:text-primary"
+        name="baths"
+        value={baths}
+        onChange={(e) => setBaths(e.target.value)}
+    >
+        <option value="" className="font-playfair">Select Baths</option>
+        <option value="1" className="font-playfair">1</option>
+        <option value="2" className="font-playfair">2</option>
+        <option value="3" className="font-playfair">3</option>
+        <option value="4" className="font-playfair">4</option>
+        <option value="5" className="font-playfair">5+</option>
+    </select>
+</div>
 
         {/* Agent Type */}
         <div className="flex flex-col mb-3">
-            <label className="mb-1 text-primary font-playfair">Owner Type</label>
-            <select
-                className="w-full  font-playfair p-3 h-12 rounded-md border border-primary dark:border-primary dark:bg-primary dark:text-primary"
-                name="agentType"
-                value={agentType}
-                onChange={(e) => setAgentType(e.target.value)}
-            >
-                <option value="" className=" font-playfair ">Select Owner Type</option>
-                <option value="Owner" className=" font-playfair ">Landlord</option>
-                <option value="Agent" className=" font-playfair ">Agent</option>
-            </select>
-        </div>
-    </div>
-    <div className="flex items-center justify-between mt-4 w-full ">
-                            <button type="submit" className="bg-button text-white flex items-center justify-center  w-1/2 px-6 py-2 rounded-full font-semibold mr-2 ">
-                                <img src={inputSearch} alt="Search" className="w-5 h-5 mr-2 font-playfair" />
-                                Search
-                            </button>
-                            <button
-                                type="button"
-                                onClick={handleClearFilters}
-                                className="flex items-center font-playfair justify-center bg-primary text-primary w-1/2 px-6 py-2 rounded-full font-semibold ml-2 bg-primary text-primary"
-                            >
-                                Clear Filters
-                            </button>
-                        </div>
+    <label className="mb-1 text-primary font-playfair">Owner Type</label>
+    <select
+        className="w-full font-playfair p-3 h-12 rounded-md border border-primary dark:border-primary dark:bg-primary dark:text-primary"
+        name="agentType"
+        value={agentType}
+        onChange={(e) => setAgentType(e.target.value)}
+    >
+        <option value="" className="font-playfair">Select Owner Type</option>
+        <option value="Owner" className="font-playfair">Landlord</option>
+        <option value="Agent" className="font-playfair">Agent</option>
+    </select>
+</div>
+    {/* </div> */}
+    <div className="flex items-center justify-between mt-4 w-full">
+    <button
+        type="submit"
+        className="bg-button text-white flex items-center justify-center w-1/2 px-6 py-2 rounded-full font-semibold mr-2 font-playfair"
+    >
+        <img src={inputSearch} alt="Search" className="w-5 h-5 mr-2" />
+        Search
+    </button>
+    <button
+        type="button"
+        onClick={handleClearFilters}
+        className="flex items-center justify-center w-1/2 px-6 py-2 rounded-full font-semibold ml-2 bg-primary text-primary font-playfair"
+    >
+        Clear Filters
+    </button>
+</div>
 </form>
 
 
                 </div>
-            </div>
+            {/* </div> */}
             {city && locationCounts.length > 0 && (
-    <div className=" bg-primary pl-14">
+    <div className="bg-primary pl-14">
         <h2 className="text-xl font-semibold text-primary font-playfair">
             Properties by Location in {city}. {totalProperties} Ads
         </h2>
         <ul className="mt-2 flex flex-wrap gap-2 text-black">
             {locationCounts.map((loc, index) => (
-                <li 
+                <li
                     key={index}
-                    className="flex  font-playfair items-center px-4 rounded shadow-md cursor-pointer text-primary"
+                    className="flex items-center px-4 rounded shadow-md cursor-pointer text-primary font-playfair"
                     onClick={() => handleLocationClick(loc.location)}
                 >
-                    <span className="mr-2 font-playfair truncate max-w-[120px]">{loc.location.split(' ').slice(0, 2).join(' ')}</span>
-                    <span className="text-primary font-playfair">( {loc.count} )</span>
+                    <span className="mr-2 truncate max-w-[120px]">{loc.location.split(' ').slice(0, 2).join(' ')}</span>
+                    <span className="text-primary">( {loc.count} )</span>
                 </li>
             ))}
         </ul>
