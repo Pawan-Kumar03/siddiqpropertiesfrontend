@@ -147,42 +147,43 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
 </h1>
 
         <div className="lg:bg-primary lg:bg-opacity-50 rounded-md lg:p-4 lg:w-[88%] mx-auto">
-            <div className="flex flex-wrap justify-center items-center space-x-2 lg:space-x-14 mb-4">
-                <ul className="flex flex-wrap justify-center items-center space-x-2 text-sm sm:text-base">
-                    <li className="mb-2 sm:mb-0">
-                        <button
-                            className="bg-primary font-playfair  text-primary hover:bg-primary duration-200 px-3 py-2 sm:px-5 sm:py-2 font-semibold rounded-full"
-                            onClick={handleSaleClick}
-                        >
-                  Sale
-                </button>
-              </li>
-              <li className="mb-2 sm:mb-0">
-                <button
-                  className="bg-primary font-playfair  text-primary hover:bg-primary duration-200 px-3 py-2 sm:px-5 sm:py-2 font-semibold rounded-full"
-                  onClick={handleRentClick}
-                >
-                  Rent
-                </button>
-              </li>
-              <li className="mb-2 sm:mb-0">
-                <button
-                  className="bg-primary font-playfair  text-primary hover:bg-primary duration-200 px-3 py-2 sm:px-5 sm:py-2 font-semibold rounded-full"
-                  onClick={handleOffPlanClick}
-                >
-                  Off-Plan
-                </button>
-              </li>
-              <li className="mb-2 sm:mb-0">
-                <Link
-                  className="bg-primary font-playfair  text-primary hover:bg-primary duration-200 px-3 py-2 sm:px-5 sm:py-2 font-semibold rounded-full"
-                  to="/place-an-ad"
-                >
-                  <span> Create A Listing</span>
-                </Link>
-              </li>
-            </ul>
-          </div>
+        <div className="flex flex-wrap justify-center items-center space-x-4 lg:space-x-10 mb-6">
+  <ul className="flex flex-wrap justify-center items-center gap-2 lg:gap-6 text-sm sm:text-base">
+    <li>
+      <button
+        className="bg-lightBlue text-white hover:bg-blue-600 transition duration-300 px-4 py-2 sm:px-6 sm:py-2 rounded-full font-semibold shadow-md"
+        onClick={handleSaleClick}
+      >
+        Sale
+      </button>
+    </li>
+    <li>
+      <button
+        className="bg-lightBlue text-white hover:bg-blue-600 transition duration-300 px-4 py-2 sm:px-6 sm:py-2 rounded-full font-semibold shadow-md"
+        onClick={handleRentClick}
+      >
+        Rent
+      </button>
+    </li>
+    <li>
+      <button
+        className="bg-lightBlue text-white hover:bg-blue-600 transition duration-300 px-4 py-2 sm:px-6 sm:py-2 rounded-full font-semibold shadow-md"
+        onClick={handleOffPlanClick}
+      >
+        Off-Plan
+      </button>
+    </li>
+    <li>
+      <Link
+        className="bg-lightBlue text-white hover:bg-blue-600 transition duration-300 px-4 py-2 sm:px-6 sm:py-2 rounded-full font-semibold shadow-md"
+        to="/place-an-ad"
+      >
+        Create A Listing
+      </Link>
+    </li>
+  </ul>
+</div>
+
 
 
           <form className="lg:flex lg:flex-col lg:space-y-3 px-2 lg:px-0 py-4 lg:py-0 relative bg-primary lg:bg-transparent" onSubmit={handleSearch}>
