@@ -138,8 +138,8 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     return (
         <section>
     <div
-        className="container bg-primary lg:bg-cover lg:bg-center lg:bg-no-repeat lg:my-2 lg:pb-10 lg:pt-5 rounded-m"
-        style={{ backgroundImage: `url('/homepage-banner-img.jpeg')` }} // Applies background image on large screens
+        className="container bg-lightBlue lg:bg-cover lg:bg-center lg:bg-no-repeat lg:my-2 lg:pb-10 lg:pt-5 rounded-m"
+        // style={{ backgroundImage: `url('/homepage-banner-img.jpeg')` }} // Applies background image on large screens
     >
                 {/* "Your InvestiBayt Journey Starts Here" Section */}
                 <h1 className="text-2xl text-center bg-lightBlue font-playfair text-primary lg:text-primary lg:mb-8">
