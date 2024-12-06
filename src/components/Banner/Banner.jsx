@@ -167,7 +167,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     </li>
     <li>
       <button
-        className="bg-white/30 text-blue-900 hover:bg-blue-600 transition duration-300 px-4 py-2 sm:px-6 sm:py-2 rounded-full font-semibold shadow-md"
+        className="bg-white/30 text-blue-900 hover:bg-blue-600  hover:text-white transition duration-300 px-4 py-2 sm:px-6 sm:py-2 rounded-full font-semibold shadow-md"
         onClick={handleOffPlanClick}
       >
         Off-Plan
