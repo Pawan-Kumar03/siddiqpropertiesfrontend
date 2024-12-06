@@ -118,7 +118,7 @@ export default function Navbar() {
                     ) : (
                         <Link
                             to="/login"
-                            className="px-4 py-2 text-white rounded-full bg-blue-700 hover:bg-blue-800 transition duration-300"
+                            className="px-4 py-2 text-white rounded-full bg-blue-300 hover:bg-blue-500 transition duration-300"
                         >
                             Login
                         </Link>
