@@ -27,6 +27,7 @@ export default function PlaceAnAdPage() {
     developments: '', 
     description: '', // Added description
     amenities: [], // Added amenities
+    pdf: null,
   });
   const [step, setStep] = useState(1);
   const [submitted, setSubmitted] = useState(false); // State variable for submission success
@@ -110,10 +111,15 @@ export default function PlaceAnAdPage() {
       compressedImages.forEach((image) => {
         submissionData.append('images', image);
       });
+
+      // Append PDF file
+    if (details.pdf) {
+      submissionData.append("pdf", details.pdf);
+    }
   
       // Append other form data
       for (const key in formData) {
-        if (key !== 'images') {
+        if (key !== "images" && key !== "pdf") {
           submissionData.append(key, formData[key]);
         }
       }
@@ -339,10 +345,20 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
     developments: '', 
     description: '', // Added description
     amenities: [], // Added amenities
+    pdf: null,
     errors: {}, // Error messages state
     ...formData,
   });
 
+  // Add a handler for PDF file changes
+const handlePdfChange = (e) => {
+  const file = e.target.files[0];
+  if (file && file.type === "application/pdf") {
+    setDetails({ ...details, pdf: file });
+  } else {
+    setDetails({ ...details, errors: { ...details.errors, pdf: "Please upload a valid PDF file." } });
+  }
+};
   const handleDetailsChange = (e) => {
     const { name, value } = e.target;
     const newValue = name === 'beds' && value === '' ? '' : (name === 'beds' ? parseInt(value, 10) || 0 : value);
@@ -481,7 +497,15 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
       />
         {details.errors.images && <p className="text-red-500 text-sm">{details.errors.images}</p>}
       
-      
+        <input
+      type="file"
+      name="pdf"
+      accept="application/pdf"
+      onChange={handlePdfChange}
+      className="border border-gray-300 p-2 rounded w-full"
+    />
+    {details.errors.pdf && <p className="text-red-500 text-sm">{details.errors.pdf}</p>}
+    
       <textarea
         name="description"
         value={details.description}
