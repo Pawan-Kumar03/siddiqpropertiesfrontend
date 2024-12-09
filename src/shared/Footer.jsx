@@ -91,7 +91,7 @@ export default function Footer() {
                                 {footerItem.items.map((item, itemIndex) => (
                                     <li key={itemIndex}>
                                         <a
-                                            className="text-sm text-black"
+                                            className="text-sm text-black hover:underline"
                                             href={item.link}
                                             onClick={item.onClick}
                                         >
