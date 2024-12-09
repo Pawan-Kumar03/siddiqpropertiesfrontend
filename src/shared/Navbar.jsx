@@ -38,32 +38,36 @@ export default function Navbar() {
     };
 
     return (
-        <header className="bg-gradient-to-r from-teal-400 via-cyan-500 to-blue-500">
-            <nav className="backdrop-blur-xl bg-white/10 rounded-lg mx-auto max-w-7xl flex items-center justify-between px-6 py-3 shadow-lg">
+        <header className="bg-blue-100/40">
+            <nav className="bg-white/40 backdrop-blur-lg rounded-full mx-auto max-w-5xl flex items-center justify-between px-6 py-2 shadow-lg">
                 {/* Logo */}
                 <div>
                     <Link to="/">
-                        <img src={logo} alt="logo" className="w-12 h-auto rounded-full shadow-md" />
+                        <img
+                            src={logo}
+                            alt="logo"
+                            className="w-16 h-auto"
+                        />
                     </Link>
                 </div>
 
                 {/* Desktop Navigation */}
-                <div className="hidden sm:flex items-center space-x-6">
+                <div className="hidden sm:flex items-center space-x-4">
                     <Link
                         to="/"
-                        className="px-4 py-2 text-white font-medium rounded-full bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-cyan-500 hover:to-teal-500 transition duration-300 shadow-lg"
+                        className="px-4 py-2 text-blue-900 rounded-full bg-white/30 hover:bg-blue-100 transition duration-300"
                     >
                         Home
                     </Link>
                     <Link
                         to="/about-us"
-                        className="px-4 py-2 text-white font-medium rounded-full bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-cyan-500 hover:to-teal-500 transition duration-300 shadow-lg"
+                        className="px-4 py-2 text-blue-900 rounded-full bg-white/30 hover:bg-blue-100 transition duration-300"
                     >
                         About Us
                     </Link>
                     <Link
                         to="/ConsultancyPage"
-                        className="px-4 py-2 text-white font-medium rounded-full bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-cyan-500 hover:to-teal-500 transition duration-300 shadow-lg"
+                        className="px-4 py-2 text-blue-900 rounded-full bg-white/30 hover:bg-blue-100 transition duration-300"
                     >
                         Consultant
                     </Link>
@@ -72,39 +76,39 @@ export default function Navbar() {
                         <div className="relative">
                             <button
                                 onClick={toggleDropdown}
-                                className="px-4 py-2 text-white font-medium rounded-full bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-cyan-500 hover:to-teal-500 transition duration-300 shadow-lg dropdown-toggle"
+                                className="px-4 py-2 text-blue-900 rounded-full bg-white/30 hover:bg-blue-100 transition duration-300 dropdown-toggle"
                             >
                                 {user.name}
                             </button>
                             {dropdownOpen && (
                                 <div
                                     id="dropdown"
-                                    className="absolute right-0 mt-2 bg-white/90 text-gray-900 rounded-lg shadow-lg w-48 z-50"
+                                    className="absolute right-0 mt-2 bg-white text-black rounded-lg shadow-lg w-48 z-50"
                                 >
                                     <Link
                                         to="/profile"
-                                        className="block px-4 py-2 hover:bg-gray-200 rounded-md"
+                                        className="block px-4 py-2 hover:bg-blue-100"
                                         onClick={() => setDropdownOpen(false)}
                                     >
                                         My Profile
                                     </Link>
                                     <Link
                                         to="/get-verified"
-                                        className="block px-4 py-2 hover:bg-gray-200 rounded-md"
+                                        className="block px-4 py-2 hover:bg-blue-100"
                                         onClick={() => setDropdownOpen(false)}
                                     >
                                         Get Verified
                                     </Link>
                                     <Link
                                         to="/my-ads"
-                                        className="block px-4 py-2 hover:bg-gray-200 rounded-md"
+                                        className="block px-4 py-2 hover:bg-blue-100"
                                         onClick={() => setDropdownOpen(false)}
                                     >
                                         My Ads
                                     </Link>
                                     <button
                                         onClick={handleLogout}
-                                        className="w-full text-left px-4 py-2 hover:bg-gray-200 rounded-md"
+                                        className="w-full text-left px-4 py-2 hover:bg-blue-100"
                                     >
                                         Sign Out
                                     </button>
@@ -114,7 +118,7 @@ export default function Navbar() {
                     ) : (
                         <Link
                             to="/login"
-                            className="px-4 py-2 text-white font-medium rounded-full bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-cyan-500 hover:to-teal-500 transition duration-300 shadow-lg"
+                            className="px-4 py-2 text-white rounded-full bg-blue-300 hover:bg-blue-500 transition duration-300"
                         >
                             Login
                         </Link>
@@ -125,7 +129,7 @@ export default function Navbar() {
                 <div className="sm:hidden flex items-center">
                     <button
                         onClick={toggleMobileMenu}
-                        className="text-white focus:outline-none"
+                        className="text-blue-900 focus:outline-none"
                     >
                         <svg
                             className="w-6 h-6"
@@ -144,24 +148,24 @@ export default function Navbar() {
                     </button>
 
                     {mobileMenuOpen && (
-                        <div className="absolute right-0 top-12 bg-white/80 backdrop-blur-lg text-gray-900 rounded-lg shadow-lg w-48 z-50">
+                        <div className="absolute right-0 top-12 bg-white/40 backdrop-blur-lg text-blue-900 rounded-lg shadow-lg w-48 z-50">
                             <Link
                                 to="/"
-                                className="block px-4 py-2 hover:bg-gray-200 rounded-md"
+                                className="block px-4 py-2 rounded-full hover:bg-blue-100 mb-2"
                                 onClick={() => setMobileMenuOpen(false)}
                             >
                                 Home
                             </Link>
                             <Link
                                 to="/about-us"
-                                className="block px-4 py-2 hover:bg-gray-200 rounded-md"
+                                className="block px-4 py-2 rounded-full hover:bg-blue-100 mb-2"
                                 onClick={() => setMobileMenuOpen(false)}
                             >
                                 About Us
                             </Link>
                             <Link
                                 to="/ConsultancyPage"
-                                className="block px-4 py-2 hover:bg-gray-200 rounded-md"
+                                className="block px-4 py-2 rounded-full hover:bg-blue-100 mb-2"
                                 onClick={() => setMobileMenuOpen(false)}
                             >
                                 Consultant
@@ -170,28 +174,28 @@ export default function Navbar() {
                                 <>
                                     <Link
                                         to="/profile"
-                                        className="block px-4 py-2 hover:bg-gray-200 rounded-md"
+                                        className="block px-4 py-2 rounded-full hover:bg-blue-100 mb-2"
                                         onClick={() => setMobileMenuOpen(false)}
                                     >
                                         My Profile
                                     </Link>
                                     <Link
                                         to="/get-verified"
-                                        className="block px-4 py-2 hover:bg-gray-200 rounded-md"
+                                        className="block px-4 py-2 rounded-full hover:bg-blue-100 mb-2"
                                         onClick={() => setMobileMenuOpen(false)}
                                     >
                                         Get Verified
                                     </Link>
                                     <Link
                                         to="/my-ads"
-                                        className="block px-4 py-2 hover:bg-gray-200 rounded-md"
+                                        className="block px-4 py-2 rounded-full hover:bg-blue-100 mb-2"
                                         onClick={() => setMobileMenuOpen(false)}
                                     >
                                         My Ads
                                     </Link>
                                     <button
                                         onClick={handleLogout}
-                                        className="block w-full text-left px-4 py-2 hover:bg-gray-200 rounded-md"
+                                        className="block w-full text-left px-4 py-2 rounded-full hover:bg-blue-100 mb-2"
                                     >
                                         Sign Out
                                     </button>
@@ -199,7 +203,7 @@ export default function Navbar() {
                             ) : (
                                 <Link
                                     to="/login"
-                                    className="block px-4 py-2 text-white bg-teal-600 rounded-md hover:bg-teal-800"
+                                    className="block px-4 py-2 text-white bg-blue-700 rounded-full hover:bg-blue-800 mb-2"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
                                     Login
