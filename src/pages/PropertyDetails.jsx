@@ -21,6 +21,7 @@ export default function PropertyDetails() {
   const [isDeleted, setIsDeleted] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [fullscreenImage, setFullscreenImage] = useState(null); 
+  const [showPDF, setShowPDF] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -134,22 +135,9 @@ export default function PropertyDetails() {
     }
     return images;
   };
-  const generatePDF = () => {
-    if (!property) return;
-
-    const doc = new jsPDF();
-    doc.setFontSize(16);
-    doc.text(property.title, 10, 10);
-    doc.text(`Price: ${property.price} AED`, 10, 20);
-    doc.text(`City: ${property.city}`, 10, 30);
-    doc.text(`Location: ${property.location}`, 10, 40);
-    doc.text(`Property Type: ${property.propertyType}`, 10, 50);
-    doc.text(`Beds: ${property.beds}`, 10, 60);
-    doc.text(`Description: ${property.description || 'No description available'}`, 10, 70);
-
-    doc.save(`${property.title}.pdf`);
+  const handleViewPDF = () => {
+    window.open(property.pdfFileUrl, '_blank');
   };
-  
   return (
 <div className="container mt-8 bg-[#fff7f1] backdrop-blur-lg text-black p-6 rounded-lg font-playfair shadow-lg max-w-5xl mx-auto">
   {isDeleted && (
@@ -168,7 +156,7 @@ export default function PropertyDetails() {
               <span className="flex items-center">Back</span>
             </button>
             <button
-              onClick={generatePDF}
+              onClick={() => setShowPDF(true)} // Show PDF on button click
               className="flex items-center text-black hover:underline bg-[#fff7f1] rounded-full px-4 py-2 transition duration-300"
             >
               <span className="flex items-center">View PDF</span>
