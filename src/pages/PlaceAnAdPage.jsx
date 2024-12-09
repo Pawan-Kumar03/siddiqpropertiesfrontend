@@ -259,7 +259,7 @@ function StepChooseCategory({ onNext, onBack, title }) {
         <button onClick={() => handleCategorySelect("Land")} className={`block w-full px-6 py-3 rounded ${category === "Land" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Land</button>
         <button onClick={() => handleCategorySelect("Multiple Units")} className={`block w-full px-6 py-3 rounded ${category === "Multiple Units" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Multiple Units</button>
       </div>
-      <button onClick={onBack} className="px-4 py-2 font-playfair  bg-[#fff7f1] text-white rounded w-full">Back</button>
+      <button onClick={onBack} className="px-4 py-2 font-playfair  bg-[#2b1b12] text-white rounded w-full">Back</button>
     </div>
   );
 }
