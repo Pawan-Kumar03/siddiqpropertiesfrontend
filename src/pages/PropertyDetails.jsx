@@ -21,7 +21,6 @@ export default function PropertyDetails() {
   const [isDeleted, setIsDeleted] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [fullscreenImage, setFullscreenImage] = useState(null); 
-  const [showPDF, setShowPDF] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -136,8 +135,10 @@ export default function PropertyDetails() {
     return images;
   };
   const handleViewPDF = () => {
-    window.open(property.pdfFileUrl, '_blank');
+    const pdfUrl = "https://ior6dw8epyae9tkd.public.blob.vercel-storage.com/Stonehenge%20Residences%202_2024.12.06-V9dICf8eIwFm0GwrZ14f96WIo5X5Q8.pdf";
+    window.open(pdfUrl, '_blank');
   };
+  
   return (
 <div className="container mt-8 bg-[#fff7f1] backdrop-blur-lg text-black p-6 rounded-lg font-playfair shadow-lg max-w-5xl mx-auto">
   {isDeleted && (
@@ -156,11 +157,11 @@ export default function PropertyDetails() {
               <span className="flex items-center">Back</span>
             </button>
             <button
-              onClick={() => setShowPDF(true)} // Show PDF on button click
-              className="flex items-center text-black hover:underline bg-[#fff7f1] rounded-full px-4 py-2 transition duration-300"
-            >
-              <span className="flex items-center">View PDF</span>
-            </button>
+  onClick={handleViewPDF}
+  className="flex items-center text-black hover:underline bg-[#fff7f1] rounded-full px-4 py-2 transition duration-300"
+>
+  <span className="flex items-center">View PDF</span>
+</button>
           </div>
 
       <div className="flex flex-col lg:flex-row">
