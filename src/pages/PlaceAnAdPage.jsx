@@ -197,7 +197,7 @@ export default function PlaceAnAdPage() {
     console.log(
       `Compressed PDF size: ${(compressedPdfBlob.size / 1024).toFixed(2)} KB`
     );
-      // Ensure the compressed file is below 100 KB
+      // Ensure the compressed file is below 2000 KB
       if (compressedPdfBlob.size > 2000 * 1024) {
         throw new Error("Compressed PDF exceeds 100 KB limit");
       }
