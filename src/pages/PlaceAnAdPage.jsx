@@ -222,8 +222,8 @@ function Step1({ onNext }) {
 
   return (
     <div className="flex flex-col items-center space-y-4 w-full max-w-md mx-auto font-playfair">
-      <h2 className="text-2xl font-semibold text-center text-custom">Enter a short title to describe your listing</h2>
-      <h3 className="text-center text-custom">Make your title informative and attractive.</h3>
+      <h2 className="text-2xl font-semibold text-center text-[#2b1b12]">Enter a short title to describe your listing</h2>
+      <h3 className="text-center text-[#2b1b12]">Make your title informative and attractive.</h3>
       <input
         type="text"
         value={title}
@@ -231,7 +231,7 @@ function Step1({ onNext }) {
         placeholder="e.g. 1 Bedroom available in Al-Barsha"
         className="border border-gray-300 p-2 rounded w-full focus:outline-none focus:border-custom"
       />
-      <button onClick={handleSubmit} className="px-4 py-2 bg-custom text-white rounded w-full">Let's Go</button>
+      <button onClick={handleSubmit} className="px-4 py-2 bg-[#2b1b12] text-white rounded w-full">Let's Go</button>
     </div>
   );
 }

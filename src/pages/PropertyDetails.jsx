@@ -133,7 +133,21 @@ export default function PropertyDetails() {
     }
     return images;
   };
+  const generatePDF = () => {
+    if (!property) return;
 
+    const doc = new jsPDF();
+    doc.setFontSize(16);
+    doc.text(property.title, 10, 10);
+    doc.text(`Price: ${property.price} AED`, 10, 20);
+    doc.text(`City: ${property.city}`, 10, 30);
+    doc.text(`Location: ${property.location}`, 10, 40);
+    doc.text(`Property Type: ${property.propertyType}`, 10, 50);
+    doc.text(`Beds: ${property.beds}`, 10, 60);
+    doc.text(`Description: ${property.description || 'No description available'}`, 10, 70);
+
+    doc.save(`${property.title}.pdf`);
+  };
   
   return (
 <div className="container mt-8 bg-[#fff7f1] backdrop-blur-lg text-black p-6 rounded-lg font-playfair shadow-lg max-w-5xl mx-auto">
@@ -143,16 +157,22 @@ export default function PropertyDetails() {
     </div>
   )}
   {!isDeleted && property && (
-    <>
-      <div className="flex items-center mb-4">
-        <button
-          onClick={() => navigate(-1)}
-          className="flex items-center text-black hover:underline bg-[#fff7f1] rounded-full px-4 py-2 transition duration-300"
-        >
-          <ArrowBackIcon className="mr-1 sm:text-lg text-black" />
-          <span className="flex items-center">Back</span>
-        </button>
-      </div>
+        <>
+          <div className="flex items-center mb-4 justify-between">
+            <button
+              onClick={() => navigate(-1)}
+              className="flex items-center text-black hover:underline bg-[#fff7f1] rounded-full px-4 py-2 transition duration-300"
+            >
+              <ArrowBackIcon className="mr-1 sm:text-lg text-black" />
+              <span className="flex items-center">Back</span>
+            </button>
+            <button
+              onClick={generatePDF}
+              className="flex items-center text-black hover:underline bg-[#fff7f1] rounded-full px-4 py-2 transition duration-300"
+            >
+              <span className="flex items-center">View PDF</span>
+            </button>
+          </div>
 
       <div className="flex flex-col lg:flex-row">
         <div className="lg:w-1/2 lg:pr-4">
@@ -243,17 +263,17 @@ export default function PropertyDetails() {
             <EmailIcon
               style={{ cursor: "pointer" }}
               onClick={() => handleContactBroker("Email")}
-              className="hover:text-blue-700 transition duration-300"
+              className=" transition duration-300"
             />
             <PhoneIcon
               style={{ cursor: "pointer" }}
               onClick={() => handleContactBroker("Call")}
-              className="hover:text-blue-700 transition duration-300"
+              className=" transition duration-300"
             />
             <WhatsAppIcon
               style={{ cursor: "pointer" }}
               onClick={() => handleContactBroker("WhatsApp")}
-              className="hover:text-blue-700 transition duration-300"
+              className=" transition duration-300"
             />
           </div>
 
@@ -261,7 +281,7 @@ export default function PropertyDetails() {
             <>
               <button
                 onClick={handleEditProperty}
-                className="px-6 py-3 bg-[#fff7f1] text-black rounded-full hover:bg-blue-800 transition duration-300 mb-2"
+                className="px-6 py-3 bg-[#fff7f1] text-black rounded-full hover:bg-[#fae4d4] transition duration-300 mb-2"
               >
                 Edit Property
               </button>
