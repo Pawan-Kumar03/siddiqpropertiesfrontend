@@ -78,20 +78,20 @@ export default function Footer() {
     ];
 
     return (
-        <footer className="bg-blue-100/40 py-8 px-4 lg:px-0 text-blue-900 shadow-lg">
+        <footer className="bg-[#fff7f1] py-8 px-4 lg:px-0 text-black shadow-lg">
             <div className="container mx-auto">
                 {/* Footer content for larger screens */}
                 <div className="hidden lg:flex lg:justify-between pb-6">
                     {data.map((footerItem, index) => (
                         <div key={index} className="flex-1">
-                            <h3 className="text-base font-semibold mb-4 text-blue-700">
+                            <h3 className="text-base font-semibold mb-4 text-black">
                                 {footerItem.category}
                             </h3>
                             <ul className="space-y-1">
                                 {footerItem.items.map((item, itemIndex) => (
                                     <li key={itemIndex}>
                                         <a
-                                            className="text-sm text-blue-900 hover:text-blue-700 hover:underline"
+                                            className="text-sm text-black"
                                             href={item.link}
                                             onClick={item.onClick}
                                         >
@@ -108,14 +108,14 @@ export default function Footer() {
                 <div className="lg:hidden grid grid-cols-2 gap-4 pb-6">
                     {data.map((footerItem, index) => (
                         <div key={index}>
-                            <h3 className="text-base font-semibold mb-2 text-blue-700">
+                            <h3 className="text-base font-semibold mb-2 text-black">
                                 {footerItem.category}
                             </h3>
                             <ul className="space-y-1">
                                 {footerItem.items.map((item, itemIndex) => (
                                     <li key={itemIndex}>
                                         <a
-                                            className="text-sm text-blue-900 hover:text-blue-700 hover:underline"
+                                            className="text-sm text-black hover:underline"
                                             href={item.link}
                                             onClick={item.onClick}
                                         >
@@ -132,7 +132,7 @@ export default function Footer() {
                 <div className="mt-6 flex flex-col items-center lg:items-start lg:flex-row justify-between">
                     <div className="flex items-center space-x-4">
                         <img className="w-32" src={logoDark} alt="Logo" />
-                        <small className="text-blue-700 text-center lg:text-left mt-4 lg:mt-0">
+                        <small className="text-black text-center lg:text-left mt-4 lg:mt-0">
                             &copy; InvestiBayt.com {new Date().getFullYear()}, All Rights Reserved.
                         </small>
                     </div>
