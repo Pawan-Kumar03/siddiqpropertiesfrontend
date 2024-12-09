@@ -170,7 +170,7 @@ export default function PlaceAnAdPage() {
   const compressPDF = async (pdfFile) => {
     // Get the size of the original PDF
     console.log(`Original PDF size: ${(pdfFile.size / 1024).toFixed(2)} KB`);
-
+  
     const { PDFDocument } = await import("pdf-lib");
     try {
       const pdfBytes = await pdfFile.arrayBuffer(); // Convert PDF file to ArrayBuffer
@@ -194,12 +194,13 @@ export default function PlaceAnAdPage() {
       });
   
       // Log the size of the compressed PDF
-    console.log(
-      `Compressed PDF size: ${(compressedPdfBlob.size / 1024).toFixed(2)} KB`
-    );
-      // Ensure the compressed file is below 2000 KB
+      console.log(
+        `Compressed PDF size: ${(compressedPdfBlob.size / 1024).toFixed(2)} KB`
+      );
+  
+      // Ensure the compressed file is below 2000 KB (2 MB)
       if (compressedPdfBlob.size > 2000 * 1024) {
-        throw new Error("Compressed PDF exceeds 100 KB limit");
+        throw new Error("Compressed PDF exceeds 2000 KB limit");
       }
   
       return new File([compressedPdfBlob], pdfFile.name, { type: "application/pdf" });
@@ -208,6 +209,7 @@ export default function PlaceAnAdPage() {
       throw error;
     }
   };
+  
   
 
   const handleCategorySelect = (category) => {
