@@ -39,7 +39,7 @@ export default function Navbar() {
 
     return (
         <header className="bg-[#fff7f1]">
-            <nav className="bg-white/40 backdrop-blur-lg rounded-full mx-auto max-w-5xl flex items-center justify-between px-6 py-2 shadow-lg">
+            <nav className="backdrop-blur-lg rounded-full mx-auto max-w-5xl flex items-center justify-between px-6 py-2 shadow-lg">
                 {/* Logo */}
                 <div>
                     <Link to="/">
@@ -55,19 +55,19 @@ export default function Navbar() {
                 <div className="hidden sm:flex items-center space-x-4">
                     <Link
                         to="/"
-                        className="px-4 py-2 text-black rounded-full bg-[#fff7f1] "
+                        className="px-4 py-2 text-black rounded-full bg-[#fff7f1] hover:bg-[#fae4d4]"
                     >
                         Home
                     </Link>
                     <Link
                         to="/about-us"
-                        className="px-4 py-2 text-black rounded-full bg-[#fff7f1] "
+                        className="px-4 py-2 text-black rounded-full bg-[#fff7f1] hover:bg-[#fae4d4]"
                     >
                         About Us
                     </Link>
                     <Link
                         to="/ConsultancyPage"
-                        className="px-4 py-2 text-black rounded-full bg-[#fff7f1] "
+                        className="px-4 py-2 text-black rounded-full bg-[#fff7f1] hover:bg-[#fae4d4]"
                     >
                         Consultant
                     </Link>
@@ -87,28 +87,28 @@ export default function Navbar() {
                                 >
                                     <Link
                                         to="/profile"
-                                        className="block px-4 py-2 hover:bg-blue-100"
+                                        className="block px-4 py-2 hover:bg-[#fae4d4]"
                                         onClick={() => setDropdownOpen(false)}
                                     >
                                         My Profile
                                     </Link>
                                     <Link
                                         to="/get-verified"
-                                        className="block px-4 py-2 hover:bg-blue-100"
+                                        className="block px-4 py-2 hover:bg-[#fae4d4]"
                                         onClick={() => setDropdownOpen(false)}
                                     >
                                         Get Verified
                                     </Link>
                                     <Link
                                         to="/my-ads"
-                                        className="block px-4 py-2 hover:bg-blue-100"
+                                        className="block px-4 py-2 hover:bg-[#fae4d4]"
                                         onClick={() => setDropdownOpen(false)}
                                     >
                                         My Ads
                                     </Link>
                                     <button
                                         onClick={handleLogout}
-                                        className="w-full text-left px-4 py-2 hover:bg-blue-100"
+                                        className="w-full text-left px-4 py-2 hover:bg-[#fae4d4]"
                                     >
                                         Sign Out
                                     </button>
@@ -151,21 +151,21 @@ export default function Navbar() {
                         <div className="absolute right-0 top-12 bg-[#fff7f1] backdrop-blur-lg text-black rounded-lg shadow-lg w-48 z-50">
                             <Link
                                 to="/"
-                                className="block px-4 py-2 rounded-full "
+                                className="block px-4 py-2 rounded-full hover:bg-[#fae4d4]"
                                 onClick={() => setMobileMenuOpen(false)}
                             >
                                 Home
                             </Link>
                             <Link
                                 to="/about-us"
-                                className="block px-4 py-2 rounded-full "
+                                className="block px-4 py-2 rounded-full hover:bg-[#fae4d4]"
                                 onClick={() => setMobileMenuOpen(false)}
                             >
                                 About Us
                             </Link>
                             <Link
                                 to="/ConsultancyPage"
-                                className="block px-4 py-2 rounded-full "
+                                className="block px-4 py-2 rounded-full hover:bg-[#fae4d4]"
                                 onClick={() => setMobileMenuOpen(false)}
                             >
                                 Consultant
@@ -174,21 +174,21 @@ export default function Navbar() {
                                 <>
                                     <Link
                                         to="/profile"
-                                        className="block px-4 py-2 rounded-full "
+                                        className="block px-4 py-2 rounded-full hover:bg-[#fae4d4]"
                                         onClick={() => setMobileMenuOpen(false)}
                                     >
                                         My Profile
                                     </Link>
                                     <Link
                                         to="/get-verified"
-                                        className="block px-4 py-2 rounded-full "
+                                        className="block px-4 py-2 rounded-full hover:bg-[#fae4d4]"
                                         onClick={() => setMobileMenuOpen(false)}
                                     >
                                         Get Verified
                                     </Link>
                                     <Link
                                         to="/my-ads"
-                                        className="block px-4 py-2 rounded-full "
+                                        className="block px-4 py-2 rounded-full hover:bg-[#fae4d4]"
                                         onClick={() => setMobileMenuOpen(false)}
                                     >
                                         My Ads
