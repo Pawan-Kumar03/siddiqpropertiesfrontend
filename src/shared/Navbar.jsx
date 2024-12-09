@@ -38,7 +38,7 @@ export default function Navbar() {
     };
 
     return (
-        <header className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+        <header className="bg-gradient-to-r from-teal-400 via-cyan-500 to-blue-500">
             <nav className="backdrop-blur-xl bg-white/10 rounded-lg mx-auto max-w-7xl flex items-center justify-between px-6 py-3 shadow-lg">
                 {/* Logo */}
                 <div>
@@ -51,19 +51,19 @@ export default function Navbar() {
                 <div className="hidden sm:flex items-center space-x-6">
                     <Link
                         to="/"
-                        className="px-4 py-2 text-white font-medium rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 hover:from-indigo-500 hover:to-purple-500 transition duration-300 shadow-lg"
+                        className="px-4 py-2 text-white font-medium rounded-full bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-cyan-500 hover:to-teal-500 transition duration-300 shadow-lg"
                     >
                         Home
                     </Link>
                     <Link
                         to="/about-us"
-                        className="px-4 py-2 text-white font-medium rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 hover:from-indigo-500 hover:to-purple-500 transition duration-300 shadow-lg"
+                        className="px-4 py-2 text-white font-medium rounded-full bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-cyan-500 hover:to-teal-500 transition duration-300 shadow-lg"
                     >
                         About Us
                     </Link>
                     <Link
                         to="/ConsultancyPage"
-                        className="px-4 py-2 text-white font-medium rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 hover:from-indigo-500 hover:to-purple-500 transition duration-300 shadow-lg"
+                        className="px-4 py-2 text-white font-medium rounded-full bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-cyan-500 hover:to-teal-500 transition duration-300 shadow-lg"
                     >
                         Consultant
                     </Link>
@@ -72,7 +72,7 @@ export default function Navbar() {
                         <div className="relative">
                             <button
                                 onClick={toggleDropdown}
-                                className="px-4 py-2 text-white font-medium rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 hover:from-indigo-500 hover:to-purple-500 transition duration-300 shadow-lg dropdown-toggle"
+                                className="px-4 py-2 text-white font-medium rounded-full bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-cyan-500 hover:to-teal-500 transition duration-300 shadow-lg dropdown-toggle"
                             >
                                 {user.name}
                             </button>
@@ -114,7 +114,7 @@ export default function Navbar() {
                     ) : (
                         <Link
                             to="/login"
-                            className="px-4 py-2 text-white font-medium rounded-full bg-gradient-to-r from-pink-500 to-red-500 hover:from-red-500 hover:to-pink-500 transition duration-300 shadow-lg"
+                            className="px-4 py-2 text-white font-medium rounded-full bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-cyan-500 hover:to-teal-500 transition duration-300 shadow-lg"
                         >
                             Login
                         </Link>
@@ -199,7 +199,7 @@ export default function Navbar() {
                             ) : (
                                 <Link
                                     to="/login"
-                                    className="block px-4 py-2 text-white bg-pink-600 rounded-md hover:bg-pink-800"
+                                    className="block px-4 py-2 text-white bg-teal-600 rounded-md hover:bg-teal-800"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
                                     Login
