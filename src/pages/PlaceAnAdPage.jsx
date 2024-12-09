@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ListingsContext from "../contexts/ListingsContext";
 import imageCompression from 'browser-image-compression';
+import { PDFDocument } from 'pdf-lib';
 
 export default function PlaceAnAdPage() {
   const { addListing } = useContext(ListingsContext); // Use listings context
@@ -74,7 +75,6 @@ export default function PlaceAnAdPage() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
     setIsPublishing(true); // Set publishing state to true
   
     try {
@@ -82,40 +82,44 @@ export default function PlaceAnAdPage() {
       await new Promise((resolve) => setTimeout(resolve, 2000));
   
       const submissionData = new FormData();
+  
       if (!formData.status) {
         formData.status = false;
       }
   
-     // Compress images before appending them
-    const compressedImages = await Promise.all(
-      formData.images.map(async (image) => {
-        // console.log(`Original size of image: ${(image.size / 1024 / 1024).toFixed(2)} MB`); // Log original size
-        const options = {
-          maxSizeMB: 1, // Target size of 1MB
-          maxWidthOrHeight: 1920, // Maximum width or height in pixels
-          useWebWorker: true, // Use a web worker for faster processing
-        };
-        try {
-          const compressedImage = await imageCompression(image, options);
-          // console.log(`Compressed size of image: ${(compressedImage.size / 1024 / 1024).toFixed(2)} MB`); // Log compressed size
-          return compressedImage;
-        } catch (error) {
-          console.error('Error compressing image:', error);
-          throw error;
-        }
-      })
-    );
-      
+      // Compress images before appending them
+      const compressedImages = await Promise.all(
+        formData.images.map(async (image) => {
+          const options = {
+            maxSizeMB: 1, // Target size of 1MB
+            maxWidthOrHeight: 1920, // Maximum width or height in pixels
+            useWebWorker: true, // Use a web worker for faster processing
+          };
+          try {
+            const compressedImage = await imageCompression(image, options);
+            return compressedImage;
+          } catch (error) {
+            console.error("Error compressing image:", error);
+            throw error;
+          }
+        })
+      );
   
       // Append all compressed images to the FormData
       compressedImages.forEach((image) => {
-        submissionData.append('images', image);
+        submissionData.append("images", image);
       });
-
-      // Append PDF file
-    if (formData.pdf) {
-      submissionData.append("pdf", formData.pdf);
-    }
+  
+      // Compress the PDF file before appending
+      if (formData.pdf) {
+        try {
+          const compressedPdf = await compressPDF(formData.pdf);
+          submissionData.append("pdf", compressedPdf);
+        } catch (error) {
+          console.error("Failed to compress PDF:", error);
+          throw error;
+        }
+      }
   
       // Append other form data
       for (const key in formData) {
@@ -125,24 +129,24 @@ export default function PlaceAnAdPage() {
       }
   
       // Append additional broker data
-      submissionData.set('broker', formData.agentName);
-      submissionData.set('email', formData.agentEmail);
-      submissionData.set('phone', formData.agentCallNumber);
-      submissionData.set('whatsapp', formData.agentWhatsapp);
+      submissionData.set("broker", formData.agentName);
+      submissionData.set("email", formData.agentEmail);
+      submissionData.set("phone", formData.agentCallNumber);
+      submissionData.set("whatsapp", formData.agentWhatsapp);
   
       // Retrieve token from localStorage
-      const user = localStorage.getItem('user');
+      const user = localStorage.getItem("user");
       const parsedUser = JSON.parse(user);
       const token = parsedUser.token;
   
       // Send the form data to the backend
       let postResponse = await fetch(
-        'https://backend-git-main-pawan-togas-projects.vercel.app/api/listings',
+        "https://backend-git-main-pawan-togas-projects.vercel.app/api/listings",
         {
-          method: 'POST',
+          method: "POST",
           headers: {
             Authorization: `Bearer ${token}`,
-            Accept: 'application/json',
+            Accept: "application/json",
           },
           body: submissionData,
         }
@@ -153,12 +157,48 @@ export default function PlaceAnAdPage() {
         setSubmitted(true);
         addListing(newListing);
       } else {
-        throw new Error('Failed to publish listing');
+        throw new Error("Failed to publish listing");
       }
     } catch (error) {
-      console.error('Failed to submit listing: ' + error.message);
+      console.error("Failed to submit listing: " + error.message);
     } finally {
       setIsPublishing(false); // Reset publishing state after submission
+    }
+  };
+  
+  // Compress PDF Function
+  const compressPDF = async (pdfFile) => {
+    const { PDFDocument } = await import("pdf-lib");
+    try {
+      const pdfBytes = await pdfFile.arrayBuffer(); // Convert PDF file to ArrayBuffer
+      const pdfDoc = await PDFDocument.load(pdfBytes); // Load the PDF document
+  
+      // Recreate the document to compress it
+      const compressedPdfDoc = await PDFDocument.create();
+      const copiedPages = await compressedPdfDoc.copyPages(
+        pdfDoc,
+        pdfDoc.getPageIndices()
+      );
+  
+      copiedPages.forEach((page) => compressedPdfDoc.addPage(page));
+  
+      // Serialize the compressed PDF to a Uint8Array
+      const compressedPdfBytes = await compressedPdfDoc.save();
+  
+      // Create a new Blob for the compressed PDF
+      const compressedPdfBlob = new Blob([compressedPdfBytes], {
+        type: "application/pdf",
+      });
+  
+      // Ensure the compressed file is below 100 KB
+      if (compressedPdfBlob.size > 100 * 1024) {
+        throw new Error("Compressed PDF exceeds 100 KB limit");
+      }
+  
+      return new File([compressedPdfBlob], pdfFile.name, { type: "application/pdf" });
+    } catch (error) {
+      console.error("Error compressing PDF:", error);
+      throw error;
     }
   };
   
