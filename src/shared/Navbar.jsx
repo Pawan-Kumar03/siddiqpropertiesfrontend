@@ -38,7 +38,7 @@ export default function Navbar() {
     };
 
     return (
-        <header className="bg-blue-100/40">
+        <header className="bg-[#fff7f1]">
             <nav className="bg-white/40 backdrop-blur-lg rounded-full mx-auto max-w-5xl flex items-center justify-between px-6 py-2 shadow-lg">
                 {/* Logo */}
                 <div>
@@ -55,7 +55,7 @@ export default function Navbar() {
                 <div className="hidden sm:flex items-center space-x-4">
                     <Link
                         to="/"
-                        className="px-4 py-2 text-blue-900 rounded-full bg-white/30 hover:bg-blue-100 transition duration-300"
+                        className="px-4 py-2 text-black rounded-full bg-white/30 hover:bg-blue-100 transition duration-300"
                     >
                         Home
                     </Link>
@@ -118,7 +118,7 @@ export default function Navbar() {
                     ) : (
                         <Link
                             to="/login"
-                            className="px-4 py-2 text-white rounded-full bg-blue-300 hover:bg-blue-500 transition duration-300"
+                            className="px-4 py-2 text-white rounded-full bg-[#fff7f1] hover:bg-blue-500 transition duration-300"
                         >
                             Login
                         </Link>
