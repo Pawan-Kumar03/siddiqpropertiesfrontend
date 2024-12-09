@@ -345,7 +345,7 @@ function Step2Commercial({ onNext, onBack, category, title }) {
 
   return (
     <div className="flex font-playfair flex-col items-center space-y-4 w-full max-w-md mx-auto">
-      <h2 className="text-2xl font-playfair font-semibold text-center text-custom">Now choose the right category for your ad: {title} {">"} {category}</h2>
+      <h2 className="text-2xl font-playfair font-semibold text-center text-[#2b1b12]">Now choose the right category for your ad: {title} {">"} {category}</h2>
       <div className="space-y-2 w-3/4 font-playfair">
         <button onClick={() => setSubcategory("Office")} className={`block w-full px-6 py-3 rounded ${subcategory === "Office" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Office</button>
         <button onClick={() => setSubcategory("Retail")} className={`block w-full px-6 py-3 rounded ${subcategory === "Retail" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Retail</button>
@@ -361,7 +361,7 @@ function Step2Commercial({ onNext, onBack, category, title }) {
         <button onClick={() => setSubcategory("Showroom")} className={`block w-full px-6 py-3 rounded ${subcategory === "Showroom" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Showroom</button>
       </div>
       <button onClick={handleSubmit} className="px-6 py-3 bg-custom text-white rounded w-3/4">Continue</button>
-      <button onClick={onBack} className="px-6 py-3 bg-gray-500 text-white rounded w-3/4">Back</button>
+      <button onClick={onBack} className="px-6 py-3 bg-[#2b1b12] text-white rounded w-3/4">Back</button>
     </div>
   );
 }
@@ -603,7 +603,7 @@ const handlePdfChange = (e) => {
       />
       
       {!noAmenities && (
-        <div className="grid grid-cols-2 gap-4 w-full text-custom">
+        <div className="grid grid-cols-2 gap-4 w-full text-[#2b1b12]">
           {getAmenitiesOptions().map((amenity) => (
             <label key={amenity}>
               <input
@@ -636,8 +636,8 @@ const handlePdfChange = (e) => {
              {/* {details.errors.landlordName && <p className="text-red-500 text-sm">{details.errors.landlordName}</p>}
     */}
              <div className="flex space-x-4">
-                        <button onClick={() => setDetails({ ...details, status: true })} className="px-4 py-2 bg-custom text-white rounded">Property Complete</button>
-                        <button onClick={() => setDetails({ ...details, status: false })} className="px-4 py-2 bg-custom text-white rounded">Property Incomplete</button>
+                        <button onClick={() => setDetails({ ...details, status: true })} className="px-4 py-2 bg-[#2b1b12] text-white rounded">Property Complete</button>
+                        <button onClick={() => setDetails({ ...details, status: false })} className="px-4 py-2 bg-[#2b1b12] text-white rounded">Property Incomplete</button>
                       
                     </div>
                     {details.status ? (
@@ -881,7 +881,7 @@ function Step4Review({ onSubmit, onBack, formData }) {
       </div>
 
       <button onClick={onSubmit} className="px-4 py-2 bg-custom text-white rounded w-full">Submit</button>
-      <button onClick={onBack} className="px-4 py-2 bg-gray-500 text-white rounded w-full">Back</button>
+      <button onClick={onBack} className="px-4 py-2 bg-[#2b1b12] text-white rounded w-full">Back</button>
     </div>
   );
 }

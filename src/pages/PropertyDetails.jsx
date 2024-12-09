@@ -271,7 +271,7 @@ export default function PropertyDetails() {
             <>
               <button
                 onClick={handleEditProperty}
-                className="px-6 py-3 bg-[#fff7f1] text-black rounded-full hover:bg-[#fae4d4] transition duration-300 mb-2"
+                className="px-6 py-3 bg-[#2b1b12] text-white rounded-full  transition duration-300 mb-2"
               >
                 Edit Property
               </button>
@@ -318,7 +318,7 @@ export default function PropertyDetails() {
             <div className="flex justify-end">
               <button
                 onClick={() => setShowDeleteModal(false)}
-                className="px-4 py-2 bg-[#fff7f1] text-black rounded-full hover:bg-gray-600 transition duration-300 mr-2"
+                className="px-4 py-2 bg-[#2b1b12] text-white rounded-full transition duration-300 mr-2"
               >
                 Cancel
               </button>
