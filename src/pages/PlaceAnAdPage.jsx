@@ -113,8 +113,8 @@ export default function PlaceAnAdPage() {
       });
 
       // Append PDF file
-    if (details.pdf) {
-      submissionData.append("pdf", details.pdf);
+    if (formData.pdf) {
+      submissionData.append("pdf", formData.pdf);
     }
   
       // Append other form data
@@ -284,7 +284,7 @@ function Step2Residential({ onNext, onBack, category, title }) {
         <button onClick={() => setSubcategory("Villa Compound")} className={`block w-full px-6 py-3 rounded ${subcategory === "Villa Compound" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Villa Compound</button>
       </div>
       <button onClick={handleSubmit} className="px-6 py-3 bg-custom text-white rounded w-3/4">Continue</button>
-      <button onClick={onBack} className="px-6 py-3 bg-[#fff7f1] text-white rounded w-3/4">Back</button>
+      <button onClick={onBack} className="px-6 py-3 bg-[#2b1b12] text-white rounded w-3/4">Back</button>
     </div>
   );
 }
