@@ -55,12 +55,12 @@ const Signup = () => {
     };
 
     return (
-        <div className="min-h-screen flex justify-center items-center bg-gray-800 font-playfair">
-            <div className="bg-grey-dark p-8 rounded shadow-md w-full max-w-md border-4 border-custom font-playfair">
+        <div className="min-h-screen flex justify-center items-center bg-primary font-playfair">
+            <div className="bg-primary p-8 rounded shadow-md w-full max-w-md border-4 border-dark-primary font-playfair">
                 <h2 className="text-2xl font-bold mb-6 text-white text-center">Create an Account</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">
-                        <label className="block text-custom text-sm font-bold mb-2" htmlFor="name">
+                        <label className="block text-primary text-sm font-bold mb-2" htmlFor="name">
                             Name
                         </label>
                         <input
@@ -73,7 +73,7 @@ const Signup = () => {
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block text-custom text-sm font-bold mb-2" htmlFor="email">
+                        <label className="block text-primary text-sm font-bold mb-2" htmlFor="email">
                             Email
                         </label>
                         <input
@@ -86,7 +86,7 @@ const Signup = () => {
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block text-custom text-sm font-bold mb-2" htmlFor="password">
+                        <label className="block text-primary text-sm font-bold mb-2" htmlFor="password">
                             Password
                         </label>
                         <input
@@ -99,7 +99,7 @@ const Signup = () => {
                         />
                     </div>
                     <div className="mb-6">
-                        <label className="block text-custom text-sm font-bold mb-2" htmlFor="confirmPassword">
+                        <label className="block text-primary text-sm font-bold mb-2" htmlFor="confirmPassword">
                             Confirm Password
                         </label>
                         <input
@@ -148,13 +148,13 @@ const Signup = () => {
                         </div>
                     )}
                     {successMessage && (
-                        <div className="mb-4 p-2 bg-custom text-black rounded">
+                        <div className="mb-4 p-2 bg-primary text-black rounded">
                             {successMessage}
                         </div>
                     )}
                     <button
                         type="submit"
-                        className="w-full bg-custom text-black py-2 px-4 rounded transition-colors duration-300 hover:bg-custom-dark"
+                        className="w-full bg-primary text-black py-2 px-4 rounded transition-colors duration-300 hover:bg-primary-dark"
                     >
                         Sign Up
                     </button>
