@@ -148,7 +148,7 @@ export default function Navbar() {
     </button>
 
     {mobileMenuOpen && (
-        <div className="fixed top-0 left-0 w-full h-full bg-primary backdrop-blur-lg text-primary flex flex-col z-50 p-6 overflow-y-auto">
+        <div className="fixed right-0 top-12 bg-primary backdrop-blur-lg text-primary rounded-lg shadow-lg w-48 z-50">
             <button
                 onClick={toggleMobileMenu}
                 className="self-end mb-4 focus:outline-none"
@@ -168,24 +168,23 @@ export default function Navbar() {
                     />
                 </svg>
             </button>
-
             <Link
                 to="/"
-                className="block px-4 py-2 mb-2 rounded-full hover:dark-primary"
+                className="block px-4 py-2 rounded-full hover:dark-primary"
                 onClick={() => setMobileMenuOpen(false)}
             >
                 Home
             </Link>
             <Link
                 to="/about-us"
-                className="block px-4 py-2 mb-2 rounded-full hover:dark-primary"
+                className="block px-4 py-2 rounded-full hover:dark-primary"
                 onClick={() => setMobileMenuOpen(false)}
             >
                 About Us
             </Link>
             <Link
                 to="/ConsultancyPage"
-                className="block px-4 py-2 mb-2 rounded-full hover:dark-primary"
+                className="block px-4 py-2 rounded-full hover:dark-primary"
                 onClick={() => setMobileMenuOpen(false)}
             >
                 Consultant
@@ -194,28 +193,28 @@ export default function Navbar() {
                 <>
                     <Link
                         to="/profile"
-                        className="block px-4 py-2 mb-2 rounded-full hover:dark-primary"
+                        className="block px-4 py-2 rounded-full hover:dark-primary"
                         onClick={() => setMobileMenuOpen(false)}
                     >
                         My Profile
                     </Link>
                     <Link
                         to="/get-verified"
-                        className="block px-4 py-2 mb-2 rounded-full hover:dark-primary"
+                        className="block px-4 py-2 rounded-full hover:dark-primary"
                         onClick={() => setMobileMenuOpen(false)}
                     >
                         Get Verified
                     </Link>
                     <Link
                         to="/my-ads"
-                        className="block px-4 py-2 mb-2 rounded-full hover:dark-primary"
+                        className="block px-4 py-2 rounded-full hover:dark-primary"
                         onClick={() => setMobileMenuOpen(false)}
                     >
                         My Ads
                     </Link>
                     <button
                         onClick={handleLogout}
-                        className="block w-full text-left px-4 py-2 mb-2 rounded-full bg-primary text-primary"
+                        className="block w-full text-left px-4 py-2 rounded-full bg-primary text-primary"
                     >
                         Sign Out
                     </button>
@@ -223,7 +222,7 @@ export default function Navbar() {
             ) : (
                 <Link
                     to="/login"
-                    className="block px-4 py-2 mb-2 text-primary bg-primary rounded-full"
+                    className="block px-4 py-2 text-primary bg-primary rounded-full  mb-2"
                     onClick={() => setMobileMenuOpen(false)}
                 >
                     Login
@@ -232,7 +231,6 @@ export default function Navbar() {
         </div>
     )}
 </div>
-
 
             </nav>
         </header>
