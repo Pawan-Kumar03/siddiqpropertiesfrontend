@@ -8,10 +8,15 @@
     --button-hover: #fae4d4; /* Button hover */
     --button-text: #fff; /* Button text */
     --light-blue: #EAF3FA;
+    --banner:#DDC7BB;
     --font-family: 'Playfair Display', serif;
+
 } 
 .bg-primary {
     background-color: var(--primary-bg); /* Background color */
+}
+.bg-banner{
+    background-color: var(--banner);
 }
 .border{
     color: var(--primary-bg-dark); 
