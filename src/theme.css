@@ -13,7 +13,9 @@
 .bg-primary {
     background-color: var(--primary-bg); /* Background color */
 }
-
+.border{
+    color: var(--primary-bg-dark); 
+}
 .text-primary {
     color: var(--primary-text); /* Dark green for text */
 }
