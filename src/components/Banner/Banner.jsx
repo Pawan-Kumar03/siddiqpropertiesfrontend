@@ -167,7 +167,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     </li>
     <li>
       <button
-        className="bg-primary text-primary hover:bg-primary-dark  hover:text-white transition duration-300 px-4 py-2 sm:px-6 sm:py-2 rounded-full font-semibold shadow-md"
+        className="bg-primary text-primary hover:bg-primary-dark  transition duration-300 px-4 py-2 sm:px-6 sm:py-2 rounded-full font-semibold shadow-md"
         onClick={handleOffPlanClick}
       >
         Off-Plan
@@ -279,17 +279,17 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         <div className="flex flex-col mb-3">
             <label className="mb-1 text-primary font-playfair">Beds</label>
             <select
-                className="w-full font-playfair p-3 h-12 rounded-md border border-primary dark:border-primary dark:bg-primary dark:text-primary"
+                className="w-full font-playfair p-3 h-12 rounded-md  dark:border-primary dark:bg-primary dark:text-primary"
                 name="beds"
                 value={beds}
                 onChange={(e) => setBeds(e.target.value)}
             >
-                 <option value="" className=" font-playfair ">Select Beds</option>
-                                    <option value="1" className=" font-playfair ">1</option>
-                                    <option value="2" className=" font-playfair ">2</option>
-                                    <option value="3" className=" font-playfair ">3</option>
-                                    <option value="4" className=" font-playfair ">4</option>
-                                    <option value="5" className=" font-playfair ">5+</option>
+                 <option value="" className="text-primary font-playfair ">Select Beds</option>
+                                    <option value="1" className="text-primary font-playfair ">1</option>
+                                    <option value="2" className="text-primary font-playfair ">2</option>
+                                    <option value="3" className="text-primary font-playfair ">3</option>
+                                    <option value="4" className="text-primary font-playfair ">4</option>
+                                    <option value="5" className="text-primary font-playfair ">5+</option>
             </select>
         </div>
 
@@ -302,12 +302,12 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                 value={baths}
                 onChange={(e) => setBaths(e.target.value)}
             >
-                <option value="" className=" font-playfair ">Select Baths</option>
-                                    <option value="1" className=" font-playfair ">1</option>
-                                    <option value="2" className=" font-playfair ">2</option>
-                                    <option value="3" className=" font-playfair ">3</option>
-                                    <option value="4" className=" font-playfair ">4</option>
-                                    <option value="5" className=" font-playfair ">5+</option>
+                <option value="" className="text-primary font-playfair ">Select Baths</option>
+                                    <option value="1" className="text-primary font-playfair ">1</option>
+                                    <option value="2" className="text-primary font-playfair ">2</option>
+                                    <option value="3" className="text-primary font-playfair ">3</option>
+                                    <option value="4" className="text-primary font-playfair ">4</option>
+                                    <option value="5" className="text-primary font-playfair ">5+</option>
             </select>
         </div>
 
@@ -320,9 +320,9 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                 value={agentType}
                 onChange={(e) => setAgentType(e.target.value)}
             >
-                <option value="" className=" font-playfair ">Select Owner Type</option>
-                <option value="Owner" className=" font-playfair ">Landlord</option>
-                <option value="Agent" className=" font-playfair ">Agent</option>
+                <option value="" className="text-primary font-playfair ">Select Owner Type</option>
+                <option value="Owner" className="text-primary font-playfair ">Landlord</option>
+                <option value="Agent" className="text-primary font-playfair ">Agent</option>
             </select>
         </div>
     </div>
