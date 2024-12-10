@@ -138,7 +138,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     return (
         <section>
     <div
-        className="container bg-primary lg:bg-cover lg:bg-center lg:bg-no-repeat lg:my-2 lg:pb-10 lg:pt-5 rounded-m"
+        className="container bg-[#DDC7BB] lg:bg-cover lg:bg-center lg:bg-no-repeat lg:my-2 lg:pb-10 lg:pt-5 rounded-m"
         // style={{ backgroundImage: `url('/homepage-banner-img.jpeg')` }} // Applies background image on large screens
     >
                 {/* "Your InvestiBayt Journey Starts Here" Section */}
@@ -146,7 +146,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     Your InvestiBayt Journey Starts Here
 </h1>
 
-        <div className="lg:bg-primary lg:bg-opacity-50 rounded-md lg:p-4 lg:w-[88%] mx-auto">
+        <div className="lg:bg-[#DDC7BB] lg:bg-opacity-50 rounded-md lg:p-4 lg:w-[88%] mx-auto">
         <div className="flex flex-wrap justify-center items-center space-x-4 lg:space-x-10 mb-6">
   <ul className="flex flex-wrap justify-center items-center gap-2 lg:gap-6 text-sm sm:text-base">
     <li>
