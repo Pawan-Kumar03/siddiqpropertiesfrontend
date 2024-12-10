@@ -139,10 +139,10 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         <section>
     <div
         className="container bg-primary lg:bg-cover lg:bg-center lg:bg-no-repeat lg:my-2 lg:pb-10 lg:pt-5 rounded-m"
-        style={{ backgroundImage: `url('/homepage-banner-img.jpeg')` }} // Applies background image on large screens
+        // style={{ backgroundImage: `url('/homepage-banner-img.jpeg')` }} // Applies background image on large screens
     >
                 {/* "Your InvestiBayt Journey Starts Here" Section */}
-                <h1 className="text-2xl text-center bg-lightBlue font-playfair text-primary lg:text-primary lg:mb-8">
+                <h1 className="text-2xl text-center bg-primary font-playfair text-primary lg:text-primary lg:mb-8">
     Your InvestiBayt Journey Starts Here
 </h1>
 
@@ -151,7 +151,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
   <ul className="flex flex-wrap justify-center items-center gap-2 lg:gap-6 text-sm sm:text-base">
     <li>
       <button
-        className="bg-white/30 text-blue-900 hover:bg-blue-600 transition duration-300 px-4 py-2 sm:px-6 sm:py-2 rounded-full font-semibold shadow-md"
+        className="bg-primary text-primary hover:bg-primary-dark transition duration-300 px-4 py-2 sm:px-6 sm:py-2 rounded-full font-semibold shadow-md"
         onClick={handleSaleClick}
       >
         Sale
@@ -159,7 +159,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     </li>
     <li>
       <button
-        className="bg-white/30 text-blue-900 hover:bg-blue-600 transition duration-300 px-4 py-2 sm:px-6 sm:py-2 rounded-full font-semibold shadow-md"
+        className="bg-primary text-primary hover:bg-primary-dark transition duration-300 px-4 py-2 sm:px-6 sm:py-2 rounded-full font-semibold shadow-md"
         onClick={handleRentClick}
       >
         Rent
@@ -167,7 +167,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     </li>
     <li>
       <button
-        className="bg-white/30 text-blue-900 hover:bg-blue-600  hover:text-white transition duration-300 px-4 py-2 sm:px-6 sm:py-2 rounded-full font-semibold shadow-md"
+        className="bg-primary text-primary hover:bg-primary-dark  hover:text-white transition duration-300 px-4 py-2 sm:px-6 sm:py-2 rounded-full font-semibold shadow-md"
         onClick={handleOffPlanClick}
       >
         Off-Plan
@@ -175,7 +175,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     </li>
     <li>
       <Link
-        className="bg-white/30 text-blue-900 hover:bg-blue-600 transition duration-300 px-4 py-2 sm:px-6 sm:py-2 rounded-full font-semibold shadow-md"
+        className="bg-primary text-primary hover:bg-primary-dark transition duration-300 px-4 py-2 sm:px-6 sm:py-2 rounded-full font-semibold shadow-md"
         to="/place-an-ad"
       >
         Create A Listing
@@ -192,7 +192,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         <div className="flex flex-col mb-3">
             <label className="mb-1 font-playfair  text-primary">City</label>
             <select
-                className="w-full p-3 h-12 rounded-md border border-lightBlue dark:border-lightBlue dark:bg-primary dark:text-primary"
+                className="w-full p-3 h-12 rounded-md "
                 name="city"
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
@@ -234,9 +234,9 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
 
         {/* Property Type */}
         <div className="flex flex-col mb-3">
-            <label className="mb-1 text-primaryfont-playfair">Property Type</label>
+            <label className="mb-1 text-primary font-playfair">Property Type</label>
             <select
-                className="w-full p-3 h-12 rounded-md border border-primary dark:border-primary dark:bg-primary dark:text-primary"
+                className="w-full p-3 h-12 rounded-md "
                 name="propertyType"
                 value={propertyType}
                 onChange={(e) => setPropertyType(e.target.value)}
@@ -327,7 +327,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         </div>
     </div>
     <div className="flex items-center justify-between mt-4 w-full ">
-                            <button type="submit" className="bg-button text-white flex items-center justify-center  w-1/2 px-6 py-2 rounded-full font-semibold mr-2 ">
+                            <button type="submit" className="bg-button text-button flex items-center justify-center  w-1/2 px-6 py-2 rounded-full font-semibold mr-2 ">
                                 <img src={inputSearch} alt="Search" className="w-5 h-5 mr-2 font-playfair" />
                                 Search
                             </button>
