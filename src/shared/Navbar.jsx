@@ -126,92 +126,93 @@ export default function Navbar() {
                 </div>
 
                 {/* Mobile Navigation */}
-                <div className="sm:hidden flex items-center">
-                    <button
-                        onClick={toggleMobileMenu}
-                        className="text-primary focus:outline-none"
-                    >
-                        <svg
-                            className="w-6 h-6"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M4 6h16M4 12h16M4 18h16"
-                            />
-                        </svg>
-                    </button>
+                <div className="sm:hidden flex items-center relative z-50">
+    <button
+        onClick={toggleMobileMenu}
+        className="text-primary focus:outline-none"
+    >
+        <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16M4 18h16"
+            />
+        </svg>
+    </button>
 
-                    {mobileMenuOpen && (
-                        <div className="absolute right-0 top-12 bg-primary backdrop-blur-lg text-primary rounded-lg shadow-lg w-48 z-50">
-                            <Link
-                                to="/"
-                                className="block px-4 py-2 rounded-full hover:dark-primary"
-                                onClick={() => setMobileMenuOpen(false)}
-                            >
-                                Home
-                            </Link>
-                            <Link
-                                to="/about-us"
-                                className="block px-4 py-2 rounded-full hover:dark-primary"
-                                onClick={() => setMobileMenuOpen(false)}
-                            >
-                                About Us
-                            </Link>
-                            <Link
-                                to="/ConsultancyPage"
-                                className="block px-4 py-2 rounded-full hover:dark-primary"
-                                onClick={() => setMobileMenuOpen(false)}
-                            >
-                                Consultant
-                            </Link>
-                            {user ? (
-                                <>
-                                    <Link
-                                        to="/profile"
-                                        className="block px-4 py-2 rounded-full hover:dark-primary"
-                                        onClick={() => setMobileMenuOpen(false)}
-                                    >
-                                        My Profile
-                                    </Link>
-                                    <Link
-                                        to="/get-verified"
-                                        className="block px-4 py-2 rounded-full hover:dark-primary"
-                                        onClick={() => setMobileMenuOpen(false)}
-                                    >
-                                        Get Verified
-                                    </Link>
-                                    <Link
-                                        to="/my-ads"
-                                        className="block px-4 py-2 rounded-full hover:dark-primary"
-                                        onClick={() => setMobileMenuOpen(false)}
-                                    >
-                                        My Ads
-                                    </Link>
-                                    <button
-                                        onClick={handleLogout}
-                                        className="block w-full text-left px-4 py-2 rounded-full bg-primary text-primary"
-                                    >
-                                        Sign Out
-                                    </button>
-                                </>
-                            ) : (
-                                <Link
-                                    to="/login"
-                                    className="block px-4 py-2 text-primary bg-primary rounded-full  mb-2"
-                                    onClick={() => setMobileMenuOpen(false)}
-                                >
-                                    Login
-                                </Link>
-                            )}
-                        </div>
-                    )}
-                </div>
+    {mobileMenuOpen && (
+        <div className="absolute right-0 top-12 bg-primary backdrop-blur-lg text-primary rounded-lg shadow-lg w-48 z-50">
+            <Link
+                to="/"
+                className="block px-4 py-2 rounded-full hover:dark-primary"
+                onClick={() => setMobileMenuOpen(false)}
+            >
+                Home
+            </Link>
+            <Link
+                to="/about-us"
+                className="block px-4 py-2 rounded-full hover:dark-primary"
+                onClick={() => setMobileMenuOpen(false)}
+            >
+                About Us
+            </Link>
+            <Link
+                to="/ConsultancyPage"
+                className="block px-4 py-2 rounded-full hover:dark-primary"
+                onClick={() => setMobileMenuOpen(false)}
+            >
+                Consultant
+            </Link>
+            {user ? (
+                <>
+                    <Link
+                        to="/profile"
+                        className="block px-4 py-2 rounded-full hover:dark-primary"
+                        onClick={() => setMobileMenuOpen(false)}
+                    >
+                        My Profile
+                    </Link>
+                    <Link
+                        to="/get-verified"
+                        className="block px-4 py-2 rounded-full hover:dark-primary"
+                        onClick={() => setMobileMenuOpen(false)}
+                    >
+                        Get Verified
+                    </Link>
+                    <Link
+                        to="/my-ads"
+                        className="block px-4 py-2 rounded-full hover:dark-primary"
+                        onClick={() => setMobileMenuOpen(false)}
+                    >
+                        My Ads
+                    </Link>
+                    <button
+                        onClick={handleLogout}
+                        className="block w-full text-left px-4 py-2 rounded-full bg-primary text-primary"
+                    >
+                        Sign Out
+                    </button>
+                </>
+            ) : (
+                <Link
+                    to="/login"
+                    className="block px-4 py-2 text-primary bg-primary rounded-full  mb-2"
+                    onClick={() => setMobileMenuOpen(false)}
+                >
+                    Login
+                </Link>
+            )}
+        </div>
+    )}
+</div>
+
             </nav>
         </header>
     );
