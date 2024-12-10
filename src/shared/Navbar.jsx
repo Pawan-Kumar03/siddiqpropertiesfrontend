@@ -55,19 +55,19 @@ export default function Navbar() {
                 <div className="hidden sm:flex items-center space-x-4">
                     <Link
                         to="/"
-                        className="px-4 py-2 text-primary rounded-full bg-primary hover:bg-dark-primary"
+                        className="px-4 py-2 text-primary rounded-full bg-primary hover:dark-primary"
                     >
                         Home
                     </Link>
                     <Link
                         to="/about-us"
-                        className="px-4 py-2 text-primary rounded-full bg-primary hover:bg-dark-primary"
+                        className="px-4 py-2 text-primary rounded-full bg-primary hover:dark-primary"
                     >
                         About Us
                     </Link>
                     <Link
                         to="/ConsultancyPage"
-                        className="px-4 py-2 text-primary rounded-full bg-primary hover:bg-dark-primary"
+                        className="px-4 py-2 text-primary rounded-full bg-primary hover:dark-primary"
                     >
                         Consultant
                     </Link>
@@ -87,28 +87,28 @@ export default function Navbar() {
                                 >
                                     <Link
                                         to="/profile"
-                                        className="block px-4 py-2 hover:bg-dark-primary"
+                                        className="block px-4 py-2 hover:dark-primary"
                                         onClick={() => setDropdownOpen(false)}
                                     >
                                         My Profile
                                     </Link>
                                     <Link
                                         to="/get-verified"
-                                        className="block px-4 py-2 hover:bg-dark-primary"
+                                        className="block px-4 py-2 hover:dark-primary"
                                         onClick={() => setDropdownOpen(false)}
                                     >
                                         Get Verified
                                     </Link>
                                     <Link
                                         to="/my-ads"
-                                        className="block px-4 py-2 hover:bg-dark-primary"
+                                        className="block px-4 py-2 hover:dark-primary"
                                         onClick={() => setDropdownOpen(false)}
                                     >
                                         My Ads
                                     </Link>
                                     <button
                                         onClick={handleLogout}
-                                        className="w-full text-left px-4 py-2 hover:bg-dark-primary"
+                                        className="w-full text-left px-4 py-2 hover:dark-primary"
                                     >
                                         Sign Out
                                     </button>
@@ -151,21 +151,21 @@ export default function Navbar() {
                         <div className="absolute right-0 top-12 bg-primary backdrop-blur-lg text-primary rounded-lg shadow-lg w-48 z-50">
                             <Link
                                 to="/"
-                                className="block px-4 py-2 rounded-full hover:bg-dark-primary"
+                                className="block px-4 py-2 rounded-full hover:dark-primary"
                                 onClick={() => setMobileMenuOpen(false)}
                             >
                                 Home
                             </Link>
                             <Link
                                 to="/about-us"
-                                className="block px-4 py-2 rounded-full hover:bg-dark-primary"
+                                className="block px-4 py-2 rounded-full hover:dark-primary"
                                 onClick={() => setMobileMenuOpen(false)}
                             >
                                 About Us
                             </Link>
                             <Link
                                 to="/ConsultancyPage"
-                                className="block px-4 py-2 rounded-full hover:bg-dark-primary"
+                                className="block px-4 py-2 rounded-full hover:dark-primary"
                                 onClick={() => setMobileMenuOpen(false)}
                             >
                                 Consultant
@@ -174,21 +174,21 @@ export default function Navbar() {
                                 <>
                                     <Link
                                         to="/profile"
-                                        className="block px-4 py-2 rounded-full hover:bg-dark-primary"
+                                        className="block px-4 py-2 rounded-full hover:dark-primary"
                                         onClick={() => setMobileMenuOpen(false)}
                                     >
                                         My Profile
                                     </Link>
                                     <Link
                                         to="/get-verified"
-                                        className="block px-4 py-2 rounded-full hover:bg-dark-primary"
+                                        className="block px-4 py-2 rounded-full hover:dark-primary"
                                         onClick={() => setMobileMenuOpen(false)}
                                     >
                                         Get Verified
                                     </Link>
                                     <Link
                                         to="/my-ads"
-                                        className="block px-4 py-2 rounded-full hover:bg-dark-primary"
+                                        className="block px-4 py-2 rounded-full hover:dark-primary"
                                         onClick={() => setMobileMenuOpen(false)}
                                     >
                                         My Ads
