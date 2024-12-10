@@ -83,12 +83,12 @@ export default function ProfilePage() {
                 )}
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">
-                        <label className="block text-sm font-medium mb-2 text-primary">Name</label>
+                        <label className="block  text-sm font-medium mb-2 text-primary">Name</label>
                         <input
                             type="text"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
-                            className="w-full p-2 border border-gray-300 rounded"
+                            className="w-full p-2 border border-gray-300 text-primary rounded"
                         />
                     </div>
                     <div className="mb-4">
@@ -97,7 +97,7 @@ export default function ProfilePage() {
                             type="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            className="w-full p-2 border border-gray-300 rounded"
+                            className="w-full p-2 border border-gray-300 text-primary rounded"
                         />
                     </div>
                     <div className="mb-4">
@@ -106,7 +106,7 @@ export default function ProfilePage() {
                             type={showPassword ? 'text' : 'password'}
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            className="w-full p-2 border border-gray-300 rounded"
+                            className="w-full p-2 border border-gray-300 text-primary rounded"
                         />
                     </div>
                     <div className="mb-4">
@@ -115,7 +115,7 @@ export default function ProfilePage() {
                             type={showPassword ? 'text' : 'password'}
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
-                            className="w-full p-2 border border-gray-300 rounded"
+                            className="w-full p-2 border border-gray-300 text-primary rounded"
                         />
                     </div>
                     <div className="mb-4 flex items-center">
