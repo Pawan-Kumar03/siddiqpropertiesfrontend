@@ -45,9 +45,9 @@ export default function ResidentialForSale({ searchParams = {}, listings = [] })
     }, [searchParams, listings]);
 
     return (
-        <section className="py-8 px-4 lg:px-0 bg-primary text-[#2B1B12]">
+        <section className="py-8 px-4 lg:px-0 bg-primary text-primary">
             <div className="container mx-auto">
-                <h1 className="text-3xl font-bold mb-6 text-[#2B1B12] font-primary">
+                <h1 className="text-3xl font-bold mb-6 text-primary font-primary">
                     {searchParams.city ? `Properties in ${searchParams.city}` : "Popular Developments"}
                 </h1>
                 {filteredResults.length > 0 ? (
@@ -69,10 +69,10 @@ export default function ResidentialForSale({ searchParams = {}, listings = [] })
                     </Swiper>
                 ) : (
                     <>
-                        <p className="text-center text-black font-primary">No properties match your search criteria.</p>
+                        <p className="text-center text-primary font-primary">No properties match your search criteria.</p>
                         {relatedResults.length > 0 && (
                             <>
-                                <h2 className="text-2xl font-semibold mt-8 text-[#2B1B12] font-primary">
+                                <h2 className="text-2xl font-semibold mt-8 text-primary font-primary">
                                     Related Properties in {searchParams.city} - {searchParams.propertyType}
                                 </h2>
                                 <Swiper

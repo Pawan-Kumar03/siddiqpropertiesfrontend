@@ -40,12 +40,12 @@ export default function ResetPassword() {
     };
 
     return (
-        <div className="min-h-screen flex justify-center items-center bg-gray-800 font-playfair">
-            <div className="bg-grey-dark p-8 rounded shadow-md w-full max-w-md border-4 border-custom font-playfair">
-                <h2 className="text-2xl font-bold mb-6 text-white text-center">Reset Password</h2>
+        <div className="min-h-screen flex justify-center items-center bg-primary font-playfair">
+            <div className="bg-primary p-8 rounded shadow-md w-full max-w-md border-4  font-playfair">
+                <h2 className="text-2xl font-bold mb-6 text-primary text-center">Reset Password</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">
-                        <label className="block text-custom text-sm font-bold mb-2" htmlFor="newPassword">
+                        <label className="block text-primary text-sm font-bold mb-2" htmlFor="newPassword">
                             New Password
                         </label>
                         <input
@@ -58,7 +58,7 @@ export default function ResetPassword() {
                         />
                     </div>
                     <div className="mb-6">
-                        <label className="block text-custom text-sm font-bold mb-2" htmlFor="confirmPassword">
+                        <label className="block text-primary text-sm font-bold mb-2" htmlFor="confirmPassword">
                             Confirm Password
                         </label>
                         <input
@@ -71,7 +71,7 @@ export default function ResetPassword() {
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="inline-flex items-center text-custom">
+                        <label className="inline-flex items-center text-primary">
                             <input
                                 type="checkbox"
                                 className="form-checkbox"
@@ -93,7 +93,7 @@ export default function ResetPassword() {
                     )}
                     <button
                         type="submit"
-                        className="w-full bg-custom text-black py-2 px-4 rounded transition-colors duration-300 hover:bg-custom-dark"
+                        className="w-full bg-button text-button py-2 px-4 rounded transition-colors duration-300 "
                     >
                         Reset Password
                     </button>

@@ -99,10 +99,10 @@ function PropertiesPage() {
     return (
         <div className="container mx-auto p-4 font-playfair">
             <div className="text-center mb-8 font-playfair">
-                <h1 className="text-2xl sm:text-3xl font-bold text-custom">Properties in {location || "All Locations"} ({city})</h1>
+                <h1 className="text-2xl sm:text-3xl font-bold text-primary">Properties in {location || "All Locations"} ({city})</h1>
             </div>
             
-            <div className="mb-8 flex font-playfair flex-col sm:flex-wrap sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 text-custom">
+            <div className="mb-8 flex font-playfair flex-col sm:flex-wrap sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 text-primary">
                 <div className="flex flex-col w-full sm:w-auto">
                     <label className="text-sm sm:text-base">Purpose</label>
                     <select
@@ -186,7 +186,7 @@ function PropertiesPage() {
                 <div className="flex flex-col w-full sm:w-auto justify-end">
                     <button
                         onClick={handleSearch}
-                        className="p-2 text-sm sm:text-base bg-custom text-black rounded"
+                        className="p-2 text-sm sm:text-base bg-button text-button rounded"
                     >
                         Filter
                     </button>
@@ -199,7 +199,7 @@ function PropertiesPage() {
                         <Card key={property._id} item={property} />
                     ))
                 ) : (
-                    <p className="text-custom">No properties found for the selected criteria.</p>
+                    <p className="text-primary">No properties found for the selected criteria.</p>
                 )}
             </div>
         </div>

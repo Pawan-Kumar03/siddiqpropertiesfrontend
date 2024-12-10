@@ -39,9 +39,9 @@ export default function VerifyPage() {
 
   return (
     <div className="flex justify-center items-center min-h-screen font-playfair">
-      <div className="w-full max-w-md bg-grey-darker p-8 rounded shadow-md border-4 border-custom font-playfair">
-        <h2 className="text-2xl font-bold mb-6 text-center text-custom">Email Verification</h2>
-        <p className="text-custom">{message}</p>
+      <div className="w-full max-w-md bg-primary p-8 rounded shadow-md font-playfair">
+        <h2 className="text-2xl font-bold mb-6 text-center text-primary">Email Verification</h2>
+        <p className="text-primary">{message}</p>
       </div>
     </div>
   );

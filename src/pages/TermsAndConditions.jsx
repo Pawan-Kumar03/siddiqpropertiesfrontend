@@ -49,7 +49,7 @@ These terms are governed by the laws of the United Arab Emirates. Disputes will 
                 <div className="mt-6 text-center">
                     <button
                         onClick={handleBack}
-                        className="bg-primary text-primary py-2 px-4 rounded transition-colors duration-300 hover:bg-primary"
+                        className="bg-button text-button py-2 px-4 rounded transition-colors duration-300 "
                     >
                         Back
                     </button>
