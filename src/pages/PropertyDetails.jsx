@@ -140,9 +140,9 @@ export default function PropertyDetails() {
   };
   
   return (
-<div className="container mt-8 bg-[#fff7f1] backdrop-blur-lg text-black p-6 rounded-lg font-playfair shadow-lg max-w-5xl mx-auto">
+<div className="container mt-8 bg-primary backdrop-blur-lg text-black p-6 rounded-lg font-playfair shadow-lg max-w-5xl mx-auto">
   {isDeleted && (
-    <div className="text-center bg-[#fff7f1] text-black p-4 rounded mb-4">
+    <div className="text-center bg-primary text-black p-4 rounded mb-4">
       Your ad has been deleted successfully!
     </div>
   )}
@@ -151,14 +151,14 @@ export default function PropertyDetails() {
           <div className="flex items-center mb-4 justify-between">
             <button
               onClick={() => navigate(-1)}
-              className="flex items-center text-black hover:underline bg-[#fff7f1] rounded-full px-4 py-2 transition duration-300"
+              className="flex items-center text-black hover:underline bg-primary rounded-full px-4 py-2 transition duration-300"
             >
               <ArrowBackIcon className="mr-1 sm:text-lg text-black" />
               <span className="flex items-center">Back</span>
             </button>
             <button
   onClick={handleViewPDF}
-  className="flex items-center text-black hover:underline bg-[#fff7f1] rounded-full px-4 py-2 transition duration-300"
+  className="flex items-center text-black hover:underline bg-primary rounded-full px-4 py-2 transition duration-300"
 >
   <span className="flex items-center">View PDF</span>
 </button>
@@ -288,7 +288,7 @@ export default function PropertyDetails() {
       
       {fullscreenImage && (
         <div
-          className="fixed inset-0 bg-[#fff7f1] flex justify-center items-center z-50"
+          className="fixed inset-0 bg-primary flex justify-center items-center z-50"
           onClick={closeFullscreenImage}
         >
           <img
@@ -297,7 +297,7 @@ export default function PropertyDetails() {
             className="max-w-full max-h-full"
           />
           <button
-            className="absolute top-4 right-4 text-white bg-[#fff7f1] rounded-full p-2"
+            className="absolute top-4 right-4 text-white bg-primary rounded-full p-2"
             onClick={closeFullscreenImage}
           >
             <CloseIcon />
@@ -307,8 +307,8 @@ export default function PropertyDetails() {
 
       {/* Delete Confirmation Modal */}
       {showDeleteModal && (
-        <div className="fixed inset-0 bg-[#fff7f1] backdrop-blur-lg flex items-center justify-center z-50">
-          <div className="bg-[#fff7f1] rounded-lg p-8 text-black shadow-lg">
+        <div className="fixed inset-0 bg-primary backdrop-blur-lg flex items-center justify-center z-50">
+          <div className="bg-primary rounded-lg p-8 text-black shadow-lg">
             <h3 className="text-lg font-semibold mb-4 text-black">
               Confirm Deletion
             </h3>
