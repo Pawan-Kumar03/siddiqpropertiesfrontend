@@ -140,9 +140,9 @@ export default function PropertyDetails() {
   };
   
   return (
-<div className="container mt-8 bg-primary backdrop-blur-lg text-black p-6 rounded-lg font-playfair shadow-lg max-w-5xl mx-auto">
+<div className="container mt-8 bg-primary backdrop-blur-lg text-[#2B1B12] p-6 rounded-lg font-playfair shadow-lg max-w-5xl mx-auto">
   {isDeleted && (
-    <div className="text-center bg-primary text-black p-4 rounded mb-4">
+    <div className="text-center bg-primary text-[#2B1B12] p-4 rounded mb-4">
       Your ad has been deleted successfully!
     </div>
   )}
@@ -151,14 +151,14 @@ export default function PropertyDetails() {
           <div className="flex items-center mb-4 justify-between">
             <button
               onClick={() => navigate(-1)}
-              className="flex items-center text-black hover:underline bg-primary rounded-full px-4 py-2 transition duration-300"
+              className="flex items-center text-[#2B1B12] hover:underline bg-primary rounded-full px-4 py-2 transition duration-300"
             >
-              <ArrowBackIcon className="mr-1 sm:text-lg text-black" />
+              <ArrowBackIcon className="mr-1 sm:text-lg text-[#2B1B12]" />
               <span className="flex items-center">Back</span>
             </button>
             <button
   onClick={handleViewPDF}
-  className="flex items-center text-black hover:underline bg-primary rounded-full px-4 py-2 transition duration-300"
+  className="flex items-center text-[#2B1B12] hover:underline bg-primary rounded-full px-4 py-2 transition duration-300"
 >
   <span className="flex items-center">View PDF</span>
 </button>
@@ -204,15 +204,15 @@ export default function PropertyDetails() {
           )}
         </div>
         <div className="lg:w-1/2 lg:pl-4">
-          <h3 className="text-lg font-semibold mb-2 text-black">
+          <h3 className="text-lg font-semibold mb-2 text-[#2B1B12]">
             {property.title}
           </h3>
           <p className="text-sm mb-2">
-            <AttachMoneyIcon className="mr-2 text-black" />
+            <AttachMoneyIcon className="mr-2 text-[#2B1B12]" />
             {property.price} AED
           </p>
           <p className="text-sm mb-2">
-            <LocationOnIcon className="mr-2 text-black" />
+            <LocationOnIcon className="mr-2 text-[#2B1B12]" />
             {property.building}, {property.developments}, {property.location}, {property.city}, {property.country}
           </p>
           <p className="text-sm mb-2">
@@ -249,7 +249,7 @@ export default function PropertyDetails() {
           )}
 
           {/* Contact Buttons */}
-          <div className="mb-4 flex items-center space-x-4 text-black">
+          <div className="mb-4 flex items-center space-x-4 text-[#2B1B12]">
             <EmailIcon
               style={{ cursor: "pointer" }}
               onClick={() => handleContactBroker("Email")}
@@ -308,11 +308,11 @@ export default function PropertyDetails() {
       {/* Delete Confirmation Modal */}
       {showDeleteModal && (
         <div className="fixed inset-0 bg-primary backdrop-blur-lg flex items-center justify-center z-50">
-          <div className="bg-primary rounded-lg p-8 text-black shadow-lg">
-            <h3 className="text-lg font-semibold mb-4 text-black">
+          <div className="bg-primary rounded-lg p-8 text-[#2B1B12] shadow-lg">
+            <h3 className="text-lg font-semibold mb-4 text-[#2B1B12]">
               Confirm Deletion
             </h3>
-            <p className="mb-4 text-black">
+            <p className="mb-4 text-[#2B1B12]">
               Are you sure you want to delete this property?
             </p>
             <div className="flex justify-end">
