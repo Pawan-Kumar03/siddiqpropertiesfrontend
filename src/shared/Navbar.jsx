@@ -55,7 +55,7 @@ export default function Navbar() {
                 <div className="hidden sm:flex items-center space-x-4">
                     <Link
                         to="/"
-                        className="px-4 py-2 text-primary rounded-full bg-banner hover:dark-primary"
+                        className="px-4 py-2 text-primary rounded-full bg-primary hover:bg-banner"
                     >
                         Home
                     </Link>
