@@ -142,9 +142,10 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         // style={{ backgroundImage: `url('/homepage-banner-img.jpeg')` }} // Applies background image on large screens
     >
                 {/* "Your InvestiBayt Journey Starts Here" Section */}
-                <h1 className="text-2xl text-center bg-primary font-playfair text-primary lg:text-primary lg:mb-8">
-    Your InvestiBayt Journey Starts Here
+                <h1 className="text-2xl text-center bg-primary font-playfair text-primary lg:text-primary lg:mb-8 inline-block">
+  Your InvestiBayt Journey Starts Here
 </h1>
+
 
         <div className="lg:bg-[#DDC7BB] lg:bg-opacity-50 rounded-md lg:p-4 lg:w-[88%] mx-auto">
         <div className="flex flex-wrap justify-center items-center space-x-4 lg:space-x-10 mb-6">
@@ -297,7 +298,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         <div className="flex flex-col mb-3">
             <label className="mb-1 text-primary font-playfair">Baths</label>
             <select
-                className="w-full font-playfair p-3 h-12 rounded-md border border-primary dark:border-primary dark:bg-primary dark:text-primary"
+                className="w-full font-playfair p-3 h-12 rounded-md dark:border-primary dark:bg-primary dark:text-primary"
                 name="baths"
                 value={baths}
                 onChange={(e) => setBaths(e.target.value)}
@@ -315,7 +316,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         <div className="flex flex-col mb-3">
             <label className="mb-1 text-primary font-playfair">Owner Type</label>
             <select
-                className="w-full  font-playfair p-3 h-12 rounded-md border border-primary dark:border-primary dark:bg-primary dark:text-primary"
+                className="w-full  font-playfair p-3 h-12 rounded-md  dark:border-primary dark:bg-primary dark:text-primary"
                 name="agentType"
                 value={agentType}
                 onChange={(e) => setAgentType(e.target.value)}
