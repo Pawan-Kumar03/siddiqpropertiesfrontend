@@ -57,7 +57,7 @@ const Signup = () => {
     return (
         <div className="min-h-screen flex justify-center items-center bg-primary font-playfair">
             <div className="bg-primary p-8 rounded shadow-md w-full max-w-md border-4 border-dark-primary font-playfair">
-                <h2 className="text-2xl font-bold mb-6 text-white text-center">Create an Account</h2>
+                <h2 className="text-2xl font-bold mb-6 text-primary text-center">Create an Account</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">
                         <label className="block text-primary text-sm font-bold mb-2" htmlFor="name">
@@ -119,7 +119,7 @@ const Signup = () => {
                             onChange={() => setShowPassword(!showPassword)}
                             className="mr-2"
                         />
-                        <label htmlFor="showPassword" className="text-white text-sm">
+                        <label htmlFor="showPassword" className="text-primary text-sm">
                             Show Password
                         </label>
                     </div>
@@ -132,18 +132,18 @@ const Signup = () => {
                             onChange={() => setAcceptedTerms(!acceptedTerms)}
                             className="mr-2"
                         />
-                        <label htmlFor="terms" className="text-white text-sm">
+                        <label htmlFor="terms" className="text-primary text-sm">
                             By signing up, I agree to the{" "}
                             <button
                                 onClick={handleTermsRedirect}
-                                className="text-blue-400 underline"
+                                className="text-primary underline"
                             >
                                 Terms and Conditions
                             </button>.
                         </label>
                     </div>
                     {errorMessage && (
-                        <div className="mb-4 p-2 bg-red-500 text-white rounded">
+                        <div className="mb-4 p-2 bg-red-500 text-primary rounded">
                             {errorMessage}
                         </div>
                     )}
@@ -154,7 +154,7 @@ const Signup = () => {
                     )}
                     <button
                         type="submit"
-                        className="w-full bg-primary text-black py-2 px-4 rounded transition-colors duration-300 hover:bg-primary-dark"
+                        className="w-full bg-button text-black py-2 px-4 rounded transition-colors duration-300 hover:bg-primary-dark"
                     >
                         Sign Up
                     </button>
