@@ -27,7 +27,7 @@ export default function Card({ item }) {
 
     return (
         <div
-            className="hover:shadow-xl p-6 rounded-lg bg-[#fff7f1] text-[#2b1b12] cursor-pointer transition duration-300 ease-in-out h-96 flex flex-col justify-between"
+            className="hover:shadow-xl p-6 rounded-lg bg-primary text-primary cursor-pointer transition duration-300 ease-in-out h-96 flex flex-col justify-between"
             onClick={handleClick}
             style={{ minWidth: '240px' }} // Ensure minimum width for consistency
         >
@@ -40,15 +40,15 @@ export default function Card({ item }) {
                 />
             ) : (
                 <div className="rounded-lg mb-4 object-cover h-48 w-full bg-lightBlue flex items-center justify-center">
-                    <span className="text-[#2b1b12] font-playfair">No Image Available</span>
+                    <span className="text-primary font-playfair">No Image Available</span>
                 </div>
             )}
             <div className="flex flex-col justify-between">
-                <h3 className="text-2xl font-semibold text-[#2b1b12] font-playfair">
+                <h3 className="text-2xl font-semibold text-primary font-playfair">
                     {price}
                 </h3>
-                <p className="text-[#2b1b12] font-semibold truncate mb-2 font-playfair">{title}</p>
-                <p className="text-[#2b1b12] text-sm truncate font-playfair">{extension}</p>
+                <p className="text-primary font-semibold truncate mb-2 font-playfair">{title}</p>
+                <p className="text-primary text-sm truncate font-playfair">{extension}</p>
             </div>
         </div>
     );
