@@ -3,8 +3,8 @@
     --primary-bg: #fff7f1; /* Background color */
     --primary-text: #2B1B12; /* Dark green for text */
     --secondary-text: #010339; /* Muted green */
-    --accent-color: #F5FAFE; /* Highlight color */
-    --button-bg:#27466D; /* Button background */
+    --primary-bg-dark: #fff7f1; /* Highlight color */
+    --button-bg:#2b1b12; /* Button background */
     --button-hover: #4c6f9b; /* Button hover */
     --button-text: #fff; /* Button text */
     --light-blue: #EAF3FA;
@@ -22,13 +22,10 @@
     color: var(--secondary-text); /* Muted green */
 }
 
-.bg-accent {
-    background-color: var(--accent-color); /* Highlight color */
+.bg-primary-dark {
+    background-color: var(--primary-bg-dark); /* Highlight color */
 }
 
-.text-accent {
-    color: var(--accent-color); /* Highlight text color */
-}
 
 .bg-button {
     background-color: var(--button-bg); /* Button background */
