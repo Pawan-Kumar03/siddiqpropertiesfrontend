@@ -537,13 +537,24 @@ const handlePdfChange = (e) => {
       />
       {details.errors.beds && <p className="text-red-500 text-sm">{details.errors.beds}</p>}
       
-      <input
-        type="file"
-        multiple
-        name="images"
-        onChange={handleImageChange}
-        className="border border-primary-400 p-2 rounded w-full"
-      />
+      <div className="border border-primary-400 p-2 rounded w-full">
+  <label
+    htmlFor="imageInput"
+    className="block text-primary-400 font-medium cursor-pointer"
+  >
+    Choose images
+  </label>
+  <input
+    id="imageInput"
+    type="file"
+    multiple
+    name="images"
+    accept="image/*"
+    onChange={handleImageChange}
+    className="hidden"
+  />
+</div>
+
         {details.errors.images && <p className="text-red-500 text-sm">{details.errors.images}</p>}
       
         <input
@@ -738,7 +749,7 @@ const handlePdfChange = (e) => {
       
    
       <div className="flex space-x-4 w-full">
-        <button onClick={onBack} className="px-4 py-2 bg-primary button-button rounded w-full">Back</button>
+        <button onClick={onBack} className="px-4 py-2 bg-button text-button rounded w-full">Back</button>
         <button onClick={handleNext} className="px-4 py-2  bg-button text-button rounded w-full">Next</button>
       </div>
     </div>
