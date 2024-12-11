@@ -97,12 +97,12 @@ function PropertiesPage() {
     };    
 
     return (
-        <div className="container mx-auto p-4 font-playfair">
-            <div className="text-center mb-8 font-playfair">
+        <div className="container mx-auto p-4 font-primary">
+            <div className="text-center mb-8 font-primary">
                 <h1 className="text-2xl sm:text-3xl font-bold text-primary">Properties in {location || "All Locations"} ({city})</h1>
             </div>
             
-            <div className="mb-8 flex font-playfair flex-col sm:flex-wrap sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 text-primary">
+            <div className="mb-8 flex font-primary flex-col sm:flex-wrap sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 text-primary">
                 <div className="flex flex-col w-full sm:w-auto">
                     <label className="text-sm sm:text-base">Purpose</label>
                     <select
@@ -193,7 +193,7 @@ function PropertiesPage() {
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 font-playfair">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 font-primary">
                 {filteredProperties.length > 0 ? (
                     filteredProperties.map(property => (
                         <Card key={property._id} item={property} />

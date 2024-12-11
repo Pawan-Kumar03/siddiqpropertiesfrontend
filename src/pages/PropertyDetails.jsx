@@ -140,7 +140,7 @@ export default function PropertyDetails() {
   };
   
   return (
-<div className="container mt-8 bg-primary backdrop-blur-lg text-primary p-6 rounded-lg font-playfair shadow-lg max-w-5xl mx-auto">
+<div className="container mt-8 bg-primary backdrop-blur-lg text-primary p-6 rounded-lg font-primary shadow-lg max-w-5xl mx-auto">
   {isDeleted && (
     <div className="text-center bg-primary text-primary p-4 rounded mb-4">
       Your ad has been deleted successfully!

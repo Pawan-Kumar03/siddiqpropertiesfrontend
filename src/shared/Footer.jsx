@@ -78,10 +78,10 @@ export default function Footer() {
     ];
 
     return (
-        <footer className="bg-primary py-8 px-4 lg:px-0 text-primary shadow-lg">
+        <footer className="bg-primary py-8 px-4 lg:px-0 text-primary font-primary shadow-lg">
             <div className="container mx-auto">
                 {/* Footer content for larger screens */}
-                <div className="hidden lg:flex lg:justify-between pb-6">
+                <div className="hidden lg:flex lg:justify-between font-primary pb-6">
                     {data.map((footerItem, index) => (
                         <div key={index} className="flex-1">
                             <h3 className="text-base font-semibold mb-4 text-primary">
@@ -105,7 +105,7 @@ export default function Footer() {
                 </div>
 
                 {/* Footer content for smaller screens */}
-                <div className="lg:hidden grid grid-cols-2 gap-4 pb-6">
+                <div className="lg:hidden grid grid-cols-2 gap-4 pb-6 font-primary">
                     {data.map((footerItem, index) => (
                         <div key={index}>
                             <h3 className="text-base font-semibold mb-2 text-primary">
@@ -129,7 +129,7 @@ export default function Footer() {
                 </div>
 
                 {/* Footer Bottom Section */}
-                <div className="mt-6 flex flex-col items-center lg:items-start lg:flex-row justify-between">
+                <div className="mt-6 flex flex-col items-center font-primary lg:items-start lg:flex-row justify-between">
                     <div className="flex items-center space-x-4">
                         <img className="w-32" src={logoDark} alt="Logo" />
                         <small className="text-primary text-center lg:text-left mt-4 lg:mt-0">

@@ -224,11 +224,11 @@ export default function PlaceAnAdPage() {
 
   if (submitted) {
     return (
-      <div className="container mx-auto p-4 font-playfair">
-        <div className="text-center bg-green-200 text-green-700 p-4 rounded font-playfair">
+      <div className="container mx-auto p-4 font-primary">
+        <div className="text-center bg-green-200 text-green-700 p-4 rounded font-primary">
           Your ad has been published successfully!
         </div>
-        <div className="flex justify-center mt-4 font-playfair">
+        <div className="flex justify-center mt-4 font-primary">
           <button onClick={() => navigate("/")} className="px-6 py-3 bg-custom text-white rounded">
             Go to Home
           </button>
@@ -238,7 +238,7 @@ export default function PlaceAnAdPage() {
   }
 
   return (
-    <div className="container mx-auto p-4 font-playfair">
+    <div className="container mx-auto p-4 font-primary">
       {isPublishing ? (
         <div className="text-center text-primary bg-custom  p-4 rounded">
           Your Ad is publishing...
@@ -276,7 +276,7 @@ function Step1({ onNext }) {
   };
 
   return (
-    <div className="flex flex-col items-center space-y-4 w-full max-w-md mx-auto font-playfair">
+    <div className="flex flex-col items-center space-y-4 w-full max-w-md mx-auto font-primary">
       <h2 className="text-2xl font-semibold text-center text-primary">Enter a short title to describe your listing</h2>
       <h3 className="text-center text-primary">Make your title informative and attractive.</h3>
       <input
@@ -300,15 +300,15 @@ function StepChooseCategory({ onNext, onBack, title }) {
   };
 
   return (
-    <div className="flex flex-col items-center space-y-4 w-full max-w-md mx-auto font-playfair">
-      <h2 className="text-2xl  font-playfair font-semibold text-center text-primary">Now choose the right category for your ad: {title}</h2>
-      <div className="space-y-2 w-3/4 font-playfair">
+    <div className="flex flex-col items-center space-y-4 w-full max-w-md mx-auto font-primary">
+      <h2 className="text-2xl  font-primary font-semibold text-center text-primary">Now choose the right category for your ad: {title}</h2>
+      <div className="space-y-2 w-3/4 font-primary">
         <button onClick={() => handleCategorySelect("Residential")} className={`block w-full px-6 py-3 rounded ${category === "Residential" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Residential</button>
         <button onClick={() => handleCategorySelect("Commercial")} className={`block w-full px-6 py-3 rounded ${category === "Commercial" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Commercial</button>
         <button onClick={() => handleCategorySelect("Land")} className={`block w-full px-6 py-3 rounded ${category === "Land" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Land</button>
         <button onClick={() => handleCategorySelect("Multiple Units")} className={`block w-full px-6 py-3 rounded ${category === "Multiple Units" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Multiple Units</button>
       </div>
-      <button onClick={onBack} className="px-4 py-2 font-playfair  bg-button text-button rounded w-full">Back</button>
+      <button onClick={onBack} className="px-4 py-2 font-primary  bg-button text-button rounded w-full">Back</button>
     </div>
   );
 }
@@ -321,9 +321,9 @@ function Step2Residential({ onNext, onBack, category, title }) {
   };
 
   return (
-    <div className="flex font-playfair flex-col items-center space-y-4 w-full max-w-md mx-auto">
-      <h2 className="text-2xl font-playfair font-semibold text-center text-primary">Now choose the right category for your ad: {title} {">"} {category}</h2>
-      <div className="space-y- font-playfair w-3/4">
+    <div className="flex font-primary flex-col items-center space-y-4 w-full max-w-md mx-auto">
+      <h2 className="text-2xl font-primary font-semibold text-center text-primary">Now choose the right category for your ad: {title} {">"} {category}</h2>
+      <div className="space-y- font-primary w-3/4">
         <button onClick={() => setSubcategory("Apartment")} className={`block w-full px-6 py-3 rounded ${subcategory === "Apartment" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Apartment</button>
         <button onClick={() => setSubcategory("Villa")} className={`block w-full px-6 py-3 rounded ${subcategory === "Villa" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Villa</button>
         <button onClick={() => setSubcategory("Townhouse")} className={`block w-full px-6 py-3 rounded ${subcategory === "Townhouse" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Townhouse</button>
@@ -346,9 +346,9 @@ function Step2Commercial({ onNext, onBack, category, title }) {
   };
 
   return (
-    <div className="flex font-playfair flex-col items-center space-y-4 w-full max-w-md mx-auto">
-      <h2 className="text-2xl font-playfair font-semibold text-center text-primary">Now choose the right category for your ad: {title} {">"} {category}</h2>
-      <div className="space-y-2 w-3/4 font-playfair">
+    <div className="flex font-primary flex-col items-center space-y-4 w-full max-w-md mx-auto">
+      <h2 className="text-2xl font-primary font-semibold text-center text-primary">Now choose the right category for your ad: {title} {">"} {category}</h2>
+      <div className="space-y-2 w-3/4 font-primary">
         <button onClick={() => setSubcategory("Office")} className={`block w-full px-6 py-3 rounded ${subcategory === "Office" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Office</button>
         <button onClick={() => setSubcategory("Retail")} className={`block w-full px-6 py-3 rounded ${subcategory === "Retail" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Retail</button>
         <button onClick={() => setSubcategory("Industrial")} className={`block w-full px-6 py-3 rounded ${subcategory === "Industrial" ? 'bg-custom text-white' : 'bg-gray-200'}`}>Industrial</button>
@@ -483,7 +483,7 @@ const handlePdfChange = (e) => {
     setDetails(prev => ({ ...prev, [name]: newValue }));
   };
   return (
-    <div className="flex flex-col items-center space-y-4 w-full max-w-lg mx-auto font-playfair">
+    <div className="flex flex-col items-center space-y-4 w-full max-w-lg mx-auto font-primary">
       <h2 className="text-2xl font-semibold text-center text-primary">You’re almost there!</h2>
       <h3 className="text-center text-primary">Include as much details and pictures as possible, and set the right price!</h3>
       <h4 className="text-center text-primary">{formData.title} {">"} {formData.category}</h4>
@@ -749,7 +749,7 @@ const handlePdfChange = (e) => {
 
 function Step4Review({ onSubmit, onBack, formData }) {
   return (
-    <div className="flex font-playfair flex-col items-center space-y-4 w-full max-w-lg mx-auto p-4 bg-primary shadow-lg rounded">
+    <div className="flex font-primary flex-col items-center space-y-4 w-full max-w-lg mx-auto p-4 bg-primary shadow-lg rounded">
       <h2 className="text-2xl font-semibold text-center mb-4">Review Your Ad</h2>
 
       <div className="w-full space-y-4">
