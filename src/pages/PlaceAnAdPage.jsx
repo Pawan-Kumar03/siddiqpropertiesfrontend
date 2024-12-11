@@ -284,7 +284,7 @@ function Step1({ onNext }) {
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         placeholder="e.g. 1 Bedroom available in Al-Barsha"
-        className="border border-primary-400 p-2 rounded w-full focus:outline-none focus:border-custom"
+        className="text-primary border border-primary-400 p-2 rounded w-full focus:outline-none focus:border-custom"
       />
       <button onClick={handleSubmit} className="px-4 py-2 bg-button text-button rounded w-full">Let's Go</button>
     </div>
@@ -493,7 +493,7 @@ const handlePdfChange = (e) => {
       value={details.country || ""}
       onChange={handleDetailsChange}
       placeholder="Country"
-      className="border border-primary-400 p-2 rounded w-full"
+      className="text-primary border border-primary-400 p-2 rounded w-full"
     />
     {details.errors.country && <p className="text-red-500 text-sm">{details.errors.country}</p>}
 
@@ -503,7 +503,7 @@ const handlePdfChange = (e) => {
         value={details.city}
         onChange={handleDetailsChange}
         placeholder="City"
-        className="border border-primary-400 p-2 rounded w-full"
+        className="text-primary border border-primary-400 p-2 rounded w-full"
       />
       {details.errors.city && <p className="text-red-500 text-sm">{details.errors.city}</p>}
       
@@ -513,7 +513,7 @@ const handlePdfChange = (e) => {
         value={details.location}
         onChange={handleDetailsChange}
         placeholder="Location"
-        className="border border-primary-400 p-2 rounded w-full"
+        className="text-primary border border-primary-400 p-2 rounded w-full"
       />
       {details.errors.location && <p className="text-red-500 text-sm">{details.errors.location}</p>}
       
@@ -523,7 +523,7 @@ const handlePdfChange = (e) => {
         value={details.propertyType}
         onChange={handleDetailsChange}
         placeholder="Property Type"
-        className="border border-primary-400 p-2 rounded w-full"
+        className="text-primary border border-primary-400 p-2 rounded w-full"
       />
       {details.errors.propertyType && <p className="text-red-500 text-sm">{details.errors.propertyType}</p>}
       
@@ -533,11 +533,11 @@ const handlePdfChange = (e) => {
         value={details.beds || ""}
         onChange={handleDetailsChange}
         placeholder="Beds"
-        className="border border-primary-400 p-2 rounded w-full"
+        className="text-primary border border-primary-400 p-2 rounded w-full"
       />
       {details.errors.beds && <p className="text-red-500 text-sm">{details.errors.beds}</p>}
       
-      <div className="border border-primary-400 p-2 rounded w-full">
+      <div className="text-primary border border-primary-400 p-2 rounded w-full">
   <label
     htmlFor="imageInput"
     className="block text-primary font-primary cursor-pointer"
@@ -557,7 +557,7 @@ const handlePdfChange = (e) => {
 
         {details.errors.images && <p className="text-red-500 text-sm">{details.errors.images}</p>}
       
-        <div className="border border-primary-400 p-2 rounded w-full">
+        <div className="text-primary border border-primary-400 p-2 rounded w-full">
   <label
     htmlFor="pdfInput"
     className="block text-primary font-medium cursor-pointer"
@@ -581,7 +581,7 @@ const handlePdfChange = (e) => {
         value={details.description}
         onChange={(e) => setDetails({ ...details, description: e.target.value })}
         placeholder="Description"
-        className="border border-primary-400 p-2 rounded w-full h-24"
+        className="text-primary border border-primary-400 p-2 rounded w-full h-24"
       />
       
       <input
@@ -590,7 +590,7 @@ const handlePdfChange = (e) => {
         value={details.price}
         onChange={handleDetailsChange}
         placeholder="Price"
-        className="border border-primary-400 p-2 rounded w-full"
+        className="text-primary border border-primary-400 p-2 rounded w-full"
       />
       {details.errors.price && <p className="text-red-500 text-sm">{details.errors.price}</p>}
       
@@ -600,7 +600,7 @@ const handlePdfChange = (e) => {
         value={details.baths || ""}
         onChange={handleDetailsChange}
         placeholder="Baths"
-        className="border border-primary-400 p-2 rounded w-full"
+        className="text-primary border border-primary-400 p-2 rounded w-full"
       />
       {details.errors.baths && <p className="text-red-500 text-sm">{details.errors.baths}</p>}
       
@@ -608,7 +608,7 @@ const handlePdfChange = (e) => {
         name="purpose"
         value={details.purpose}
         onChange={handleDetailsChange}
-        className="border border-primary-400 p-2 rounded w-full"
+        className="text-primary border border-primary-400 p-2 rounded w-full"
       >
         <option value="">Select Purpose</option>
         <option value="sell">Sell</option>
@@ -622,7 +622,7 @@ const handlePdfChange = (e) => {
         value={details.propertyReferenceId}
         onChange={handleDetailsChange}
         placeholder="Property Reference ID"
-        className="border border-primary-400 p-2 rounded w-full"
+        className="text-primary border border-primary-400 p-2 rounded w-full"
       />
       
       {!noAmenities && (
@@ -654,7 +654,7 @@ const handlePdfChange = (e) => {
             value={details.landlordName}
             onChange={handleDetailsChange}
             placeholder="Landlord Name"
-            className="border border-primary-400 p-2 rounded w-full"
+            className="text-primary border border-primary-400 p-2 rounded w-full"
           />
              {/* {details.errors.landlordName && <p className="text-red-500 text-sm">{details.errors.landlordName}</p>}
     */}
@@ -669,7 +669,7 @@ const handlePdfChange = (e) => {
                             value={details.reraTitleNumber}
                             onChange={(e) => setDetails({ ...details, reraTitleNumber: e.target.value })}
                             placeholder="RERA Title Number"
-                            className="border border-primary-400 p-2 rounded w-full"
+                            className="text-primary border border-primary-400 p-2 rounded w-full"
                         />
                     ) : (
                         <input
@@ -677,7 +677,7 @@ const handlePdfChange = (e) => {
                             value={details.reraPreRegistrationNumber}
                             onChange={(e) => setDetails({ ...details, reraPreRegistrationNumber: e.target.value })}
                             placeholder="RERA Pre Registration Number"
-                            className="border border-primary-400 p-2 rounded w-full"
+                            className="text-primary border border-primary-400 p-2 rounded w-full"
                         />
                     )}
                     <input
@@ -685,7 +685,7 @@ const handlePdfChange = (e) => {
                         value={details.building}
                         onChange={(e) => setDetails({ ...details, building: e.target.value })}
                         placeholder="Building"
-                        className="border border-primary-400 p-2 rounded w-full"
+                        className="text-primary border border-primary-400 p-2 rounded w-full"
                     />
                     <input
       name="developments"
@@ -693,7 +693,7 @@ const handlePdfChange = (e) => {
       value={details.developments || ""}
       onChange={handleDetailsChange}
       placeholder="Development"
-      className="border border-primary-400 p-2 rounded w-full"
+      className="text-primary border border-primary-400 p-2 rounded w-full"
     />
     {details.errors.developments && <p className="text-red-500 text-sm">{details.errors.developments}</p>}
 
@@ -702,7 +702,7 @@ const handlePdfChange = (e) => {
                         value={details.neighborhood}
                         onChange={(e) => setDetails({ ...details, neighborhood: e.target.value })}
                         placeholder="Neighborhood"
-                        className="border border-primary-400 p-2 rounded w-full"
+                        className="text-primary border border-primary-400 p-2 rounded w-full"
                     />
                 </>
             ) : (
@@ -717,7 +717,7 @@ const handlePdfChange = (e) => {
             value={details.agentName}
             onChange={handleChange}
             placeholder="Agent Name"
-            className="border border-primary-400 p-2 rounded w-full"
+            className="text-primary border border-primary-400 p-2 rounded w-full"
           />
             {details.errors.agentName && <p className="text-red-500 text-sm">{details.errors.agentName}</p>}
     
@@ -727,7 +727,7 @@ const handlePdfChange = (e) => {
             value={details.agentCallNumber}
             onChange={handleChange}
             placeholder="Agent Call Number"
-            className="border border-primary-400 p-2 rounded w-full"
+            className="text-primary border border-primary-400 p-2 rounded w-full"
           />
             {details.errors.agentCallNumber && <p className="text-red-500 text-sm">{details.errors.agentCallNumber}</p>}
     
@@ -737,7 +737,7 @@ const handlePdfChange = (e) => {
             value={details.agentEmail}
             onChange={handleChange}
             placeholder="Agent Email"
-            className="border border-primary-400 p-2 rounded w-full"
+            className="text-primary border border-primary-400 p-2 rounded w-full"
           />
             {details.errors.agentEmail && <p className="text-red-500 text-sm">{details.errors.agentEmail}</p>}
     
@@ -747,7 +747,7 @@ const handlePdfChange = (e) => {
             value={details.agentWhatsapp}
             onChange={handleChange}
             placeholder="Agent WhatsApp"
-            className="border border-primary-400 p-2 rounded w-full"
+            className="text-primary border border-primary-400 p-2 rounded w-full"
           />
             {details.errors.agentWhatsapp && <p className="text-red-500 text-sm">{details.errors.agentWhatsapp}</p>}
     
@@ -883,19 +883,19 @@ function Step4Review({ onSubmit, onBack, formData }) {
           </>
         ) : (
           <div className="flex flex-col space-y-2">
-            <div className="border border-primary-400 p-2 rounded w-full">
+            <div className="text-primary border border-primary-400 p-2 rounded w-full">
               <h3 className="font-semibold">Agent Name</h3>
               <p>{formData.agentName}</p>
             </div>
-            <div className="border border-primary-400 p-2 rounded w-full">
+            <div className="text-primary border border-primary-400 p-2 rounded w-full">
               <h3 className="font-semibold">Agent Call Number</h3>
               <p>{formData.agentCallNumber}</p>
             </div>
-            <div className="border border-primary-400 p-2 rounded w-full">
+            <div className="text-primary border border-primary-400 p-2 rounded w-full">
               <h3 className="font-semibold">Agent Email</h3>
               <p>{formData.agentEmail}</p>
             </div>
-            <div className="border border-primary-400 p-2 rounded w-full">
+            <div className="text-primary border border-primary-400 p-2 rounded w-full">
               <h3 className="font-semibold">Agent WhatsApp</h3>
               <p>{formData.agentWhatsapp}</p>
             </div>
