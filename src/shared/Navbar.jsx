@@ -52,10 +52,10 @@ export default function Navbar() {
                     <Link to="/" className="px-4 py-2 text-primary rounded-full bg-banner hover:bg-banner">
                         Home
                     </Link>
-                    <Link to="/about-us" className="text-primary bg-primary-dark rounded-full font-primary">
+                    <Link to="/about-us" className="px-4 py-2 text-primary rounded-full bg-banner hover:bg-banner">
                         About Us
                     </Link>
-                    <Link to="/ConsultancyPage" className="text-primary bg-primary-dark rounded-full font-primary">
+                    <Link to="/ConsultancyPage" className="tpx-4 py-2 text-primary rounded-full bg-banner hover:bg-banner">
                         Consultant
                     </Link>
 
