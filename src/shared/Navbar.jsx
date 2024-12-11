@@ -55,7 +55,7 @@ export default function Navbar() {
                     <Link to="/about-us" className="px-4 py-2 text-primary rounded-full bg-banner hover:bg-banner">
                         About Us
                     </Link>
-                    <Link to="/ConsultancyPage" className="tpx-4 py-2 text-primary rounded-full bg-banner hover:bg-banner">
+                    <Link to="/ConsultancyPage" className="px-4 py-2 text-primary rounded-full bg-banner hover:bg-banner">
                         Consultant
                     </Link>
 
