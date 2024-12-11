@@ -49,13 +49,13 @@ export default function Navbar() {
 
                 {/* Desktop Navigation */}
                 <div className="hidden sm:flex items-center space-x-6">
-                    <Link to="/" className="text-primary bg-primary-dark font-primary">
+                    <Link to="/" className="text-primary rounded-full bg-primary-dark font-primary">
                         Home
                     </Link>
-                    <Link to="/about-us" className="text-primary bg-primary-dark font-primary">
+                    <Link to="/about-us" className="text-primary bg-primary-dark rounded-full font-primary">
                         About Us
                     </Link>
-                    <Link to="/ConsultancyPage" className="text-primary bg-primary-dark font-primary">
+                    <Link to="/ConsultancyPage" className="text-primary bg-primary-dark rounded-full font-primary">
                         Consultant
                     </Link>
 
@@ -63,14 +63,14 @@ export default function Navbar() {
                         <div className="relative">
                             <button
                                 onClick={toggleDropdown}
-                                className="text-primary bg-primary-dark font-primary dropdown-toggle"
+                                className="text-primary bg-primary-dark rounded-full font-primary dropdown-toggle"
                             >
                                 {user.name}
                             </button>
                             {dropdownOpen && (
                                 <div
                                     id="dropdown"
-                                    className="absolute right-0 mt-2 bg-white border  rounded-lg shadow-lg w-48"
+                                    className="absolute right-0 mt-2 bg-white   rounded-lg shadow-lg w-48"
                                 >
                                     <Link
                                         to="/profile"
@@ -135,24 +135,24 @@ export default function Navbar() {
                     </button>
 
                     {mobileMenuOpen && (
-                        <div className="absolute top-16 right-4 bg-white rounded-lg shadow-lg w-48">
+                        <div className="absolute top-16 right-4 bg-white  rounded-lg shadow-lg w-48">
                             <Link
                                 to="/"
-                                className="block px-4 py-2 text-primary hover:bg-primary-dark"
+                                className="block px-4 py-2 text-primary rounded-full hover:bg-primary-dark"
                                 onClick={() => setMobileMenuOpen(false)}
                             >
                                 Home
                             </Link>
                             <Link
                                 to="/about-us"
-                                className="block px-4 py-2 text-primary hover:bg-primary-dark"
+                                className="block px-4 py-2 text-primary rounded-full hover:bg-primary-dark"
                                 onClick={() => setMobileMenuOpen(false)}
                             >
                                 About Us
                             </Link>
                             <Link
                                 to="/ConsultancyPage"
-                                className="block px-4 py-2 text-primary hover:bg-primary-dark"
+                                className="block px-4 py-2 text-primary rounded-full hover:bg-primary-dark"
                                 onClick={() => setMobileMenuOpen(false)}
                             >
                                 Consultant
@@ -161,28 +161,28 @@ export default function Navbar() {
                                 <>
                                     <Link
                                         to="/profile"
-                                        className="block px-4 py-2 text-primary hover:bg-primary-dark"
+                                        className="block px-4 py-2 text-primary rounded-full hover:bg-primary-dark"
                                         onClick={() => setMobileMenuOpen(false)}
                                     >
                                         My Profile
                                     </Link>
                                     <Link
                                         to="/get-verified"
-                                        className="block px-4 py-2 text-primary hover:bg-primary-dark"
+                                        className="block px-4 py-2 text-primary rounded-full hover:bg-primary-dark"
                                         onClick={() => setMobileMenuOpen(false)}
                                     >
                                         Get Verified
                                     </Link>
                                     <Link
                                         to="/my-ads"
-                                        className="block px-4 py-2 text-primary hover:bg-primary-dark"
+                                        className="block px-4 py-2 text-primary rounded-full hover:bg-primary-dark"
                                         onClick={() => setMobileMenuOpen(false)}
                                     >
                                         My Ads
                                     </Link>
                                     <button
                                         onClick={handleLogout}
-                                        className="block w-full text-left px-4 py-2 text-primary hover:bg-primary-dark"
+                                        className="block w-full text-left px-4 py-2 text-primary rounded-full hover:bg-primary-dark"
                                     >
                                         Sign Out
                                     </button>
