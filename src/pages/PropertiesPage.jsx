@@ -108,7 +108,7 @@ function PropertiesPage() {
                     <select
                         value={purpose}
                         onChange={(e) => setPurpose(e.target.value)}
-                        className="p-2 text-sm sm:text-base border border-gray-300 rounded"
+                        className="text-primary p-2 text-sm sm:text-base border border-primar-400 rounded"
                     >
                         <option value="All">All</option>
                         <option value="sell">For Sale</option>
@@ -121,7 +121,7 @@ function PropertiesPage() {
                     <select
                         value={propertyType}
                         onChange={(e) => setPropertyType(e.target.value)}
-                        className="p-2 text-sm sm:text-base border border-gray-300 rounded"
+                        className="text-primary p-2  text-sm sm:text-base border-primar-400  rounded"
                     >
                         <option value="All">All</option>
                         <option value="Apartment">Apartment</option>
@@ -139,14 +139,14 @@ function PropertiesPage() {
                             placeholder="Min"
                             value={minPrice}
                             onChange={(e) => setMinPrice(e.target.value)}
-                            className="p-2 text-sm sm:text-base border border-gray-300 rounded w-full sm:w-auto"
+                            className="text-primary p-2 text-sm sm:text-base border-primar-400 rounded w-full sm:w-auto"
                         />
                         <input
                             type="number"
                             placeholder="Max"
                             value={maxPrice}
                             onChange={(e) => setMaxPrice(e.target.value)}
-                            className="p-2 text-sm sm:text-base border border-gray-300 rounded w-full sm:w-auto"
+                            className="text-primary p-2 text-sm sm:text-base border-primar-400 rounded w-full sm:w-auto"
                         />
                     </div>
                 </div>
@@ -156,7 +156,7 @@ function PropertiesPage() {
                     <select
                         value={beds}
                         onChange={(e) => setBeds(e.target.value)}
-                        className="p-2 text-sm sm:text-base border border-gray-300 rounded"
+                        className="text-primary p-2 text-sm sm:text-base border-primar-400 rounded"
                     >
                         <option value="Any">Any</option>
                         <option value="1">1</option>
@@ -172,7 +172,7 @@ function PropertiesPage() {
                     <select
                         value={baths}
                         onChange={(e) => setBaths(e.target.value)}
-                        className="p-2 text-sm sm:text-base border border-gray-300 rounded"
+                        className="text-primary p-2 text-sm sm:text-base border-primar-400 rounded"
                     >
                         <option value="Any">Any</option>
                         <option value="1">1</option>
