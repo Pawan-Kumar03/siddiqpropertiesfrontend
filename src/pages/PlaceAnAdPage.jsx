@@ -284,7 +284,7 @@ function Step1({ onNext }) {
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         placeholder="e.g. 1 Bedroom available in Al-Barsha"
-        className="border border-gray-300 p-2 rounded w-full focus:outline-none focus:border-custom"
+        className="border border-primary-400 p-2 rounded w-full focus:outline-none focus:border-custom"
       />
       <button onClick={handleSubmit} className="px-4 py-2 bg-button text-button rounded w-full">Let's Go</button>
     </div>
@@ -493,7 +493,7 @@ const handlePdfChange = (e) => {
       value={details.country || ""}
       onChange={handleDetailsChange}
       placeholder="Country"
-      className="border border-gray-300 p-2 rounded w-full"
+      className="border border-primary-400 p-2 rounded w-full"
     />
     {details.errors.country && <p className="text-red-500 text-sm">{details.errors.country}</p>}
 
@@ -503,7 +503,7 @@ const handlePdfChange = (e) => {
         value={details.city}
         onChange={handleDetailsChange}
         placeholder="City"
-        className="border border-gray-300 p-2 rounded w-full"
+        className="border border-primary-400 p-2 rounded w-full"
       />
       {details.errors.city && <p className="text-red-500 text-sm">{details.errors.city}</p>}
       
@@ -513,7 +513,7 @@ const handlePdfChange = (e) => {
         value={details.location}
         onChange={handleDetailsChange}
         placeholder="Location"
-        className="border border-gray-300 p-2 rounded w-full"
+        className="border border-primary-400 p-2 rounded w-full"
       />
       {details.errors.location && <p className="text-red-500 text-sm">{details.errors.location}</p>}
       
@@ -523,7 +523,7 @@ const handlePdfChange = (e) => {
         value={details.propertyType}
         onChange={handleDetailsChange}
         placeholder="Property Type"
-        className="border border-gray-300 p-2 rounded w-full"
+        className="border border-primary-400 p-2 rounded w-full"
       />
       {details.errors.propertyType && <p className="text-red-500 text-sm">{details.errors.propertyType}</p>}
       
@@ -533,7 +533,7 @@ const handlePdfChange = (e) => {
         value={details.beds || ""}
         onChange={handleDetailsChange}
         placeholder="Beds"
-        className="border border-gray-300 p-2 rounded w-full"
+        className="border border-primary-400 p-2 rounded w-full"
       />
       {details.errors.beds && <p className="text-red-500 text-sm">{details.errors.beds}</p>}
       
@@ -542,7 +542,7 @@ const handlePdfChange = (e) => {
         multiple
         name="images"
         onChange={handleImageChange}
-        className="border border-gray-300 p-2 rounded w-full"
+        className="border border-primary-400 p-2 rounded w-full"
       />
         {details.errors.images && <p className="text-red-500 text-sm">{details.errors.images}</p>}
       
@@ -551,7 +551,7 @@ const handlePdfChange = (e) => {
       name="pdf"
       accept="application/pdf"
       onChange={handlePdfChange}
-      className="border border-gray-300 p-2 rounded w-full"
+      className="border border-primary-400 p-2 rounded w-full"
     />
     {details.errors.pdf && <p className="text-red-500 text-sm">{details.errors.pdf}</p>}
     
@@ -560,7 +560,7 @@ const handlePdfChange = (e) => {
         value={details.description}
         onChange={(e) => setDetails({ ...details, description: e.target.value })}
         placeholder="Description"
-        className="border border-gray-300 p-2 rounded w-full h-24"
+        className="border border-primary-400 p-2 rounded w-full h-24"
       />
       
       <input
@@ -569,7 +569,7 @@ const handlePdfChange = (e) => {
         value={details.price}
         onChange={handleDetailsChange}
         placeholder="Price"
-        className="border border-gray-300 p-2 rounded w-full"
+        className="border border-primary-400 p-2 rounded w-full"
       />
       {details.errors.price && <p className="text-red-500 text-sm">{details.errors.price}</p>}
       
@@ -579,7 +579,7 @@ const handlePdfChange = (e) => {
         value={details.baths || ""}
         onChange={handleDetailsChange}
         placeholder="Baths"
-        className="border border-gray-300 p-2 rounded w-full"
+        className="border border-primary-400 p-2 rounded w-full"
       />
       {details.errors.baths && <p className="text-red-500 text-sm">{details.errors.baths}</p>}
       
@@ -587,7 +587,7 @@ const handlePdfChange = (e) => {
         name="purpose"
         value={details.purpose}
         onChange={handleDetailsChange}
-        className="border border-gray-300 p-2 rounded w-full"
+        className="border border-primary-400 p-2 rounded w-full"
       >
         <option value="">Select Purpose</option>
         <option value="sell">Sell</option>
@@ -601,7 +601,7 @@ const handlePdfChange = (e) => {
         value={details.propertyReferenceId}
         onChange={handleDetailsChange}
         placeholder="Property Reference ID"
-        className="border border-gray-300 p-2 rounded w-full"
+        className="border border-primary-400 p-2 rounded w-full"
       />
       
       {!noAmenities && (
@@ -633,7 +633,7 @@ const handlePdfChange = (e) => {
             value={details.landlordName}
             onChange={handleDetailsChange}
             placeholder="Landlord Name"
-            className="border border-gray-300 p-2 rounded w-full"
+            className="border border-primary-400 p-2 rounded w-full"
           />
              {/* {details.errors.landlordName && <p className="text-red-500 text-sm">{details.errors.landlordName}</p>}
     */}
@@ -648,7 +648,7 @@ const handlePdfChange = (e) => {
                             value={details.reraTitleNumber}
                             onChange={(e) => setDetails({ ...details, reraTitleNumber: e.target.value })}
                             placeholder="RERA Title Number"
-                            className="border border-gray-300 p-2 rounded w-full"
+                            className="border border-primary-400 p-2 rounded w-full"
                         />
                     ) : (
                         <input
@@ -656,7 +656,7 @@ const handlePdfChange = (e) => {
                             value={details.reraPreRegistrationNumber}
                             onChange={(e) => setDetails({ ...details, reraPreRegistrationNumber: e.target.value })}
                             placeholder="RERA Pre Registration Number"
-                            className="border border-gray-300 p-2 rounded w-full"
+                            className="border border-primary-400 p-2 rounded w-full"
                         />
                     )}
                     <input
@@ -664,7 +664,7 @@ const handlePdfChange = (e) => {
                         value={details.building}
                         onChange={(e) => setDetails({ ...details, building: e.target.value })}
                         placeholder="Building"
-                        className="border border-gray-300 p-2 rounded w-full"
+                        className="border border-primary-400 p-2 rounded w-full"
                     />
                     <input
       name="developments"
@@ -672,7 +672,7 @@ const handlePdfChange = (e) => {
       value={details.developments || ""}
       onChange={handleDetailsChange}
       placeholder="Development"
-      className="border border-gray-300 p-2 rounded w-full"
+      className="border border-primary-400 p-2 rounded w-full"
     />
     {details.errors.developments && <p className="text-red-500 text-sm">{details.errors.developments}</p>}
 
@@ -681,7 +681,7 @@ const handlePdfChange = (e) => {
                         value={details.neighborhood}
                         onChange={(e) => setDetails({ ...details, neighborhood: e.target.value })}
                         placeholder="Neighborhood"
-                        className="border border-gray-300 p-2 rounded w-full"
+                        className="border border-primary-400 p-2 rounded w-full"
                     />
                 </>
             ) : (
@@ -696,7 +696,7 @@ const handlePdfChange = (e) => {
             value={details.agentName}
             onChange={handleChange}
             placeholder="Agent Name"
-            className="border border-gray-300 p-2 rounded w-full"
+            className="border border-primary-400 p-2 rounded w-full"
           />
             {details.errors.agentName && <p className="text-red-500 text-sm">{details.errors.agentName}</p>}
     
@@ -706,7 +706,7 @@ const handlePdfChange = (e) => {
             value={details.agentCallNumber}
             onChange={handleChange}
             placeholder="Agent Call Number"
-            className="border border-gray-300 p-2 rounded w-full"
+            className="border border-primary-400 p-2 rounded w-full"
           />
             {details.errors.agentCallNumber && <p className="text-red-500 text-sm">{details.errors.agentCallNumber}</p>}
     
@@ -716,7 +716,7 @@ const handlePdfChange = (e) => {
             value={details.agentEmail}
             onChange={handleChange}
             placeholder="Agent Email"
-            className="border border-gray-300 p-2 rounded w-full"
+            className="border border-primary-400 p-2 rounded w-full"
           />
             {details.errors.agentEmail && <p className="text-red-500 text-sm">{details.errors.agentEmail}</p>}
     
@@ -726,7 +726,7 @@ const handlePdfChange = (e) => {
             value={details.agentWhatsapp}
             onChange={handleChange}
             placeholder="Agent WhatsApp"
-            className="border border-gray-300 p-2 rounded w-full"
+            className="border border-primary-400 p-2 rounded w-full"
           />
             {details.errors.agentWhatsapp && <p className="text-red-500 text-sm">{details.errors.agentWhatsapp}</p>}
     
@@ -755,17 +755,17 @@ function Step4Review({ onSubmit, onBack, formData }) {
       <div className="w-full space-y-4">
         <div className="flex flex-col space-y-2">
           <label className="font-semibold">Title:</label>
-          <div className="p-2 border border-gray-300 rounded bg-gray-100">{formData.title}</div>
+          <div className="p-2 border border-primary-400 rounded bg-gray-100">{formData.title}</div>
         </div>
 
         <div className="flex flex-col space-y-2">
           <label className="font-semibold">Category:</label>
-          <div className="p-2 border border-gray-300 rounded bg-gray-100">{formData.category}</div>
+          <div className="p-2 border border-primary-400 rounded bg-gray-100">{formData.category}</div>
         </div>
 
         <div className="flex flex-col space-y-2">
           <label className="font-semibold">Subcategory:</label>
-          <div className="p-2 border border-gray-300 rounded bg-gray-100">{formData.subcategory}</div>
+          <div className="p-2 border border-primary-400 rounded bg-gray-100">{formData.subcategory}</div>
         </div>
 
         {formData.images.length > 0 && (
@@ -773,7 +773,7 @@ function Step4Review({ onSubmit, onBack, formData }) {
             <label className="font-semibold">Images:</label>
             <div className="flex flex-wrap">
               {formData.images.map((image, index) => (
-                <img key={index} src={URL.createObjectURL(image)} alt={`Upload ${index + 1}`} className="w-24 h-24 object-cover m-2 border border-gray-300 rounded" />
+                <img key={index} src={URL.createObjectURL(image)} alt={`Upload ${index + 1}`} className="w-24 h-24 object-cover m-2 border border-primary-400 rounded" />
               ))}
             </div>
           </div>
@@ -781,100 +781,100 @@ function Step4Review({ onSubmit, onBack, formData }) {
 
         <div className="flex flex-col space-y-2">
           <label className="font-semibold">Description:</label>
-          <div className="p-2 border border-gray-300 rounded bg-gray-100">{formData.description}</div>
+          <div className="p-2 border border-primary-400 rounded bg-gray-100">{formData.description}</div>
         </div>
 
         <div className="flex flex-col space-y-2">
           <label className="font-semibold">Price:</label>
-          <div className="p-2 border border-gray-300 rounded bg-gray-100">{formData.price}</div>
+          <div className="p-2 border border-primary-400 rounded bg-gray-100">{formData.price}</div>
         </div>
         <div className="flex flex-col space-y-2">
           <label className="font-semibold">Country:</label>
-          <div className="p-2 border border-gray-300 rounded bg-gray-100">{formData.country}</div>
+          <div className="p-2 border border-primary-400 rounded bg-gray-100">{formData.country}</div>
         </div>
 
         <div className="flex flex-col space-y-2">
           <label className="font-semibold">Development:</label>
-          <div className="p-2 border border-gray-300 rounded bg-gray-100">{formData.developments}</div>
+          <div className="p-2 border border-primary-400 rounded bg-gray-100">{formData.developments}</div>
         </div>
         {formData.bedrooms && (
           <div className="flex flex-col space-y-2">
             <label className="font-semibold">Bedrooms:</label>
-            <div className="p-2 border border-gray-300 rounded bg-gray-100">{formData.bedrooms}</div>
+            <div className="p-2 border border-primary-400 rounded bg-gray-100">{formData.bedrooms}</div>
           </div>
         )}
 
         {formData.baths && (
           <div className="flex flex-col space-y-2">
             <label className="font-semibold">Bathrooms:</label>
-            <div className="p-2 border border-gray-300 rounded bg-gray-100">{formData.baths}</div>
+            <div className="p-2 border border-primary-400 rounded bg-gray-100">{formData.baths}</div>
           </div>
         )}
 
         {formData.propertyReferenceId && (
           <div className="flex flex-col space-y-2">
             <label className="font-semibold">Property Reference ID:</label>
-            <div className="p-2 border border-gray-300 rounded bg-gray-100">{formData.propertyReferenceId}</div>
+            <div className="p-2 border border-primary-400 rounded bg-gray-100">{formData.propertyReferenceId}</div>
           </div>
         )}
 
         {formData.amenities.length > 0 && (
           <div className="flex flex-col space-y-2">
             <label className="font-semibold">Amenities:</label>
-            <div className="p-2 border border-gray-300 rounded bg-gray-100">{formData.amenities.join(", ")}</div>
+            <div className="p-2 border border-primary-400 rounded bg-gray-100">{formData.amenities.join(", ")}</div>
           </div>
         )}
 
         <div className="flex flex-col space-y-2">
           <label className="font-semibold">Landlord/Agent:</label>
-          <div className="p-2 border border-gray-300 rounded bg-gray-100">{formData.landlord ? "Landlord" : "Agent"}</div>
+          <div className="p-2 border border-primary-400 rounded bg-gray-100">{formData.landlord ? "Landlord" : "Agent"}</div>
         </div>
 
         {formData.landlord ? (
           <>
             <div className="flex flex-col space-y-2">
               <label className="font-semibold">Landlord Name:</label>
-              <div className="p-2 border border-gray-300 rounded bg-gray-100">{formData.landlordName}</div>
+              <div className="p-2 border border-primary-400 rounded bg-gray-100">{formData.landlordName}</div>
             </div>
             <div className="flex flex-col space-y-2">
               <label className="font-semibold">Property Status:</label>
-              <div className="p-2 border border-gray-300 rounded bg-gray-100">{formData.status ? "Complete" : "Incomplete"}</div>
+              <div className="p-2 border border-primary-400 rounded bg-gray-100">{formData.status ? "Complete" : "Incomplete"}</div>
             </div>
             {formData.status ? (
               <div className="flex flex-col space-y-2">
                 <label className="font-semibold">RERA Title Number:</label>
-                <div className="p-2 border border-gray-300 rounded bg-gray-100">{formData.reraTitleNumber}</div>
+                <div className="p-2 border border-primary-400 rounded bg-gray-100">{formData.reraTitleNumber}</div>
               </div>
             ) : (
               <div className="flex flex-col space-y-2">
                 <label className="font-semibold">RERA Pre Registration Number:</label>
-                <div className="p-2 border border-gray-300 rounded bg-gray-100">{formData.reraPreRegistrationNumber}</div>
+                <div className="p-2 border border-primary-400 rounded bg-gray-100">{formData.reraPreRegistrationNumber}</div>
               </div>
             )}
             <div className="flex flex-col space-y-2">
               <label className="font-semibold">Building:</label>
-              <div className="p-2 border border-gray-300 rounded bg-gray-100">{formData.building}</div>
+              <div className="p-2 border border-primary-400 rounded bg-gray-100">{formData.building}</div>
             </div>
             <div className="flex flex-col space-y-2">
               <label className="font-semibold">Neighborhood:</label>
-              <div className="p-2 border border-gray-300 rounded bg-gray-100">{formData.neighborhood}</div>
+              <div className="p-2 border border-primary-400 rounded bg-gray-100">{formData.neighborhood}</div>
             </div>
           </>
         ) : (
           <div className="flex flex-col space-y-2">
-            <div className="border border-gray-300 p-2 rounded w-full">
+            <div className="border border-primary-400 p-2 rounded w-full">
               <h3 className="font-semibold">Agent Name</h3>
               <p>{formData.agentName}</p>
             </div>
-            <div className="border border-gray-300 p-2 rounded w-full">
+            <div className="border border-primary-400 p-2 rounded w-full">
               <h3 className="font-semibold">Agent Call Number</h3>
               <p>{formData.agentCallNumber}</p>
             </div>
-            <div className="border border-gray-300 p-2 rounded w-full">
+            <div className="border border-primary-400 p-2 rounded w-full">
               <h3 className="font-semibold">Agent Email</h3>
               <p>{formData.agentEmail}</p>
             </div>
-            <div className="border border-gray-300 p-2 rounded w-full">
+            <div className="border border-primary-400 p-2 rounded w-full">
               <h3 className="font-semibold">Agent WhatsApp</h3>
               <p>{formData.agentWhatsapp}</p>
             </div>
