@@ -63,7 +63,7 @@ export default function Navbar() {
                         <div className="relative">
                             <button
                                 onClick={toggleDropdown}
-                                className="text-primary bg-primary-dark rounded-full font-primary dropdown-toggle"
+                                className="text-primary bg-primary-dark  font-primary dropdown-toggle"
                             >
                                 {user.name}
                             </button>
