@@ -39,7 +39,7 @@ export default function Navbar() {
 
     return (
         <header className="bg-primary">
-            <nav className="backdrop-blur-lg rounded-full mx-auto max-w-5xl flex items-center justify-between px-6 py-2 shadow-lg">
+            <nav className="backdrop-blur-lg font-playfair rounded-full mx-auto max-w-5xl flex items-center justify-between px-6 py-2 shadow-lg">
                 {/* Logo */}
                 <div>
                     <Link to="/">
@@ -148,7 +148,7 @@ export default function Navbar() {
     </button>
 
     {mobileMenuOpen && (
-        <div className="fixed right-0 top-12 bg-banner backdrop-blur-lg text-primary rounded-lg shadow-lg w-48 z-50">
+        <div className="fixed font-playfair right-0 top-12 bg-banner backdrop-blur-lg text-primary rounded-lg shadow-lg w-48 z-50">
             <button
                 onClick={toggleMobileMenu}
                 className="self-end mb-4 focus:outline-none"

@@ -138,11 +138,11 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     return (
         <section>
     <div
-        className="container bg-banner lg:bg-cover lg:bg-center lg:bg-no-repeat lg:my-2 lg:pb-10 lg:pt-5 rounded-m"
+        className="container font-primary bg-banner lg:bg-cover lg:bg-center lg:bg-no-repeat lg:my-2 lg:pb-10 lg:pt-5 rounded-m"
         // style={{ backgroundImage: `url('/homepage-banner-img.jpeg')` }} // Applies background image on large screens
     >
                 {/* "Your InvestiBayt Journey Starts Here" Section */}
-                <h1 className="text-2xl text-center font-playfair text-primary lg:text-primary lg:mb-8 mx-auto">
+                <h1 className="text-2xl text-center font-primary text-primary lg:text-primary lg:mb-8 mx-auto">
     Your InvestiBayt Journey Starts Here
 </h1>
 
@@ -345,8 +345,8 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                 </div>
             </div>
             {city && locationCounts.length > 0 && (
-    <div className=" bg-primary pl-14">
-        <h2 className="text-xl font-semibold text-primary font-playfair">
+    <div className=" bg-primary font-primary pl-14">
+        <h2 className="text-xl font-semibold  text-primary font-primary">
             Properties by Location in {city}. {totalProperties} Ads
         </h2>
         <ul className="mt-2 flex flex-wrap gap-2 text-black">
