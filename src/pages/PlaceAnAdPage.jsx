@@ -540,7 +540,7 @@ const handlePdfChange = (e) => {
       <div className="border border-primary-400 p-2 rounded w-full">
   <label
     htmlFor="imageInput"
-    className="block text-primary-400 font-medium cursor-pointer"
+    className="block text-primary font-primary cursor-pointer"
   >
     Choose images
   </label>
@@ -557,13 +557,23 @@ const handlePdfChange = (e) => {
 
         {details.errors.images && <p className="text-red-500 text-sm">{details.errors.images}</p>}
       
-        <input
-      type="file"
-      name="pdf"
-      accept="application/pdf"
-      onChange={handlePdfChange}
-      className="border border-primary-400 p-2 rounded w-full"
-    />
+        <div className="border border-primary-400 p-2 rounded w-full">
+  <label
+    htmlFor="pdfInput"
+    className="block text-primary font-medium cursor-pointer"
+  >
+    Choose PDF
+  </label>
+  <input
+    id="pdfInput"
+    type="file"
+    name="pdf"
+    accept="application/pdf"
+    onChange={handlePdfChange}
+    className="hidden"
+  />
+</div>
+
     {details.errors.pdf && <p className="text-red-500 text-sm">{details.errors.pdf}</p>}
     
       <textarea
