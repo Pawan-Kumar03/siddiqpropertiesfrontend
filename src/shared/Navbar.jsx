@@ -63,7 +63,7 @@ export default function Navbar() {
                         <div className="relative">
                             <button
                                 onClick={toggleDropdown}
-                                className="px-4 py-2 text-primary rounded-full bg-primary  dropdown-toggle"
+                                className="px-4 py-2 text-button rounded-full bg-button  dropdown-toggle"
                             >
                                 {user.name}
                             </button>
