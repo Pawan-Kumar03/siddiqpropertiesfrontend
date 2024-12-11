@@ -49,13 +49,13 @@ export default function Navbar() {
 
                 {/* Desktop Navigation */}
                 <div className="hidden sm:flex items-center space-x-6">
-                    <Link to="/" className="text-gray-700 hover:text-gray-900 font-medium">
+                    <Link to="/" className="text-primary bg-primary-dark font-primary">
                         Home
                     </Link>
-                    <Link to="/about-us" className="text-gray-700 hover:text-gray-900 font-medium">
+                    <Link to="/about-us" className="text-primary bg-primary-dark font-primary">
                         About Us
                     </Link>
-                    <Link to="/ConsultancyPage" className="text-gray-700 hover:text-gray-900 font-medium">
+                    <Link to="/ConsultancyPage" className="text-primary bg-primary-dark font-primary">
                         Consultant
                     </Link>
 
@@ -63,39 +63,39 @@ export default function Navbar() {
                         <div className="relative">
                             <button
                                 onClick={toggleDropdown}
-                                className="text-gray-700 hover:text-gray-900 font-medium dropdown-toggle"
+                                className="text-primary bg-primary-dark font-primary dropdown-toggle"
                             >
                                 {user.name}
                             </button>
                             {dropdownOpen && (
                                 <div
                                     id="dropdown"
-                                    className="absolute right-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-lg w-48"
+                                    className="absolute right-0 mt-2 bg-white border  rounded-lg shadow-lg w-48"
                                 >
                                     <Link
                                         to="/profile"
-                                        className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                                        className="block px-4 py-2 text-primary "
                                         onClick={() => setDropdownOpen(false)}
                                     >
                                         My Profile
                                     </Link>
                                     <Link
                                         to="/get-verified"
-                                        className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                                        className="block px-4 py-2 text-primary hover:bg-primary-dark"
                                         onClick={() => setDropdownOpen(false)}
                                     >
                                         Get Verified
                                     </Link>
                                     <Link
                                         to="/my-ads"
-                                        className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                                        className="block px-4 py-2 text-primary hover:bg-primary-dark"
                                         onClick={() => setDropdownOpen(false)}
                                     >
                                         My Ads
                                     </Link>
                                     <button
                                         onClick={handleLogout}
-                                        className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100"
+                                        className="block w-full text-left px-4 py-2 text-primary hover:bg-primary-dark"
                                     >
                                         Sign Out
                                     </button>
@@ -105,7 +105,7 @@ export default function Navbar() {
                     ) : (
                         <Link
                             to="/login"
-                            className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+                            className="px-4 py-2 bg-button text-button rounded-lg hover:bg-primary-dark"
                         >
                             Login
                         </Link>
@@ -116,7 +116,7 @@ export default function Navbar() {
                 <div className="sm:hidden flex items-center">
                     <button
                         onClick={toggleMobileMenu}
-                        className="text-gray-700 hover:text-gray-900 focus:outline-none"
+                        className="text-primary hover:bg-primary-dark focus:outline-none"
                     >
                         <svg
                             className="w-6 h-6"
@@ -135,24 +135,24 @@ export default function Navbar() {
                     </button>
 
                     {mobileMenuOpen && (
-                        <div className="absolute top-16 right-4 bg-white border border-gray-200 rounded-lg shadow-lg w-48">
+                        <div className="absolute top-16 right-4 bg-white rounded-lg shadow-lg w-48">
                             <Link
                                 to="/"
-                                className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                                className="block px-4 py-2 text-primary hover:bg-primary-dark"
                                 onClick={() => setMobileMenuOpen(false)}
                             >
                                 Home
                             </Link>
                             <Link
                                 to="/about-us"
-                                className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                                className="block px-4 py-2 text-primary hover:bg-primary-dark"
                                 onClick={() => setMobileMenuOpen(false)}
                             >
                                 About Us
                             </Link>
                             <Link
                                 to="/ConsultancyPage"
-                                className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                                className="block px-4 py-2 text-primary hover:bg-primary-dark"
                                 onClick={() => setMobileMenuOpen(false)}
                             >
                                 Consultant
@@ -161,28 +161,28 @@ export default function Navbar() {
                                 <>
                                     <Link
                                         to="/profile"
-                                        className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                                        className="block px-4 py-2 text-primary hover:bg-primary-dark"
                                         onClick={() => setMobileMenuOpen(false)}
                                     >
                                         My Profile
                                     </Link>
                                     <Link
                                         to="/get-verified"
-                                        className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                                        className="block px-4 py-2 text-primary hover:bg-primary-dark"
                                         onClick={() => setMobileMenuOpen(false)}
                                     >
                                         Get Verified
                                     </Link>
                                     <Link
                                         to="/my-ads"
-                                        className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                                        className="block px-4 py-2 text-primary hover:bg-primary-dark"
                                         onClick={() => setMobileMenuOpen(false)}
                                     >
                                         My Ads
                                     </Link>
                                     <button
                                         onClick={handleLogout}
-                                        className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100"
+                                        className="block w-full text-left px-4 py-2 text-primary hover:bg-primary-dark"
                                     >
                                         Sign Out
                                     </button>
@@ -190,7 +190,7 @@ export default function Navbar() {
                             ) : (
                                 <Link
                                     to="/login"
-                                    className="block px-4 py-2 text-gray-700 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+                                    className="block px-4 py-2 text-button bg-button rounded-lg "
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
                                     Login
