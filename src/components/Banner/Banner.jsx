@@ -15,7 +15,8 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     const [status, setStatus] = useState("");
     const [purpose, setPurpose] = useState("");
     const [locationCounts, setLocationCounts] = useState([]);
-
+    const [isMobile, setIsMobile] = useState(false);
+    
     useEffect(() => {
         const handleResize = () => {
             if (window.innerWidth < 769 || window.innerHeight < 1112) {
@@ -32,7 +33,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
             window.removeEventListener("resize", handleResize);
         };
     }, []);
-    
+
     useEffect(() => {
         if (city) {
             fetch(`https://backend-git-main-pawan-togas-projects.vercel.app/api/listings/${city}`)
