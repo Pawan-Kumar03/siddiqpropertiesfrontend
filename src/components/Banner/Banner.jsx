@@ -146,7 +146,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
 >
 
         <div className="lg:bg-banner lg:bg-opacity-50 rounded-md lg:p-4 lg:w-[88%] mx-auto">
-        <div className="flex flex-wrap justify-center items-center space-x-4 lg:space-x-10 mb-8 -mt-8">
+        <div className="flex flex-wrap justify-center items-center space-x-4 lg:space-x-10 mb-8">
   <ul className="flex flex-wrap justify-center items-center gap-2 lg:gap-6 text-sm sm:text-base">
     <li>
       <button
