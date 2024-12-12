@@ -199,6 +199,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
 
 
 
+
 <form
             className="lg:flex lg:flex-col lg:space-y-3 px-2 lg:px-0 py-6 lg:pt-16 lg:pb-8 mt-8  relative bg-primary lg:bg-transparent"
             onSubmit={handleSearch}

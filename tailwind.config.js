@@ -42,11 +42,11 @@ export default {
                 lato: ["'Lato'", "sans-serif"],
             },
             animation: {
-                'slide-up': 'slideUp 1s ease-out forwards',
-                'slide-up-delay-1': 'slideUp 1s 0.5s ease-out forwards',
-                'slide-up-delay-2': 'slideUp 1s 1s ease-out forwards',
-                'slide-up-delay-3': 'slideUp 1s 1.5s ease-out forwards',
-                'slide-up-delay-4': 'slideUp 1s 2s ease-out forwards',
+                'slide-up': 'slideUp 1s ease-out infinite',
+                'slide-up-delay-1': 'slideUp 1s 0.5s ease-out infinite',
+                'slide-up-delay-2': 'slideUp 1s 1s ease-out infinite',
+                'slide-up-delay-3': 'slideUp 1s 1.5s ease-out infinite',
+                'slide-up-delay-4': 'slideUp 1s 2s ease-out infinite',
             },
             keyframes: {
                 slideUp: {
