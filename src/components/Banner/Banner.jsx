@@ -137,14 +137,21 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
 
     return (
         <section>
-            <div
-    className="container font-primary bg-banner lg:relative lg:bg-right lg:bg-no-repeat lg:bg-[length:50%] lg:my-2  lg:pt-10 rounded-md "
+<div className="relative container font-primary lg:relative rounded-md">
+  {/* Semi-transparent overlay for background color */}
+  <div className="absolute inset-0 bg-black bg-opacity-50 z-0"></div> {/* This div adds the opacity to the color */}
+
+  {/* Main content with background image */}
+  <div
+    className="lg:bg-right bg-no-repeat lg:bg-[length:50%] lg:my-2 lg:pt-10 rounded-md relative z-10"
     style={{
-        backgroundImage: "url('/bg-remove.png')", // Adjust the path as necessary
-        backgroundPosition: "top right", // Ensures the image moves slightly upward
-        opacity: 0.5
+      backgroundImage: "url('/bg-remove.png')",
+      backgroundPosition: "top right",
     }}
->
+  >
+    {/* Your content goes here */}
+  </div>
+
                 {/* "Your InvestiBayt Journey Starts Here" Section */}
                 {/* <h1 className="text-2xl text-center font-primary text-primary lg:text-primary lg:mb-8 mx-auto">
     Your InvestiBayt Journey Starts Here
