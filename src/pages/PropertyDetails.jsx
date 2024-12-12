@@ -135,9 +135,11 @@ export default function PropertyDetails() {
     return images;
   };
   const handleViewPDF = () => {
-    const pdfUrl = "https://ior6dw8epyae9tkd.public.blob.vercel-storage.com/Stonehenge%20Residences%202_2024.12.06-V9dICf8eIwFm0GwrZ14f96WIo5X5Q8.pdf";
-    window.open(pdfUrl, '_blank');
+    if (property.pdf) {
+      window.open(property.pdf, "_blank");
+    }
   };
+  
   
   return (
 <div className="container mt-8 bg-primary backdrop-blur-lg text-primary p-6 rounded-lg font-primary shadow-lg max-w-5xl mx-auto">
@@ -156,12 +158,15 @@ export default function PropertyDetails() {
               <ArrowBackIcon className="mr-1 sm:text-lg text-primary" />
               <span className="flex items-center">Back</span>
             </button>
-            {/* <button
+            <button
   onClick={handleViewPDF}
-  className="flex items-center text-primary hover:underline bg-primary rounded-full px-4 py-2 transition duration-300"
+  className={`flex items-center text-primary hover:underline bg-primary rounded-full px-4 py-2 transition duration-300 ${
+    property.pdf ? "" : "opacity-50 cursor-not-allowed"
+  }`}
+  disabled={!property.pdf}
 >
-  <span className="flex items-center">View PDF</span>
-</button> */}
+  <span className="flex items-center">View Brochure</span>
+</button>
           </div>
 
       <div className="flex flex-col lg:flex-row">
