@@ -17,6 +17,23 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     const [locationCounts, setLocationCounts] = useState([]);
 
     useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth < 769 || window.innerHeight < 1112) {
+                setIsMobile(true);
+            } else {
+                setIsMobile(false);
+            }
+        };
+
+        window.addEventListener("resize", handleResize);
+        handleResize(); // Set the initial state on component mount
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
+    
+    useEffect(() => {
         if (city) {
             fetch(`https://backend-git-main-pawan-togas-projects.vercel.app/api/listings/${city}`)
                 .then(response => response.json())
@@ -137,14 +154,15 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
 
     return (
         <section>
-<div
-    className="container font-primary lg:relative lg:bg-right lg:bg-no-repeat lg:bg-[length:50%] lg:my-2 lg:pt-10 rounded-md"
-    style={{
-        backgroundImage: window.innerWidth >= 1024 ? "url('/bg-remove.png')" : "none", // Show bg image only on desktop
-        backgroundPosition: "top right", // Ensures the image moves slightly upward
-    }}
->
-
+ <div
+                className={`container font-primary lg:relative lg:bg-right lg:bg-no-repeat lg:bg-[length:50%] lg:my-2 lg:pt-10 rounded-md ${
+                    !isMobile ? "bg-banner" : ""
+                }`}
+                style={{
+                    backgroundImage: !isMobile ? "url('/bg-remove.png')" : "none",
+                    backgroundPosition: "top right",
+                }}
+            >
 
         <div className="lg:bg-banner lg:bg-opacity-50 rounded-md lg:p-4 lg:w-[88%] mx-auto">
         <div className="flex flex-wrap justify-center items-center space-x-4 lg:space-x-10 mb-8">
