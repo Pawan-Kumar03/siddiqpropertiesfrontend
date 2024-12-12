@@ -188,8 +188,9 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
 </div>
 
 <h1 className="text-5xl text-left font-primary text-primary mt-28 lg:text-primary lg:mb-8">
-  Your <span className="animate-blink">InvestiBayt</span> Journey Starts Here
+  Your <span className="animate-blink font-bold">InvestiBayt</span> <br /> Journey Starts Here
 </h1>
+
 
 
 
