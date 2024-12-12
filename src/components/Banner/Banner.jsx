@@ -216,7 +216,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                     type="text"
                     placeholder="Add location and press Enter"
                     onKeyPress={handleAddLocation}
-                    className="flex-1 p-3 h-12 rounded-md border border-primary dark:border-primary dark:bg-primary dark:text-primary"
+                    className="flex-1 p-3 h-12 text-primary rounded-md border border-primary dark:border-primary dark:bg-primary dark:text-primary"
                 />
                 {/* Location Chips */}
                 {locations.map((loc, index) => (
@@ -258,7 +258,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                 placeholder="Min Price"
                 value={priceMin}
                 onChange={(e) => setPriceMin(e.target.value)}
-                className="w-full p-3 h-12 rounded-md font-playfair border border-primary dark:border-primary dark:bg-primary dark:text-primary"
+                className="w-full p-3 h-12 text-primary rounded-md font-playfair border border-primary dark:border-primary dark:bg-primary dark:text-primary"
             />
         </div>
 
@@ -271,7 +271,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                 placeholder="Max Price"
                 value={priceMax}
                 onChange={(e) => setPriceMax(e.target.value)}
-                className="w-full p-3 h-12 font-playfair rounded-md border border-primary dark:border-primary dark:bg-primary dark:text-primary"
+                className="w-full p-3 h-12 text-primary font-playfair rounded-md border border-primary dark:border-primary dark:bg-primary dark:text-primary"
             />
         </div>
 
