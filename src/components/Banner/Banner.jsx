@@ -137,13 +137,14 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
 
     return (
         <section>
-            <div
-    className="container font-primary bg-banner lg:relative lg:bg-right lg:bg-no-repeat lg:bg-[length:50%] lg:my-2  lg:pt-10 rounded-md "
+<div
+    className="container font-primary lg:relative lg:bg-right lg:bg-no-repeat lg:bg-[length:50%] lg:my-2 lg:pt-10 rounded-md"
     style={{
-        backgroundImage: "url('/bg-remove.png')", // Adjust the path as necessary
+        backgroundImage: window.innerWidth >= 1024 ? "url('/bg-remove.png')" : "none", // Show bg image only on desktop
         backgroundPosition: "top right", // Ensures the image moves slightly upward
     }}
 >
+
 
         <div className="lg:bg-banner lg:bg-opacity-50 rounded-md lg:p-4 lg:w-[88%] mx-auto">
         <div className="flex flex-wrap justify-center items-center space-x-4 lg:space-x-10 mb-8">
