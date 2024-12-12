@@ -188,8 +188,14 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
 </div>
 
 <h1 className="text-5xl text-left font-primary text-primary mt-28 lg:text-primary lg:mb-8">
-  Your InvestiBayt <br /> Journey Starts Here
+  <span className="animate-slide-up">Your</span>
+  <span className="animate-slide-up-delay-1">InvestiBayt</span>
+  <br />
+  <span className="animate-slide-up-delay-2">Journey</span>
+  <span className="animate-slide-up-delay-3">Starts</span>
+  <span className="animate-slide-up-delay-4">Here</span>
 </h1>
+
 
 
 

@@ -34,15 +34,32 @@ export default {
                 custom: "#c5a47e",
             },
             fontFamily: {
-                parkinsans: ["'Parkinsans'", "sans-serif"], // Add Parkinsans
-                playfair: ["'Playfair Display'", "serif"], // Add Playfair Display
-                impact: ["'Impact'", "sans-serif"], // Add Impact
-                josefin: ["'Josefin Sans'", "sans-serif"], // Add Josefin Sans
-                openSans: ["'Open Sans'", "sans-serif"], // Add Open Sans
-                parkinsans: ["'Parkinsans'", "sans-serif"], // Add Parkinsans
-                playfair: ["'Playfair Display'", "serif"], // Add Playfair Display
-                lato: ["'Lato'", "sans-serif"], // Add Lato
-            }
+                parkinsans: ["'Parkinsans'", "sans-serif"],
+                playfair: ["'Playfair Display'", "serif"],
+                impact: ["'Impact'", "sans-serif"],
+                josefin: ["'Josefin Sans'", "sans-serif"],
+                openSans: ["'Open Sans'", "sans-serif"],
+                lato: ["'Lato'", "sans-serif"],
+            },
+            animation: {
+                'slide-up': 'slideUp 1s ease-out forwards',
+                'slide-up-delay-1': 'slideUp 1s 0.5s ease-out forwards',
+                'slide-up-delay-2': 'slideUp 1s 1s ease-out forwards',
+                'slide-up-delay-3': 'slideUp 1s 1.5s ease-out forwards',
+                'slide-up-delay-4': 'slideUp 1s 2s ease-out forwards',
+            },
+            keyframes: {
+                slideUp: {
+                    '0%': {
+                        opacity: '0',
+                        transform: 'translateY(20px)',
+                    },
+                    '100%': {
+                        opacity: '1',
+                        transform: 'translateY(0)',
+                    },
+                },
+            },
         },
     },
     plugins: [],
