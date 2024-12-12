@@ -138,7 +138,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     return (
         <section>
             <div
-    className="container font-primary bg-banner lg:bg-cover lg:bg-center lg:bg-no-repeat lg:my-2 lg:pb-10 lg:pt-5 rounded-m"
+    className="container font-primary bg-banner lg:relative lg:bg-right lg:bg-no-repeat lg:bg-[length:50%] lg:my-2  lg:pt-10 rounded-md "
     style={{
         backgroundImage: "url('/bg-remove.png')", // Adjust the path as necessary
         backgroundPosition: "top right", // Ensures the image moves slightly upward
