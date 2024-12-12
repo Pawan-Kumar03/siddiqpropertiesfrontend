@@ -302,7 +302,7 @@ export default function PropertyDetails() {
             className="max-w-full max-h-full"
           />
           <button
-            className="absolute top-4 right-4 text-white bg-primary rounded-full p-2"
+            className="absolute top-4 right-4 text-primary bg-primary rounded-full p-2"
             onClick={closeFullscreenImage}
           >
             <CloseIcon />
