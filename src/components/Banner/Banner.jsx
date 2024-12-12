@@ -145,9 +145,9 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     }}
 >
                 {/* "Your InvestiBayt Journey Starts Here" Section */}
-                <h1 className="text-2xl text-center font-primary text-primary lg:text-primary lg:mb-8 mx-auto">
+                {/* <h1 className="text-2xl text-center font-primary text-primary lg:text-primary lg:mb-8 mx-auto">
     Your InvestiBayt Journey Starts Here
-</h1>
+</h1> */}
 
         <div className="lg:bg-banner lg:bg-opacity-50 rounded-md lg:p-4 lg:w-[88%] mx-auto">
         <div className="flex flex-wrap justify-center items-center space-x-4 lg:space-x-10 mb-8">
@@ -186,6 +186,10 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     </li>
   </ul>
 </div>
+
+<h1 className="text-2xl text-center font-primary text-primary lg:text-primary lg:mb-8">
+  Your InvestiBayt <br /> Journey Starts Here
+</h1>
 
 
 
@@ -349,6 +353,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
 
 
                 </div>
+
             </div>
             {city && locationCounts.length > 0 && (
     <div className=" bg-primary font-primary pl-14">
