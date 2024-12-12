@@ -137,27 +137,15 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
 
     return (
         <section>
-<div className="relative container font-primary lg:relative rounded-md">
-  {/* Semi-transparent overlay for background color */}
-  <div className="absolute inset-0 bg-banner bg-opacity-50 z-0"> {/* Adjusted background color with opacity */}
-
-  {/* Main content with background image */}
-  <div
-    className="lg:bg-right bg-no-repeat lg:bg-[length:50%] lg:my-2 lg:pt-10 rounded-md relative z-10"
-    style={{
-      backgroundImage: "url('/bg-remove.png')",
-      backgroundPosition: "top right",
-    }}
-  >
-    {/* Your content goes here */}
-  </div>
-</div>
-
-
-                {/* "Your InvestiBayt Journey Starts Here" Section */}
-                {/* <h1 className="text-2xl text-center font-primary text-primary lg:text-primary lg:mb-8 mx-auto">
-    Your InvestiBayt Journey Starts Here
-</h1> */}
+            <div
+  className="container font-primary bg-banner lg:relative lg:bg-right lg:bg-no-repeat lg:bg-[length:50%] lg:my-2 lg:pt-10 rounded-md"
+  style={{
+    backgroundImage: "url('/bg-remove.png')", // Adjust the path as necessary
+    backgroundPosition: "top right", // Ensures the image moves slightly upward
+    opacity: 0.5,
+    backgroundColor: "rgba(0, 0, 0, 0.4)" // Adding a semi-transparent background color with opacity
+  }}
+>
 
         <div className="lg:bg-banner lg:bg-opacity-50 rounded-md lg:p-4 lg:w-[88%] mx-auto">
         <div className="flex flex-wrap justify-center items-center space-x-4 lg:space-x-10 mb-8 -mt-8">
