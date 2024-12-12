@@ -139,7 +139,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         <section>
 <div className="relative container font-primary lg:relative rounded-md">
   {/* Semi-transparent overlay for background color */}
-  <div className="absolute inset-0 bg-banner bg-opacity-50 z-0"></div> {/* This div adds the opacity to the color */}
+  <div className="absolute inset-0 bg-banner bg-opacity-50 z-0"></div> {/* Adjusted background color with opacity */}
 
   {/* Main content with background image */}
   <div
@@ -151,6 +151,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
   >
     {/* Your content goes here */}
   </div>
+
 
                 {/* "Your InvestiBayt Journey Starts Here" Section */}
                 {/* <h1 className="text-2xl text-center font-primary text-primary lg:text-primary lg:mb-8 mx-auto">
