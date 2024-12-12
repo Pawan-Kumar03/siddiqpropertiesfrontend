@@ -138,9 +138,12 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     return (
         <section>
             <div
-                className="container font-primary bg-banner lg:relative lg:bg-right lg:bg-no-repeat lg:bg-[length:50%] lg:my-2 lg:pb-10 lg:pt-5 rounded-md"
-                style={{ backgroundImage: "url('/bg-remove.png')" }} // Adjust the path as necessary
-            >
+    className="container font-primary bg-banner lg:relative lg:bg-right lg:bg-no-repeat lg:bg-[length:50%] lg:my-2 lg:pb-16 lg:pt-10 rounded-md"
+    style={{
+        backgroundImage: "url('/bg-remove.png')", // Adjust the path as necessary
+        backgroundPosition: "top right", // Ensures the image moves slightly upward
+    }}
+>
                 {/* "Your InvestiBayt Journey Starts Here" Section */}
                 <h1 className="text-2xl text-center font-primary text-primary lg:text-primary lg:mb-8 mx-auto">
     Your InvestiBayt Journey Starts Here
@@ -186,8 +189,11 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
 
 
 
-          <form className="lg:flex lg:flex-col lg:space-y-3 px-2 lg:px-0 py-4 lg:py-0 relative bg-primary lg:bg-transparent" onSubmit={handleSearch}>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<form
+            className="lg:flex lg:flex-col lg:space-y-3 px-2 lg:px-0 py-6 lg:py-8 relative bg-primary lg:bg-transparent"
+            onSubmit={handleSearch}
+        >
+                          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                              {/* City Input */}
         <div className="flex flex-col mb-3">
             <label className="mb-1 font-playfair  text-primary">City</label>
