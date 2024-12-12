@@ -16,10 +16,10 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     const [purpose, setPurpose] = useState("");
     const [locationCounts, setLocationCounts] = useState([]);
     const [isMobile, setIsMobile] = useState(false);
-    
+
     useEffect(() => {
         const handleResize = () => {
-            if (window.innerWidth < 769 || window.innerHeight < 1112) {
+            if (window.innerWidth < 769 ) {
                 setIsMobile(true);
             } else {
                 setIsMobile(false);
