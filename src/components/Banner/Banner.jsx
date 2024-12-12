@@ -138,13 +138,11 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     return (
         <section>
             <div
-  className="container font-primary bg-banner lg:relative lg:bg-right lg:bg-no-repeat lg:bg-[length:50%] lg:my-2 lg:pt-10 rounded-md"
-  style={{
-    backgroundImage: "url('/bg-remove.png')", // Adjust the path as necessary
-    backgroundPosition: "top right", // Ensures the image moves slightly upward
-    opacity: 0.5,
-    backgroundColor: "rgba(0, 0, 0, 0.4)" // Adding a semi-transparent background color with opacity
-  }}
+    className="container font-primary bg-banner lg:relative lg:bg-right lg:bg-no-repeat lg:bg-[length:50%] lg:my-2  lg:pt-10 rounded-md "
+    style={{
+        backgroundImage: "url('/bg-remove.png')", // Adjust the path as necessary
+        backgroundPosition: "top right", // Ensures the image moves slightly upward
+    }}
 >
 
         <div className="lg:bg-banner lg:bg-opacity-50 rounded-md lg:p-4 lg:w-[88%] mx-auto">
