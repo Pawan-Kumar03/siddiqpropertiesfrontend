@@ -137,9 +137,9 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
 
     return (
         <section>
-    <div
-                className="container font-primary bg-banner lg:relative lg:bg-cover lg:bg-right lg:bg-no-repeat lg:my-2 lg:pb-10 lg:pt-5 rounded-m"
-                style={{ backgroundImage: "url('/bg-remove.png')" }} // Use your image path
+            <div
+                className="container font-primary bg-banner lg:relative lg:bg-right lg:bg-no-repeat lg:bg-[length:50%] lg:my-2 lg:pb-10 lg:pt-5 rounded-md"
+                style={{ backgroundImage: "url('/bg-remove.png')" }} // Adjust the path as necessary
             >
                 {/* "Your InvestiBayt Journey Starts Here" Section */}
                 <h1 className="text-2xl text-center font-primary text-primary lg:text-primary lg:mb-8 mx-auto">
