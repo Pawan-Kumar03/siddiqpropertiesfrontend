@@ -187,14 +187,14 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
   </ul>
 </div>
 
-<h1 className="text-5xl text-left font-primary text-primary lg:text-primary lg:mb-8">
+<h1 className="text-5xl text-left font-primary text-primary mt-28 lg:text-primary lg:mb-8">
   Your InvestiBayt <br /> Journey Starts Here
 </h1>
 
 
 
 <form
-            className="lg:flex lg:flex-col lg:space-y-3 px-2 lg:px-0 py-6 lg:py-8 mt-8 relative bg-primary lg:bg-transparent"
+            className="lg:flex lg:flex-col lg:space-y-3 px-2 lg:px-0 py-6 lg:pt-16 lg:pb-8 mt-8  relative bg-primary lg:bg-transparent"
             onSubmit={handleSearch}
         >
                           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
