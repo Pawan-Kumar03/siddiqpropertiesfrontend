@@ -139,7 +139,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         <section>
 <div className="relative container font-primary lg:relative rounded-md">
   {/* Semi-transparent overlay for background color */}
-  <div className="absolute inset-0 bg-black bg-opacity-50 z-0"></div> {/* This div adds the opacity to the color */}
+  <div className="absolute inset-0 bg-banner bg-opacity-50 z-0"></div> {/* This div adds the opacity to the color */}
 
   {/* Main content with background image */}
   <div
