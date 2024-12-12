@@ -187,7 +187,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
   </ul>
 </div>
 
-<h1 className="text-3xl text-left font-primary text-primary lg:text-primary lg:mb-8">
+<h1 className="text-5xl text-left font-primary text-primary lg:text-primary lg:mb-8">
   Your InvestiBayt <br /> Journey Starts Here
 </h1>
 
