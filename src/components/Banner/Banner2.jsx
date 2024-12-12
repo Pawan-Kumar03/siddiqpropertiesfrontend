@@ -137,16 +137,17 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
 
     return (
         <section>
-            <div
-    className="container font-primary bg-banner lg:bg-cover lg:bg-center lg:bg-no-repeat lg:my-2 lg:pb-10 lg:pt-5 rounded-m"
-    style={{
-        backgroundImage: "url('/bg-remove.png')", // Adjust the path as necessary
-        backgroundPosition: "top right", // Ensures the image moves slightly upward
-    }}
->
+    <div
+        className="container font-primary bg-banner lg:bg-cover lg:bg-center lg:bg-no-repeat lg:my-2 lg:pb-10 lg:pt-5 rounded-m"
+        // style={{ backgroundImage: `url('/homepage-banner-img.jpeg')` }} // Applies background image on large screens
+    >
+                {/* "Your InvestiBayt Journey Starts Here" Section */}
+                <h1 className="text-2xl text-center font-primary text-primary lg:text-primary lg:mb-8 mx-auto">
+    Your InvestiBayt Journey Starts Here
+</h1>
 
         <div className="lg:bg-banner lg:bg-opacity-50 rounded-md lg:p-4 lg:w-[88%] mx-auto">
-        <div className="flex flex-wrap justify-center items-center space-x-4 lg:space-x-10 mb-8 -mt-8">
+        <div className="flex flex-wrap justify-center items-center space-x-4 lg:space-x-10 mb-6">
   <ul className="flex flex-wrap justify-center items-center gap-2 lg:gap-6 text-sm sm:text-base">
     <li>
       <button
@@ -183,21 +184,10 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
   </ul>
 </div>
 
-<h1 className="text-5xl text-left font-primary text-primary mt-28 lg:text-primary lg:mb-8">
-  Your <span className="animate-blink font-bold">InvestiBayt</span> <br /> Journey Starts Here
-</h1>
 
 
-
-
-
-
-
-<form
-            className="lg:flex lg:flex-col lg:space-y-3 px-2 lg:px-0 py-6 lg:pt-16 lg:pb-8 mt-8  relative bg-primary lg:bg-transparent"
-            onSubmit={handleSearch}
-        >
-                          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <form className="lg:flex lg:flex-col lg:space-y-3 px-2 lg:px-0 py-4 lg:py-0 relative bg-primary lg:bg-transparent" onSubmit={handleSearch}>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                              {/* City Input */}
         <div className="flex flex-col mb-3">
             <label className="mb-1 font-playfair  text-primary">City</label>
@@ -353,7 +343,6 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
 
 
                 </div>
-
             </div>
             {city && locationCounts.length > 0 && (
     <div className=" bg-primary font-primary pl-14">
@@ -377,4 +366,5 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         </section>
     );
 }
+
 
