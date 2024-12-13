@@ -158,10 +158,17 @@ export default function PropertyDetails() {
               <ArrowBackIcon className="mr-1 sm:text-lg text-primary" />
               <span className="flex items-center">Back</span>
             </button>
-            {property.pdf && (
+            {property.pdf ? (
   <button
     onClick={handleViewPDF}
     className="flex items-center text-primary hover:underline bg-primary rounded-full px-4 py-2 transition duration-300"
+  >
+    <span className="flex items-center">View Brochure</span>
+  </button>
+) : (
+  <button
+    disabled
+    className="flex items-center text-gray-400 bg-gray-200 rounded-full px-4 py-2 cursor-not-allowed"
   >
     <span className="flex items-center">View Brochure</span>
   </button>
