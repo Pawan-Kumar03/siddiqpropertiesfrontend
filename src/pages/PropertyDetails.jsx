@@ -283,7 +283,7 @@ export default function PropertyDetails() {
             <>
               <button
                 onClick={handleEditProperty}
-                className="px-6 py-3 bg-primary text-white rounded-full  transition duration-300 mb-2"
+                className="px-6 py-3 bg-button text-button rounded-full  transition duration-300 mb-2"
               >
                 Edit Property
               </button>
