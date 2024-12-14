@@ -164,7 +164,7 @@ export default function PropertyDetails() {
   className={`flex items-center rounded-full px-4 py-2 transition duration-300 ${
     property.pdf
       ? "text-primary hover:underline bg-primary"
-      : "text-gray-400 bg-gray-200 cursor-not-allowed"
+      : "text-primary bg-gray-200 cursor-not-allowed"
   }`}
 >
   <span className="flex items-center">View Brochure</span>
