@@ -327,7 +327,7 @@ export default function PropertyDetails() {
             <div className="flex justify-end">
               <button
                 onClick={() => setShowDeleteModal(false)}
-                className="px-4 py-2 bg-primary text-white rounded-full transition duration-300 mr-2"
+                className="px-4 py-2 bg-button text-button rounded-full transition duration-300 mr-2"
               >
                 Cancel
               </button>
