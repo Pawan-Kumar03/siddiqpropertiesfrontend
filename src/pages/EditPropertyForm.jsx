@@ -78,21 +78,21 @@ export default function EditPropertyForm() {
     };
 
     if (loading) {
-        return <div className="text-center text-custom font-primary">Loading...</div>;
+        return <div className="text-center text-primary font-primary">Loading...</div>;
     }
 
     if (!formData) {
-        return <div className="text-center text-custom font-primary">No property data found</div>;
+        return <div className="text-center text-primary font-primary">No property data found</div>;
     }
 
     if (submitted) {
         return (
             <div className="container mx-auto p-4 font-primary">
-                <div className="text-center bg-green-200 text-green-700 p-4 rounded">
+                <div className="text-center bg-primary-dark text-primary p-4 rounded">
                     Your ad has been modified successfully!
                 </div>
                 <div className="flex justify-center mt-4 font-primary">
-                    <button onClick={() => navigate("/")} className="px-6 py-3 bg-custom text-white rounded">
+                    <button onClick={() => navigate("/")} className="px-6 py-3 bg-button text-button rounded">
                         Go to Home
                     </button>
                 </div>
@@ -101,22 +101,22 @@ export default function EditPropertyForm() {
     }
 
     return (
-        <div className="container mx-auto p-4 bg-gray-800 text-gray-100 font-primaryr">
-            <h2 className="text-2xl font-semibold text-center text-custom font-primary">Edit Property</h2>
+        <div className="container mx-auto p-4 bg-primary text-primary font-primaryr">
+            <h2 className="text-2xl font-semibold text-center text-primary font-primary">Edit Property</h2>
             
             {isUpdating ? (
-            <div className="text-center bg-custom text-black p-2 rounded mb-4 font-primary">
+            <div className="text-center bg-primary text-primary p-2 rounded mb-4 font-primary">
                 Your Ad is updating...
             </div>
         ) : (
-            <form onSubmit={handleSubmit} className="flex font-primary flex-col space-y-4 w-full max-w-md mx-auto bg-gray-900 p-6 rounded border-4 border-custom">
+            <form onSubmit={handleSubmit} className="flex font-primary flex-col space-y-4 w-full max-w-md mx-auto bg-primary p-6 rounded ">
                 <input
                     name="title"
                     type="text"
                     value={formData.title || ''}
                     onChange={handleChange}
                     placeholder="Title"
-                    className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
+                    className="border border-primary-400 p-2 rounded w-full bg-primary text-primary"
                 />
                 <input
                     name="price"
@@ -124,7 +124,7 @@ export default function EditPropertyForm() {
                     value={formData.price || ''}
                     onChange={handleChange}
                     placeholder="Price"
-                    className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
+                    className="border border-primary-400 p-2 rounded w-full bg-primary text-primary"
                 />
                 <input
                     name="city"
@@ -132,7 +132,7 @@ export default function EditPropertyForm() {
                     value={formData.city || ''}
                     onChange={handleChange}
                     placeholder="City"
-                    className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
+                    className="border border-primary-400 p-2 rounded w-full bg-primary text-primary"
                 />
                 <input
                     name="location"
@@ -140,7 +140,7 @@ export default function EditPropertyForm() {
                     value={formData.location || ''}
                     onChange={handleChange}
                     placeholder="Location"
-                    className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
+                    className="border border-primary-400 p-2 rounded w-full bg-primary text-primary"
                 />
                 <input
                     name="country"
@@ -148,7 +148,7 @@ export default function EditPropertyForm() {
                     value={formData.country || ''}
                     onChange={handleChange}
                     placeholder="Country"
-                    className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
+                    className="border border-primary-400 p-2 rounded w-full bg-primary text-primary"
                 />
                 <input
                     name="developments"
@@ -156,7 +156,7 @@ export default function EditPropertyForm() {
                     value={formData.developments || ''}
                     onChange={handleChange}
                     placeholder="Developments"
-                    className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
+                    className="border border-primary-400 p-2 rounded w-full bg-primary text-primary"
                 />
                 <input
                     name="amenities"
@@ -164,7 +164,7 @@ export default function EditPropertyForm() {
                     value={formData.amenities || ''}
                     onChange={handleChange}
                     placeholder="Amenities"
-                    className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
+                    className="border border-primary-400 p-2 rounded w-full bg-primary text-primary"
                 />
                 <input
                     name="propertyType"
@@ -172,7 +172,7 @@ export default function EditPropertyForm() {
                     value={formData.propertyType || ''}
                     onChange={handleChange}
                     placeholder="Property Type"
-                    className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
+                    className="border border-primary-400 p-2 rounded w-full bg-primary text-primary"
                 />
                 <input
                     name="beds"
@@ -180,7 +180,7 @@ export default function EditPropertyForm() {
                     value={formData.beds || ''}
                     onChange={handleChange}
                     placeholder="Beds"
-                    className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
+                    className="border border-primary-400 p-2 rounded w-full bg-primary text-primary"
                 />
                 <input
                     name="bathrooms"
@@ -188,14 +188,14 @@ export default function EditPropertyForm() {
                     value={formData.bathrooms || ''}
                     onChange={handleChange}
                     placeholder="Bathrooms"
-                    className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
+                    className="border border-primary-400 p-2 rounded w-full bg-primary text-primary"
                 />
                 <textarea
                     name="description"
                     value={formData.description || ''}
                     onChange={handleChange}
                     placeholder="Description"
-                    className="border border-gray-600 p-2 rounded w-full h-24 bg-gray-700 text-gray-100"
+                    className="border border-primary-400 p-2 rounded w-full h-24 bg-primary text-primary"
                 />
                 <input
                     name="propertyReferenceId"
@@ -203,7 +203,7 @@ export default function EditPropertyForm() {
                     value={formData.propertyReferenceId || ''}
                     onChange={handleChange}
                     placeholder="Property Reference ID"
-                    className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
+                    className="border border-primary-400 p-2 rounded w-full bg-primary text-primary"
                 />
                 <input
                     name="building"
@@ -211,7 +211,7 @@ export default function EditPropertyForm() {
                     value={formData.building || ''}
                     onChange={handleChange}
                     placeholder="Building"
-                    className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
+                    className="border border-primary-400 p-2 rounded w-full bg-primary text-primary"
                 />
                 <input
                     name="neighborhood"
@@ -219,7 +219,7 @@ export default function EditPropertyForm() {
                     value={formData.neighborhood || ''}
                     onChange={handleChange}
                     placeholder="Neighborhood"
-                    className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
+                    className="border border-primary-400 p-2 rounded w-full bg-primary text-primary"
                 />
                 <input
                     name="landlordName"
@@ -227,7 +227,7 @@ export default function EditPropertyForm() {
                     value={formData.landlordName || ''}
                     onChange={handleChange}
                     placeholder="Landlord Name"
-                    className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
+                    className="border border-primary-400 p-2 rounded w-full bg-primary text-primary"
                 />
                 <input
                     name="reraTitleNumber"
@@ -235,7 +235,7 @@ export default function EditPropertyForm() {
                     value={formData.reraTitleNumber || ''}
                     onChange={handleChange}
                     placeholder="RERA Title Number"
-                    className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
+                    className="border border-primary-400 p-2 rounded w-full bg-primary text-primary"
                 />
                 <input
                     name="reraPreRegistrationNumber"
@@ -243,7 +243,7 @@ export default function EditPropertyForm() {
                     value={formData.reraPreRegistrationNumber || ''}
                     onChange={handleChange}
                     placeholder="RERA Pre Registration Number"
-                    className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
+                    className="border border-primary-400 p-2 rounded w-full bg-primary text-primary"
                 />
                 <input
                     name="agentName"
@@ -251,7 +251,7 @@ export default function EditPropertyForm() {
                     value={formData.agentName || ''}
                     onChange={handleChange}
                     placeholder="Agent Name"
-                    className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
+                    className="border border-primary-400 p-2 rounded w-full bg-primary text-primary"
                 />
                 <input
                     name="agentCallNumber"
@@ -259,7 +259,7 @@ export default function EditPropertyForm() {
                     value={formData.agentCallNumber || ''}
                     onChange={handleChange}
                     placeholder="Agent Call Number"
-                    className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
+                    className="border border-primary-400 p-2 rounded w-full bg-primary text-primary"
                 />
                 <input
                     name="agentEmail"
@@ -267,7 +267,7 @@ export default function EditPropertyForm() {
                     value={formData.agentEmail || ''}
                     onChange={handleChange}
                     placeholder="Agent Email"
-                    className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
+                    className="border border-primary-400 p-2 rounded w-full bg-primary text-primary"
                 />
                 <input
                     name="agentWhatsapp"
@@ -275,7 +275,7 @@ export default function EditPropertyForm() {
                     value={formData.agentWhatsapp || ''}
                     onChange={handleChange}
                     placeholder="Agent WhatsApp"
-                    className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
+                    className="border border-primary-400 p-2 rounded w-full bg-primary text-primary"
                 />
                 <input
                     name="images"
@@ -283,19 +283,19 @@ export default function EditPropertyForm() {
                     accept="image/*"
                     multiple
                     onChange={handleImageChange}
-                    className="border border-gray-600 p-2 rounded w-full bg-gray-700 text-gray-100"
+                    className="border border-primary-400 p-2 rounded w-full bg-primary text-primary"
                 />
                 <div className="flex justify-between">
                     <button
                         type="button"
                         onClick={() => navigate(-1)} // Go back to the previous page
-                        className="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-500 transition duration-300"
+                        className="px-4 py-2 bg-button text-button rounded  transition duration-300"
                     >
                         Back
                     </button>
                     <button
                         type="submit"
-                        className="px-4 py-2 bg-custom text-white rounded hover:bg-gray-600 transition duration-300"
+                        className="px-4 py-2 bg-button text-button rounded  transition duration-300"
                     >
                         Submit
                     </button>
