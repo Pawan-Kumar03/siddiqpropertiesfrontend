@@ -304,7 +304,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         <div className="flex flex-col">
             <label className="mb-1 text-primary font-playfair">Beds</label>
             <select
-                className="w-full font-playfair p-3 h-12 rounded-md  dark:border-primary dark:bg-primary dark:text-primary"
+                className="p-3 h-12 rounded-md"
                 name="beds"
                 value={beds}
                 onChange={(e) => setBeds(e.target.value)}
@@ -322,7 +322,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         <div className="flex flex-col">
             <label className="mb-1 text-primary font-playfair">Baths</label>
             <select
-                className="w-full font-playfair p-3 h-12 rounded-md  dark:border-primary dark:bg-primary dark:text-primary"
+                className="p-3 h-12 rounded-md"
                 name="baths"
                 value={baths}
                 onChange={(e) => setBaths(e.target.value)}
@@ -340,7 +340,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         <div className="flex flex-col">
             <label className="mb-1 text-primary font-playfair">Owner Type</label>
             <select
-                className="w-full  font-playfair p-3 h-12 rounded-md dark:border-primary dark:bg-primary dark:text-primary"
+                className="w-full p-3 h-12 rounded-md"
                 name="agentType"
                 value={agentType}
                 onChange={(e) => setAgentType(e.target.value)}
