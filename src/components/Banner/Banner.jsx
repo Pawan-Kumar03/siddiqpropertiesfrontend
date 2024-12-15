@@ -214,14 +214,14 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
 
 
 <form
-    className="flex flex-wrap items-center gap-4 px-2 lg:px-0 py-6 lg:pt-16 lg:pb-8 mt-8 bg-primary lg:bg-transparent"
+    className="flex flex-wrap lg:flex-nowrap items-center gap-4 px-2 lg:px-0 py-6 lg:pt-16 lg:pb-8 mt-8 bg-primary lg:bg-transparent"
     onSubmit={handleSearch}
 >
     {/* City Input */}
-    <div className="flex flex-col">
+    <div className="flex flex-col w-full lg:w-auto">
         <label className="mb-1 font-playfair text-primary">City</label>
         <select
-            className="w-full p-3 h-12 rounded-md"
+            className="w-full lg:w-auto p-3 h-12 rounded-md"
             name="city"
             value={city}
             onChange={(e) => setCity(e.target.value)}
@@ -238,7 +238,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     </div>
 
     {/* Location Input */}
-    <div className="flex flex-col">
+    <div className="flex flex-col w-full lg:w-auto">
         <label className="mb-1 font-playfair text-primary">Location</label>
         <div className="flex items-center">
             <input
@@ -262,10 +262,10 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     </div>
 
     {/* Property Type */}
-    <div className="flex flex-col">
+    <div className="flex flex-col w-full lg:w-auto">
         <label className="mb-1 font-playfair text-primary">Property Type</label>
         <select
-            className="w-full p-3 h-12 rounded-md"
+            className="w-full lg:w-auto p-3 h-12 rounded-md"
             name="propertyType"
             value={propertyType}
             onChange={(e) => setPropertyType(e.target.value)}
@@ -277,7 +277,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     </div>
 
     {/* Price Min */}
-    <div className="flex flex-col">
+    <div className="flex flex-col w-full lg:w-auto">
         <label className="mb-1 font-playfair text-primary">Price Min</label>
         <input
             type="number"
@@ -289,7 +289,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     </div>
 
     {/* Price Max */}
-    <div className="flex flex-col">
+    <div className="flex flex-col w-full lg:w-auto">
         <label className="mb-1 font-playfair text-primary">Price Max</label>
         <input
             type="number"
@@ -300,71 +300,73 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         />
     </div>
 
-        {/* Beds */}
-        <div className="flex flex-col">
-            <label className="mb-1 text-primary font-playfair">Beds</label>
-            <select
-                className="p-3 h-12 rounded-md"
-                name="beds"
-                value={beds}
-                onChange={(e) => setBeds(e.target.value)}
-            >
-                 <option value="" className="text-primary font-playfair ">Select Beds</option>
-                                    <option value="1" className="text-primary font-playfair ">1</option>
-                                    <option value="2" className="text-primary font-playfair ">2</option>
-                                    <option value="3" className="text-primary font-playfair ">3</option>
-                                    <option value="4" className="text-primary font-playfair ">4</option>
-                                    <option value="5" className="text-primary font-playfair ">5+</option>
-            </select>
-        </div>
+    {/* Beds */}
+    <div className="flex flex-col w-full lg:w-auto">
+        <label className="mb-1 text-primary font-playfair">Beds</label>
+        <select
+            className="p-3 h-12 rounded-md"
+            name="beds"
+            value={beds}
+            onChange={(e) => setBeds(e.target.value)}
+        >
+            <option value="" className="text-primary font-playfair">Select Beds</option>
+            <option value="1" className="text-primary font-playfair">1</option>
+            <option value="2" className="text-primary font-playfair">2</option>
+            <option value="3" className="text-primary font-playfair">3</option>
+            <option value="4" className="text-primary font-playfair">4</option>
+            <option value="5" className="text-primary font-playfair">5+</option>
+        </select>
+    </div>
 
-        {/* Baths */}
-        <div className="flex flex-col">
-            <label className="mb-1 text-primary font-playfair">Baths</label>
-            <select
-                className="p-3 h-12 rounded-md"
-                name="baths"
-                value={baths}
-                onChange={(e) => setBaths(e.target.value)}
-            >
-                <option value="" className="text-primary font-playfair ">Select Baths</option>
-                                    <option value="1" className="text-primary font-playfair ">1</option>
-                                    <option value="2" className="text-primary font-playfair ">2</option>
-                                    <option value="3" className="text-primary font-playfair ">3</option>
-                                    <option value="4" className="text-primary font-playfair ">4</option>
-                                    <option value="5" className="text-primary font-playfair ">5+</option>
-            </select>
-        </div>
+    {/* Baths */}
+    <div className="flex flex-col w-full lg:w-auto">
+        <label className="mb-1 text-primary font-playfair">Baths</label>
+        <select
+            className="p-3 h-12 rounded-md"
+            name="baths"
+            value={baths}
+            onChange={(e) => setBaths(e.target.value)}
+        >
+            <option value="" className="text-primary font-playfair">Select Baths</option>
+            <option value="1" className="text-primary font-playfair">1</option>
+            <option value="2" className="text-primary font-playfair">2</option>
+            <option value="3" className="text-primary font-playfair">3</option>
+            <option value="4" className="text-primary font-playfair">4</option>
+            <option value="5" className="text-primary font-playfair">5+</option>
+        </select>
+    </div>
 
-        {/* Agent Type */}
-        <div className="flex flex-col">
-            <label className="mb-1 text-primary font-playfair">Owner Type</label>
-            <select
-                className="w-full p-3 h-12 rounded-md"
-                name="agentType"
-                value={agentType}
-                onChange={(e) => setAgentType(e.target.value)}
-            >
-                <option value="" className="text-primary font-playfair ">Select Owner Type</option>
-                <option value="Owner" className="text-primary font-playfair ">Landlord</option>
-                <option value="Agent" className="text-primary font-playfair ">Agent</option>
-            </select>
-        </div>
-    <div className="flex items-center justify-between mt-4 w-full ">
-    <button
-        type="submit"
-        className="px-6 py-3 rounded-md bg-primary-dark text-white font-semibold shadow-md"
-    >
-        Search
-    </button>
-                            <button
-                                type="button"
-                                onClick={handleClearFilters}
-                                className="flex items-center font-playfair justify-center bg-primary text-primary w-1/2 px-6 py-2 rounded-full font-semibold ml-2 bg-primary text-primary"
-                            >
-                                Clear Filters
-                            </button>
-                        </div>
+    {/* Owner Type */}
+    <div className="flex flex-col w-full lg:w-auto">
+        <label className="mb-1 text-primary font-playfair">Owner Type</label>
+        <select
+            className="w-full lg:w-auto p-3 h-12 rounded-md"
+            name="agentType"
+            value={agentType}
+            onChange={(e) => setAgentType(e.target.value)}
+        >
+            <option value="" className="text-primary font-playfair">Select Owner Type</option>
+            <option value="Owner" className="text-primary font-playfair">Landlord</option>
+            <option value="Agent" className="text-primary font-playfair">Agent</option>
+        </select>
+    </div>
+
+    {/* Buttons */}
+    <div className="flex flex-col w-full lg:w-auto">
+        <button
+            type="submit"
+            className="px-6 py-3 rounded-md bg-primary-dark text-white font-semibold shadow-md"
+        >
+            Search
+        </button>
+        <button
+            type="button"
+            onClick={handleClearFilters}
+            className="mt-2 px-6 py-2 rounded-md bg-primary text-primary font-semibold"
+        >
+            Clear Filters
+        </button>
+    </div>
 </form>
 
 
