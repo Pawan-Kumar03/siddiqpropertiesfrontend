@@ -214,148 +214,162 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
 
 
 <form
-    className="flex flex-wrap items-center gap-4 px-4 py-6 lg:gap-6 bg-primary lg:bg-transparent lg:justify-between"
-    onSubmit={handleSearch}
->
-    {/* City Input */}
-    <div className="flex flex-col flex-grow max-w-[200px]">
-        <label className="mb-1 font-playfair text-primary">City</label>
-        <select
-            className="w-full p-3 h-12 rounded-md"
-            name="city"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
+            className="lg:flex lg:flex-col lg:space-y-3 px-2 lg:px-0 py-6 lg:pt-16 lg:pb-8 mt-8  relative bg-primary lg:bg-transparent"
+            onSubmit={handleSearch}
         >
-            <option value="">Select City</option>
-            <option value="Dubai">Dubai</option>
-            <option value="Abu Dhabi">Abu Dhabi</option>
-            <option value="Sharjah">Sharjah</option>
-            <option value="Ajman">Ajman</option>
-            <option value="Fujairah">Fujairah</option>
-            <option value="Ras Al Khaimah">Ras Al Khaimah</option>
-            <option value="Umm Al Quwain">Umm Al Quwain</option>
-        </select>
-    </div>
-
-    {/* Location Input */}
-    <div className="flex flex-col flex-grow max-w-[250px]">
-        <label className="mb-1 font-playfair text-primary">Location</label>
-        <div className="flex items-center">
-            <input
-                type="text"
-                placeholder="Add location and press Enter"
-                onKeyPress={handleAddLocation}
-                className="flex-grow p-3 h-12 text-primary rounded-md border border-primary"
-            />
-            {locations.map((loc, index) => (
-                <div
-                    key={index}
-                    className="flex items-center ml-2 bg-primary px-2 py-1 rounded-full"
-                >
-                    <span className="text-sm">{loc}</span>
-                    <button
-                        type="button"
-                        onClick={() => handleRemoveLocation(index)}
-                        className="ml-1 text-red-600"
-                    >
-                        ✕
-                    </button>
-                </div>
-            ))}
+                          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                             {/* City Input */}
+        <div className="flex flex-col mb-3">
+            <label className="mb-1 font-playfair  text-primary">City</label>
+            <select
+                className="w-full p-3 h-12 rounded-md "
+                name="city"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+            >
+                <option value="" className=" font-playfair ">Select City</option>
+                                    <option value="Dubai" className=" font-playfair ">Dubai</option>
+                                    <option value="Abu Dhabi" className=" font-playfair ">Abu Dhabi</option>
+                                    <option value="Sharjah" className=" font-playfair ">Sharjah</option>
+                                    <option value="Ajman" className=" font-playfair ">Ajman</option>
+                                    <option value="Fujairah" className=" font-playfair ">Fujairah</option>
+                                    <option value="Ras Al Khaimah" className=" font-playfair ">Ras Al Khaimah</option>
+                                    <option value="Umm Al Quwain" className=" font-playfair ">Umm Al Quwain</option>
+            </select>
         </div>
-    </div>
 
-    {/* Property Type */}
-    <div className="flex flex-col flex-grow max-w-[200px]">
-        <label className="mb-1 font-playfair text-primary">Property Type</label>
-        <select
-            className="w-full p-3 h-12 rounded-md"
-            name="propertyType"
-            value={propertyType}
-            onChange={(e) => setPropertyType(e.target.value)}
-        >
-            <option value="">Select Property Type</option>
-            <option value="Apartment">Apartment</option>
-            <option value="Villa">Villa</option>
-        </select>
-    </div>
+        {/* Location Input */}
+        <div className="flex flex-col mb-3">
+            <label className="mb-1 text-primary font-playfair">Location</label>
+            <div className="flex flex-wrap items-center">
+                <input
+                    type="text"
+                    placeholder="Add location and press Enter"
+                    onKeyPress={handleAddLocation}
+                    className="flex-1 p-3 h-12 text-primary rounded-md border border-primary dark:border-primary dark:bg-primary dark:text-primary"
+                />
+                {/* Location Chips */}
+                {locations.map((loc, index) => (
+                    <div key={index} className="flex items-center space-x-1 mb-1 mr-1 bg-primary dark:bg-primary px-2 py-1 rounded-full">
+                        <span className="text-sm text-primary">{loc}</span>
+                        <button type="button" onClick={() => handleRemoveLocation(index)} className="ml-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                ))}
+            </div>
+        </div>
 
-    {/* Price Min and Max */}
-    <div className="flex gap-4 flex-grow">
-        <div className="flex flex-col max-w-[120px]">
-            <label className="mb-1 font-playfair text-primary">Price Min</label>
+        {/* Property Type */}
+        <div className="flex flex-col mb-3">
+            <label className="mb-1 text-primary font-playfair">Property Type</label>
+            <select
+                className="w-full p-3 h-12 rounded-md "
+                name="propertyType"
+                value={propertyType}
+                onChange={(e) => setPropertyType(e.target.value)}
+            >
+                <option value="" className=" font-playfair ">Select Property Type</option>
+                                    <option value="Apartment" className=" font-playfair ">Apartment</option>
+                                    <option value="Villa" className=" font-playfair ">Villa</option>
+                                    <option value="Townhouse" className=" font-playfair ">Townhouse</option>
+                                    <option value="Penthouse" className=" font-playfair ">Penthouse</option>
+            </select>
+        </div>
+
+        {/* Min Price */}
+        <div className="flex flex-col mb-3">
+            <label className="mb-1 text-primary font-playfair">Min Price</label>
             <input
                 type="number"
-                placeholder="Min"
+                name="priceMin"
+                placeholder="Min Price"
                 value={priceMin}
                 onChange={(e) => setPriceMin(e.target.value)}
-                className="p-3 h-12 rounded-md"
+                className="w-full p-3 h-12 text-primary rounded-md font-playfair border border-primary dark:border-primary dark:bg-primary dark:text-primary"
             />
         </div>
-        <div className="flex flex-col max-w-[120px]">
-            <label className="mb-1 font-playfair text-primary">Price Max</label>
+
+        {/* Max Price */}
+        <div className="flex flex-col mb-3">
+            <label className="mb-1 text-primary font-playfair">Max Price</label>
             <input
                 type="number"
-                placeholder="Max"
+                name="priceMax"
+                placeholder="Max Price"
                 value={priceMax}
                 onChange={(e) => setPriceMax(e.target.value)}
-                className="p-3 h-12 rounded-md"
+                className="w-full p-3 h-12 text-primary font-playfair rounded-md border border-primary dark:border-primary dark:bg-primary dark:text-primary"
             />
         </div>
-    </div>
 
-    {/* Beds and Baths */}
-    <div className="flex gap-4 flex-grow">
-        <div className="flex flex-col max-w-[120px]">
+        {/* Beds */}
+        <div className="flex flex-col mb-3">
             <label className="mb-1 text-primary font-playfair">Beds</label>
             <select
-                className="p-3 h-12 rounded-md"
+                className="w-full font-playfair p-3 h-12 rounded-md  dark:border-primary dark:bg-primary dark:text-primary"
+                name="beds"
                 value={beds}
                 onChange={(e) => setBeds(e.target.value)}
             >
-                <option value="">Select Beds</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5+">5+</option>
+                 <option value="" className="text-primary font-playfair ">Select Beds</option>
+                                    <option value="1" className="text-primary font-playfair ">1</option>
+                                    <option value="2" className="text-primary font-playfair ">2</option>
+                                    <option value="3" className="text-primary font-playfair ">3</option>
+                                    <option value="4" className="text-primary font-playfair ">4</option>
+                                    <option value="5" className="text-primary font-playfair ">5+</option>
             </select>
         </div>
-        <div className="flex flex-col max-w-[120px]">
+
+        {/* Baths */}
+        <div className="flex flex-col mb-3">
             <label className="mb-1 text-primary font-playfair">Baths</label>
             <select
-                className="p-3 h-12 rounded-md"
+                className="w-full font-playfair p-3 h-12 rounded-md  dark:border-primary dark:bg-primary dark:text-primary"
+                name="baths"
                 value={baths}
                 onChange={(e) => setBaths(e.target.value)}
             >
-                <option value="">Select Baths</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5+">5+</option>
+                <option value="" className="text-primary font-playfair ">Select Baths</option>
+                                    <option value="1" className="text-primary font-playfair ">1</option>
+                                    <option value="2" className="text-primary font-playfair ">2</option>
+                                    <option value="3" className="text-primary font-playfair ">3</option>
+                                    <option value="4" className="text-primary font-playfair ">4</option>
+                                    <option value="5" className="text-primary font-playfair ">5+</option>
+            </select>
+        </div>
+
+        {/* Agent Type */}
+        <div className="flex flex-col mb-3">
+            <label className="mb-1 text-primary font-playfair">Owner Type</label>
+            <select
+                className="w-full  font-playfair p-3 h-12 rounded-md dark:border-primary dark:bg-primary dark:text-primary"
+                name="agentType"
+                value={agentType}
+                onChange={(e) => setAgentType(e.target.value)}
+            >
+                <option value="" className="text-primary font-playfair ">Select Owner Type</option>
+                <option value="Owner" className="text-primary font-playfair ">Landlord</option>
+                <option value="Agent" className="text-primary font-playfair ">Agent</option>
             </select>
         </div>
     </div>
-
-    {/* Buttons */}
-    <div className="flex flex-col flex-grow max-w-[200px] items-center">
-        <button
-            type="submit"
-            className="w-full p-3 rounded-md bg-primary-dark text-white font-semibold shadow-md"
-        >
-            Search
-        </button>
-        <button
-            type="button"
-            onClick={handleClearFilters}
-            className="w-full mt-2 p-2 rounded-md bg-primary text-primary font-semibold"
-        >
-            Clear Filters
-        </button>
-    </div>
+    <div className="flex items-center justify-between mt-4 w-full ">
+                            <button type="submit" className="bg-button text-button flex items-center justify-center  w-1/2 px-6 py-2 rounded-full font-semibold mr-2 ">
+                                <img src={inputSearch} alt="Search" className="w-5 h-5 mr-2 font-playfair" />
+                                Search
+                            </button>
+                            <button
+                                type="button"
+                                onClick={handleClearFilters}
+                                className="flex items-center font-playfair justify-center bg-primary text-primary w-1/2 px-6 py-2 rounded-full font-semibold ml-2 bg-primary text-primary"
+                            >
+                                Clear Filters
+                            </button>
+                        </div>
 </form>
-
 
 
                 </div>
