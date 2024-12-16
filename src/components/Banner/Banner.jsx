@@ -404,14 +404,25 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     </select>
   </div>
 
-  <div class="flex flex-col w-[18%]">
-    <label class="mb-1 text-sm font-medium text-gray-700">Filters</label>
-    <input type="text" placeholder="Baths, Area / Size (sqft), etc" class="p-2 h-10 rounded-md border text-sm text-gray-700"/>
+  <div class="flex flex-col w-[10%]">
+    <label class="mb-1 text-sm font-medium text-gray-700">Baths</label>
+    <select class="p-2 h-10 rounded-md border text-sm text-gray-700">
+      <option value="">Any</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
   </div>
 
   <div class="flex items-end w-[10%]">
-    <button type="submit" class="w-full p-2 h-10 bg-blue-600 text-white rounded-md text-sm font-medium">
+    <button type="submit" class="w-full p-2 h-10 bg-button text-button rounded-md text-sm font-medium">
       Search
+    </button>
+  </div>
+
+  <div class="flex items-end w-[10%]">
+    <button type="submit" class="w-full p-2 h-10 bg-button text-button rounded-md text-sm font-medium">
+      Clear
     </button>
   </div>
 </form>
