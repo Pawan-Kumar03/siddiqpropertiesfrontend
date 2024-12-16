@@ -363,11 +363,12 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
  */}
 
 <form class="flex items-center justify-between w-full space-x-2 px-4 py-4 bg-primary rounded-lg">
-  <div class="flex flex-col w-[12%]">
-    <label class="mb-1 text-sm font-medium text-gray-700">Purpose</label>
+<div class="flex flex-col w-[14%]">
+    <label class="mb-1 text-sm font-medium text-gray-700">City</label>
     <select class="p-2 h-10 rounded-md border text-sm text-gray-700">
-      <option value="Rent">Rent</option>
-      <option value="Buy">Buy</option>
+      <option value="">Dubai</option>
+      <option value="Apartment">Apartment</option>
+      <option value="Villa">Villa</option>
     </select>
   </div>
 
