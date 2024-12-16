@@ -49,7 +49,7 @@ export default function Navbar() {
 
                 {/* Desktop Navigation */}
                 <div className="hidden sm:flex items-center space-x-6">
-                    <Link to="/" className="px-4 py-2 text-primary rounded-full bg-banner hover:bg-banner">
+                    <Link to="/" className="px-4 py-2 text-primary rounded-full bg-primary-dark hover:bg-banner">
                         Home
                     </Link>
                     <Link to="/about-us" className="px-4 py-2 text-primary rounded-full bg-banner hover:bg-banner">
