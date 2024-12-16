@@ -67,7 +67,9 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     const totalProperties = locationCounts.reduce((total, loc) => {
         return total + (typeof loc.count === 'number' ? loc.count : 0);
     }, 0);
-    
+    // Check if any filters are applied
+  const isFilterApplied = city || locations.length > 0 || propertyType || priceMin || priceMax || beds || baths;
+
     const handleSearch = (event) => {
         event.preventDefault();
         const searchParams = {
@@ -325,13 +327,14 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     </button>
   </div>
 
-  <div class="w-full sm:w-auto">
+  {isFilterApplied && (<div class="w-full sm:w-auto">
   <label class="mb-1 text-sm font-medium text-primary"> </label>
     <button type="submit" class="w-full sm:w-auto mt-4 bg-primary-dark  text-primary hover:bg-primary-dark transition duration-300 px-4 py-2 rounded-full font-semibold shadow-md"
     onClick={handleClearFilters}>
       Clear
     </button>
   </div>
+   )}
 </form>
 
 
