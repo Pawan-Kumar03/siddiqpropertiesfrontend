@@ -362,27 +362,45 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
 </form>
  */}
 
-<form class="flex items-center justify-between w-full space-x-2 px-4 py-4 bg-primary rounded-lg">
+<form class="flex items-center justify-between w-full space-x-2 px-4 py-4 bg-primary rounded-lg"
+onSubmit={handleSearch}>
 <div class="flex flex-col w-[14%]">
     <label class="mb-1 text-sm font-medium text-gray-700">City</label>
     <select class="p-2 h-10 rounded-md border text-sm text-gray-700">
-      <option value="">Dubai</option>
-      <option value="Apartment">Apartment</option>
-      <option value="Villa">Villa</option>
+    <option value="" className=" font-playfair ">Select City</option>
+                                    <option value="Dubai" className=" font-playfair ">Dubai</option>
+                                    <option value="Abu Dhabi" className=" font-playfair ">Abu Dhabi</option>
+                                    <option value="Sharjah" className=" font-playfair ">Sharjah</option>
+                                    <option value="Ajman" className=" font-playfair ">Ajman</option>
+                                    <option value="Fujairah" className=" font-playfair ">Fujairah</option>
+                                    <option value="Ras Al Khaimah" className=" font-playfair ">Ras Al Khaimah</option>
+                                    <option value="Umm Al Quwain" className=" font-playfair ">Umm Al Quwain</option>
     </select>
   </div>
 
   <div class="flex flex-col w-[18%]">
     <label class="mb-1 text-sm font-medium text-gray-700">Location</label>
     <input type="text" placeholder="Enter location" class="p-2 h-10 rounded-md border text-sm text-gray-700"/>
+                {locations.map((loc, index) => (
+                    <div key={index} className="flex items-center space-x-1 mb-1 mr-1 bg-primary dark:bg-primary px-2 py-1 rounded-full">
+                        <span className="text-sm text-primary">{loc}</span>
+                        <button type="button" onClick={() => handleRemoveLocation(index)} className="ml-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                ))}
   </div>
 
   <div class="flex flex-col w-[14%]">
     <label class="mb-1 text-sm font-medium text-gray-700">Property Type</label>
     <select class="p-2 h-10 rounded-md border text-sm text-gray-700">
-      <option value="">Any</option>
-      <option value="Apartment">Apartment</option>
-      <option value="Villa">Villa</option>
+    <option value="" className=" font-playfair ">Select Property Type</option>
+                                    <option value="Apartment" className=" font-playfair ">Apartment</option>
+                                    <option value="Villa" className=" font-playfair ">Villa</option>
+                                    <option value="Townhouse" className=" font-playfair ">Townhouse</option>
+                                    <option value="Penthouse" className=" font-playfair ">Penthouse</option>
     </select>
   </div>
 
@@ -398,33 +416,39 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
   <div class="flex flex-col w-[10%]">
     <label class="mb-1 text-sm font-medium text-gray-700">Beds</label>
     <select class="p-2 h-10 rounded-md border text-sm text-gray-700">
-      <option value="">Any</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
+    <option value="" className="text-primary font-playfair ">Select Beds</option>
+                                    <option value="1" className="text-primary font-playfair ">1</option>
+                                    <option value="2" className="text-primary font-playfair ">2</option>
+                                    <option value="3" className="text-primary font-playfair ">3</option>
+                                    <option value="4" className="text-primary font-playfair ">4</option>
+                                    <option value="5" className="text-primary font-playfair ">5+</option>
     </select>
   </div>
 
   <div class="flex flex-col w-[10%]">
     <label class="mb-1 text-sm font-medium text-gray-700">Baths</label>
     <select class="p-2 h-10 rounded-md border text-sm text-gray-700">
-      <option value="">Any</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
+    <option value="" className="text-primary font-playfair ">Select Baths</option>
+                                    <option value="1" className="text-primary font-playfair ">1</option>
+                                    <option value="2" className="text-primary font-playfair ">2</option>
+                                    <option value="3" className="text-primary font-playfair ">3</option>
+                                    <option value="4" className="text-primary font-playfair ">4</option>
+                                    <option value="5" className="text-primary font-playfair ">5+</option>
     </select>
   </div>
 
   <div class="flex items-end w-[10%]">
   <label class="mb-1 text-sm font-medium text-gray-700"> </label>
-    <button type="submit" class="w-full p-2 h-10 bg-button text-button rounded-md text-sm font-medium">
+    <button type="submit" class="w-full p-2 h-10 bg-button text-button rounded-md text-sm font-medium"
+    >
       Search
     </button>
   </div>
 
   <div class="flex items-end w-[10%]">
   <label class="mb-1 text-sm font-medium text-gray-700"> </label>
-    <button type="submit" class="w-full p-2 h-10 bg-primary-dark  text-primary rounded-md text-sm font-medium">
+    <button type="submit" class="w-full p-2 h-10 bg-primary-dark  text-primary rounded-md text-sm font-medium"
+    onClick={handleClearFilters}>
       Clear
     </button>
   </div>
