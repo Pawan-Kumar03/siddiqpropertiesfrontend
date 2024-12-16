@@ -207,7 +207,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
   Your <span className="animate-blink font-bold">InvestiBayt</span> <br /> Journey Starts Here
 </h1>
 
-<form className="flex flex-row justify-between w-full space-x-2 px-4 py-4 bg-primary rounded-lg" onSubmit={handleSearch}>
+<form className="flex flex-wrap sm:flex-row justify-between w-full space-x-2 px-4 py-4 bg-primary rounded-lg" onSubmit={handleSearch}>
     <div className="flex flex-col w-full sm:w-[48%] md:w-[14%] mb-4 sm:mb-0">
         <label className="mb-1 text-sm font-medium text-primary">City</label>
         <select 
@@ -266,7 +266,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
 
     <div className="flex flex-col w-full sm:w-[48%] md:w-[14%] mb-4 sm:mb-0">
         <label className="mb-1 text-sm font-medium text-primary">Price Range</label>
-        <div className="flex flex-row gap-2 w-full">
+        <div className="flex flex-wrap sm:flex-row gap-2 w-full">
             <input
                 type="text"
                 placeholder="From"
