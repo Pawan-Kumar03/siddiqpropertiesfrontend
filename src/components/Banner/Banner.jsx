@@ -418,17 +418,17 @@ onSubmit={handleSearch}>
   <div className="flex flex-col w-[14%]">
   <label className="mb-1 text-sm font-medium text-gray-700">Price Range</label>
   <div className="flex items-center gap-2">
-    {/* From Field */}
+    {/* From Field - Dropdown that allows manual entry */}
     <input
-      type="number"
+      type="text"
       placeholder="From"
       value={priceMin}
       onChange={(e) => setPriceMin(e.target.value)}
       className="p-2 h-10 w-1/2 rounded-md border border-gray-300 focus:ring-2 focus:ring-gray-500 outline-none"
     />
-    {/* Upto Field */}
+    {/* Upto Field - Dropdown that allows manual entry */}
     <input
-      type="number"
+      type="text"
       placeholder="Upto"
       value={priceMax}
       onChange={(e) => setPriceMax(e.target.value)}
