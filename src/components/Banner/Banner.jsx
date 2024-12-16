@@ -415,14 +415,28 @@ onSubmit={handleSearch}>
     </select>
   </div>
 
-  <div class="flex flex-col w-[14%]">
-    <label class="mb-1 text-sm font-medium text-gray-700">Price Range</label>
-    <select class="p-2 h-10 rounded-md border text-sm text-gray-700">
-      <option value="">Any</option>
-      <option value="1000-5000">1000 - 5000</option>
-      <option value="5000-10000">5000 - 10000</option>
-    </select>
+  <div className="flex flex-col w-[14%]">
+  <label className="mb-1 text-sm font-medium text-gray-700">Price Range</label>
+  <div className="flex items-center gap-2">
+    {/* From Field */}
+    <input
+      type="number"
+      placeholder="From"
+      value={priceMin}
+      onChange={(e) => setPriceMin(e.target.value)}
+      className="p-2 h-10 w-1/2 rounded-md border border-gray-300 focus:ring-2 focus:ring-gray-500 outline-none"
+    />
+    {/* Upto Field */}
+    <input
+      type="number"
+      placeholder="Upto"
+      value={priceMax}
+      onChange={(e) => setPriceMax(e.target.value)}
+      className="p-2 h-10 w-1/2 rounded-md border border-gray-300 focus:ring-2 focus:ring-gray-500 outline-none"
+    />
   </div>
+</div>
+
 
   <div class="flex flex-col w-[10%]">
     <label class="mb-1 text-sm font-medium text-gray-700">Beds</label>
