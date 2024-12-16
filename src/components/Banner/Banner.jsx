@@ -365,12 +365,12 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
 <form class="flex items-center justify-between w-full space-x-2 px-4 py-4 bg-primary rounded-lg"
 onSubmit={handleSearch}>
 <div class="flex flex-col w-[14%]">
-    <label class="mb-1 text-sm font-medium text-gray-700">City</label>
+    <label class="mb-1 text-sm font-medium text-primary">City</label>
     <select 
     name="city"
     value={city}
     onChange={(e) => setCity(e.target.value)}
-    class="p-2 h-10 rounded-md border text-sm text-gray-700">
+    class="p-2 h-10 rounded-md border border-primary text-sm text-primary">
     <option value="" className=" font-playfair ">Any</option>
                                     <option value="Dubai" className=" font-playfair ">Dubai</option>
                                     <option value="Abu Dhabi" className=" font-playfair ">Abu Dhabi</option>
@@ -383,11 +383,11 @@ onSubmit={handleSearch}>
   </div>
 
   <div class="flex flex-col w-[18%]">
-    <label class="mb-1 text-sm font-medium text-gray-700">Location</label>
+    <label class="mb-1 text-sm font-medium text-primary">Location</label>
     <input type="text"
                     placeholder="Add location and press Enter"
                     onKeyPress={handleAddLocation}
-                     class="p-2 h-10 rounded-md border text-sm text-gray-700"/>
+                     class="p-2 h-10 rounded-md border text-sm text-primary"/>
                 {locations.map((loc, index) => (
                     <div key={index} className="flex items-center space-x-1 mb-1 mr-1 bg-primary dark:bg-primary px-2 py-1 rounded-full">
                         <span className="text-sm text-primary">{loc}</span>
@@ -401,12 +401,12 @@ onSubmit={handleSearch}>
   </div>
 
   <div class="flex flex-col w-[14%]">
-    <label class="mb-1 text-sm font-medium text-gray-700">Property Type</label>
+    <label class="mb-1 text-sm font-medium text-primary">Property Type</label>
     <select 
     name="propertyType"
     value={propertyType}
     onChange={(e) => setPropertyType(e.target.value)}
-    class="p-2 h-10 rounded-md border text-sm text-gray-700">
+    class="p-2 h-10 rounded-md border border-primary text-sm text-primary">
     <option value="" className=" font-playfair ">Any</option>
                                     <option value="Apartment" className=" font-playfair ">Apartment</option>
                                     <option value="Villa" className=" font-playfair ">Villa</option>
@@ -416,7 +416,7 @@ onSubmit={handleSearch}>
   </div>
 
   <div className="flex flex-col w-[14%]">
-  <label className="mb-1 text-sm font-medium text-gray-700">Price Range</label>
+  <label className="mb-1 text-sm font-medium text-primary">Price Range</label>
   <div className="flex items-center gap-2">
     {/* From Field - Dropdown that allows manual entry */}
     <input
@@ -424,7 +424,7 @@ onSubmit={handleSearch}>
       placeholder="From"
       value={priceMin}
       onChange={(e) => setPriceMin(e.target.value)}
-      className="p-2 h-10 w-1/2 rounded-md border border-gray-300 focus:ring-2 focus:ring-gray-500 outline-none"
+      className="p-2 h-10 w-1/2 rounded-md text-primary border border-primary focus:ring-2 focus:ring-gray-500 outline-none"
     />
     {/* Upto Field - Dropdown that allows manual entry */}
     <input
@@ -432,19 +432,19 @@ onSubmit={handleSearch}>
       placeholder="Upto"
       value={priceMax}
       onChange={(e) => setPriceMax(e.target.value)}
-      className="p-2 h-10 w-1/2 rounded-md border border-gray-300 focus:ring-2 focus:ring-gray-500 outline-none"
+      className="p-2 h-10 w-1/2 rounded-md text-primary border border-primary focus:ring-2 focus:ring-gray-500 outline-none"
     />
   </div>
 </div>
 
 
   <div class="flex flex-col w-[10%]">
-    <label class="mb-1 text-sm font-medium text-gray-700">Beds</label>
+    <label class="mb-1 text-sm font-medium text-primary">Beds</label>
     <select
     name="beds"
     value={beds}
     onChange={(e) => setBeds(e.target.value)}
-    class="p-2 h-10 rounded-md border text-sm text-gray-700">
+    class="p-2 h-10 rounded-md border border-primary text-sm text-primary">
     <option value="" className="text-primary font-playfair ">Any</option>
                                     <option value="1" className="text-primary font-playfair ">1</option>
                                     <option value="2" className="text-primary font-playfair ">2</option>
@@ -455,12 +455,12 @@ onSubmit={handleSearch}>
   </div>
 
   <div class="flex flex-col w-[10%]">
-    <label class="mb-1 text-sm font-medium text-gray-700">Baths</label>
+    <label class="mb-1 text-sm font-medium text-primary">Baths</label>
     <select
     name="baths"
     value={baths}
     onChange={(e) => setBaths(e.target.value)}
-    class="p-2 h-10 rounded-md border text-sm text-gray-700">
+    class="p-2 h-10 rounded-md border border-primary text-sm text-primary">
     <option value="" className="text-primary font-playfair ">Any</option>
                                     <option value="1" className="text-primary font-playfair ">1</option>
                                     <option value="2" className="text-primary font-playfair ">2</option>
@@ -471,7 +471,7 @@ onSubmit={handleSearch}>
   </div>
 
   <div class="flex items-end w-[10%]">
-  <label class="mb-1 text-sm font-medium text-gray-700"> </label>
+  <label class="mb-1 text-sm font-medium text-primary"> </label>
     <button type="submit" class="w-full p-2 h-10 bg-button text-button rounded-md text-sm font-medium"
     >
       Search
@@ -479,7 +479,7 @@ onSubmit={handleSearch}>
   </div>
 
   <div class="flex items-end w-[10%]">
-  <label class="mb-1 text-sm font-medium text-gray-700"> </label>
+  <label class="mb-1 text-sm font-medium text-primary"> </label>
     <button type="submit" class="w-full p-2 h-10 bg-primary-dark  text-primary rounded-md text-sm font-medium"
     onClick={handleClearFilters}>
       Clear
