@@ -416,12 +416,14 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
   </div>
 
   <div class="flex items-end w-[10%]">
+  <label class="mb-1 text-sm font-medium text-gray-700"></label>
     <button type="submit" class="w-full p-2 h-10 bg-button text-button rounded-md text-sm font-medium">
       Search
     </button>
   </div>
 
   <div class="flex items-end w-[10%]">
+  <label class="mb-1 text-sm font-medium text-gray-700"></label>
     <button type="submit" class="w-full p-2 h-10 bg-primary text-primary rounded-md text-sm font-medium">
       Clear
     </button>
