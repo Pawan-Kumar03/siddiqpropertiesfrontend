@@ -319,22 +319,25 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     </select>
   </div>
 
-  <div class="w-full sm:w-auto">
-  <label class="mb-1 text-sm font-medium text-primary"> </label>
-    <button type="submit" class="w-full sm:w-auto mt-4 bg-button text-button hover:bg-primary-dark transition duration-300 px-4 py-2 rounded-full font-semibold shadow-md"
+  <div className="flex w-full sm:w-auto justify-between mt-4">
+    <button
+      type="submit"
+      className="bg-button text-button hover:bg-primary-dark transition duration-300 px-4 py-2 rounded-full font-semibold shadow-md"
     >
       Search
     </button>
-  </div>
 
-  {isFilterApplied && (<div class="w-full sm:w-auto">
-  <label class="mb-1 text-sm font-medium text-primary"> </label>
-    <button type="submit" class="w-full sm:w-auto mt-4 bg-primary-dark  text-primary hover:bg-primary-dark transition duration-300 px-4 py-2 rounded-full font-semibold shadow-md"
-    onClick={handleClearFilters}>
-      Clear
-    </button>
+    {/* Show Clear button only if a filter is applied */}
+    {city || locations.length || propertyType || priceMin || priceMax || beds || baths ? (
+      <button
+        type="button"
+        onClick={handleClearFilters}
+        className="bg-primary-dark text-primary hover:bg-primary-dark transition duration-300 px-4 py-2 rounded-full font-semibold shadow-md"
+      >
+        Clear
+      </button>
+    ) : null}
   </div>
-   )}
 </form>
 
 
