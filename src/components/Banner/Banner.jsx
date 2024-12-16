@@ -207,12 +207,12 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
   Your <span className="animate-blink font-bold">InvestiBayt</span> <br /> Journey Starts Here
 </h1>
 
-<form
+{/* <form
             className="flex items-center justify-between w-full space-x-2 px-4 py-4 bg-primary rounded-lg"
             onSubmit={handleSearch}
         >
                           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                             {/* City Input */}
+                             {/* City Input }
         <div className="flex flex-col mb-3">
             <label className="mb-1 font-playfair  text-primary">City</label>
             <select
@@ -232,7 +232,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
             </select>
         </div>
 
-        {/* Location Input */}
+        {/* Location Input }
         <div className="flex flex-col w-[18%]">
             <label className="mb-1 text-sm font-medium text-primary font-playfair">Location</label>
             <div className="flex flex-wrap items-center">
@@ -242,7 +242,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                     onKeyPress={handleAddLocation}
                     className="p-2 h-10 text-primary rounded-md border border-primary text-sm"
                 />
-                {/* Location Chips */}
+                {/* Location Chips }
                 {locations.map((loc, index) => (
                     <div key={index} className="flex items-center space-x-1 mb-1 mr-1 bg-primary dark:bg-primary px-2 py-1 rounded-full">
                         <span className="text-sm text-primary">{loc}</span>
@@ -256,7 +256,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
             </div>
         </div>
 
-        {/* Property Type */}
+        {/* Property Type }
         <div className="flex flex-col w-[14%]">
             <label className="mb-1  text-sm font-medium text-primary font-playfair">Property Type</label>
             <select
@@ -273,7 +273,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
             </select>
         </div>
 
-        {/* Min Price */}
+        {/* Min Price }
         <div className="flex flex-col w-[14%]">
             <label className="mb-1 text-sm font-medium text-primary font-playfair">Min Price</label>
             <input
@@ -286,7 +286,6 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
             />
         </div>
 
-        {/* Max Price */}
         <div className="flex flex-col w-[14%]">
             <label className="mb-1 text-sm font-medium text-primary font-playfair">Max Price</label>
             <input
@@ -299,7 +298,6 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
             />
         </div>
 
-        {/* Beds */}
         <div className="flex flex-col w-[14%]">
             <label className="mb-1 text-sm font-medium text-primary font-playfair">Beds</label>
             <select
@@ -317,7 +315,6 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
             </select>
         </div>
 
-        {/* Baths */}
         <div className="flex flex-col w-[14%]">
             <label className="mb-1 text-sm font-medium text-primary font-playfair">Baths</label>
             <select
@@ -335,7 +332,6 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
             </select>
         </div>
 
-        {/* Agent Type */}
         <div className="flex flex-col  w-[14%]">
             <label className="mb-1 text-primary font-playfair">Owner Type</label>
             <select
@@ -363,6 +359,61 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                                 Clear Filters
                             </button>
                         </div>
+</form>
+ */}
+
+<form class="flex items-center justify-between w-full space-x-2 px-4 py-4 bg-primary rounded-lg">
+  <div class="flex flex-col w-[12%]">
+    <label class="mb-1 text-sm font-medium text-gray-700">Purpose</label>
+    <select class="p-2 h-10 rounded-md border text-sm text-gray-700">
+      <option value="Rent">Rent</option>
+      <option value="Buy">Buy</option>
+    </select>
+  </div>
+
+  <div class="flex flex-col w-[18%]">
+    <label class="mb-1 text-sm font-medium text-gray-700">Location</label>
+    <input type="text" placeholder="Enter location" class="p-2 h-10 rounded-md border text-sm text-gray-700"/>
+  </div>
+
+  <div class="flex flex-col w-[14%]">
+    <label class="mb-1 text-sm font-medium text-gray-700">Property Type</label>
+    <select class="p-2 h-10 rounded-md border text-sm text-gray-700">
+      <option value="">Any</option>
+      <option value="Apartment">Apartment</option>
+      <option value="Villa">Villa</option>
+    </select>
+  </div>
+
+  <div class="flex flex-col w-[14%]">
+    <label class="mb-1 text-sm font-medium text-gray-700">Price Range</label>
+    <select class="p-2 h-10 rounded-md border text-sm text-gray-700">
+      <option value="">Any</option>
+      <option value="1000-5000">1000 - 5000</option>
+      <option value="5000-10000">5000 - 10000</option>
+    </select>
+  </div>
+
+  <div class="flex flex-col w-[10%]">
+    <label class="mb-1 text-sm font-medium text-gray-700">Beds</label>
+    <select class="p-2 h-10 rounded-md border text-sm text-gray-700">
+      <option value="">Any</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
+  </div>
+
+  <div class="flex flex-col w-[18%]">
+    <label class="mb-1 text-sm font-medium text-gray-700">Filters</label>
+    <input type="text" placeholder="Baths, Area / Size (sqft), etc" class="p-2 h-10 rounded-md border text-sm text-gray-700"/>
+  </div>
+
+  <div class="flex items-end w-[10%]">
+    <button type="submit" class="w-full p-2 h-10 bg-blue-600 text-white rounded-md text-sm font-medium">
+      Search
+    </button>
+  </div>
 </form>
 
 
