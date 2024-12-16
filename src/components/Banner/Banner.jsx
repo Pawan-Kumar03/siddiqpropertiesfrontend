@@ -366,8 +366,12 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
 onSubmit={handleSearch}>
 <div class="flex flex-col w-[14%]">
     <label class="mb-1 text-sm font-medium text-gray-700">City</label>
-    <select class="p-2 h-10 rounded-md border text-sm text-gray-700">
-    <option value="" className=" font-playfair ">Select City</option>
+    <select 
+    name="city"
+    value={city}
+    onChange={(e) => setCity(e.target.value)}
+    class="p-2 h-10 rounded-md border text-sm text-gray-700">
+    <option value="" className=" font-playfair ">Any</option>
                                     <option value="Dubai" className=" font-playfair ">Dubai</option>
                                     <option value="Abu Dhabi" className=" font-playfair ">Abu Dhabi</option>
                                     <option value="Sharjah" className=" font-playfair ">Sharjah</option>
@@ -380,7 +384,10 @@ onSubmit={handleSearch}>
 
   <div class="flex flex-col w-[18%]">
     <label class="mb-1 text-sm font-medium text-gray-700">Location</label>
-    <input type="text" placeholder="Enter location" class="p-2 h-10 rounded-md border text-sm text-gray-700"/>
+    <input type="text"
+                    placeholder="Add location and press Enter"
+                    onKeyPress={handleAddLocation}
+                     class="p-2 h-10 rounded-md border text-sm text-gray-700"/>
                 {locations.map((loc, index) => (
                     <div key={index} className="flex items-center space-x-1 mb-1 mr-1 bg-primary dark:bg-primary px-2 py-1 rounded-full">
                         <span className="text-sm text-primary">{loc}</span>
@@ -395,8 +402,12 @@ onSubmit={handleSearch}>
 
   <div class="flex flex-col w-[14%]">
     <label class="mb-1 text-sm font-medium text-gray-700">Property Type</label>
-    <select class="p-2 h-10 rounded-md border text-sm text-gray-700">
-    <option value="" className=" font-playfair ">Select Property Type</option>
+    <select 
+    name="propertyType"
+    value={propertyType}
+    onChange={(e) => setPropertyType(e.target.value)}
+    class="p-2 h-10 rounded-md border text-sm text-gray-700">
+    <option value="" className=" font-playfair ">Any</option>
                                     <option value="Apartment" className=" font-playfair ">Apartment</option>
                                     <option value="Villa" className=" font-playfair ">Villa</option>
                                     <option value="Townhouse" className=" font-playfair ">Townhouse</option>
@@ -415,8 +426,12 @@ onSubmit={handleSearch}>
 
   <div class="flex flex-col w-[10%]">
     <label class="mb-1 text-sm font-medium text-gray-700">Beds</label>
-    <select class="p-2 h-10 rounded-md border text-sm text-gray-700">
-    <option value="" className="text-primary font-playfair ">Select Beds</option>
+    <select
+    name="beds"
+    value={beds}
+    onChange={(e) => setBeds(e.target.value)}
+    class="p-2 h-10 rounded-md border text-sm text-gray-700">
+    <option value="" className="text-primary font-playfair ">Any</option>
                                     <option value="1" className="text-primary font-playfair ">1</option>
                                     <option value="2" className="text-primary font-playfair ">2</option>
                                     <option value="3" className="text-primary font-playfair ">3</option>
@@ -427,8 +442,12 @@ onSubmit={handleSearch}>
 
   <div class="flex flex-col w-[10%]">
     <label class="mb-1 text-sm font-medium text-gray-700">Baths</label>
-    <select class="p-2 h-10 rounded-md border text-sm text-gray-700">
-    <option value="" className="text-primary font-playfair ">Select Baths</option>
+    <select
+    name="baths"
+    value={baths}
+    onChange={(e) => setBaths(e.target.value)}
+    class="p-2 h-10 rounded-md border text-sm text-gray-700">
+    <option value="" className="text-primary font-playfair ">Any</option>
                                     <option value="1" className="text-primary font-playfair ">1</option>
                                     <option value="2" className="text-primary font-playfair ">2</option>
                                     <option value="3" className="text-primary font-playfair ">3</option>
