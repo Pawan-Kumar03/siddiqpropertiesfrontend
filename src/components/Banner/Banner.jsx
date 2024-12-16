@@ -207,14 +207,8 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
   Your <span className="animate-blink font-bold">InvestiBayt</span> <br /> Journey Starts Here
 </h1>
 
-
-
-
-
-
-
 <form
-            className="lg:flex lg:flex-col lg:space-y-3 px-2 lg:px-0 py-6 lg:pt-16 lg:pb-8 mt-8  relative bg-primary lg:bg-transparent"
+            className="flex items-center justify-between w-full space-x-2 px-4 py-4 bg-primary rounded-lg"
             onSubmit={handleSearch}
         >
                           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -239,14 +233,14 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         </div>
 
         {/* Location Input */}
-        <div className="flex flex-col mb-3">
-            <label className="mb-1 text-primary font-playfair">Location</label>
+        <div className="flex flex-col w-[18%]">
+            <label className="mb-1 text-sm font-medium text-primary font-playfair">Location</label>
             <div className="flex flex-wrap items-center">
                 <input
                     type="text"
                     placeholder="Add location and press Enter"
                     onKeyPress={handleAddLocation}
-                    className="flex-1 p-3 h-12 text-primary rounded-md border border-primary dark:border-primary dark:bg-primary dark:text-primary"
+                    className="p-2 h-10 text-primary rounded-md border border-primary text-sm"
                 />
                 {/* Location Chips */}
                 {locations.map((loc, index) => (
@@ -263,10 +257,10 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         </div>
 
         {/* Property Type */}
-        <div className="flex flex-col mb-3">
-            <label className="mb-1 text-primary font-playfair">Property Type</label>
+        <div className="flex flex-col w-[14%]">
+            <label className="mb-1  text-sm font-medium text-primary font-playfair">Property Type</label>
             <select
-                className="w-full p-3 h-12 rounded-md "
+                className="p-2 h-10 text-sm rounded-md "
                 name="propertyType"
                 value={propertyType}
                 onChange={(e) => setPropertyType(e.target.value)}
@@ -280,36 +274,36 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         </div>
 
         {/* Min Price */}
-        <div className="flex flex-col mb-3">
-            <label className="mb-1 text-primary font-playfair">Min Price</label>
+        <div className="flex flex-col w-[14%]">
+            <label className="mb-1 text-sm font-medium text-primary font-playfair">Min Price</label>
             <input
                 type="number"
                 name="priceMin"
                 placeholder="Min Price"
                 value={priceMin}
                 onChange={(e) => setPriceMin(e.target.value)}
-                className="w-full p-3 h-12 text-primary rounded-md font-playfair border border-primary dark:border-primary dark:bg-primary dark:text-primary"
+                className="p-2 h-10 text-sm text-primary rounded-md font-playfair border border-primary dark:border-primary dark:bg-primary dark:text-primary"
             />
         </div>
 
         {/* Max Price */}
-        <div className="flex flex-col mb-3">
-            <label className="mb-1 text-primary font-playfair">Max Price</label>
+        <div className="flex flex-col w-[14%]">
+            <label className="mb-1 text-sm font-medium text-primary font-playfair">Max Price</label>
             <input
                 type="number"
                 name="priceMax"
                 placeholder="Max Price"
                 value={priceMax}
                 onChange={(e) => setPriceMax(e.target.value)}
-                className="w-full p-3 h-12 text-primary font-playfair rounded-md border border-primary dark:border-primary dark:bg-primary dark:text-primary"
+                className="p-2 h-10 text-sm text-primary font-playfair rounded-md border border-primary dark:border-primary dark:bg-primary dark:text-primary"
             />
         </div>
 
         {/* Beds */}
-        <div className="flex flex-col mb-3">
-            <label className="mb-1 text-primary font-playfair">Beds</label>
+        <div className="flex flex-col w-[14%]">
+            <label className="mb-1 text-sm font-medium text-primary font-playfair">Beds</label>
             <select
-                className="w-full font-playfair p-3 h-12 rounded-md  dark:border-primary dark:bg-primary dark:text-primary"
+                className="p-2 h-10 text-sm  font-playfair rounded-md  dark:border-primary dark:bg-primary dark:text-primary"
                 name="beds"
                 value={beds}
                 onChange={(e) => setBeds(e.target.value)}
@@ -324,10 +318,10 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         </div>
 
         {/* Baths */}
-        <div className="flex flex-col mb-3">
-            <label className="mb-1 text-primary font-playfair">Baths</label>
+        <div className="flex flex-col w-[14%]">
+            <label className="mb-1 text-sm font-medium text-primary font-playfair">Baths</label>
             <select
-                className="w-full font-playfair p-3 h-12 rounded-md  dark:border-primary dark:bg-primary dark:text-primary"
+                className="text-sm font-playfair p-2 h-10 rounded-md  dark:border-primary dark:bg-primary dark:text-primary"
                 name="baths"
                 value={baths}
                 onChange={(e) => setBaths(e.target.value)}
@@ -342,10 +336,10 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         </div>
 
         {/* Agent Type */}
-        <div className="flex flex-col mb-3">
+        <div className="flex flex-col  w-[14%]">
             <label className="mb-1 text-primary font-playfair">Owner Type</label>
             <select
-                className="w-full  font-playfair p-3 h-12 rounded-md dark:border-primary dark:bg-primary dark:text-primary"
+                className="mb-1 text-sm font-playfair p-2 h-10 rounded-md dark:border-primary dark:bg-primary dark:text-primary"
                 name="agentType"
                 value={agentType}
                 onChange={(e) => setAgentType(e.target.value)}
@@ -356,15 +350,15 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
             </select>
         </div>
     </div>
-    <div className="flex items-center justify-between mt-4 w-full ">
-                            <button type="submit" className="bg-button text-button flex items-center justify-center  w-1/2 px-6 py-2 rounded-full font-semibold mr-2 ">
+    <div className="flex items-end w-[10%]">
+                            <button type="submit" className="w-full p-2 h-10 bg-button text-button rounded-md text-sm font-medium">
                                 <img src={inputSearch} alt="Search" className="w-5 h-5 mr-2 font-playfair" />
                                 Search
                             </button>
                             <button
                                 type="button"
                                 onClick={handleClearFilters}
-                                className="flex items-center font-playfair justify-center bg-primary text-primary w-1/2 px-6 py-2 rounded-full font-semibold ml-2 bg-primary text-primary"
+                                className="w-full p-2 h-10 bg-button text-button rounded-md text-sm font-medium"
                             >
                                 Clear Filters
                             </button>
