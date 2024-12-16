@@ -266,7 +266,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
 
     <div className="flex flex-col w-full sm:w-[48%] md:w-[14%] mb-4 sm:mb-0">
         <label className="mb-1 text-sm font-medium text-primary">Price Range</label>
-        <div className="flex flex-wrap sm:flex-row gap-2 w-full">
+        <div className="flex flex-row sm:flex-row gap-2 w-full">
             <input
                 type="text"
                 placeholder="From"
