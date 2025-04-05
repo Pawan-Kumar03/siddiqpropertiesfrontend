@@ -11,7 +11,7 @@ export default function ForgotPassword() {
 
     try {
       const response = await fetch(
-        'https://backend-git-main-pawan-togas-projects.vercel.app/api/password-reset-request',
+        'https://backend-h9z5egn2i-pawan-togas-projects.vercel.app/api/password-reset-request',
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },

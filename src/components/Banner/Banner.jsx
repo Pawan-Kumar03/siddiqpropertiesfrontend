@@ -16,10 +16,11 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
     const [purpose, setPurpose] = useState("");
     const [locationCounts, setLocationCounts] = useState([]);
     const [isMobile, setIsMobile] = useState(false);
-
+    const [showFilters, setShowFilters] = useState(false);
+    
     useEffect(() => {
         const handleResize = () => {
-            if (window.innerWidth < 769 ) {
+            if (window.innerWidth < 640 ) {
                 setIsMobile(true);
             } else {
                 setIsMobile(false);
@@ -36,7 +37,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
 
     useEffect(() => {
         if (city) {
-            fetch(`https://backend-git-main-pawan-togas-projects.vercel.app/api/listings/${city}`)
+            fetch(`https://backend-h9z5egn2i-pawan-togas-projects.vercel.app/api/listings/${city}`)
                 .then(response => response.json())
                 .then(data => {
                     // console.log(data); // Inspect the API response
@@ -202,165 +203,243 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         Create A Listing
       </Link>
     </li>
+    <li>
+      <Link
+        className="bg-primary text-primary hover:bg-primary-dark transition duration-300 px-4 py-2 sm:px-6 sm:py-2 rounded-full font-semibold shadow-md"
+        to="/AgentProfile"
+      >
+        Agent
+      </Link>
+    </li>
+    <li>
+      <Link
+        className="bg-primary text-primary hover:bg-primary-dark transition duration-300 px-4 py-2 sm:px-6 sm:py-2 rounded-full font-semibold shadow-md"
+        to="/Broker"
+      >
+        Broker
+      </Link>
+    </li>
   </ul>
 </div>
 
-<h1 className="text-5xl text-left font-primary text-primary mt-28 lg:text-primary lg:mb-8">
-  Your <span className="animate-blink font-bold">InvestiBayt</span> <br /> Journey Starts Here
+{/* <div className="bg-primary text-primary min-h-screen overflow-x-hidden">
+                    <h1 className="font-aller font-light text-4xl">Welcome to the Real Estate Listings Aller(Light)</h1>
+                    <h2 className="font-aller font-normal text-3xl">Browse Our Property Collection Aller(Regular)</h2>
+                    <h3 className="font-aller font-bold text-2xl">Special Offers Just for You Aller(Bold)</h3>
+                    <h1 className="font-primary text-4xl">Welcome to the Real Estate Listings previous font</h1>
+                </div> */}
+               
+
+               <h1
+  className="text-1rem text-center font-primary text-primary mt-[-1rem] 
+             lg:text-5xl lg:text-left lg:mt-28 lg:mb-8">
+  Your <span className="animate-blink font-bold">InvestiBayt</span>
+  <span className="lg:block hidden -mt-10 relative"> <br />Journey Starts Here</span>
+  <span className="lg:hidden"> Journey Starts Here</span>
 </h1>
 
-<form className="flex flex-wrap sm:flex-row justify-between w-full space-x-2 px-4 py-4 bg-primary rounded-lg" onSubmit={handleSearch}>
-    <div className="flex flex-col w-full sm:w-[48%] md:w-[14%] mb-4 sm:mb-0">
-        <label className="mb-1 text-sm font-medium text-primary">City</label>
-        <select 
+
+<form
+      className="px-3 py-3 bg-primary rounded-lg lg:grid lg:grid-cols-8 lg:gap-4"
+      onSubmit={handleSearch}
+    >
+      {/* Toggle Filters Button for Mobile */}
+      <button
+        type="button"
+        className="lg:hidden bg-button text-button hover:bg-primary-dark transition duration-300 px-4 py-2 rounded-full font-semibold shadow-md w-full mb-3"
+        onClick={() => setShowFilters(!showFilters)}
+      >
+        {showFilters ? "Hide Filters" : "Show Filters"}
+      </button>
+
+      {/* Filter Fields Container */}
+      <div
+        className={`${
+          showFilters ? "block" : "hidden"
+        } lg:block lg:contents space-y-4 lg:space-y-0`}
+      >
+        {/* City Filter */}
+        <div className="flex flex-col w-full">
+          <label className="mb-1 text-sm font-medium text-primary">City</label>
+          <select
             name="city"
             value={city}
             onChange={(e) => setCity(e.target.value)}
             className="p-2 h-10 rounded-md border border-primary text-sm text-primary w-full"
-        >
-            <option value="" className="font-playfair">Any</option>
-            <option value="Dubai" className="font-playfair">Dubai</option>
-            <option value="Abu Dhabi" className="font-playfair">Abu Dhabi</option>
-            <option value="Sharjah" className="font-playfair">Sharjah</option>
-            <option value="Ajman" className="font-playfair">Ajman</option>
-            <option value="Fujairah" className="font-playfair">Fujairah</option>
-            <option value="Ras Al Khaimah" className="font-playfair">Ras Al Khaimah</option>
-            <option value="Umm Al Quwain" className="font-playfair">Umm Al Quwain</option>
-        </select>
-    </div>
+          >
+            <option value="">Any</option>
+            <option value="Dubai">Dubai</option>
+            <option value="Abu Dhabi">Abu Dhabi</option>
+            <option value="Sharjah">Sharjah</option>
+            <option value="Ajman">Ajman</option>
+            <option value="Fujairah">Fujairah</option>
+            <option value="Ras Al Khaimah">Ras Al Khaimah</option>
+            <option value="Umm Al Quwain">Umm Al Quwain</option>
+          </select>
+        </div>
 
-    <div className="flex flex-col w-full sm:w-[48%] md:w-[18%] mb-4 sm:mb-0">
-        <label className="mb-1 text-sm font-medium text-primary">Location</label>
-        <input 
+        {/* Location Filter */}
+        <div className="flex flex-col w-full">
+          <label className="mb-1 text-sm font-medium text-primary">Location</label>
+          <input
             type="text"
-            placeholder="Add location and press Enter"
-            onChange={(e) => setLocations(e.target.value)}
+            placeholder="Add location and press enter"
             onKeyPress={handleAddLocation}
             className="p-2 h-10 rounded-md border border-primary text-sm text-primary w-full"
-        />
-        {locations.map((loc, index) => (
-            <div key={index} className="flex items-center space-x-1 mb-1 mr-1 bg-primary dark:bg-primary px-2 py-1 rounded-full">
-                <span className="text-sm text-primary">{loc}</span>
-                <button type="button" onClick={() => handleRemoveLocation(index)} className="ml-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
+          />
+          {locations.map((loc, index) => (
+            <div
+              key={index}
+              className="flex items-center space-x-1 mb-1 bg-primary px-2 py-1 rounded-full"
+            >
+              <span className="text-sm text-primary">{loc}</span>
+              <button
+                type="button"
+                onClick={() => handleRemoveLocation(index)}
+                className="ml-1"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-4 w-4 text-red-600"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
             </div>
-        ))}
-    </div>
+          ))}
+        </div>
 
-    <div className="flex flex-col w-full sm:w-[48%] md:w-[14%] mb-4 sm:mb-0">
-        <label className="mb-1 text-sm font-medium text-primary">Property Type</label>
-        <select 
+        {/* Property Type Filter */}
+        <div className="flex flex-col w-full">
+          <label className="mb-1 text-sm font-medium text-primary">Property Type</label>
+          <select
             name="propertyType"
             value={propertyType}
             onChange={(e) => setPropertyType(e.target.value)}
             className="p-2 h-10 rounded-md border border-primary text-sm text-primary w-full"
-        >
-            <option value="" className="font-playfair">Any</option>
-            <option value="Apartment" className="font-playfair">Apartment</option>
-            <option value="Villa" className="font-playfair">Villa</option>
-            <option value="Townhouse" className="font-playfair">Townhouse</option>
-            <option value="Penthouse" className="font-playfair">Penthouse</option>
-        </select>
-    </div>
-
-    <div className="flex flex-col w-full sm:w-[48%] md:w-[14%] mb-4 sm:mb-0">
-        <label className="mb-1 text-sm font-medium text-primary">Price Range</label>
-        <div className="flex flex-row sm:flex-row gap-2 w-full">
-            <input
-                type="text"
-                placeholder="From"
-                value={priceMin}
-                onChange={(e) => setPriceMin(e.target.value)}
-                className="p-2 h-10 rounded-md text-primary border border-primary focus:ring-2 focus:ring-gray-500 outline-none w-full sm:w-[48%]"
-            />
-            <input
-                type="text"
-                placeholder="Upto"
-                value={priceMax}
-                onChange={(e) => setPriceMax(e.target.value)}
-                className="p-2 h-10 rounded-md text-primary border border-primary focus:ring-2 focus:ring-gray-500 outline-none w-full sm:w-[48%]"
-            />
+          >
+            <option value="">Any</option>
+            <option value="Apartment">Apartment</option>
+            <option value="Villa">Villa</option>
+            <option value="Townhouse">Townhouse</option>
+            <option value="Penthouse">Penthouse</option>
+          </select>
         </div>
-    </div>
 
-    <div className="flex flex-col w-full sm:w-[48%] md:w-[10%] mb-4 sm:mb-0">
-        <label className="mb-1 text-sm font-medium text-primary">Beds</label>
-        <select
+        {/* Price Range Filter */}
+        <div className="flex flex-col w-full">
+          <label className="mb-1 text-sm font-medium text-primary">Price Range</label>
+          <div className="flex gap-2">
+            <input
+              type="text"
+              placeholder="min"
+              value={priceMin}
+              onChange={(e) => setPriceMin(e.target.value)}
+              className="p-2 h-10 rounded-md text-primary border border-primary focus:ring-2 focus:ring-gray-500 outline-none w-1/2"
+            />
+            <input
+              type="text"
+              placeholder="max"
+              value={priceMax}
+              onChange={(e) => setPriceMax(e.target.value)}
+              className="p-2 h-10 rounded-md text-primary border border-primary focus:ring-2 focus:ring-gray-500 outline-none w-1/2"
+            />
+          </div>
+        </div>
+
+        {/* Beds Filter */}
+        <div className="flex flex-col w-full">
+          <label className="mb-1 text-sm font-medium text-primary">Beds</label>
+          <select
             name="beds"
             value={beds}
             onChange={(e) => setBeds(e.target.value)}
             className="p-2 h-10 rounded-md border border-primary text-sm text-primary w-full"
+          >
+            <option value="">Any</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5+</option>
+          </select>
+        </div>
+
+        {/* Baths Filter */}
+        <div className="flex flex-col w-full">
+          <label className="mb-1 text-sm font-medium text-primary">Baths</label>
+          <select
+            name="baths"
+            value={baths}
+            onChange={(e) => setBaths(e.target.value)}
+            className="p-2 h-10 rounded-md border border-primary text-sm text-primary w-full"
+          >
+            <option value="">Any</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5+</option>
+          </select>
+        </div>
+        {/* Search and Clear Filters Buttons */}
+      <div className="flex items-center gap-4 w-full col-span-2 mt-auto">
+        <button
+          type="submit"
+          className="bg-button text-button hover:bg-primary-dark transition duration-300 px-4 py-2 rounded-full font-semibold shadow-md w-full"
         >
-            <option value="" className="text-primary font-playfair">Any</option>
-            <option value="1" className="text-primary font-playfair">1</option>
-            <option value="2" className="text-primary font-playfair">2</option>
-            <option value="3" className="text-primary font-playfair">3</option>
-            <option value="4" className="text-primary font-playfair">4</option>
-            <option value="5" className="text-primary font-playfair">5+</option>
-        </select>
-    </div>
+          Search
+        </button>
+        {isFilterApplied && (
+          <button
+            type="button"
+            onClick={handleClearFilters}
+            className="bg-primary-dark text-primary hover:bg-primary transition duration-300 px-4 py-2 rounded-full font-semibold shadow-md"
+          >
+            Clear
+          </button>
+        )}
+      </div>
+      </div>
 
-  <div class="flex flex-col w-full sm:w-[48%] md:w-[10%] mb-4 sm:mb-0">
-    <label class="mb-1 text-sm font-medium text-primary">Baths</label>
-    <select
-    name="baths"
-    value={baths}
-    onChange={(e) => setBaths(e.target.value)}
-    class="p-2 h-10 rounded-md border border-primary text-sm text-primary w-full">
-    <option value="" className="text-primary font-playfair ">Any</option>
-                                    <option value="1" className="text-primary font-playfair ">1</option>
-                                    <option value="2" className="text-primary font-playfair ">2</option>
-                                    <option value="3" className="text-primary font-playfair ">3</option>
-                                    <option value="4" className="text-primary font-playfair ">4</option>
-                                    <option value="5" className="text-primary font-playfair ">5+</option>
-    </select>
-  </div>
-
-  <div class="w-full sm:w-auto">
-  <label class="mb-1 text-sm font-medium text-primary"> </label>
-    <button type="submit" class="w-full sm:w-auto mt-4 bg-button text-button hover:bg-primary-dark transition duration-300 px-4 py-2 rounded-full font-semibold shadow-md"
-    >
-      Search
-    </button>
- 
-
-  {isFilterApplied && (<div class="w-full sm:w-auto">
-  <label class="mb-1 text-sm font-medium text-primary"> </label>
-    <button type="submit" class="w-full sm:w-auto mt-4 bg-primary-dark  text-primary hover:bg-primary-dark transition duration-300 px-4 py-2 rounded-full font-semibold shadow-md"
-    onClick={handleClearFilters}>
-      Clear
-    </button>
-  </div>
-   )}
-    </div>
-</form>
-
+      
+    </form>
+  
 
                 </div>
 
             </div>
             {city && locationCounts.length > 0 && (
-    <div className=" bg-primary font-primary pl-14">
-        <h2 className="text-xl font-semibold  text-primary font-primary">
+    <div className="bg-primary font-primary pl-14">
+        <h2 className="text-xl font-semibold text-primary font-primary">
             Properties by Location in {city}. {totalProperties} Ads
         </h2>
-        <ul className="mt-2 flex flex-wrap gap-2 text-black">
+        <div className="mt-2 flex overflow-x-auto space-x-2">
             {locationCounts.map((loc, index) => (
-                <li 
+                <div
                     key={index}
-                    className="flex  font-playfair items-center px-4 rounded shadow-md cursor-pointer text-primary"
+                    className="flex-shrink-0 font-playfair items-center px-4 py-2 rounded shadow-md cursor-pointer text-primary bg-white"
                     onClick={() => handleLocationClick(loc.location)}
+                    style={{ minWidth: '150px' }}
                 >
-                    <span className="mr-2 font-playfair truncate max-w-[120px]">{loc.location.split(' ').slice(0, 2).join(' ')}</span>
-                    <span className="text-primary font-playfair">( {loc.count} )</span>
-                </li>
+                    <span className="mr-2 font-playfair truncate max-w-[120px]">
+                        {loc.location.split(' ').slice(0, 2).join(' ')}
+                    </span>
+                    <span className="text-primary font-playfair">({loc.count})</span>
+                </div>
             ))}
-        </ul>
+        </div>
     </div>
 )}
+
         </section>
     );
 }

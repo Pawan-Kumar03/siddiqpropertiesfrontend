@@ -48,7 +48,7 @@ export default function ProfilePage() {
              // Now you can access the token
              const token = parsedUser.token;
          
-            const response = await fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/profile', {
+            const response = await fetch('https://backend-h9z5egn2i-pawan-togas-projects.vercel.app/api/profile', {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

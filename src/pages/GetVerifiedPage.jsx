@@ -26,7 +26,7 @@ export default function GetVerifiedPage() {
 
         try {
             const response = await fetch(
-                'https://backend-git-main-pawan-togas-projects.vercel.app/api/verify/request',
+                'https://backend-h9z5egn2i-pawan-togas-projects.vercel.app/api/verify/request',
                 {
                     method: 'POST',
                     headers: {

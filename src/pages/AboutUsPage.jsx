@@ -4,7 +4,7 @@ export default function AboutUsPage() {
             <div className="w-full max-w-3xl bg-accent-color p-8 rounded-lg shadow-lg">
                 <h1 className="text-4xl font-bold my-6 text-primary text-center">About Us</h1>
                 <p className="text-primary mb-6">
-                    Welcome to <b >InvestiBayt</b>, your go-to platform for buying, selling, and renting properties. We connect property owners, real estate agents, and potential buyers or renters through a seamless and user-friendly experience.
+                    Welcome to <b >SiddiqProperties</b>, your go-to platform for buying, selling, and renting properties. We connect property owners, real estate agents, and potential buyers or renters through a seamless and user-friendly experience.
                 </p>
 
                 <h2 className="text-3xl text-primary font-semibold my-6 ">Who We Are</h2>

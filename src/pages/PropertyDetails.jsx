@@ -35,7 +35,7 @@ export default function PropertyDetails() {
   const fetchProperty = async () => {
     try {
       const response = await fetch(
-        `https://backend-git-main-pawan-togas-projects.vercel.app/api/listings/${id}`
+        `https://backend-h9z5egn2i-pawan-togas-projects.vercel.app/api/listings/${id}`
       );
       if (!response.ok) {
         throw new Error("Property not found");
@@ -68,7 +68,7 @@ export default function PropertyDetails() {
 
     try {
       const response = await fetch(
-        `https://backend-git-main-pawan-togas-projects.vercel.app/api/listings/${property._id}`,
+        `https://backend-h9z5egn2i-pawan-togas-projects.vercel.app/api/listings/${property._id}`,
         {
           method: "DELETE",
           headers: {

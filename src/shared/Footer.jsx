@@ -19,7 +19,7 @@ export default function Footer() {
     useEffect(() => {
         const fetchProperties = async () => {
             try {
-                let url = `https://backend-git-main-pawan-togas-projects.vercel.app/api/listings?city=${encodeURIComponent(selectedCity)}`;
+                let url = `https://backend-h9z5egn2i-pawan-togas-projects.vercel.app/api/listings?city=${encodeURIComponent(selectedCity)}`;
                 if (selectedLocation && selectedLocation !== 'all') {
                     url += `&location=${encodeURIComponent(selectedLocation)}`;
                 }

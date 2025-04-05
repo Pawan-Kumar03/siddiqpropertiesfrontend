@@ -141,7 +141,7 @@ export default function PlaceAnAdPage() {
   
       // Send the form data to the backend
       let postResponse = await fetch(
-        "https://backend-git-main-pawan-togas-projects.vercel.app/api/listings",
+        "https://backend-h9z5egn2i-pawan-togas-projects.vercel.app/api/listings",
         {
           method: "POST",
           headers: {
@@ -392,8 +392,6 @@ function Step3Details({ onNext, onBack, formData, noAmenities }) {
     landlord: formData.landlord,
     country: '', 
     developments: '', 
-    description: '', // Added description
-    amenities: [], // Added amenities
     pdf: null,
     errors: {}, // Error messages state
     ...formData,

@@ -9,7 +9,7 @@ export default function App() {
     return (
         <UserProvider>
             <ListingsProvider>
-            <div className="bg-primary text-primar min-h-screen overflow-x-hidden">
+                <div className="font-aller bg-primary text-primary min-h-screen overflow-x-hidden">
                     <RouterProvider router={router} />
                 </div>
             </ListingsProvider>

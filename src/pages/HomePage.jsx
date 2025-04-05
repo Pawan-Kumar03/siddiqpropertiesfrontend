@@ -24,7 +24,7 @@ export default function HomePage() {
         // console.log('Query: ',query)
     };
 
-const handleDisplayAllListings = async () => {
+    const handleDisplayAllListings = async () => {
         setLoading(true);
         try {
             const token = localStorage.getItem('token'); // Retrieve token if available
@@ -33,7 +33,7 @@ const handleDisplayAllListings = async () => {
                 : {};
             
             const response = await fetch(
-                'https://backend-git-main-pawan-togas-projects.vercel.app/api/listings',
+                'https://backend-h9z5egn2i-pawan-togas-projects.vercel.app/api/listings',
                 {
                     headers,
                 }
@@ -71,7 +71,7 @@ const handleDisplayAllListings = async () => {
 
     const handleDeleteProperty = async (id) => {
         try {
-            const response = await fetch(`https://backend-git-main-pawan-togas-projects.vercel.app/api/listings/${id}`, {
+            const response = await fetch(`https://backend-h9z5egn2i-pawan-togas-projects.vercel.app/api/listings/${id}`, {
                 method: "DELETE",
             });
 
@@ -128,23 +128,20 @@ const handleDisplayAllListings = async () => {
  
         // Set timeout to refresh token
         refreshTimeout = setTimeout(() => {
-            fetch('https://backend-git-main-pawan-togas-projects.vercel.app/api/refresh-token', {
-                method: 'POST',
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.token) {
-                    localStorage.setItem('token', data.token);
-                    startTokenRefreshTimer(Date.now() + 3600000); // Restart timer with new expiry
-                }
-            })
-            .catch(error => {
-                console.error('Token refresh error:', error);
-                // Handle error, possibly force logout
-            });
+            fetch('https://backend-h9z5egn2i-pawan-togas-projects.vercel.app/api/listings')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log("Fetched Listings:", data);
+  })
+  .catch(error => {
+    console.error("Error fetching listings:", error);
+  });
+
         }, timeRemaining);
     }
     

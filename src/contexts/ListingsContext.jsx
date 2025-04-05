@@ -11,7 +11,7 @@ export const ListingsProvider = ({ children }) => {
 
   const fetchListings = async () => {
     try {
-      const response = await fetch(`https://backend-git-main-pawan-togas-projects.vercel.app/api/listings`);
+      const response = await fetch(`https://backend-h9z5egn2i-pawan-togas-projects.vercel.app/api/listings`);
       const data = await response.json();
       setListings(data);
     } catch (error) {
@@ -27,7 +27,7 @@ export const ListingsProvider = ({ children }) => {
     const parsedUser = JSON.parse(user);
     // Now you can access the token
     const token = parsedUser.token;
-      const response = await fetch(`https://backend-git-main-pawan-togas-projects.vercel.app/api/listings`, {
+      const response = await fetch(`https://backend-h9z5egn2i-pawan-togas-projects.vercel.app/api/listings`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`, // Include the Authorization header
@@ -48,7 +48,7 @@ export const ListingsProvider = ({ children }) => {
 
   const updateListing = async (id, updatedListing) => {
     try {
-      const response = await fetch(`https://backend-git-main-pawan-togas-projects.vercel.app/api/listings/${id}`, {
+      const response = await fetch(`https://backend-h9z5egn2i-pawan-togas-projects.vercel.app/api/listings/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -68,7 +68,7 @@ export const ListingsProvider = ({ children }) => {
 
   const deleteListing = async (id) => {
     try {
-      const response = await fetch(`https://backend-git-main-pawan-togas-projects.vercel.app/api/listings/${id}`, {
+      const response = await fetch(`https://backend-h9z5egn2i-pawan-togas-projects.vercel.app/api/listings/${id}`, {
         method: 'DELETE',
       });
 

@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import logo from "../assets/logo.jpeg";
+// import logo from "../assets/logo.jpeg";
+import logo from "../assets/logo.png";
 import UserContext from "../contexts/UserContext";
 
 export default function Navbar() {
@@ -40,12 +41,21 @@ export default function Navbar() {
     return (
         <header className="bg-primary font-primary shadow-md sticky top-0 z-50">
             <nav className="max-w-7xl mx-auto font-primary px-4 sm:px-6 lg:px-8 flex items-center justify-between py-4">
-                {/* Logo */}
-                <div className="flex items-center">
-                    <Link to="/">
-                        <img src={logo} alt="logo" className="w-12 h-auto" />
-                    </Link>
-                </div>
+{/* Logo */}
+<div className="flex items-center h-16">
+    <Link to="/">
+        <img
+            src={logo}
+            alt="logo"
+            className="h-22 sm:h-22 md:h-22 lg:h-22 xl:h-22 w-auto object-contain" 
+        />
+    </Link>
+</div>
+
+
+
+
+
 
                 {/* Desktop Navigation */}
                 <div className="hidden sm:flex items-center space-x-6">
@@ -155,7 +165,7 @@ export default function Navbar() {
                                 className="block px-4 py-2 text-primary rounded-full hover:bg-primary-dark"
                                 onClick={() => setMobileMenuOpen(false)}
                             >
-                                Consultant
+                                Consultation
                             </Link>
                             {user ? (
                                 <>
