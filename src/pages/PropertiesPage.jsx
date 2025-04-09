@@ -19,7 +19,7 @@ function PropertiesPage() {
     const [showFilters, setShowFilters] = useState(false);
   
     useEffect(() => {
-        let url = `https://siddiqproperties-backend-b0esbfg2b9g9a0fj.uaenorth-01.azurewebsites.net/api/listings?city=${encodeURIComponent(city)}`;
+        let url = `https://siddiqproperties-backend-b0esbfg2b9g9a0fj.uaenorth-01.azurewebsites.net/api/listings`;
 
         if (location) {
             url += `&location=${encodeURIComponent(location)}`;
