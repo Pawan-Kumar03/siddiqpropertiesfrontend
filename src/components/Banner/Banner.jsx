@@ -300,7 +300,7 @@ const handleAddLocation = (e) => {
 <h1
   className="text-1rem text-center font-primary text-primary mt-[-1rem] 
              lg:text-5xl lg:text-left lg:mt-28 lg:mb-8">
-  Your <span className="animate-blink font-bold">InvestiBayt</span>
+  Your <span className="animate-blink font-bold">SiddiqProperties</span>
   <span className="lg:block hidden -mt-10 relative"> <br />Journey Starts Here</span>
   <span className="lg:hidden"> Journey Starts Here</span>
 </h1>
