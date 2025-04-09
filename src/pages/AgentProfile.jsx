@@ -38,7 +38,7 @@ export default function AgentProfile({ onNext, onBack }) {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('https://backend-h9z5egn2i-pawan-togas-projects.vercel.app/api/agent-profile', {
+      const response = await fetch('https://siddiqproperties-backend-b0esbfg2b9g9a0fj.uaenorth-01.azurewebsites.net/api/agent-profile', {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`,

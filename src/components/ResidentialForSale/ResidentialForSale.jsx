@@ -8,14 +8,14 @@ export default function ResidentialForSale({ searchParams = {}, listings = [] })
 
     useEffect(() => {
         const isEmptySearch = Object.values(searchParams).every(param => param === "");
-        console.log("isEmptySearch: ", isEmptySearch); // Log to check if the searchParams are empty
+        // console.log("isEmptySearch: ", isEmptySearch); // Log to check if the searchParams are empty
     
         const filtered = Array.isArray(listings) ? listings.filter((listing) => {
             const listingPrice = parseInt(listing.price.replace(/[^0-9]/g, ""));
             const minPrice = searchParams.priceMin ? parseInt(searchParams.priceMin) : 0;
             const maxPrice = searchParams.priceMax ? parseInt(searchParams.priceMax) : Infinity;
     
-            console.log("Filtering Listing: ", listing); // Log each listing being filtered
+            // console.log("Filtering Listing: ", listing); // Log each listing being filtered
     
             return (
                 (searchParams.city ? listing.city === searchParams.city : true) &&
@@ -32,7 +32,7 @@ export default function ResidentialForSale({ searchParams = {}, listings = [] })
             );
         }) : [];
     
-        console.log("Filtered Listings: ", filtered); // Log the filtered listings
+        // console.log("Filtered Listings: ", filtered); // Log the filtered listings
     
         setFilteredResults(isEmptySearch ? listings : filtered);
     

@@ -37,7 +37,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
 
     useEffect(() => {
         if (city) {
-            fetch(`https://backend-h9z5egn2i-pawan-togas-projects.vercel.app/api/listings/${city}`)
+            fetch(`https://siddiqproperties-backend-b0esbfg2b9g9a0fj.uaenorth-01.azurewebsites.net/api/listings/${city}`)
                 .then(response => response.json())
                 .then(data => {
                     // console.log(data); // Inspect the API response
@@ -233,7 +233,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
                <h1
   className="text-1rem text-center font-primary text-primary mt-[-1rem] 
              lg:text-5xl lg:text-left lg:mt-28 lg:mb-8">
-  Your <span className="animate-blink font-bold">InvestiBayt</span>
+  Your <span className="animate-blink font-bold">SiddiqProperties</span>
   <span className="lg:block hidden -mt-10 relative"> <br />Journey Starts Here</span>
   <span className="lg:hidden"> Journey Starts Here</span>
 </h1>

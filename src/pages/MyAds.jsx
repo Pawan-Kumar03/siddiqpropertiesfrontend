@@ -18,7 +18,7 @@ const MyAds = () => {
                 // console.log('user:', parsedUser);
                 // console.log('token:', token);
             
-                const response = await fetch('https://backend-h9z5egn2i-pawan-togas-projects.vercel.app/api/user-listings', {
+                const response = await fetch('https://siddiqproperties-backend-b0esbfg2b9g9a0fj.uaenorth-01.azurewebsites.net/api/user-listings', {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${token}`,

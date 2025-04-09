@@ -9,7 +9,7 @@ export default function VerifyPage() {
   // Function to handle the verification process
   const handleVerification = async () => {
     try {
-      const response = await fetch('https://backend-h9z5egn2i-pawan-togas-projects.vercel.app/api/verify', {
+      const response = await fetch('https://siddiqproperties-backend-b0esbfg2b9g9a0fj.uaenorth-01.azurewebsites.net/api/verify', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

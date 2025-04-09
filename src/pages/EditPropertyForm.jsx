@@ -56,7 +56,7 @@ export default function EditPropertyForm() {
         }
 
         try {
-            const response = await fetch(`https://backend-h9z5egn2i-pawan-togas-projects.vercel.app/api/listings/${id}`, {
+            const response = await fetch(`https://siddiqproperties-backend-b0esbfg2b9g9a0fj.uaenorth-01.azurewebsites.net/api/listings/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer ${token}`

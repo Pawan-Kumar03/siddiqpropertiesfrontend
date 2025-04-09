@@ -14,7 +14,7 @@ export default function Login() {
         e.preventDefault();
 
         try {
-            const response = await fetch('https://backend-h9z5egn2i-pawan-togas-projects.vercel.app/api/login', {
+            const response = await fetch('https://siddiqproperties-backend-b0esbfg2b9g9a0fj.uaenorth-01.azurewebsites.net/api/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

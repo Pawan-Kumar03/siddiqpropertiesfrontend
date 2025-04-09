@@ -33,7 +33,7 @@ export default function HomePage() {
                 : {};
             
             const response = await fetch(
-                'https://backend-h9z5egn2i-pawan-togas-projects.vercel.app/api/listings',
+                'https://siddiqproperties-backend-b0esbfg2b9g9a0fj.uaenorth-01.azurewebsites.net/api/listings',
                 {
                     headers,
                 }
@@ -71,7 +71,7 @@ export default function HomePage() {
 
     const handleDeleteProperty = async (id) => {
         try {
-            const response = await fetch(`https://backend-h9z5egn2i-pawan-togas-projects.vercel.app/api/listings/${id}`, {
+            const response = await fetch(`https://siddiqproperties-backend-b0esbfg2b9g9a0fj.uaenorth-01.azurewebsites.net/api/listings/${id}`, {
                 method: "DELETE",
             });
 
@@ -128,7 +128,7 @@ export default function HomePage() {
  
         // Set timeout to refresh token
         refreshTimeout = setTimeout(() => {
-            fetch('https://backend-h9z5egn2i-pawan-togas-projects.vercel.app/api/listings')
+            fetch('https://siddiqproperties-backend-b0esbfg2b9g9a0fj.uaenorth-01.azurewebsites.net/api/listings')
   .then(response => {
     if (!response.ok) {
       throw new Error("Network response was not ok");

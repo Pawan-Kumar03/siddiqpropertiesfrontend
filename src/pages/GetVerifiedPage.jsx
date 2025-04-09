@@ -26,7 +26,7 @@ export default function GetVerifiedPage() {
 
         try {
             const response = await fetch(
-                'https://backend-h9z5egn2i-pawan-togas-projects.vercel.app/api/verify/request',
+                'https://siddiqproperties-backend-b0esbfg2b9g9a0fj.uaenorth-01.azurewebsites.net/api/verify/request',
                 {
                     method: 'POST',
                     headers: {

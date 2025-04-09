@@ -141,7 +141,7 @@ export default function PlaceAnAdPage() {
   
       // Send the form data to the backend
       let postResponse = await fetch(
-        "https://backend-h9z5egn2i-pawan-togas-projects.vercel.app/api/listings",
+        "https://siddiqproperties-backend-b0esbfg2b9g9a0fj.uaenorth-01.azurewebsites.net/api/listings",
         {
           method: "POST",
           headers: {

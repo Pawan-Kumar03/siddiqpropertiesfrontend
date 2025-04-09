@@ -29,7 +29,7 @@ export default function Broker({ onNext, onBack, formData = {}, setFormData }) {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('https://backend-h9z5egn2i-pawan-togas-projects.vercel.app/api/broker-profile', {
+      const response = await fetch('https://siddiqproperties-backend-b0esbfg2b9g9a0fj.uaenorth-01.azurewebsites.net/api/broker-profile', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,

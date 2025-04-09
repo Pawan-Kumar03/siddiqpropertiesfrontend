@@ -19,7 +19,7 @@ function PropertiesPage() {
     const [showFilters, setShowFilters] = useState(false);
   
     useEffect(() => {
-        let url = `https://backend-h9z5egn2i-pawan-togas-projects.vercel.app/api/listings?city=${encodeURIComponent(city)}`;
+        let url = `https://siddiqproperties-backend-b0esbfg2b9g9a0fj.uaenorth-01.azurewebsites.net/api/listings?city=${encodeURIComponent(city)}`;
 
         if (location) {
             url += `&location=${encodeURIComponent(location)}`;

@@ -11,7 +11,7 @@ export default function ForgotPassword() {
 
     try {
       const response = await fetch(
-        'https://backend-h9z5egn2i-pawan-togas-projects.vercel.app/api/password-reset-request',
+        'https://siddiqproperties-backend-b0esbfg2b9g9a0fj.uaenorth-01.azurewebsites.net/api/password-reset-request',
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },

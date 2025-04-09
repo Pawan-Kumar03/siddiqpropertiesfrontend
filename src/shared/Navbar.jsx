@@ -47,15 +47,10 @@ export default function Navbar() {
         <img
             src={logo}
             alt="logo"
-            className="h-22 sm:h-22 md:h-22 lg:h-22 xl:h-22 w-auto object-contain" 
+            className="h-12 sm:h-12 md:h-12 lg:h-12 xl:h-12 w-auto object-contain" 
         />
     </Link>
 </div>
-
-
-
-
-
 
                 {/* Desktop Navigation */}
                 <div className="hidden sm:flex items-center space-x-6">

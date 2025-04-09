@@ -11,13 +11,23 @@ export const ListingsProvider = ({ children }) => {
 
   const fetchListings = async () => {
     try {
-      const response = await fetch(`https://backend-h9z5egn2i-pawan-togas-projects.vercel.app/api/listings`);
+      const response = await fetch(`https://siddiqproperties-backend-b0esbfg2b9g9a0fj.uaenorth-01.azurewebsites.net/api/listings`);
+      
+      console.log("Status:", response.status);
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`Fetch failed with status ${response.status}: ${errorText}`);
+      }
+  
       const data = await response.json();
+      // console.log("Listings loaded", data);
       setListings(data);
     } catch (error) {
-      console.error('Failed to fetch listings:', error);
+      console.log("Failed to load listings");
+      console.error('Error fetching listings:', error);
     }
   };
+  
 
   const addListing = async (newListing) => {
     try {
@@ -27,7 +37,7 @@ export const ListingsProvider = ({ children }) => {
     const parsedUser = JSON.parse(user);
     // Now you can access the token
     const token = parsedUser.token;
-      const response = await fetch(`https://backend-h9z5egn2i-pawan-togas-projects.vercel.app/api/listings`, {
+      const response = await fetch(`https://siddiqproperties-backend-b0esbfg2b9g9a0fj.uaenorth-01.azurewebsites.net/api/listings`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`, // Include the Authorization header
@@ -48,7 +58,7 @@ export const ListingsProvider = ({ children }) => {
 
   const updateListing = async (id, updatedListing) => {
     try {
-      const response = await fetch(`https://backend-h9z5egn2i-pawan-togas-projects.vercel.app/api/listings/${id}`, {
+      const response = await fetch(`https://siddiqproperties-backend-b0esbfg2b9g9a0fj.uaenorth-01.azurewebsites.net/api/listings/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -68,7 +78,7 @@ export const ListingsProvider = ({ children }) => {
 
   const deleteListing = async (id) => {
     try {
-      const response = await fetch(`https://backend-h9z5egn2i-pawan-togas-projects.vercel.app/api/listings/${id}`, {
+      const response = await fetch(`https://siddiqproperties-backend-b0esbfg2b9g9a0fj.uaenorth-01.azurewebsites.net/api/listings/${id}`, {
         method: 'DELETE',
       });
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import logoDark from "../assets/logo.jpeg";
+import logoDark from "../assets/LOGO-Footer.png";
 import Card from "../components/Card/Card";
 import { Swiper, SwiperSlide } from "swiper/react";
 // import "swiper/swiper-bundle.min.css"; // Import Swiper styles
@@ -19,7 +19,7 @@ export default function Footer() {
     useEffect(() => {
         const fetchProperties = async () => {
             try {
-                let url = `https://backend-h9z5egn2i-pawan-togas-projects.vercel.app/api/listings?city=${encodeURIComponent(selectedCity)}`;
+                let url = `https://siddiqproperties-backend-b0esbfg2b9g9a0fj.uaenorth-01.azurewebsites.net/api/listings?city=${encodeURIComponent(selectedCity)}`;
                 if (selectedLocation && selectedLocation !== 'all') {
                     url += `&location=${encodeURIComponent(selectedLocation)}`;
                 }
@@ -71,8 +71,8 @@ export default function Footer() {
         {
             category: "Support",
             items: [
-                { name: "Contact Us", link: "/contact-us" },
-                { name: "Consultant", link: "/ConsultancyPage" },
+                // { name: "Contact Us", link: "/contact-us" },
+                { name: "Contact Us", link: "/ConsultancyPage" },
             ],
         },
     ];
@@ -133,7 +133,7 @@ export default function Footer() {
                     <div className="flex items-center space-x-4">
                         <img className="w-32" src={logoDark} alt="Logo" />
                         <small className="text-primary text-center lg:text-left mt-4 lg:mt-0">
-                            &copy; InvestiBayt.com {new Date().getFullYear()}, All Rights Reserved.
+                            &copy; Siddiqproperties.com {new Date().getFullYear()}, All Rights Reserved.
                         </small>
                     </div>
                 </div>
