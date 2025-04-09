@@ -19,35 +19,32 @@ function PropertiesPage() {
     const [showFilters, setShowFilters] = useState(false);
   
     useEffect(() => {
-        let url = `https://siddiqproperties-backend-b0esbfg2b9g9a0fj.uaenorth-01.azurewebsites.net/api/listings`;
-
-        if (location) {
-            url += `&location=${encodeURIComponent(location)}`;
-        }
-
-        fetch(url)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                if (Array.isArray(data)) {
-                    setProperties(data);
-                    setFilteredProperties(data);
-                } else {
-                    console.error('Data format is not as expected:', data);
-                    setProperties([]);
-                    setFilteredProperties([]);
-                }
-            })
-            .catch(error => {
-                console.error('Error fetching properties:', error);
-                setProperties([]);
-                setFilteredProperties([]);
-            });
-    }, [city, location]);
+      const url = `https://siddiqproperties-backend-b0esbfg2b9g9a0fj.uaenorth-01.azurewebsites.net/api/listings`;
+  
+      fetch(url)
+          .then(response => {
+              if (!response.ok) {
+                  throw new Error(`HTTP error! status: ${response.status}`);
+              }
+              return response.json();
+          })
+          .then(data => {
+              if (Array.isArray(data)) {
+                  setProperties(data);
+                  setFilteredProperties(data);
+              } else {
+                  console.error('Data format is not as expected:', data);
+                  setProperties([]);
+                  setFilteredProperties([]);
+              }
+          })
+          .catch(error => {
+              console.error('Error fetching properties:', error);
+              setProperties([]);
+              setFilteredProperties([]);
+          });
+  }, []); // No dependencies needed unless you want to refetch on some trigger
+  
 
     const handleSearch = () => {
         let filtered = properties;
