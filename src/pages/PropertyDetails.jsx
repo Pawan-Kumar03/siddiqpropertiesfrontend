@@ -2,16 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Mail, Phone, ArrowLeft, X } from "lucide-react";
+import { ArrowLeft, X } from "lucide-react";
 import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import ListingsContext from "../contexts/ListingsContext";
 import AuthContext from "../contexts/UserContext";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import CloseIcon from "@mui/icons-material/Close"; 
-import { jsPDF } from "jspdf";
 import AgentCard from "../components/Card/AgentCard";
 
 export default function PropertyDetails() {
@@ -278,6 +274,25 @@ export default function PropertyDetails() {
                   </div>
                 </div>
               )}
+              {/* Contact Buttons */}
+          <div className="mb-4 flex items-center space-x-4 text-primary">
+            <EmailIcon
+              style={{ cursor: "pointer" }}
+              onClick={() => handleContactBroker("Email")}
+              className=" transition duration-300"
+            />
+            <PhoneIcon
+              style={{ cursor: "pointer" }}
+              onClick={() => handleContactBroker("Call")}
+              className=" transition duration-300"
+            />
+            <WhatsAppIcon
+              style={{ cursor: "pointer" }}
+              onClick={() => handleContactBroker("WhatsApp")}
+              className=" transition duration-300"
+            />
+          </div>
+
             </div>
 
             {/* Sticky Agent Section */}
