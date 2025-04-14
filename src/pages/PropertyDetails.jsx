@@ -2,16 +2,17 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Mail, Phone, ArrowLeft, X } from "lucide-react";
 import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import ListingsContext from "../contexts/ListingsContext";
 import AuthContext from "../contexts/UserContext";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import CloseIcon from "@mui/icons-material/Close"; 
 import { jsPDF } from "jspdf";
+import AgentCard from "../components/Card/AgentCard";
 
 export default function PropertyDetails() {
   const { id } = useParams();
@@ -21,32 +22,49 @@ export default function PropertyDetails() {
   const [isDeleted, setIsDeleted] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [fullscreenImage, setFullscreenImage] = useState(null); 
+  const [agent, setAgent] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     const selectedProperty = listings.find((listing) => listing._id === id);
     if (selectedProperty) {
       setProperty(selectedProperty);
+      fetchAgent(selectedProperty.agentEmail); // Fetch agent data
     } else {
       fetchProperty();
     }
-  }, [id, listings]); // Ensure it reacts to changes in listings
+  }, [id, listings]);
 
   const fetchProperty = async () => {
     try {
       const response = await fetch(
         `https://siddiqproperties-backend-b0esbfg2b9g9a0fj.uaenorth-01.azurewebsites.net/api/listings/${id}`
       );
-      if (!response.ok) {
-        throw new Error("Property not found");
-      }
+      if (!response.ok) throw new Error("Property not found");
+
       const data = await response.json();
       setProperty(data);
+      fetchAgent(data.agentEmail); // Fetch agent when property is loaded
     } catch (error) {
       console.error("Failed to fetch property:", error);
     }
   };
 
+  const fetchAgent = async (agentEmail) => {
+    if (!agentEmail) return;
+
+    try {
+      const response = await fetch(
+        `https://siddiqproperties-backend-b0esbfg2b9g9a0fj.uaenorth-01.azurewebsites.net/api/agents/pawan.kumar@investibayt.com`
+      );
+      if (!response.ok) throw new Error("Agent not found");
+
+      const agentData = await response.json();
+      setAgent(agentData);
+    } catch (error) {
+      console.error("Failed to fetch agent:", error);
+    }
+  };
 
 
   const openFullscreenImage = (image) => {
@@ -125,7 +143,6 @@ export default function PropertyDetails() {
     }
   };
 
-  
   const processImages = (images) => {
     if (typeof images === "string") {
       return images
@@ -140,201 +157,197 @@ export default function PropertyDetails() {
       window.open(property.pdf, "_blank");
     }
   };
-  
-  
   return (
-<div className="container mt-8 bg-primary backdrop-blur-lg text-primary p-6 rounded-lg font-primary shadow-lg max-w-5xl mx-auto">
-  {isDeleted && (
-    <div className="text-center bg-primary text-primary p-4 rounded mb-4">
-      Your ad has been deleted successfully!
-    </div>
-  )}
-  {!isDeleted && property && (
-        <>
-          <div className="flex items-center mb-4 justify-between">
+    <div className="min-h-screen bg-background">
+      {isDeleted && (
+        <div className="max-w-7xl mx-auto px-4 py-6 text-center bg-green-100 text-green-800 rounded-lg mt-8">
+          Your ad has been deleted successfully!
+        </div>
+      )}
+      
+      {!isDeleted && property && (
+        <div className="w-full">
+          {/* Navigation Bar */}
+          <div className="max-w-7xl mx-auto px-4 py-6 flex items-center justify-between">
             <button
               onClick={() => navigate(-1)}
-              className="flex items-center text-primary hover:underline bg-primary rounded-full px-4 py-2 transition duration-300"
+              className="inline-flex items-center px-4 py-2 text-sm font-medium transition-colors rounded-full hover:bg-muted"
             >
-              <ArrowBackIcon className="mr-1 sm:text-lg text-primary" />
-              <span className="flex items-center">Back</span>
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Back
             </button>
+            
             <button
-  onClick={property.pdf ? handleViewPDF : undefined}
-  disabled={!property.pdf}
-  className={`flex items-center rounded-full px-4 py-2 transition duration-300 ${
-    property.pdf
-      ? "text-primary hover:underline bg-primary"
-      : "text-gray-400 bg-gray-200 cursor-not-allowed"
-  }`}
->
-  <span className="flex items-center">View Brochure</span>
-</button>
-
-
-          </div>
-
-      <div className="flex flex-col lg:flex-row">
-        <div className="lg:w-1/2 lg:pr-4">
-          {property.images && processImages(property.images).length > 1 ? (
-            <Carousel
-              showThumbs={false}
-              infiniteLoop
-              useKeyboardArrows
-              autoPlay
-              className="h-80 rounded-lg shadow-md"
+              onClick={property.pdf ? handleViewPDF : undefined}
+              disabled={!property.pdf}
+              className={`inline-flex items-center px-4 py-2 text-sm font-medium rounded-full transition-colors ${
+                property.pdf
+                  ? "hover:bg-muted"
+                  : "opacity-50 cursor-not-allowed"
+              }`}
             >
-              {processImages(property.images).map((image, index) => (
-                <div
-                  key={index}
-                  className="h-100 flex justify-center items-center"
-                  onClick={() => openFullscreenImage(image)} // Add click handler
-                >
-                  <img
-                    className="rounded-lg object-cover h-80 w-full cursor-pointer"
-                    src={image}
-                    alt={property.title}
-                  />
-                </div>
-              ))}
-            </Carousel>
-          ) : (
-            <img
-              className="rounded-lg mb-4 object-cover h-80 w-full cursor-pointer shadow-md"
-              src={`${property.image}`}
-              alt={property.title}
-              onClick={() => openFullscreenImage(property.image)} // Add click handler
-            />
-          )}
-          {/* Description */}
-          {property.description && (
-            <div className="mb-4">
-              <p className="text-sm">{property.description}</p>
-            </div>
-          )}
-        </div>
-        <div className="lg:w-1/2 lg:pl-4">
-          <h3 className="text-lg font-semibold mb-2 text-primary">
-            {property.title}
-          </h3>
-          <p className="text-sm mb-2">
-            <AttachMoneyIcon className="mr-2 text-primary" />
-            {property.price} AED
-          </p>
-          <p className="text-sm mb-2">
-            <LocationOnIcon className="mr-2 text-primary" />
-            {property.building}, {property.developments}, {property.location}, {property.city}, {property.country}
-          </p>
-          <p className="text-sm mb-2">
-            <strong>Property Type:</strong> {property.propertyType}
-          </p>
-          <p className="text-sm mb-2">
-            <strong>Beds:</strong> {property.beds}
-          </p>
-          <p className="text-sm mb-2">
-            <strong>Baths:</strong> {property.baths}
-          </p>
-          <p className="text-sm mb-2">
-            <strong>Landlord:</strong> {property.landlordName}
-          </p>
-          <p className="text-sm mb-2">
-            <strong>Purpose:</strong>{" "}
-            {property.purpose === "sell" ? "Sale" : "Buy"}
-          </p>
-          <p className="text-sm mb-2">
-            <strong>Completion Status:</strong>{" "}
-            {property.status === "false" ? "Off-Plan" : "Ready"}
-          </p>
-
-          {/* Amenities */}
-          {property.amenities && (
-            <div className="mb-4">
-              <h4 className="font-semibold">Amenities:</h4>
-              <ul className="list-disc pl-5">
-                {property.amenities.map((amenity, index) => (
-                  <li key={index} className="text-sm">{amenity}</li>
-                ))}
-              </ul>
-            </div>
-          )}
-
-          {/* Contact Buttons */}
-          <div className="mb-4 flex items-center space-x-4 text-primary">
-            <EmailIcon
-              style={{ cursor: "pointer" }}
-              onClick={() => handleContactBroker("Email")}
-              className=" transition duration-300"
-            />
-            <PhoneIcon
-              style={{ cursor: "pointer" }}
-              onClick={() => handleContactBroker("Call")}
-              className=" transition duration-300"
-            />
-            <WhatsAppIcon
-              style={{ cursor: "pointer" }}
-              onClick={() => handleContactBroker("WhatsApp")}
-              className=" transition duration-300"
-            />
+              View Brochure
+            </button>
           </div>
 
-          {user && property && user._id === property.user && (
-            <>
-              <button
-                onClick={handleEditProperty}
-                className="px-6 py-3 bg-button text-button rounded-full  transition duration-300 mb-2"
+          {/* Full Width Image Section */}
+          <div className="w-full mb-8">
+            {property.images && processImages(property.images).length > 1 ? (
+              <div className="w-full h-[70vh]">
+                <Carousel
+                  showThumbs={false}
+                  infiniteLoop
+                  useKeyboardArrows
+                  autoPlay
+                  className="h-full"
+                >
+                  {processImages(property.images).map((image, index) => (
+                    <div
+                      key={index}
+                      className="w-full h-[70vh]"
+                      onClick={() => openFullscreenImage(image)}
+                    >
+                      <img
+                        src={image}
+                        alt={`${property.title} - ${index + 1}`}
+                        className="w-full h-full object-cover cursor-pointer"
+                      />
+                    </div>
+                  ))}
+                </Carousel>
+              </div>
+            ) : (
+              <div
+                className="w-full h-[70vh]"
+                onClick={() => openFullscreenImage(property.image)}
               >
-                Edit Property
-              </button>
-              <button
-                onClick={() => setShowDeleteModal(true)}
-                className="px-6 py-3 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-300"
-              >
-                Delete Property
-              </button>
-            </>
-          )}
+                <img
+                  src={property.image}
+                  alt={property.title}
+                  className="w-full h-full object-cover cursor-pointer"
+                />
+              </div>
+            )}
+          </div>
+
+          {/* Content Section */}
+          <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Main Content */}
+            <div className="lg:col-span-2">
+              <h1 className="text-3xl font-bold mb-4">{property.title}</h1>
+              <p className="text-2xl font-semibold mb-6">{property.price}</p>
+              
+              <div className="space-y-4 mb-8">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="p-4 rounded-lg bg-muted">
+                    <p className="text-sm font-medium">Property Type</p>
+                    <p className="text-lg">{property.propertyType}</p>
+                  </div>
+                  <div className="p-4 rounded-lg bg-muted">
+                    <p className="text-sm font-medium">Purpose</p>
+                    <p className="text-lg">{property.purpose}</p>
+                  </div>
+                  <div className="p-4 rounded-lg bg-muted">
+                    <p className="text-sm font-medium">Beds</p>
+                    <p className="text-lg">{property.beds}</p>
+                  </div>
+                  <div className="p-4 rounded-lg bg-muted">
+                    <p className="text-sm font-medium">Baths</p>
+                    <p className="text-lg">{property.baths}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="prose max-w-none mb-8">
+                <h2 className="text-xl font-semibold mb-4">Description</h2>
+                <p className="text-muted-foreground">{property.description}</p>
+              </div>
+
+              {property.amenities && property.amenities.length > 0 && (
+                <div className="mb-8">
+                  <h2 className="text-xl font-semibold mb-4">Amenities</h2>
+                  <div className="grid grid-cols-2 gap-4">
+                    {property.amenities.map((amenity, index) => (
+                      <div
+                        key={index}
+                        className="p-3 rounded-lg bg-muted text-sm"
+                      >
+                        {amenity}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Sticky Agent Section */}
+            <div className="lg:col-span-1">
+              <div className="sticky top-8 space-y-6">
+                {agent && <AgentCard agent={agent} />}
+                
+              
+                {user && property && user._id === property.user && (
+                  <div className="space-y-3">
+                    <button
+                      onClick={handleEditProperty}
+                      className="w-full px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity"
+                    >
+                      Edit Property
+                    </button>
+                    <button
+                      onClick={() => setShowDeleteModal(true)}
+                      className="w-full px-4 py-2 bg-destructive text-destructive-foreground rounded-lg hover:opacity-90 transition-opacity"
+                    >
+                      Delete Property
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      
+      )}
+
+      {/* Fullscreen Image Modal */}
       {fullscreenImage && (
         <div
-          className="fixed inset-0 bg-primary flex justify-center items-center z-50"
+          className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center"
           onClick={closeFullscreenImage}
         >
-          <img
-            src={fullscreenImage}
-            alt="Fullscreen View"
-            className="max-w-full max-h-full"
-          />
-          <button
-            className="absolute top-4 right-4 text-primary bg-primary rounded-full p-2"
-            onClick={closeFullscreenImage}
-          >
-            <CloseIcon />
-          </button>
+          <div className="relative max-w-[90vw] max-h-[90vh]">
+            <img
+              src={fullscreenImage}
+              alt="Fullscreen View"
+              className="max-w-full max-h-[90vh] object-contain"
+            />
+            <button
+              className="absolute top-4 right-4 p-2 rounded-full bg-background/50 hover:bg-background/70 transition-colors"
+              onClick={closeFullscreenImage}
+            >
+              <X className="h-6 w-6" />
+            </button>
+          </div>
         </div>
       )}
 
       {/* Delete Confirmation Modal */}
       {showDeleteModal && (
-        <div className="fixed inset-0 bg-primary backdrop-blur-lg flex items-center justify-center z-50">
-          <div className="bg-primary rounded-lg p-8 text-primary shadow-lg">
-            <h3 className="text-lg font-semibold mb-4 text-primary">
-              Confirm Deletion
-            </h3>
-            <p className="mb-4 text-primary">
+        <div className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center">
+          <div className="bg-background rounded-lg p-6 max-w-md w-full mx-4">
+            <h3 className="text-lg font-semibold mb-4">Confirm Deletion</h3>
+            <p className="mb-6 text-muted-foreground">
               Are you sure you want to delete this property?
             </p>
-            <div className="flex justify-end">
+            <div className="flex justify-end space-x-4">
               <button
                 onClick={() => setShowDeleteModal(false)}
-                className="px-4 py-2 bg-button text-button rounded-full transition duration-300 mr-2"
+                className="px-4 py-2 rounded-lg bg-muted hover:bg-muted/80 transition-colors"
               >
                 Cancel
               </button>
               <button
                 onClick={handleDeleteProperty}
-                className="px-4 py-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-300"
+                className="px-4 py-2 rounded-lg bg-destructive text-destructive-foreground hover:opacity-90 transition-opacity"
               >
                 Delete
               </button>
@@ -342,10 +355,8 @@ export default function PropertyDetails() {
           </div>
         </div>
       )}
-    </>
-  )}
-</div>
-
+    </div>
   );
-  
 }
+
+
