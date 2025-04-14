@@ -125,6 +125,7 @@ export default function PropertyDetails() {
     }
   };
 
+  
   const processImages = (images) => {
     if (typeof images === "string") {
       return images
