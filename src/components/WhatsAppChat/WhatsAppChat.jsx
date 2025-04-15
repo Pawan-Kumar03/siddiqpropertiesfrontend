@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const WhatsAppChat = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const phoneNumber = '+923192785627';
+  const phoneNumber = '00971556502875';
   const message = "Hi, I'm interested in a property on Siddiq Properties";
 
   const handleOpenChat = () => {
