@@ -69,7 +69,7 @@ const Signup = () => {
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                             required
-                            className="w-full px-3 py-2 border border-gray-300 rounded"
+                            className="text-primary w-full px-3 py-2 border border-gray-300 rounded"
                         />
                     </div>
                     <div className="mb-4">
@@ -82,11 +82,11 @@ const Signup = () => {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
-                            className="w-full px-3 py-2 border border-gray-300 rounded"
+                            className="text-primary w-full px-3 py-2 border border-gray-300 rounded"
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block text-primary text-sm font-bold mb-2" htmlFor="password">
+                        <label className="text-primary block text-sm font-bold mb-2" htmlFor="password">
                             Password
                         </label>
                         <input
@@ -95,7 +95,7 @@ const Signup = () => {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
-                            className="w-full px-3 py-2 border border-gray-300 rounded"
+                            className="text-primary w-full px-3 py-2 border border-gray-300 rounded"
                         />
                     </div>
                     <div className="mb-6">
@@ -108,7 +108,7 @@ const Signup = () => {
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
                             required
-                            className="w-full px-3 py-2 border border-gray-300 rounded"
+                            className="text-primary w-full px-3 py-2 border border-gray-300 rounded"
                         />
                     </div>
                     <div className="flex items-center mb-4">
