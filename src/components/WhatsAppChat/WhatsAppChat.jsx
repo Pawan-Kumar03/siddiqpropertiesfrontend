@@ -26,7 +26,7 @@ const WhatsAppChat = () => {
           </div>
           <button
             onClick={handleOpenChat}
-            className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition w-full"
+            className="bg-button text-white px-4 py-2 rounded hover:bg-green-600 transition w-full"
           >
             Start Chat
           </button>
@@ -35,7 +35,7 @@ const WhatsAppChat = () => {
 
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="bg-green-500 rounded-full w-14 h-14 flex items-center justify-center shadow-lg hover:bg-green-600 transition"
+        className="bg-button rounded-full w-14 h-14 flex items-center justify-center shadow-lg  transition"
         aria-label="Chat on WhatsApp"
       >
         <img
