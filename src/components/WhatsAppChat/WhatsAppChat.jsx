@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const WhatsAppChat = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const phoneNumber = '00971556502875';
+  const phoneNumber = '971556502875';
   const message = "Hi, I'm interested in a property on Siddiq Properties";
 
   const handleOpenChat = () => {
@@ -26,7 +26,7 @@ const WhatsAppChat = () => {
           </div>
           <button
             onClick={handleOpenChat}
-            className="bg-button text-white px-4 py-2 rounded hover:bg-green-600 transition w-full"
+            className="bg-button text-white px-4 py-2 rounded  transition w-full"
           >
             Start Chat
           </button>
