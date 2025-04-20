@@ -9,7 +9,7 @@ export default function AboutUsPage() {
 
                 <h2 className="text-3xl text-primary font-semibold my-6 ">Who We Are</h2>
                 <p className="text-primary mb-6">
-                    We are a team of real estate enthusiasts and tech professionals dedicated to making property transactions simple and accessible. Our mission is to empower you with the tools and information needed to make informed decisions in the real estate market.
+                    We are a team of real estate experts and tech professionals dedicated to making property transactions simple and accessible. Our mission is to empower you with the tools and information needed to make informed decisions in the real estate market.
                 </p>
 
                 <h2 className="text-3xl text-primary font-semibold my-6 ">Our Team</h2>
