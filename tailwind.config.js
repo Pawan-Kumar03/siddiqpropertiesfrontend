@@ -32,6 +32,7 @@ export default {
                     900: "#171717",
                 },
                 custom: "#c5a47e",
+                banner: "#DDC7BB",
             },
             fontFamily: {
                 parkinsans: ["'Parkinsans'", "sans-serif"],
