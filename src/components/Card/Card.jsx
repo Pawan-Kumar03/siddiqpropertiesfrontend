@@ -27,7 +27,7 @@ export default function Card({ item }) {
 
     return (
         <div
-            className="hover:bg-banner hover:shadow-xl p-6 rounded-lg bg-primary text-primary cursor-pointer font-primary transition duration-300 ease-in-out h-96 flex flex-col justify-between"
+            className="hover:shadow-xl p-6 rounded-lg bg-primary text-primary cursor-pointer font-primary transition duration-300 ease-in-out h-96 flex flex-col justify-between hover:bg-banner "
             onClick={handleClick}
             style={{ minWidth: '240px' }} // Ensure minimum width for consistency
         >
