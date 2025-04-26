@@ -36,7 +36,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
 
     useEffect(() => {
         if (city) {
-            fetch(`https://siddiqproperties-backend-b0esbfg2b9g9a0fj.uaenorth-01.azurewebsites.net/api/listings/${city}`)
+            fetch(`https://backend-git-main-pawan-togas-projects.vercel.app/api/listings/${city}`)
                 .then(response => response.json())
                 .then(data => {
                     // console.log(data); // Inspect the API response
