@@ -181,8 +181,8 @@ const handleAddLocation = (e) => {
     };
 
     const handleSaleClick = () => {
-        setPurpose("sell"); // For sale, set the purpose to 'sell'
-        onSearch({ purpose: "sell" }); // Trigger search with purpose 'sell'
+        setPurpose("Sale"); // For sale, set the purpose to 'Sale'
+        onSearch({ purpose: "Sale" }); // Trigger search with purpose 'Sale'
     };
     
     const handleRentClick = () => {
