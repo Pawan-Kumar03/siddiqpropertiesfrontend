@@ -47,10 +47,13 @@ export default function ResidentialForSale({ searchParams = {}, listings = [] })
                   return (
                       (!searchParams.city || listing.city === searchParams.city) &&
                       (
-                        searchParams.location?.split(",").some((loc) =>
-                            listing.location?.toLowerCase().includes(loc.trim().toLowerCase())
-                        ) ?? true
+                        searchParams.location
+                            ? searchParams.location.split(",").some((loc) =>
+                                listing.location?.toLowerCase().includes(loc.trim().toLowerCase())
+                              )
+                            : true
                     )
+                    
                      &&
                       (!searchParams.propertyType || listing.propertyType === searchParams.propertyType) &&
                       listingPrice >= minPrice &&
