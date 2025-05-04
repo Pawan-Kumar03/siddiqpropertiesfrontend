@@ -16,54 +16,79 @@ export default function ResidentialForSale({ searchParams = {}, listings = [] })
 
     useEffect(() => {
         const isEmptySearch = Object.values(searchParams).every((param) => param === "");
-    
+
         const filtered = Array.isArray(listings)
             ? listings.filter((listing) => {
-                // 1. Handle Beds Filter (updated field name)
-                const listingBeds = parseInt(listing.bedrooms) || 0;
-                const selectedBeds = parseInt(searchParams.beds) || 0;
-                const bedsMatch = searchParams.beds ? listingBeds >= selectedBeds : true;
-    
-                // 2. Handle Baths Filter (updated field name)
-                const listingBaths = parseInt(listing.bathrooms) || 0;
-                const selectedBaths = parseInt(searchParams.baths) || 0;
-                const bathsMatch = searchParams.baths ? listingBaths >= selectedBaths : true;
-    
-                // 3. Handle Price Range Filter
-                const priceString = listing.price.replace(/[^0-9\-]/g, "");
-                const priceParts = priceString.split("-");
-                const listingMinPrice = parseInt(priceParts[0]) || 0;
-                const listingMaxPrice = parseInt(priceParts[1]) || listingMinPrice;
-    
-                const filterMinPrice = searchParams.priceMin
-                    ? parseInt(searchParams.priceMin.replace(/,/g, ""))
-                    : 0;
-                const filterMaxPrice = searchParams.priceMax
-                    ? parseInt(searchParams.priceMax.replace(/,/g, ""))
-                    : Infinity;
-    
-                const priceInRange = Math.max(listingMinPrice, filterMinPrice) <= Math.min(listingMaxPrice, filterMaxPrice);
-    
-                return (
-                    (!searchParams.city || listing.city === searchParams.city) &&
-                    (!searchParams.location || searchParams.location.split(",").some((loc) =>
-                        listing.location.toLowerCase().includes(loc.trim().toLowerCase())
-                    )) &&
-                    (!searchParams.propertyType || listing.propertyType === searchParams.propertyType) &&
-                    priceInRange &&
-                    bedsMatch &&
-                    bathsMatch &&
-                    (!searchParams.status || listing.status.toString() === searchParams.status) &&
-                    (!searchParams.purpose || listing.purpose === searchParams.purpose) &&
-                    (!searchParams.agentType || (
-                        searchParams.agentType === "Owner" ? listing.landlordName : listing.agentName
-                    ))
-                );
-            })
+                const listingBeds = String(listing.beds || "")
+  .split(",")
+  .map((b) => parseInt(b.trim().replace("+", "")) || 0);
+
+const selectedBeds = String(searchParams.beds || "")
+  .split(",")
+  .map((b) => parseInt(b.trim()) || 0);
+
+const bedsMatch = () => {
+  if (!searchParams.beds) return true;
+  return selectedBeds.some((bed) => listingBeds.includes(bed));
+};
+
+const listingBaths = String(listing.baths || "")
+.split(",")
+.map((b) => parseInt(b.trim().replace("+", "")) || 0);
+
+const selectedBaths = String(searchParams.baths || "")
+.split(",")
+.map((b) => parseInt(b.trim()) || 0);
+
+const bathsMatch = () => {
+if (!searchParams.baths) return true;
+return selectedBaths.some((bath) => listingBaths.includes(bath));
+};
+
+            
+
+                  // 3. Handle Price Range Filter
+                  // Clean and parse listing price
+const priceString = listing.price.replace(/[^0-9\-]/g, ""); // Keep digits and dash only
+const priceParts = priceString.split("-");
+const listingMinPrice = parseInt(priceParts[0]) || 0;
+const listingMaxPrice = parseInt(priceParts[1]) || listingMinPrice;
+
+// Clean and parse user input prices (remove commas before parsing)
+const filterMinPrice = searchParams.priceMin
+  ? parseInt(searchParams.priceMin.replace(/,/g, ""))
+  : 0;
+
+const filterMaxPrice = searchParams.priceMax
+  ? parseInt(searchParams.priceMax.replace(/,/g, ""))
+  : Infinity;
+
+// Check if the listing price range overlaps with user filter range
+const priceInRange =
+  Math.max(listingMinPrice, filterMinPrice) <=
+  Math.min(listingMaxPrice, filterMaxPrice);
+
+
+                  return (
+                      (!searchParams.city || listing.city === searchParams.city) &&
+                      (!searchParams.location || searchParams.location.split(",").some((loc) =>
+                          listing.location.toLowerCase().includes(loc.trim().toLowerCase())
+                      )) &&
+                      (!searchParams.propertyType || listing.propertyType === searchParams.propertyType) &&
+                      priceInRange &&
+                      bedsMatch() &&
+                      bathsMatch() &&
+                      (!searchParams.status || listing.status.toString() === searchParams.status) &&
+                      (!searchParams.purpose || listing.purpose === searchParams.purpose) &&
+                      (!searchParams.agentType || (
+                          searchParams.agentType === "Owner" ? listing.landlordName : listing.agentName
+                      ))
+                  );
+              })
             : [];
-    
-        // Rest of the code remains the same...
+
         if (isEmptySearch) {
+            // Sort listings by price (high to low) and take top 10
             const sortedListings = [...listings].sort((a, b) => {
                 const priceA = extractPrice(a.price);
                 const priceB = extractPrice(b.price);
@@ -73,21 +98,22 @@ export default function ResidentialForSale({ searchParams = {}, listings = [] })
         } else {
             setFilteredResults(filtered);
         }
-    
+
         if (filtered.length === 0 && !isEmptySearch) {
             const related = Array.isArray(listings)
                 ? listings.filter((listing) => {
-                    return (
-                        (searchParams.city ? listing.city === searchParams.city : false) ||
-                        (searchParams.propertyType ? listing.propertyType === searchParams.propertyType : false)
-                    );
-                })
+                      return (
+                          (searchParams.city ? listing.city === searchParams.city : false) ||
+                          (searchParams.propertyType ? listing.propertyType === searchParams.propertyType : false)
+                      );
+                  })
                 : [];
             setRelatedResults(related);
         } else {
             setRelatedResults([]);
         }
-    
+
+        // Set vertical layout after search
         if (!isEmptySearch) {
             setIsVertical(true);
         } else {
