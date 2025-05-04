@@ -115,7 +115,7 @@ export default function Banner({ onSearch, onPlaceAnAd }) {
         purpose: "",
         ...searchParams // Override defaults with any actually selected filters
     };
-
+    console.log("completeSearchParams ",completeSearchParams)
     onSearch(completeSearchParams);
 };
     
