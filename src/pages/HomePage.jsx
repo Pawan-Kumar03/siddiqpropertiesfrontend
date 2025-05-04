@@ -24,7 +24,7 @@ export default function HomePage() {
         // console.log('Query: ',query)
     };
 
-    const handleDisplayAllListings = async () => {
+const handleDisplayAllListings = async () => {
         setLoading(true);
         try {
             const token = localStorage.getItem('token'); // Retrieve token if available
@@ -96,11 +96,11 @@ export default function HomePage() {
 
     if (submitted) {
         return (
-            <div className="container mx-auto p-4 bg-primary text-primary font-primary">
+            <div className="container mx-auto p-4 bg-primary text-primary font-aller font-light">
                 <div className="text-center bg-primary text-primary p-4 rounded">
                     {deleteMessage}
                 </div>
-                <div className="flex justify-center mt-4 font-primary">
+                <div className="flex justify-center mt-4 font-aller font-light">
                     <button onClick={() => { setSubmitted(false); navigate("/"); }} className="px-6 py-3 bg-green-600 text-white rounded">
                         Go to Home
                     </button>
@@ -128,20 +128,23 @@ export default function HomePage() {
  
         // Set timeout to refresh token
         refreshTimeout = setTimeout(() => {
-            fetch('https://siddiqproperties-backend-b0esbfg2b9g9a0fj.uaenorth-01.azurewebsites.net/api/listings')
-  .then(response => {
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-    return response.json();
-  })
-  .then(data => {
-    console.log("Fetched Listings:", data);
-  })
-  .catch(error => {
-    console.error("Error fetching listings:", error);
-  });
-
+            fetch('https://siddiqproperties-backend-b0esbfg2b9g9a0fj.uaenorth-01.azurewebsites.net/api/refresh-token', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.token) {
+                    localStorage.setItem('token', data.token);
+                    startTokenRefreshTimer(Date.now() + 3600000); // Restart timer with new expiry
+                }
+            })
+            .catch(error => {
+                console.error('Token refresh error:', error);
+                // Handle error, possibly force logout
+            });
         }, timeRemaining);
     }
     
@@ -155,7 +158,7 @@ export default function HomePage() {
     });
     
     return (
-        <div className="bg-primary min-h-screen font-primary">
+        <div className="bg-primary min-h-screen font-aller font-light">
             <Banner
                 onSearch={handleSearch}
                 onDisplayAllListings={handleDisplayAllListings}
