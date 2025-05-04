@@ -44,29 +44,36 @@ const bathsMatch = () => {
 if (!searchParams.baths) return true;
 return selectedBaths.some((bath) => listingBaths.includes(bath));
 };
-
-            
-
-                  // 3. Handle Price Range Filter
-                  // Clean and parse listing price
-const priceString = listing.price.replace(/[^0-9\-]/g, ""); // Keep digits and dash only
+// Extract and clean listing price string
+const priceString = listing.price.replace(/[^0-9\-]/g, ""); // Remove everything except digits and dashes
 const priceParts = priceString.split("-");
 const listingMinPrice = parseInt(priceParts[0]) || 0;
 const listingMaxPrice = parseInt(priceParts[1]) || listingMinPrice;
 
-// Clean and parse user input prices (remove commas before parsing)
+// Clean and parse user input prices
 const filterMinPrice = searchParams.priceMin
   ? parseInt(searchParams.priceMin.replace(/,/g, ""))
-  : 0;
+  : null;
 
 const filterMaxPrice = searchParams.priceMax
   ? parseInt(searchParams.priceMax.replace(/,/g, ""))
-  : Infinity;
+  : null;
 
-// Check if the listing price range overlaps with user filter range
-const priceInRange =
-  Math.max(listingMinPrice, filterMinPrice) <=
-  Math.min(listingMaxPrice, filterMaxPrice);
+// Determine if price is in acceptable range
+let priceInRange = true;
+
+if (filterMinPrice !== null && filterMaxPrice !== null) {
+  // If both min and max are provided
+  priceInRange =
+    listingMaxPrice >= filterMinPrice && listingMinPrice <= filterMaxPrice;
+} else if (filterMinPrice !== null) {
+  // Only min is provided
+  priceInRange = listingMaxPrice >= filterMinPrice;
+} else if (filterMaxPrice !== null) {
+  // Only max is provided
+  priceInRange = listingMinPrice <= filterMaxPrice;
+}
+
 
 
                   return (
