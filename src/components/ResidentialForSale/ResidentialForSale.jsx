@@ -8,7 +8,6 @@ export default function ResidentialForSale({ searchParams = {}, listings = [] })
 
     // Helper function to extract numeric price from string
     const extractPrice = (priceString) => {
-        // Handle price ranges by taking the higher value
         const prices = priceString.split('-').map(p => 
             parseInt(p.replace(/[^0-9]/g, ""))
         );
@@ -20,29 +19,43 @@ export default function ResidentialForSale({ searchParams = {}, listings = [] })
 
         const filtered = Array.isArray(listings)
             ? listings.filter((listing) => {
-                  // Parse the listing beds to handle ranges like "1,2,3"
-                  const listingBeds = String(listing.beds || "").split(",").map(b => b.trim());
-                  const listingPrice = parseInt(listing.price.replace(/[^0-9]/g, ""));
-                  const minPrice = searchParams.priceMin ? parseInt(searchParams.priceMin) : 0;
-                  const maxPrice = searchParams.priceMax ? parseInt(searchParams.priceMax) : Infinity;
+                  // 1. Handle Beds Filter
+                  const listingBeds = String(listing.beds || "")
+                    .split(",")
+                    .map(b => parseInt(b.trim().replace('+', '')) || [0]);
 
-                  // Helper function to check if beds match
+                  const selectedBeds = parseInt(searchParams.beds || 0);
                   const bedsMatch = () => {
                       if (!searchParams.beds) return true;
                       if (searchParams.beds === "5") {
-                          return listingBeds.some(b => parseInt(b) >= 5);
+                          return listingBeds.some(b => b >= 5);
                       }
-                      return listingBeds.includes(searchParams.beds);
+                      return listingBeds.some(b => b >= selectedBeds);
                   };
 
-                  // Helper function to check if baths match
+                  // 2. Handle Baths Filter
+                  const listingBaths = parseInt((listing.baths || "").toString().replace('+', '')) || 0;
+                  const selectedBaths = parseInt(searchParams.baths || 0);
                   const bathsMatch = () => {
                       if (!searchParams.baths) return true;
                       if (searchParams.baths === "5") {
-                          return listing.baths >= 5;
+                          return listingBaths >= 5;
                       }
-                      return listing.baths === parseInt(searchParams.baths);
+                      return listingBaths >= selectedBaths;
                   };
+
+                  // 3. Handle Price Range Filter
+                  const priceString = listing.price.replace(/[^0-9-]/g, "");
+                  const priceParts = priceString.split("-");
+                  const listingMinPrice = parseInt(priceParts[0]) || 0;
+                  const listingMaxPrice = parseInt(priceParts[1]) || listingMinPrice;
+                  
+                  const filterMinPrice = searchParams.priceMin ? parseInt(searchParams.priceMin) : 0;
+                  const filterMaxPrice = searchParams.priceMax ? parseInt(searchParams.priceMax) : Infinity;
+
+                  // Check for price range overlap
+                  const priceInRange = Math.max(listingMinPrice, filterMinPrice) <= 
+                                     Math.min(listingMaxPrice, filterMaxPrice);
 
                   return (
                       (!searchParams.city || listing.city === searchParams.city) &&
@@ -50,8 +63,7 @@ export default function ResidentialForSale({ searchParams = {}, listings = [] })
                           listing.location.toLowerCase().includes(loc.trim().toLowerCase())
                       )) &&
                       (!searchParams.propertyType || listing.propertyType === searchParams.propertyType) &&
-                      listingPrice >= minPrice &&
-                      listingPrice <= maxPrice &&
+                      priceInRange &&
                       bedsMatch() &&
                       bathsMatch() &&
                       (!searchParams.status || listing.status.toString() === searchParams.status) &&
@@ -64,7 +76,7 @@ export default function ResidentialForSale({ searchParams = {}, listings = [] })
             : [];
 
         if (isEmptySearch) {
-            // Sort listings by price (high to low) and take top 10 for Popular Developments
+            // Sort listings by price (high to low) and take top 10
             const sortedListings = [...listings].sort((a, b) => {
                 const priceA = extractPrice(a.price);
                 const priceB = extractPrice(b.price);
@@ -89,7 +101,7 @@ export default function ResidentialForSale({ searchParams = {}, listings = [] })
             setRelatedResults([]);
         }
 
-        // Set vertical layout only after a search
+        // Set vertical layout after search
         if (!isEmptySearch) {
             setIsVertical(true);
         } else {

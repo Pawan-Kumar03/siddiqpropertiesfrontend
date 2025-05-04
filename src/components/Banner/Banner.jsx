@@ -220,10 +220,10 @@ const handleAddLocation = (e) => {
     // Update the bed options to match your data format
     const bedOptions = [
       { value: "", label: "Any" },
-      { value: "1", label: "1" },
-      { value: "2", label: "2" },
-      { value: "3", label: "3" },
-      { value: "4", label: "4" },
+      { value: "1", label: "1+" },
+      { value: "2", label: "2+" },
+      { value: "3", label: "3+" },
+      { value: "4", label: "4+" },
       { value: "5", label: "5+" }
   ];
 
