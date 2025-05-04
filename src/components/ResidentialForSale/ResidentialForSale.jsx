@@ -9,28 +9,54 @@ export default function ResidentialForSale({ searchParams = {}, listings = [] })
         const isEmptySearch = Object.values(searchParams).every(param => param === "");
 
         const filtered = Array.isArray(listings) ? listings.filter((listing) => {
+            // Parse the price, handling commas and currency symbols
             const listingPrice = parseInt(listing.price.replace(/[^0-9]/g, ""));
             const minPrice = searchParams.priceMin ? parseInt(searchParams.priceMin) : 0;
             const maxPrice = searchParams.priceMax ? parseInt(searchParams.priceMax) : Infinity;
 
+            // Check if location matches any in the comma-separated list
+            const locationMatches = !searchParams.location || 
+                searchParams.location.split(",").some(loc => 
+                    listing.location && listing.location.toLowerCase().includes(loc.trim().toLowerCase())
+                );
+
+            // Handle 5+ beds/baths correctly
+            const bedsMatch = !searchParams.beds || 
+                (searchParams.beds === "5" ? 
+                    parseInt(listing.beds) >= 5 : 
+                    parseInt(listing.beds) === parseInt(searchParams.beds));
+
+            const bathsMatch = !searchParams.baths || 
+                (searchParams.baths === "5" ? 
+                    parseInt(listing.baths) >= 5 : 
+                    parseInt(listing.baths) === parseInt(searchParams.baths));
+            
+            // Handle off-plan (status "false") properties
+            const statusMatch = searchParams.status !== "false" || listing.status === "false";
+            
+            // Purpose matching (Sale or Rent)
+            const purposeMatch = !searchParams.purpose || listing.purpose === searchParams.purpose;
+
             return (
-                (searchParams.city ? listing.city === searchParams.city : true) &&
-                (searchParams.location ? searchParams.location.split(",").some(loc => listing.location.toLowerCase().includes(loc.trim().toLowerCase())) : true) &&
-                (searchParams.propertyType ? listing.propertyType === searchParams.propertyType : true) &&
+                (!searchParams.city || listing.city === searchParams.city) &&
+                locationMatches &&
+                (!searchParams.propertyType || listing.propertyType === searchParams.propertyType) &&
                 (listingPrice >= minPrice && listingPrice <= maxPrice) &&
-                (searchParams.beds ? (searchParams.beds === "5" ? listing.beds >= 5 : listing.beds === parseInt(searchParams.beds)) : true) &&
-                (searchParams.baths ? (searchParams.baths === "5" ? listing.baths >= 5 : listing.baths === parseInt(searchParams.baths)) : true) &&
-                (searchParams.status === "false" ? listing.status === "false" : "true") &&
-                (searchParams.purpose ? listing.purpose === searchParams.purpose : true) &&
-                (searchParams.agentType ? 
-                    (searchParams.agentType === "Owner" ? listing.landlordName : listing.agentName) 
-                    : true)
+                bedsMatch &&
+                bathsMatch &&
+                statusMatch &&
+                purposeMatch &&
+                (!searchParams.agentType || 
+                    (searchParams.agentType === "Owner" ? 
+                        listing.landlordName : 
+                        listing.agentName))
             );
         }) : [];
 
         setFilteredResults(isEmptySearch ? listings : filtered);
 
         if (filtered.length === 0 && !isEmptySearch) {
+            // Find related properties if no direct matches
             const related = Array.isArray(listings) ? listings.filter((listing) => {
                 return (
                     (searchParams.city ? listing.city === searchParams.city : false) ||
