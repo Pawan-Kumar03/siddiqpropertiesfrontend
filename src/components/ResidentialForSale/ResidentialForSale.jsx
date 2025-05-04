@@ -19,30 +19,32 @@ export default function ResidentialForSale({ searchParams = {}, listings = [] })
 
         const filtered = Array.isArray(listings)
             ? listings.filter((listing) => {
-                  // 1. Handle Beds Filter (MODIFIED)
-        const listingBeds = String(listing.beds || "")
-        .split(",")
-        .map((b) => parseInt(b.trim().replace("+", "")) || 0); // Fixed parsing issue (added || 0 instead of [0])
+// 1. Handle Beds Filter (UPDATED)
+const listingBeds = String(listing.beds || "")
+  .split(",")
+  .map((b) => parseInt(b.trim().replace("+", "")) || 0);
 
-      const selectedBeds = parseInt(searchParams.beds || 0);
-      const bedsMatch = () => {
-        if (!searchParams.beds) return true;
-        if (searchParams.beds === "5") {
-          return listingBeds.some((b) => b >= 5); // Keep >= for "5+"
-        }
-        return listingBeds.some((b) => b === selectedBeds); // Now checks for exact match
-      };
+const selectedBeds = parseInt(searchParams.beds || 0);
+const bedsMatch = () => {
+  if (!searchParams.beds) return true;
+  if (searchParams.beds === "5") {
+    return listingBeds.some((b) => b >= 5); // 5+ case remains
+  }
+  return listingBeds.some((b) => b >= selectedBeds); // Changed to >=
+};
 
-                  // 2. Handle Baths Filter
-                  const listingBaths = parseInt((listing.baths || "").toString().replace('+', '')) || 0;
-                  const selectedBaths = parseInt(searchParams.baths || 0);
-                  const bathsMatch = () => {
-                      if (!searchParams.baths) return true;
-                      if (searchParams.baths === "5") {
-                          return listingBaths.some((b) => b >= 5); // Keep >= for "5+"
-                      }
-                      return listingBaths.some((b) => b === selectedBaths); // Now checks for exact match
-                  };
+// 2. Handle Baths Filter (UPDATED)
+const listingBaths = parseInt(
+  (listing.baths || "").toString().replace("+", "")
+) || 0;
+const selectedBaths = parseInt(searchParams.baths || 0);
+const bathsMatch = () => {
+  if (!searchParams.baths) return true;
+  if (searchParams.baths === "5") {
+    return listingBaths >= 5; // 5+ case remains
+  }
+  return listingBaths >= selectedBaths; // Changed to >= (removed .some())
+};
 
                   // 3. Handle Price Range Filter
                   const priceString = listing.price.replace(/[^0-9-]/g, "");
