@@ -19,32 +19,26 @@ export default function ResidentialForSale({ searchParams = {}, listings = [] })
 
         const filtered = Array.isArray(listings)
             ? listings.filter((listing) => {
-// 1. Handle Beds Filter (UPDATED)
-const listingBeds = String(listing.beds || "")
-  .split(",")
-  .map((b) => parseInt(b.trim().replace("+", "")) || 0);
-
-const selectedBeds = parseInt(searchParams.beds || 0);
-const bedsMatch = () => {
-  if (!searchParams.beds) return true;
-  if (searchParams.beds === "5") {
-    return listingBeds.some((b) => b >= 5); // 5+ case remains
-  }
-  return listingBeds.some((b) => b >= selectedBeds); // Changed to >=
-};
-
-// 2. Handle Baths Filter (UPDATED)
-const listingBaths = parseInt(
-  (listing.baths || "").toString().replace("+", "")
-) || 0;
-const selectedBaths = parseInt(searchParams.baths || 0);
-const bathsMatch = () => {
-  if (!searchParams.baths) return true;
-  if (searchParams.baths === "5") {
-    return listingBaths >= 5; // 5+ case remains
-  }
-  return listingBaths >= selectedBaths; // Changed to >= (removed .some())
-};
+                const listingBeds = String(listing.beds || "")
+                .split(",")
+                .map((b) => parseInt(b.trim().replace("+", "")) || 0);
+              
+              const selectedBeds = parseInt(searchParams.beds || 0);
+              const bedsMatch = () => {
+                if (!searchParams.beds) return true;
+                return listingBeds.includes(selectedBeds);
+              };
+              
+              const listingBaths = String(listing.baths || "")
+              .split(",")
+              .map((b) => parseInt(b.trim().replace("+", "")) || 0);
+            
+            const selectedBaths = parseInt(searchParams.baths || 0);
+            const bathsMatch = () => {
+              if (!searchParams.baths) return true;
+              return listingBaths.includes(selectedBaths);
+            };
+            
 
                   // 3. Handle Price Range Filter
                   const priceString = listing.price.replace(/[^0-9-]/g, "");
