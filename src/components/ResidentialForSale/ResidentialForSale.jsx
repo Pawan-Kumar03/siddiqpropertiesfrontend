@@ -21,7 +21,7 @@ export default function ResidentialForSale({ searchParams = {}, listings = [] })
         const filtered = Array.isArray(listings)
             ? listings.filter((listing) => {
                   // Parse the listing beds to handle ranges like "1,2,3"
-                  const listingBeds = (listing.beds || "").split(",").map(b => b.trim());
+                  const listingBeds = String(listing.beds || "").split(",").map(b => b.trim());
                   const listingPrice = parseInt(listing.price.replace(/[^0-9]/g, ""));
                   const minPrice = searchParams.priceMin ? parseInt(searchParams.priceMin) : 0;
                   const maxPrice = searchParams.priceMax ? parseInt(searchParams.priceMax) : Infinity;
