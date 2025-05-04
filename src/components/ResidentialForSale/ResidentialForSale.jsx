@@ -20,38 +20,54 @@ export default function ResidentialForSale({ searchParams = {}, listings = [] })
         const filtered = Array.isArray(listings)
             ? listings.filter((listing) => {
                 const listingBeds = String(listing.beds || "")
-                .split(",")
-                .map((b) => parseInt(b.trim().replace("+", "")) || 0);
-              
-              const selectedBeds = parseInt(searchParams.beds || 0);
-              const bedsMatch = () => {
-                if (!searchParams.beds) return true;
-                return listingBeds.includes(selectedBeds);
-              };
-              
-              const listingBaths = String(listing.baths || "")
-              .split(",")
-              .map((b) => parseInt(b.trim().replace("+", "")) || 0);
-            
-            const selectedBaths = parseInt(searchParams.baths || 0);
-            const bathsMatch = () => {
-              if (!searchParams.baths) return true;
-              return listingBaths.includes(selectedBaths);
-            };
+  .split(",")
+  .map((b) => parseInt(b.trim().replace("+", "")) || 0);
+
+const selectedBeds = String(searchParams.beds || "")
+  .split(",")
+  .map((b) => parseInt(b.trim()) || 0);
+
+const bedsMatch = () => {
+  if (!searchParams.beds) return true;
+  return selectedBeds.some((bed) => listingBeds.includes(bed));
+};
+
+const listingBaths = String(listing.baths || "")
+.split(",")
+.map((b) => parseInt(b.trim().replace("+", "")) || 0);
+
+const selectedBaths = String(searchParams.baths || "")
+.split(",")
+.map((b) => parseInt(b.trim()) || 0);
+
+const bathsMatch = () => {
+if (!searchParams.baths) return true;
+return selectedBaths.some((bath) => listingBaths.includes(bath));
+};
+
             
 
                   // 3. Handle Price Range Filter
-                  const priceString = listing.price.replace(/[^0-9-]/g, "");
-                  const priceParts = priceString.split("-");
-                  const listingMinPrice = parseInt(priceParts[0]) || 0;
-                  const listingMaxPrice = parseInt(priceParts[1]) || listingMinPrice;
-                  
-                  const filterMinPrice = searchParams.priceMin ? parseInt(searchParams.priceMin) : 0;
-                  const filterMaxPrice = searchParams.priceMax ? parseInt(searchParams.priceMax) : Infinity;
+                  // Clean and parse listing price
+const priceString = listing.price.replace(/[^0-9\-]/g, ""); // Keep digits and dash only
+const priceParts = priceString.split("-");
+const listingMinPrice = parseInt(priceParts[0]) || 0;
+const listingMaxPrice = parseInt(priceParts[1]) || listingMinPrice;
 
-                  // Check for price range overlap
-                  const priceInRange = Math.max(listingMinPrice, filterMinPrice) <= 
-                                     Math.min(listingMaxPrice, filterMaxPrice);
+// Clean and parse user input prices (remove commas before parsing)
+const filterMinPrice = searchParams.priceMin
+  ? parseInt(searchParams.priceMin.replace(/,/g, ""))
+  : 0;
+
+const filterMaxPrice = searchParams.priceMax
+  ? parseInt(searchParams.priceMax.replace(/,/g, ""))
+  : Infinity;
+
+// Check if the listing price range overlaps with user filter range
+const priceInRange =
+  Math.max(listingMinPrice, filterMinPrice) <=
+  Math.min(listingMaxPrice, filterMaxPrice);
+
 
                   return (
                       (!searchParams.city || listing.city === searchParams.city) &&
