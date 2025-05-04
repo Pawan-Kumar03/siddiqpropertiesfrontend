@@ -12,23 +12,12 @@ export const ListingsProvider = ({ children }) => {
   const fetchListings = async () => {
     try {
       const response = await fetch(`https://siddiqproperties-backend-b0esbfg2b9g9a0fj.uaenorth-01.azurewebsites.net/api/listings`);
-      
-      // console.log("Status Code:", response.status);
-      if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(`Fetch failed with status ${response.status}: ${errorText}`);
-      }
-      // console.log(response)
-  
       const data = await response.json();
-      // console.log("Listings loaded", data);
       setListings(data);
     } catch (error) {
-      console.log("Failed to load listings");
-      console.error('Error fetching listings:', error);
+      console.error('Failed to fetch listings:', error);
     }
   };
-  
 
   const addListing = async (newListing) => {
     try {
