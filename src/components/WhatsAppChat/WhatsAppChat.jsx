@@ -11,7 +11,7 @@ const WhatsAppChat = () => {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+    <div className="fixed bottom-[5rem] right-6 z-50 flex flex-col items-end">
       {isOpen && (
         <div className="mb-2 bg-white border rounded-lg shadow-lg p-4 w-64 relative">
           <div className="flex justify-between items-start mb-2">
