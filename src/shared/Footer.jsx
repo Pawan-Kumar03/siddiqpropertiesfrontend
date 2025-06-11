@@ -148,7 +148,7 @@ export default function Footer() {
                     <div className="flex items-center space-x-4">
                         <img className="w-32" src={logoDark} alt="Logo" />
                         <small className="text-primary text-center lg:text-left mt-4 lg:mt-0">
-                            &copy; Siddiqproperties.com {new Date().getFullYear()}, All Rights Reserved.
+                            &copy; Sami Siddiq Real Estate L.L.C {new Date().getFullYear()}, All Rights Reserved.
                         </small>
                     </div>
                 </div>
